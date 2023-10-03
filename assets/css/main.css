@@ -215,27 +215,6 @@ body {
     margin-top: 110px; 
 }
 
-#menu ul#menu-nav {
-    display: none;
-}
-
-/* Hamburger menu icon styles */
-.menu-toggle {
-    display: block; /* Show the menu icon for mobile devices */
-    cursor: pointer;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #000;
-    margin: 5px 0;
-}
-
-/* Show the navigation menu when the menu icon is clicked */
-#menu.active ul#menu-nav {
-    display: block;
-}
 /* ==================================================
    Intro Box
 ================================================== */
@@ -350,31 +329,6 @@ body {
 }
 .item-project:hover img {
     transform: scale(1.1); /* Scale the image on hover */
-}
-@media (max-width: 767px) {
-    .single-project img {
-        display: none; /* Hide the background picture on mobile devices */
-    }
-    
-    .project-overlay {
-        position: relative; /* Change the position to relative to keep the text within the container */
-        background-color: rgba(255, 255, 255, 0.8); /* White with 0.8 opacity */
-        text-align: center;
-        padding: 20px;
-        width: 90%; /* Adjust the width of the overlay */
-        max-width: 300px; /* Limit the maximum width of the overlay */
-        margin: 0 auto; /* Center the overlay horizontally */
-    }
-
-    .project-overlay h2 {
-        font-size: 20px; /* Decrease the font size of the heading for smaller screens */
-        margin-bottom: 10px; /* Add some space below the heading */
-    }
-
-    .project-overlay p {
-        font-size: 14px; /* Decrease the font size of paragraphs for smaller screens */
-        margin-bottom: 10px; /* Add some space below paragraphs */
-    }
 }
 
 /* ==================================================
