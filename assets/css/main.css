@@ -1,0 +1,419 @@
+/* ==================================================
+   Basic Styles
+================================================== */
+
+html {
+    width: 100%;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+}
+
+a {
+    color: #777;
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: color 0.15s ease-in-out 0s;
+    -moz-transition: color 0.15s ease-in-out 0s;
+    -o-transition: color 0.15s ease-in-out 0s;
+    transition: color 0.15s ease-in-out 0s;
+}
+
+a:hover, a:active, a:focus {
+    outline: 0;
+    color: #000;
+    text-decoration: none;
+}
+
+a img {
+    border: none;
+}
+
+a > img {
+    vertical-align: bottom;
+}
+
+img {
+    max-width: none;
+}
+
+p {
+    margin: 0 0 30px;
+}
+
+ul {
+    margin: 0 0 20px 40px;
+    padding: 0;
+    list-style: circle inside;
+    line-height: 30px;
+}
+
+input::input-placeholder, textarea::input-placeholder {
+    color: #BCBCC4;
+    opacity: 1;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #89CFF0;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Header */
+header {
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1001;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#logo a {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: 2px;
+    margin-left: 20px;
+}
+
+/* ==================================================
+   Typography
+================================================== */
+
+h6{
+	margin:0 0 20px 0;
+	color:#000;
+	font-weight:400;
+	font-family: 'Montserrat', sans-serif;
+	line-height:1.5em;
+}
+
+h3{
+	font-size:22px;
+	color:#000;
+	letter-spacing: 0.6px;
+	text-align:center;
+	font-weight:400;
+
+}
+
+h6{
+	font-size:13px;
+	font-weight:400;
+	line-height:1em;
+	color:#B5B5B5;
+	text-align:center;
+	letter-spacing: 0.5px;
+	padding-top: 5px;
+	
+}
+
+h7{
+	font-size:14px;
+	font-weight:400;
+	letter-spacing: 1px;
+	color:#000;
+	letter-spacing: 0.5px;
+	text-align:center;
+	line-height:1.6em;
+	
+}
+
+/* ==================================================
+   Margin Bottom Sets
+================================================== */
+
+.margin-0{
+	margin-bottom:0 !important;
+}
+
+/* ==================================================
+   Header
+================================================== */
+
+header {
+    background: #ffffff; /* Set background color for the header */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px; /* Adjust the height to your preference */
+    z-index: 1001;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#logo a {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 60px; /* Match the header height for vertical centering */
+    letter-spacing: 2px;
+    margin-left: 20px; /* Add margin to the left of the logo */
+}
+
+#menu {
+    float: right;
+    margin-right: 20px; /* Add margin to the right of the menu */
+}
+
+#menu ul#menu-nav {
+    list-style: none;
+    padding: 0;
+}
+
+#menu ul#menu-nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#menu ul#menu-nav li:last-child {
+    margin-right: 0;
+}
+
+#menu ul#menu-nav li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 60px; /* Match the header height for vertical centering */
+    letter-spacing: 0.2px;
+}
+
+#menu ul#menu-nav li a:hover {
+    color: #777;
+}
+
+body {
+    margin-top: 110px; 
+}
+
+/* ==================================================
+   Intro Box
+================================================== */
+
+#intro {
+    margin-top: 20px; 
+	margin-bottom: 40px;
+}
+
+#intro-box {
+	position: relative;
+	background: transparent;
+	padding: 60px 0 130px;
+}
+
+.item-intro {
+    position: relative;
+    overflow: hidden;
+	list-style-type: none;
+}
+
+.item-intro img {
+    width: 100%; /* Set the width as 100% to fill the container */
+    max-width: 100%; /* Limit the image size to its natural width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra space below the image */
+    margin: 0 auto; /* Center the image horizontally */
+    border-radius: 20px; /* Set rounded corners */	
+}
+
+#intro-box h3 {
+	color: #000;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 33px;
+	font-weight: 400;
+	line-height: 1.7;
+	letter-spacing: 0.5px;
+	text-align: start;
+}
+
+#intro-box p {
+	text-align: start;
+}
+
+#intro-box .center {
+	text-align: center;
+}
+
+#social-contact {
+    margin-top: 20px; /* Adjust the value to reduce the space */
+}
+
+/* ==================================================
+   bio
+================================================== */
+
+.single-project {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 97%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* White with 0.8 opacity */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.project-overlay h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.project-overlay p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #000;
+}
+
+#portfolio img {
+	width: 100%;	
+}
+
+#projects {
+	margin: 0;
+	padding: 0;
+}
+
+#projects li {
+	list-style: none;
+	margin-bottom: 30px;
+}
+
+.item-project {
+	position: relative;
+	overflow: hidden;	
+}
+
+.item-project:hover img,
+.item-project:active img {
+	opacity:.55
+}
+.item-project:hover img {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+/* ==================================================
+   news, papers ...  
+================================================== */
+
+#news {
+    margin-top: 20px;
+	margin-bottom: 30px;
+
+}
+
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.news-box {
+    width: 350px;
+    height: 300px;
+    margin: 16px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-box:hover {
+    transform: translateY(-10px);
+}
+
+.news-image {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.news-box a {
+    text-decoration: none;
+    color: #333;
+}
+
+.news-box h3 {
+    margin: 10px;
+    font-size: 16px;
+}
+
+.news-box p {
+    margin: 0 8px 8px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* ==================================================
+   Footer
+================================================== */
+
+footer {
+	position: relative;
+	background: transparent;	
+	padding: 40px 0 40px;
+	margin-bottom: 0px;
+}
+
+footer.footer-widgets .widget {
+	margin-bottom: 0;	
+}
+
+footer.footer-widgets {
+	color: #777;
+	font-size: 20x;
+}
+
+footer.footer-widgets a {
+	color: #777;	
+}
+
+footer.footer-widgets a:hover {
+	color: #000;
+}
+.footer-container {
+    background-color: #f5f5f5; 
+	margin-top: 20px; 
+    padding: 20px 0; 
+}
