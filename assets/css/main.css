@@ -332,23 +332,17 @@ body {
 }
 @media (max-width: 767px) {
     .single-project img {
-        width: 100%; /* Make the image fill the container width */
-        height: auto; /* Maintain aspect ratio */
-        max-width: 100%; /* Ensure the image doesn't exceed its natural size */
-        display: block; /* Remove any extra space below the image */
-        margin: 0 auto; /* Center the image horizontally */
+        display: none; /* Hide the background picture on mobile devices */
     }
     
     .project-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative; /* Change the position to relative to keep the text within the container */
         background-color: rgba(255, 255, 255, 0.8); /* White with 0.8 opacity */
         text-align: center;
         padding: 20px;
         width: 90%; /* Adjust the width of the overlay */
         max-width: 300px; /* Limit the maximum width of the overlay */
+        margin: 0 auto; /* Center the overlay horizontally */
     }
 
     .project-overlay h2 {
