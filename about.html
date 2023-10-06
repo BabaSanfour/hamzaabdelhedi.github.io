@@ -2,62 +2,66 @@
 <html lang="en-US">
 
 <head>
+    <!-- Meta Tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>About - Name</title>
 
-<!-- Meta Tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Mobile Specifics -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="320"/>   
 
-<meta name="description" content=""/>
-<title>About - Name</title>   
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Mobile Specifics -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="HandheldFriendly" content="true"/>
-<meta name="MobileOptimized" content="320"/>   
+    <!-- Main Style -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
-<!-- Bootstrap -->
-<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=latin,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 
-<!-- Main Style -->
-<link href="assets/css/main.css" rel="stylesheet">
-
-<!-- Responsive -->
-<link href="assets/css/responsive.css" rel="stylesheet">
-
-<!-- Google Font -->
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=latin,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
-
-
-<!-- Modernizr -->
-<script src="assets/js/modernizr.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="assets/js/modernizr.js"></script>
 
 </head>
 
-
 <body>
+    <!-- Header -->
+    <header class="fixed-header">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <div id="logo">
+                        <a href="index.html" title="Hamza Abdelhedi">Home</a>
+                    </div>
+                </div>
+                <div class="span10">
+                    <div id="menu-toggle" class="menu-toggle-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <nav id="menu">
+                        <ul id="menu-nav">
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<!-- Header -->
-<header class="fixed-header">     
-  <div class="container">
-      <div class="row">
-          <div class="span2">
-              <div id="logo">
-                  <a href="index.html" title="Hamza Abdelhedi">Home</a>
-              </div>
-          </div>
-          <div class="span10">
-              <nav id="menu">
-                  <ul id="menu-nav">
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="contact.html">Contact</a></li>
-                  </ul>
-              </nav>
-          </div>
-      </div>
-  </div>
-</header>
-
-
+    <!-- Sidebar (visible on smaller screens) -->
+    <aside class="sidebar">
+        <div id="mobile-menu">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </aside>
 <!-- Start Intro Box -->
 <div class="container">
     <div class="row">
@@ -137,7 +141,7 @@
       <div class="row">
           <div class="span4 widget">
               <div class="about-widget">
-                  <p>Email: <a href="mailto:hamza.abdelhedi@umontreal.ca">hamza.abdelhedi@umontreal.ca</a></p>
+                  <p style="text-align: center;">  Email: <a href="mailto:hamza.abdelhedi@umontreal.ca">hamza.abdelhedi@umontreal.ca</a></p>
               </div>
           </div>
           <div class="span4 widget">
@@ -151,12 +155,23 @@
           </div>
           <div class="span4 widget">
               <div class="made-by-widget">
-                  <p> © 2023 Made by Hamza Abdelhedi with ❤️. All rights reserved.</p>
+                  <p style="text-align: center;"> © 2023 Made by Hamza Abdelhedi with ❤️. All rights reserved.</p>
               </div>
           </div>
       </div>
   </div>
 </footer>
+<!-- Back to Top Button -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var menuToggle = document.getElementById('menu-toggle');
+      var sidebar = document.querySelector('.sidebar');
+
+      menuToggle.addEventListener('click', function() {
+          sidebar.classList.toggle('open');
+      });
+  });
+</script>
 
 </body>
 </html>
