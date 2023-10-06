@@ -267,68 +267,46 @@ body {
     margin-top: 20px; /* Adjust the value to reduce the space */
 }
 
-/* ==================================================
-   bio
-================================================== */
-
-.single-project {
+#bio-section {
     position: relative;
-    overflow: hidden;
+    text-align: center;
+    color: white;
 }
 
-.project-overlay {
+.background-image {
+    position: relative;
+    background-image: url('../img/background2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black; /* Set text color to be visible on the background */
+    text-align: center;
+    padding: 20px; /* Add padding to the text */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 97%;
+    width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* White with 0.8 opacity */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Overlay color with 0.5 opacity */
+    z-index: 1; /* Place the overlay on top of the background image */
 }
 
-.project-overlay h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
+.background-image .bio-content {
+    z-index: 2; /* Place the text content above the overlay */
 }
 
-.project-overlay p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #000;
-}
-
-#portfolio img {
-	width: 100%;	
-}
-
-#projects {
-	margin: 0;
-	padding: 0;
-}
-
-#projects li {
-	list-style: none;
-	margin-bottom: 30px;
-}
-
-.item-project {
-	position: relative;
-	overflow: hidden;	
-}
-
-.item-project:hover img,
-.item-project:active img {
-	opacity:.55
-}
-.item-project:hover img {
-    transform: scale(1.1); /* Scale the image on hover */
+@media (max-width: 768px) {
+    .background-image {
+        height: auto; /* Allow the container to adjust its height based on content */
+        padding: 50px; /* Increase padding for better spacing on smaller screens */
+    }
 }
 
 /* ==================================================
