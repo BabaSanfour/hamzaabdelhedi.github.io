@@ -356,7 +356,7 @@ body {
     align-items: center;
     color: black; /* Set text color to be visible on the background */
     text-align: center;
-    padding: 20px; /* Add padding to the text */
+    padding: 15px; /* Add padding to the text */
     overflow: hidden; /* Hide overflowing content */
 }
 
