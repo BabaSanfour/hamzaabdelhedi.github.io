@@ -377,7 +377,7 @@ body {
 @media (max-width: 768px) {
     .background-image {
         height: auto; /* Allow the container to adjust its height based on content */
-        padding: 50px; /* Increase padding for better spacing on smaller screens */
+        padding: 20px; /* Increase padding for better spacing on smaller screens */
     }
 }
 
