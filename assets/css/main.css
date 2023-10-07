@@ -317,6 +317,14 @@ body {
     border-radius: 20px; /* Set rounded corners */	
 }
 
+.item-intro img:nth-last-child(n+1) {
+    width: 100%; /* Set the width as 50% to fill the container */
+    max-width: 100%; /* Limit the image size to its natural width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra space below the image */
+    margin: 0 auto 10px; /* Center the image horizontally and add a 10px bottom margin */
+}
+
 #intro-box h3 {
 	color: #000;
 	font-family: 'Montserrat', sans-serif;
@@ -329,6 +337,18 @@ body {
 
 #intro-box p {
 	text-align: start;
+    line-height: 1.2;
+    margin-bottom: 10px; /* Adjust the bottom margin for paragraphs */
+
+}
+
+.low-line-height {
+    line-height: 1; /* You can adjust the value as needed */
+}
+
+#intro-box .item-intro p {
+    line-height: 1.2; /* Adjust the line height for specific paragraphs */
+    margin-bottom: 10px; /* Adjust the bottom margin for specific paragraphs */
 }
 
 #intro-box .center {
