@@ -550,3 +550,37 @@ height: auto;
 display: block;
 }
   
+.photo-gallery {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 20px);
+    margin: 10px;
+}
+
+.gallery-item img {
+    width: 100%; /* Change this from 30% to 100% */
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 calc(50% - 20px); 
+    }
+}
+
