@@ -115,8 +115,8 @@ header {
     top: 60px;
     right: -150px; /* Initially position the sidebar outside the viewport on the right */
     width: 150px; /* Set the width of the sidebar */
-    height: 120px; /* Make the sidebar cover the full height of the viewport */
-    background: #ffffff; /* Set the background color of the sidebar */
+    height: 170px; /* Make the sidebar cover the full height of the viewport */
+    background: white; /* Set the background color of the sidebar */
     transition: right 0.3s ease; /* Add smooth transition for the 'right' property */
     z-index: 9999;
 }
