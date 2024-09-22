@@ -1,0 +1,22 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Newsletter Form
+  description: Generic newsletter form
+  icon: wysiwyg
+  tags:
+    - Text
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  newsletter_title: ""
+  newsletter_description: ""
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+  newsletter_title: Let's Get in Touch
+  newsletter_description: Would like to discuss or Just say Hi ? My inbox is open for all.
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs: {}

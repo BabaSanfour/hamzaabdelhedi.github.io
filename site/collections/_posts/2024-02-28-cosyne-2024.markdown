@@ -1,0 +1,15 @@
+---
+title:  Computational and Systems Neuroscience 2024 
+date:   2024-02-28
+image:  '/images/cosyne2024.png'
+tags:   
+    - M.Sc
+    - Conf
+    - CoSyNe
+    - Award
+    - UNIQUE
+---
+I got accepted to present a poster summarizing the latest results of my research at the 20th edition of the Computational and Systems Neuroscience Conference (CoSyNe 2024). This opportunity was made possible thanks to the UNIQUE Research Center travel grant (1000 CAD) and CoSyNe New Attendees Grant (1000 USD).
+
+[My submission](conferences/2024/COSYNE/cosyne2024.html) | [LinkedIn Post](#) | [CoSyNe Website](https://static1.squarespace.com/static/6102ca347474c263c40150cd/t/65e1abbdf843e41837fc9c0d/1709288389623/Cosyne2024_program_book.pdf) | [UNIQUE Grant](https://www.unique.quebec/2024-winter-unique-conference-travel-awards)
+

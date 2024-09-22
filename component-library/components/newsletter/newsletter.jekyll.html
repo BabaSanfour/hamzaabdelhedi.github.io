@@ -1,0 +1,24 @@
+<!-- begin subscribe -->
+{% assign c = "c-subscribe" %}
+<section class="{{c}} section">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+
+        <div class="{{c}}__inner">
+          <div class="{{c}}__info">
+            <h3 class="{{c}}__title">{{ include.newsletter_title }}</h3>
+            <div class="{{c}}__subtitle">
+              <span id="ityped"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end subscribe -->
+
+<script>
+  var itype_text = ['{{ include.newsletter_description }}'];
+</script>

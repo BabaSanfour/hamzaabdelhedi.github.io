@@ -1,0 +1,20 @@
+logo_image: '/images/android-chrome-512x512.png'
+
+menu__settings:
+  menu__items:
+    - title: 'Home'
+      url: '/'
+    - url: '/news/'
+      title: 'News'
+    - url: '/about/'
+      title: 'About'
+    - url: '../../Hamza_Abdelhedi_cv.pdf'
+      title: 'CV'
+    - title: 'Publications and Contributions'
+      url: '/projects/'
+    - title: 'Blog'
+      url: '/blog/'
+    # - title: 'Pages'
+      # submenu:
+    # - url: '/elements/'
+    #   title: 'Elements'
