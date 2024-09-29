@@ -1,0 +1,23 @@
+{% assign c = "c-affiliation-card" %}
+<div class="{{c}}">
+  <div class="{{c}}__content">
+    <div class="{{c}}__client-meta">
+      {% if include.affiliation-item.image %}
+        <div class="{{c}}__image-container">
+          <img class="{{c}}__client-avatar" src="{{ include.affiliation-item.image }}" alt="{{ include.affiliation-item.name }}">
+        </div>
+      {% endif %}
+      <div class="{{c}}__client-info">
+        {% if include.affiliation-item.name %}
+          <h3 class="{{c}}__client-name">{{ include.affiliation-item.name }}</h3>
+        {% endif %}
+        {% if include.affiliation-item.position %}
+          <p class="{{c}}__client-position">{{ include.affiliation-item.position }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% if include.affiliation-item.blurb %}
+      <p class="{{c}}__client-text">{{ include.affiliation-item.blurb }}</p>
+    {% endif %}
+  </div>
+</div>
