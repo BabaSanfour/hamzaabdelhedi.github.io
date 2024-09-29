@@ -63,8 +63,8 @@ collections_config:
     schemas:
       default:
         path: site/schemas/project.md
-  testimonials:
-    path: collections/_testimonials
+  affiliations:
+    path: collections/_affiliations
     output: false
     description: ''
     icon: format_quote
@@ -97,7 +97,7 @@ collections_config:
     disable_file_actions: false
     schemas:
       default:
-        path: site/schemas/testimonial.md
+        path: site/schemas/affiliation.md
   drafts:
     path: collections/_drafts
     output: true
@@ -112,7 +112,7 @@ collection_groups:
     collections:
       - pages
       - projects
-      - testimonials
+      - affiliations
   - heading: Blogging
     collections:
       - posts

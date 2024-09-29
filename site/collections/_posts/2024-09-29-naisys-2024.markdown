@@ -1,0 +1,13 @@
+---
+title:  From Neuroscience to Artificially Intelligent Systems (NAISys) 
+date:   2024-09-29
+image:  '/images/confs/naisys2024.png'
+tags:   
+    - M.Sc
+    - Conf
+    - NAISys
+---
+
+Hello! Thank you for your interest in my work. Please find the virtual version of the poster, [Poster](https://drive.google.com/file/d/1BHCX2JCqgcHCP9fnDpdW77P5WsolgBVx/view?usp=share_link).
+
+

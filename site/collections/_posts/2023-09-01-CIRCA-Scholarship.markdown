@@ -2,7 +2,7 @@
 date:   2023-09-01 1
 title:  CIRCA M.Sc Level Scholarship
 tags:   [MSc, Award, Scholarship, CIRCA]
-image:  '/images/circa1.png'
+image:  '/images/orgs/circa1.png'
 ---
 I was accepted as one of three students to receive the Centre Interdisciplinaire sur le Cerveau et l'Apprentissage (CIRCA) Master Level Excellence Scholarship for the 2023 cohort.
 

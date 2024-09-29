@@ -26,7 +26,7 @@ collections:
   projects:
     output: true
     permalink: /project/:slug
-  testimonials:
+  affiliations:
     output: false
   posts:
     output: true

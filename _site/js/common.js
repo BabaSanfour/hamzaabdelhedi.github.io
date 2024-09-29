@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ============================
-  // Testimonials Slider
+  // Affiliations Slider
   ============================ */
   if (document.querySelector(".my-slider")) {
     var slider = tns({

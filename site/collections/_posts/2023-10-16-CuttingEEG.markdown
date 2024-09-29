@@ -2,7 +2,7 @@
 date:   2023-10-16 
 title:  Orgnizer @ CuttingEEG Montreal Garden
 tags:   [Volunteering, Conference, M/EEG]
-image:  '/images/cuttingEEG.jpeg'
+image:  '/images/confs/cuttingEEG.jpeg'
 
 ---
 Thrilled to have been part of the CuttingGardens, Montreal Garden organizing team—a global conference exploring cutting-edge M/EEG data analysis methods.

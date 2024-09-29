@@ -5,8 +5,7 @@ tags:
   - UNIQUE
   - Talk
   - M.Sc
-image: /images/unique_retreat.jpeg
-
+image: /images/confs/unique_retreat.jpeg
 ---
  🌟 My First Invited Scientific Presentation! 🌟
  
