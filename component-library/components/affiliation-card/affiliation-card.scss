@@ -40,10 +40,10 @@
 
 	&__image-container {
 		position: relative;
-		width: 80px;
-		height: 80px;
+		width: 200px;
+		height: 60px; /* Change height to auto */
 		margin-bottom: 8px;
-		border-radius: 50%;
+		// border-radius: 50%;
 		overflow: hidden;
 		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
 
@@ -53,7 +53,7 @@
 			left: 0;
 			height: 100%;
 			width: 100%;
-			border-radius: 50%;
+			// border-radius: 50%;
 			object-fit: cover;
 		}
 	}
