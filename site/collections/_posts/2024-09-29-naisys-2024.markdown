@@ -1,13 +1,19 @@
 ---
 title:  From Neuroscience to Artificially Intelligent Systems (NAISys) 
 date:   2024-09-29
-image:  '/images/confs/naisys2024.png'
+image:  '/images/confs/naisys.png'
 tags:   
     - M.Sc
     - Conf
     - NAISys
 ---
 
-Hello! Thank you for your interest in my work. Please find the virtual version of the poster, [Poster](https://drive.google.com/file/d/1BHCX2JCqgcHCP9fnDpdW77P5WsolgBVx/view?usp=share_link).
+From the 29th of September to the 2nd of October, I had an incredible time attending NAISys (From Neuroscience to artificially Intelligent Systems) at Cold Spring Harbor Laboratory, the home of eight Nobel Prize winners in Physiology or Medicine! The NeuroAI conference featured a packed and rewarding program, covering exciting topics like Neurally-Inspired Learning and Meta-Learning Rules and Bio-Inspired Robotics.
+
+With my master’s thesis submitted and under review, I was thrilled to present my latest batch of results!
+
+The conference was fantastic, and exploring New York was a delight—especially after missing three opportunities in the U.S. due to visa issues, a challenge that many students from the Global South face.
+
+[Poster](https://drive.google.com/file/d/1BHCX2JCqgcHCP9fnDpdW77P5WsolgBVx/view?usp=share_link). | [LinkedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7249084914090807296/)
 
 

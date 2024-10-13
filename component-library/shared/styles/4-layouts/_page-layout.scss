@@ -23,25 +23,26 @@
 .post-image {
 	position: relative;
 	transform: translate(0);
-	padding-top: 100%;
-	min-height: 280px;
+	// Remove padding-top to prevent cropping
+	min-height: 350px; // Keeps a minimum height
 	border-radius: 16px;
 	overflow: hidden;
 	background: $blue-gray;
 
 	img {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+		top: 50%; // Center vertically
+		left: 50%; // Center horizontally
+		width: auto; // Use auto to maintain aspect ratio
+		height: 100%; // Fill height
+		min-width: 100%; // Ensure it covers the width
+		transform: translate(-50%, -50%); // Center the image
 		object-fit: cover;
 		user-select: none;
 	}
 
 	@media only screen and (max-width: $desktop) {
-		padding-top: 65%;
-		margin-bottom: 40px;
+		min-height: 200px; // Adjust for smaller screens if needed
 	}
 
 	@media only screen and (max-width: $mobile) {
@@ -64,7 +65,8 @@
 
 .post-tags {
 	display: flex;
-	
+	padding-top: 16px; // Adjust this value for desired spacing above tags
+
 	.post-tags__tag {
 		position: relative;
 		z-index: 1;
@@ -170,8 +172,26 @@
 	}
 
 	.post__date {
-		font-size: 12px;
-		line-height: 14px;
+		font-size: 16px; // Increase font size for better visibility
+		line-height: 18px;
+		background: linear-gradient(90deg, $primary-color 0%, $secondary-color 100%); // Corrected gradient color
+		-webkit-background-clip: text; // For text gradient effect
+		-webkit-text-fill-color: transparent; // Makes text transparent to show gradient
+		font-style: italic; // Use italics for emphasis
+		margin-left: auto; // Push the date to the right
+		position: relative;
+	
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: -8px;
+			transform: translateY(-50%);
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background: $blue-gray;
+		}
 	}
 }
 

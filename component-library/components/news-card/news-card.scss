@@ -34,8 +34,8 @@
     position: relative;
     display: block;
     height: 0;
-    padding-bottom: 71.25%;
-    background: $white;
+    padding-bottom: 45%;
+    background: $blue-gray;
     overflow: hidden;
 
     img {
@@ -43,7 +43,7 @@
       width: 100%;
       height: auto;
       object-fit: cover;
-      background-color: $white;
+      background-color: $blue-gray;
     }
   }
 
@@ -132,9 +132,9 @@
 
   &__meta {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
+    justify-content: space-between; // Align items to the sides
+    align-items: right;
+    width: 100%; // Ensure the container spans the full width
   }
 
   &__author-image {
@@ -170,8 +170,26 @@
   }
 
   &__date {
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 16px; // Increase font size for better visibility
+    line-height: 18px;
+    background: linear-gradient(90deg, $primary-color 0%, $secondary-color 100%); // Corrected gradient color
+    -webkit-background-clip: text; // For text gradient effect
+    -webkit-text-fill-color: transparent; // Makes text transparent to show gradient
+    font-style: italic; // Use italics for emphasis
+    margin-left: auto; // Push the date to the right
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -8px;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: $blue-gray;
+    }
   }
 }
 
