@@ -1,7 +1,7 @@
 ---
 title:  From Neuroscience to Artificially Intelligent Systems (NAISys) 
 date:   2024-09-29
-image:  '/images/confs/naisys.png'
+image:  '/images/confs/naisys2024.png'
 tags:   
     - M.Sc
     - Conf
