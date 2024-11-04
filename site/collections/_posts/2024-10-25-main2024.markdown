@@ -1,5 +1,5 @@
 ---
-title:  Tutorial - Montreal AI and Neuroscience Conference (MAIN) 2024 Educational
+title:  Educational Tutorial - Montreal AI and Neuroscience Conference (MAIN) 2024 
 date:   2024-10-25
 image:  '/images/confs/main2024.jpeg'
 tags:   
