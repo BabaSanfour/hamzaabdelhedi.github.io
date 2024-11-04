@@ -1,0 +1,27 @@
+---
+title:  Tutorial - Montreal AI and Neuroscience Conference (MAIN) 2024 Educational
+date:   2024-10-25
+image:  '/images/confs/main2024.jpeg'
+tags:   
+    - Tutorial
+    - MAIN
+    - Conf
+    - UNIQUE
+---
+
+From the 22nd to the 25th of October, I attended the Montreal AI and Neuroscience conference (MAIN) for the third time! This time was extra special because I had the privilege of leading a workshop on Representational Similarity Analysis (RSA) during the MAIN educational sessions! 🚀
+
+During the tutorial, we explored everything from what representation is to hands-on tutorials on how to conduct RSA analysis with MEG data, diving into the brain 🧠 one matrix at a time ✨.
+
+A big thanks to the UNIQUE center for organizing this event with an amazing diverse lineup of speakers, and to the organizers of main educational for inviting me to take part of this.
+
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="/images/confs/main2024_workshop_me.jpg" alt="Workshop Image 1" style="width: 48%;"/>
+    <img src="/images/confs/main2024_workshop_slide.png" alt="Workshop Image 2" style="width: 48%;"/>
+</div>
+
+
+[MAIN Website](https://www.main2024.org/) | [MAIN Educational Website](https://main-educational.github.io/intro.html#) |  [Session Materials](https://github.com/BabaSanfour/main-edu-courses-rsa)
+
+#NeuroAI #Research #MAIN2024 #RepresentationalSimilarityAnalysis
