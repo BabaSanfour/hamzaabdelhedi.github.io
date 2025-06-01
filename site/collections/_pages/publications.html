@@ -1,0 +1,40 @@
+---
+title: Publications
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="page animate">
+        <h1 class="page__title">{{ page.title }}</h1>
+
+        {% if site.publications.size > 0 %}
+          <ul class="publication-list">
+            {% for publication in site.publications reversed %}
+              <li class="publication-item">
+                <h2 class="publication-item__title"><a href="{{ publication.url | relative_url }}">{{ publication.title }}</a></h2>
+                <div class="publication-item__meta">
+                  {% if publication.authors %}<span class="publication-item__authors">{{ publication.authors }}</span>{% endif %}
+                  {% if publication.venue %}<span class="publication-item__venue">{{ publication.venue }}</span>{% endif %}
+                  {% if publication.date %}<time class="publication-item__date" datetime="{{ publication.date | date_to_xmlschema }}">{{ publication.date | date: "%B %d, %Y" }}</time>{% endif %}
+                </div>
+                {% if publication.abstract %}
+                  <div class="publication-item__abstract">
+                    {{ publication.abstract | markdownify | truncatewords: 50 }}
+                  </div>
+                {% endif %}
+                {% if publication.pdf_link %}
+                   <p><a href="{{ publication.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No publications found yet.</p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div> 

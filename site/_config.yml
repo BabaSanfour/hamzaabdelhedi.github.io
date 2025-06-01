@@ -31,6 +31,12 @@ collections:
   posts:
     output: true
     permalink: /news/:slug
+  publications:
+    output: true
+    permalink: /publications/:slug
+  research_projects:
+    output: true
+    permalink: /projects/:slug
 
 defaults:
   - scope:
@@ -50,6 +56,14 @@ defaults:
       type: posts
     values:
       layout: post
+  - scope:
+      type: publications
+    values:
+      layout: publication
+  - scope:
+      type: projects
+    values:
+      layout:project
 
 # Tags
 tag_page_dir: tag

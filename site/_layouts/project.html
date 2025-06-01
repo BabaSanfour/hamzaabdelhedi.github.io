@@ -3,24 +3,52 @@ layout: default
 ---
 
 <div class="container">
+  <article class="research-project">
+    <h1 class="research-project__title">{{ page.title }}</h1>
 
-  {% bookshop page-heading title=page.title description=page.subtitle %}
-  {% assign page_image = site.baseurl | append: page.image %}
-  {% bookshop page-image image=page_image %}
+    {% if page.image %}
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }} image" class="research-project__image">
+    {% endif %}
 
-  <div class="page animate">
-    {{ content }}
-  </div>
+    <div class="research-project__content">
+      {{ content }}
+    </div>
 
-  {% if page.previous.url %}
-  <div class="project__navigation animate">
-    <a class="project__prev" href="{{page.previous.url}}">
-      <div class="project__box">
-        <span class="project__nav__info">Next Project</span>
-        <h2 class="project__nav__title">{{page.previous.title}}<i class="ion ion-md-arrow-round-forward arrow-right"></i></h2>
-      </div>
-    </a>
-  </div>
-  {% endif %}
+    {% if page.related_publications.size > 0 %}
+      <h4>Related Publications:</h4>
+      <ul>
+        {% for publication_slug in page.related_publications %}
+          {% assign related_publication = site.publications | where: 'slug', publication_slug | first %}
+          {% if related_publication %}
+            <li><a href="{{ related_publication.url | relative_url }}">{{ related_publication.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
 
-</div>
+    {% if page.related_open_source.size > 0 %}
+      <h4>Related Open Source Contributions:</h4>
+      <ul>
+        {% for os_slug in page.related_open_source %}
+          {% assign related_os = site.open_source | where: 'slug', os_slug | first %}
+          {% if related_os %}
+            <li><a href="{{ related_os.url | relative_url }}">{{ related_os.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if page.related_news.size > 0 %}
+      <h4>Related News:</h4>
+      <ul>
+        {% for news_slug in page.related_news %}
+          {% assign related_news_item = site.posts | where: 'slug', news_slug | first %}
+          {% if related_news_item %}
+            <li><a href="{{ related_news_item.url | relative_url }}">{{ related_news_item.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+  </article>
+</div> 

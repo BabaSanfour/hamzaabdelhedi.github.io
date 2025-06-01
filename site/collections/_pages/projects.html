@@ -1,15 +1,78 @@
 ---
 title: Projects
-content_blocks:
-  - _bookshop_name: page-heading
-    title: My Publications and Contributions
-  - _bookshop_name: projects-list
-    show_projects: false
-  - _bookshop_name: page-heading
-    title: My Talks and Presentations
-  - _bookshop_name: projects-list
-    show_projects: false
-  - _bookshop_name: content
-    content_html: >-
-      <p>Here you can find a list of my scientific publications and contributions, as well as my scientific talks and presentations. I am currently working on updating this page with the latest information. Stay tuned!</p>
+layout: default
 ---
+
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="page animate">
+        <h1 class="page__title">{{ page.title }}</h1>
+
+        <h2>Research Projects</h2>
+        {% if site.research_projects.size > 0 %}
+          <ul class="project-list">
+            {% for project in site.research_projects reversed %}
+              <li class="project-item">
+                <h3 class="project-item__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+                {% if project.summary %}
+                  <div class="project-item__summary">
+                    {{ project.summary | markdownify | truncatewords: 30 }}
+                  </div>
+                {% endif %}
+                {% if project.image %}
+                   <img src="{{ project.image | relative_url }}" alt="{{ project.title }} image" class="project-item__image-small">
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No research projects found yet.</p>
+        {% endif %}
+
+        <h2>Community Projects</h2>
+        {% if site.community_projects.size > 0 %}
+          <ul class="project-list">
+            {% for project in site.community_projects reversed %}
+              <li class="project-item">
+                <h3 class="project-item__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+                {% if project.summary %}
+                  <div class="project-item__summary">
+                    {{ project.summary | markdownify | truncatewords: 30 }}
+                  </div>
+                {% endif %}
+                {% if project.image %}
+                   <img src="{{ project.image | relative_url }}" alt="{{ project.title }} image" class="project-item__image-small">
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No community projects found yet.</p>
+        {% endif %}
+
+        <h2>Open Source Contributions</h2>
+        {% if site.open_source.size > 0 %}
+          <ul class="project-list">
+            {% for item in site.open_source reversed %}
+              <li class="project-item">
+                <h3 class="project-item__title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+                {% if item.description %}
+                  <div class="project-item__summary">
+                    {{ item.description | markdownify | truncatewords: 30 }}
+                  </div>
+                {% endif %}
+                {% if item.repository_url %}
+                  <p>Repository: <a href="{{ item.repository_url }}" target="_blank">{{ item.repository_url }}</a></p>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No open source contributions found yet.</p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<div class="container">
+  <article class="publication">
+    <h1 class="publication__title">{{ page.title }}</h1>
+    <div class="publication__meta">
+      {% if page.authors %}<span class="publication__authors">{{ page.authors }}</span>{% endif %}
+      {% if page.venue %}<span class="publication__venue">{{ page.venue }}</span>{% endif %}
+      {% if page.date %}<time class="publication__date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% endif %}
+    </div>
+
+    {% if page.abstract %}
+      <div class="publication__abstract">
+        <h3>Abstract</h3>
+        {{ page.abstract | markdownify }}
+      </div>
+    {% endif %}
+
+    <div class="publication__content">
+      {{ content }}
+    </div>
+
+    {% if page.pdf_link %}
+      <p><a href="{{ page.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
+    {% endif %}
+
+    {% if page.related_research_projects %}
+      <h4>Related Research Projects:</h4>
+      <ul>
+        {% for project_slug in page.related_research_projects %}
+          {% assign related_project = site.research_projects | where: 'slug', project_slug | first %}
+          {% if related_project %}
+            <li><a href="{{ related_project.url | relative_url }}">{{ related_project.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if page.related_open_source %}
+      <h4>Related Open Source Contributions:</h4>
+      <ul>
+        {% for os_slug in page.related_open_source %}
+          {% assign related_os = site.open_source | where: 'slug', os_slug | first %}
+          {% if related_os %}
+            <li><a href="{{ related_os.url | relative_url }}">{{ related_os.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+  </article>
+</div> 
