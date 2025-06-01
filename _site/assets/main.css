@@ -3727,7 +3727,11 @@
     border-bottom-color: #110E38;
   }
   .c-hero {
-    padding: 96px 0;
+    padding: 45px 0;
+    /* Use flex-basis for 2/3 - 1/3 */
+    /*============================
+      IMAGE WRAPPER (no more big blue backdrop)
+    ============================*/
   }
 }
 @media only screen and (max-width: 1024px) {
@@ -3758,71 +3762,43 @@
 }
 @media all, bookshop {
   .c-hero__left, .c-hero__right {
-    width: 50%;
+    flex: 0 0 50%;
   }
 }
 @media only screen and (max-width: 768px) {
   .c-hero__left, .c-hero__right {
-    width: 100%;
+    flex: 0 0 100%;
   }
 }
 @media all, bookshop {
   .c-hero__left {
-    max-width: 510px;
+    flex: 0 0 66.666%;
+    max-width: 66.666%;
     padding-right: 20px;
     margin-right: auto;
   }
 }
 @media only screen and (max-width: 768px) {
   .c-hero__left {
+    flex: 0 0 100%;
     max-width: 100%;
     padding-right: 0;
   }
 }
 @media all, bookshop {
   .c-hero__right {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
     position: relative;
-  }
-}
-@media only screen and (max-width: 1130px) {
-  .c-hero__right .c-hero__image {
-    width: 400px;
-    height: 420px;
-  }
-}
-@media only screen and (max-width: 1024px) {
-  .c-hero__right .c-hero__image {
-    width: 340px;
-    height: 360px;
+    margin-left: auto;
   }
 }
 @media only screen and (max-width: 768px) {
   .c-hero__right {
     order: -1;
-  }
-  .c-hero__right .c-hero__image {
-    width: 100%;
-    height: 380px;
-    margin-bottom: 40px;
-  }
-  .c-hero__right .c-hero__image::before {
-    border-radius: 30px;
-  }
-  .c-hero__right .c-hero__image img {
-    border-radius: 30px;
-  }
-}
-@media only screen and (max-width: 576px) {
-  .c-hero__right .c-hero__image {
-    height: 280px;
-    margin-bottom: 32px;
-  }
-  .c-hero__right .c-hero__image::before {
-    border-radius: 16px;
-  }
-  .c-hero__right .c-hero__image img {
-    border-radius: 16px;
-    box-shadow: none;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 0;
   }
 }
 @media all, bookshop {
@@ -3863,9 +3839,19 @@
 }
 @media all, bookshop {
   .c-hero__btn {
+    /* ————————————————————————————————————————————————————————————
+       Make this nested element span the entire .c-hero width, even though it lives
+       inside .c-hero__left (which is only 66.666% of .c-hero). The math here:
+       - "100%"   = full width of .c-hero__left (i.e. 66.666% of hero)
+       - "50%"    = half of .c-hero__left (i.e. 33.333% of hero)
+       => width: calc(100% + 50%) = 100% of entire hero
+       - margin-left: -50% shifts it left by half of .c-hero__left (33.333% of hero),
+    	 aligning its left edge with the hero’s left edge.
+       ———————————————————————————————————————————————————————————— */
     display: flex;
-    align-items: center;
+    justify-content: center;
     margin-top: 40px;
+    width: 150%;
   }
   .c-hero__btn .cta-button {
     margin-right: 8px;
@@ -3902,37 +3888,88 @@
     font-size: 15px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .c-hero__btn {
+    /* At tablet and below, .c-hero__left becomes 100% wide, so reset */
+    width: 100%;
+    margin-left: 0;
+  }
+}
 @media all, bookshop {
   .c-hero__image {
     position: relative;
     z-index: 10;
-    width: 480px;
-    height: 520px;
+    /* fill its 1/3 column but never exceed 300px wide */
+    width: 100%;
+    max-width: 400px;
     margin-left: auto;
+    height: auto; /* let the <img> determine height */
+    /* make the pseudo-element transparent so no large blue shape shows */
   }
   .c-hero__image::before {
     content: "";
     display: block;
     position: absolute;
     top: 0;
+    left: 0;
     z-index: 1;
     width: 100%;
     height: 100%;
     border-radius: 60px;
-    background: #d5dce3;
+    background: blue-gray; /* was $blue-gray originally */
+  }
+}
+@media only screen and (max-width: 1130px) {
+  .c-hero__image {
+    /* scale down on narrower screens */
+    max-width: 240px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .c-hero__image {
+    max-width: 240px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .c-hero__image {
+    width: 100%;
+    height: 380px;
+    margin-bottom: 40px;
+  }
+  .c-hero__image::before {
+    border-radius: 30px;
   }
   .c-hero__image img {
-    position: absolute;
-    top: 0;
-    z-index: 1;
+    border-radius: 30px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .c-hero__image {
     height: 100%;
+    margin-bottom: 32px;
+  }
+  .c-hero__image::before {
+    border-radius: 16px;
+  }
+  .c-hero__image img {
+    border-radius: 16px;
+    box-shadow: none;
+  }
+}
+@media all, bookshop {
+  .c-hero img {
+    position: relative;
+    top: 0;
+    z-index: 2;
     width: 100%;
+    height: auto;
     border-radius: 60px;
     object-fit: cover;
     user-select: none;
+    background: #d5dce3;
     box-shadow: 0px 100px 80px rgba(20, 149, 167, 0.07), 0px 41.7776px 33.4221px rgba(20, 149, 167, 0.0503198), 0px 22.3363px 17.869px rgba(20, 149, 167, 0.0417275), 0px 12.5216px 10.0172px rgba(20, 149, 167, 0.035), 0px 6.6501px 5.32008px rgba(20, 149, 167, 0.0282725), 0px 2.76726px 2.21381px rgba(20, 149, 167, 0.0196802);
     transition: inherit;
-    background: #d5dce3;
+    border-radius: 60px;
   }
   .c-news-card {
     margin-bottom: 20px;

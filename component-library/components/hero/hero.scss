@@ -1,211 +1,237 @@
 /* Hero */
-.c-hero { $c: &;
-	padding: 96px 0;
-
+.c-hero {
+	$c: &;
+	padding: 45px 0;
+  
 	@media only screen and (max-width: $desktop) {
-		padding: 80px 0;
+	  padding: 80px 0;
 	}
-
+  
 	@media only screen and (max-width: $tablet) {
-		 padding: 40px 0 80px;
+	  padding: 40px 0 80px;
 	}
-
+  
 	@media only screen and (max-width: $mobile) {
-		padding: 30px 0 60px;
+	  padding: 30px 0 60px;
 	}
-
+  
 	&__inner {
-		display: flex;
-		align-items: center;
-
-		@media only screen and (max-width: $tablet) {
-			flex-direction: column;
-		}
+	  display: flex;
+	  align-items: center;
+  
+	  @media only screen and (max-width: $tablet) {
+		flex-direction: column;
+	  }
 	}
-
+  
+	/* Use flex-basis for 2/3 - 1/3 */
 	&__left,
 	&__right {
-		width: 50%;
-
-		@media only screen and (max-width: $tablet) {
-			width: 100%;
-		}
+	  flex: 0 0 50%;
+  
+	  @media only screen and (max-width: $tablet) {
+		flex: 0 0 100%;
+	  }
 	}
-
+  
 	&__left {
-		max-width: 510px;
-		padding-right: 20px;
-		margin-right: auto;
-
-		@media only screen and (max-width: $tablet) {
-			max-width: 100%;
-			padding-right: 0;
-		}
+	  flex: 0 0 66.666%;
+	  max-width: 66.666%;
+	  padding-right: 20px;
+	  margin-right: auto;
+  
+	  @media only screen and (max-width: $tablet) {
+		flex: 0 0 100%;
+		max-width: 100%;
+		padding-right: 0;
+	  }
 	}
-
+  
 	&__right {
-		position: relative;
-		
-		@media only screen and (max-width: 1130px) {
-			#{$c}__image {
-				width: 400px;
-				height: 420px;
-			}
-		}
-
-		@media only screen and (max-width: $desktop) {
-			#{$c}__image {
-				width: 340px;
-				height: 360px;
-			}
-		}
-
-		@media only screen and (max-width: $tablet) {
-			order: -1;
-
-			#{$c}__image {
-				width: 100%;
-				height: 380px;
-				margin-bottom: 40px;
-
-				&::before {
-					border-radius: 30px;
-				}
-
-				img {
-					border-radius: 30px;
-				}
-			}
-		}
-
-		@media only screen and (max-width: $mobile) {
-			#{$c}__image {
-				height: 280px;
-				margin-bottom: 32px;
-
-				&::before {
-					border-radius: 16px;
-				}
-
-				img {
-					border-radius: 16px;
-					box-shadow: none;
-				}
-			}
-		}
+	  flex: 0 0 33.333%;
+	  max-width: 33.333%;
+	  position: relative;
+	  margin-left: auto;
+  
+	  @media only screen and (max-width: $tablet) {
+		order: -1;
+		flex: 0 0 100%;
+		max-width: 100%;
+		margin-left: 0;
+	  }
 	}
-
+  
 	&__title {
-		margin-bottom: 20px;
-		font-size: 58px;
-		color: $heading-font-color;
-
-		@media only screen and (max-width: 1130px) {
-			font-size: 44px;
-		}
-
-		@media only screen and (max-width: $desktop) {
-			font-size: 38px;
-			margin-bottom: 24px;
-		}
-
-		@media only screen and (max-width: $mobile) {
-			font-size: 32px;
-		}
+	  margin-bottom: 20px;
+	  font-size: 58px;
+	  color: $heading-font-color;
+  
+	  @media only screen and (max-width: 1130px) {
+		font-size: 44px;
+	  }
+	  @media only screen and (max-width: $desktop) {
+		font-size: 38px;
+		margin-bottom: 24px;
+	  }
+	  @media only screen and (max-width: $mobile) {
+		font-size: 32px;
+	  }
 	}
-
+  
 	&__description {
-		p {
-			margin-bottom: 0;
-			font-size: 18px;
-			line-height: 1.6;
-			color: $text-color;
-
-			@media only screen and (max-width: $desktop) {
-				font-size: 16px;
-			}
-		}
-	}
-
-	&__btn {
-		display: flex;
-		align-items: center;
-		margin-top: 40px;
-
-		.cta-button {
-			margin-right: 8px;
-		}
-
-		.works-button {
-			&:hover {
-				.circle-bg {
-					transition: all .2s cubic-bezier(.215,.61,.355,1);
-					transform: scale(.94);
-				}
-			}
-
-			.circle-bg {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				min-width: 18px;
-				height: 18px;
-				margin-right: 8px;
-				font-size: 14px;
-				border-radius: 50%;
-				will-change: transform;
-				background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
-				transition: all .2s cubic-bezier(.215, .61, .355, 1);
-			}
-
-			.button-arrow {
-				color: $white;
-			}
-		}
-
+	  p {
+		margin-bottom: 0;
+		font-size: 18px;
+		line-height: 1.6;
+		color: $text-color;
+  
 		@media only screen and (max-width: $desktop) {
-			margin-top: 32px;
+		  font-size: 16px;
 		}
-
-		@media only screen and (max-width: $mobile) {
-			.cta-button,
-			.works-button {
-				font-size: 15px;
+	  }
+	}
+  
+	&__btn {
+		/* ————————————————————————————————————————————————————————————
+		   Make this nested element span the entire .c-hero width, even though it lives
+		   inside .c-hero__left (which is only 66.666% of .c-hero). The math here:
+		   - "100%"   = full width of .c-hero__left (i.e. 66.666% of hero)
+		   - "50%"    = half of .c-hero__left (i.e. 33.333% of hero)
+		   => width: calc(100% + 50%) = 100% of entire hero
+		   - margin-left: -50% shifts it left by half of .c-hero__left (33.333% of hero),
+			 aligning its left edge with the hero’s left edge.
+		   ———————————————————————————————————————————————————————————— */
+		display: flex;
+		justify-content: center;
+		margin-top: 40px;
+		width: calc(100% + 50%);
+	
+		.cta-button {
+		  margin-right: 8px;
+		}
+	
+		.works-button {
+		  &:hover {
+			.circle-bg {
+			  transition: all .2s cubic-bezier(.215, .61, .355, 1);
+			  transform: scale(.94);
 			}
+		  }
+	
+		  .circle-bg {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 18px;
+			height: 18px;
+			margin-right: 8px;
+			font-size: 14px;
+			border-radius: 50%;
+			will-change: transform;
+			background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+			transition: all .2s cubic-bezier(.215, .61, .355, 1);
+		  }
+	
+		  .button-arrow {
+			color: $white;
+		  }
 		}
-	}
-
+	
+		@media only screen and (max-width: $desktop) {
+		  margin-top: 32px;
+		}
+	
+		@media only screen and (max-width: $mobile) {
+		  .cta-button,
+		  .works-button {
+			font-size: 15px;
+		  }
+		}
+	
+		@media only screen and (max-width: $tablet) {
+		  /* At tablet and below, .c-hero__left becomes 100% wide, so reset */
+		  width: 100%;
+		  margin-left: 0;
+		}
+	  }  
+	/*============================
+	  IMAGE WRAPPER (no more big blue backdrop)
+	============================*/
 	&__image {
-		position: relative;
-		z-index: 10;
-		width: 480px;
-		height: 520px;
-		margin-left: auto;
-
+	  position: relative;
+	  z-index: 10;
+  
+	  /* fill its 1/3 column but never exceed 300px wide */
+	  width: 100%;
+	  max-width: 400px;
+	  margin-left: auto;
+	  height: auto;      /* let the <img> determine height */
+  
+	  /* make the pseudo-element transparent so no large blue shape shows */
+	  &::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		border-radius: 60px;
+		background: blue-gray; /* was $blue-gray originally */
+	  }
+  
+	  @media only screen and (max-width: 1130px) {
+		/* scale down on narrower screens */
+		max-width: 240px;
+	  }
+  
+	  @media only screen and (max-width: $desktop) {
+		max-width: 240px;
+	  }
+  
+	  @media only screen and (max-width: $tablet) {
+		width: 100%;
+		height: 380px;
+		margin-bottom: 40px;
+  
 		&::before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			z-index: 1;
-			width: 100%;
-			height: 100%;
-			border-radius: 60px;
-			background: $blue-gray;
+		  border-radius: 30px;
+		}
+  
+		img {
+		  border-radius: 30px;
+		}
+	  }
+  
+	  @media only screen and (max-width: $mobile) {
+		height: 100%;
+		margin-bottom: 32px;
+  
+		&::before {
+		  border-radius: 16px;
+		}
+  
+		img {
+		  border-radius: 16px;
+		  box-shadow: none;
+		}
+	  }
+	}
+
+	img {
+		position: relative;
+		top: 0;
+		z-index: 2;
+		width: 100%;
+		height: auto;
+		border-radius: 60px;
+		object-fit: cover;
+		user-select: none;
+		background: $blue-gray;
+		box-shadow: 0px 100px 80px rgba($primary-color, 0.07), 0px 41.7776px 33.4221px rgba($primary-color, 0.0503198), 0px 22.3363px 17.869px rgba($primary-color, 0.0417275), 0px 12.5216px 10.0172px rgba($primary-color, 0.035), 0px 6.6501px 5.32008px rgba($primary-color, 0.0282725), 0px 2.76726px 2.21381px rgba($primary-color, 0.0196802);
+		transition: inherit;
+		border-radius: 60px;
 		}
 
-		img {
-			position: absolute;
-			top: 0;
-			z-index: 1;
-			height: 100%;
-			width: 100%;
-			border-radius: 60px;
-			object-fit: cover;
-			user-select: none;
-			box-shadow: 0px 100px 80px rgba($primary-color, 0.07), 0px 41.7776px 33.4221px rgba($primary-color, 0.0503198), 0px 22.3363px 17.869px rgba($primary-color, 0.0417275), 0px 12.5216px 10.0172px rgba($primary-color, 0.035), 0px 6.6501px 5.32008px rgba($primary-color, 0.0282725), 0px 2.76726px 2.21381px rgba($primary-color, 0.0196802);
-			transition: inherit;
-			background: $blue-gray;
-		}
-	}
-}
+} 
