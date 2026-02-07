@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output - CloudCannon builds this on their servers
+_site/
+
+# Jekyll caches
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby bundler (local gems)
+site/vendor/
+site/.bundle/
+.bundle/
+vendor/bundle/
+
+# Package manager locks can be included or excluded - your choice
+# package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Gemini/AI artifacts (optional - remove if you want these tracked)
+# .gemini/

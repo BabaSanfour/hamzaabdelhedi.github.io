@@ -9,32 +9,73 @@ layout: default
       <div class="page animate">
         <h1 class="page__title">{{ page.title }}</h1>
 
-        {% if site.publications.size > 0 %}
+        <!-- View Switcher Controls -->
+        <div class="view-switcher">
+          <button id="list-view-button" class="view-button active">List View</button>
+          <button id="post-view-button" class="view-button">Post View</button>
+        </div>
+
+        <!-- List View -->
+        <div id="publication-list-view" class="publication-view active">
+          {% if site.publications.size > 0 %}
           <ul class="publication-list">
             {% for publication in site.publications reversed %}
-              <li class="publication-item">
-                <h2 class="publication-item__title"><a href="{{ publication.url | relative_url }}">{{ publication.title }}</a></h2>
-                <div class="publication-item__meta">
-                  {% if publication.authors %}<span class="publication-item__authors">{{ publication.authors }}</span>{% endif %}
-                  {% if publication.venue %}<span class="publication-item__venue">{{ publication.venue }}</span>{% endif %}
-                  {% if publication.date %}<time class="publication-item__date" datetime="{{ publication.date | date_to_xmlschema }}">{{ publication.date | date: "%B %d, %Y" }}</time>{% endif %}
-                </div>
-                {% if publication.abstract %}
-                  <div class="publication-item__abstract">
-                    {{ publication.abstract | markdownify | truncatewords: 50 }}
-                  </div>
-                {% endif %}
-                {% if publication.pdf_link %}
-                   <p><a href="{{ publication.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
-                {% endif %}
-              </li>
+            <li class="publication-item">
+              <h2 class="publication-item__title"><a href="{{ publication.url | relative_url }}">{{ publication.title
+                  }}</a></h2>
+              <div class="publication-item__meta">
+                {% if publication.authors %}<span class="publication-item__authors">{{ publication.authors }}</span>{%
+                endif %}
+                {% if publication.venue %}<span class="publication-item__venue">{{ publication.venue }}</span>{% endif
+                %}
+                {% if publication.date %}<time class="publication-item__date"
+                  datetime="{{ publication.date | date_to_xmlschema }}">{{ publication.date | date: "%B %d, %Y"
+                  }}</time>{% endif %}
+              </div>
+              {% if publication.pdf_link %}
+              <p><a href="{{ publication.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
+              {% endif %}
+            </li>
             {% endfor %}
           </ul>
-        {% else %}
+          {% else %}
           <p>No publications found yet.</p>
-        {% endif %}
+          {% endif %}
+        </div>
+
+        <!-- Post View -->
+        <div id="publication-post-view" class="publication-view">
+          {% if site.publications.size > 0 %}
+          {% for publication in site.publications reversed %}
+          <div class="publication-post">
+            <h2 class="publication-post__title"><a href="{{ publication.url | relative_url }}">{{ publication.title
+                }}</a></h2>
+            <div class="publication-post__meta">
+              {% if publication.authors %}<span class="publication-post__authors">{{ publication.authors }}</span>{%
+              endif %}
+              {% if publication.venue %}<span class="publication-post__venue">{{ publication.venue }}</span>{% endif %}
+              {% if publication.date %}<time class="publication-post__date"
+                datetime="{{ publication.date | date_to_xmlschema }}">{{ publication.date | date: "%B %d, %Y"
+                }}</time>{% endif %}
+            </div>
+            {% if publication.abstract %}
+            <div class="publication-post__abstract">
+              <h3>Abstract</h3>
+              {{ publication.abstract | markdownify | truncatewords: 50 }}
+              <a href="{{ publication.url | relative_url }}">Read more</a>
+            </div>
+            {% endif %}
+            {% if publication.pdf_link %}
+            <p><a href="{{ publication.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% else %}
+          <p>No publications found yet.</p>
+          {% endif %}
+        </div>
 
       </div>
     </div>
   </div>
-</div> 
+</div>

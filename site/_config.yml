@@ -34,9 +34,6 @@ collections:
   publications:
     output: true
     permalink: /publications/:slug
-  research_projects:
-    output: true
-    permalink: /projects/:slug
 
 defaults:
   - scope:
@@ -59,11 +56,7 @@ defaults:
   - scope:
       type: publications
     values:
-      layout: publication
-  - scope:
-      type: projects
-    values:
-      layout:project
+      layout: publication_detail
 
 # Tags
 tag_page_dir: tag

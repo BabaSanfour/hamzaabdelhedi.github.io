@@ -1,45 +1,61 @@
 {% assign c = "c-news-card" %}
-<div class="{{c}} col col-4 col-d-6 col-t-12">
-  <div class="{{c}}__inner">
+{% assign direct_url = include.post.external_url | default: include.post.link_url %}
+{% if direct_url %}
+  {% assign target_url = direct_url %}
+  {% assign is_external = true %}
+{% elsif include.post.url %}
+  {% assign target_url = include.post.url | relative_url %}
+  {% assign is_external = false %}
+{% endif %}
+{% assign has_media = include.post.image %}
 
-    {% if include.post.image %}
-    <div class="{{c}}__image-wrap">
-      <a class="{{c}}__image" href="{{ include.post.url }}">
+<article class="{{c}}">
+  <div class="{{c}}__inner{% unless has_media %} {{c}}__inner--compact{% endunless %}">
+    {% if has_media %}
+      {% if target_url %}
+      <a class="{{c}}__media" href="{{ target_url }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}>
         <img loading="lazy" src="{{ include.post.image }}" alt="{{ include.post.title }}">
       </a>
-    </div>
+      {% else %}
+      <div class="{{c}}__media">
+        <img loading="lazy" src="{{ include.post.image }}" alt="{{ include.post.title }}">
+      </div>
+      {% endif %}
     {% endif %}
-    
-    <div class="{{c}}__content">
 
-      {% if include.post.tags.size >= 1 %}
-      <div class="{{c}}__tags-box">
+    <div class="{{c}}__content">
+      {% if include.post.tags and include.post.tags.size >= 1 %}
+      <div class="{{c}}__tags">
         {% for tag in include.post.tags %}
-        <a href="{{ site.baseurl }}/tag/{{ tag | downcase }}" class="{{c}}__tag">{{ tag }}</a>
+        <a href="{{ '/tag/' | append: tag | downcase | relative_url }}" class="{{c}}__tag">{{ tag }}</a>
         {% endfor %}
       </div>
       {% endif %}
 
-      <h2 class="{{c}}__title">
-        <a href="{{ include.post.url }}">{{ include.post.title }}</a>
-      </h2>
+      <h3 class="{{c}}__title">
+        {% if target_url %}
+        <a href="{{ target_url }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ include.post.title }}</a>
+        {% else %}
+        {{ include.post.title }}
+        {% endif %}
+      </h3>
 
+      {% if include.post.description or include.post.content %}
       <p class="{{c}}__excerpt">
-        {% if include.post.description %}{{ include.post.description }}{% else %}{{ include.post.content | strip_html | truncate: 120 }}{% endif
-        %}
+        {% if include.post.description %}
+          {{ include.post.description }}
+        {% else %}
+          {{ include.post.content | strip_html | truncate: 160 }}
+        {% endif %}
       </p>
+      {% endif %}
 
       <div class="{{c}}__meta">
-        <!-- <div class="{{c}}__author-image">
-          <img loading="lazy" src="{{ site.data.author.author_image }}" alt="{{ site.data.author.author_name }}">
-        </div> -->
-        <div class="{{c}}__info">
-          <!-- <div class="{{c}}__author-name">{{ site.data.author.author_name }}</div> -->
-          <span class="{{c}}__date"><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date_to_string
-              }}</time></span>
-        </div>
+        <time class="{{c}}__date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%b %d, %Y" }}</time>
+        {% if target_url %}
+        <span class="{{c}}__cta">{% if is_external %}View update{% else %}Read more{% endif %}</span>
+        {% endif %}
       </div>
-
     </div>
   </div>
-</div>
+</article>

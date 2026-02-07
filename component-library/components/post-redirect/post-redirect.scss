@@ -1,0 +1,33 @@
+.post-redirect {
+  padding: 120px 0 160px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04) 0%, rgba(15, 23, 42, 0) 100%);
+
+  &__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 32px;
+    border-radius: 24px;
+    background: $background-color-alt;
+    box-shadow: 0px 16px 40px rgba(15, 23, 42, 0.12);
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  &__message {
+    margin: 0 auto 32px;
+    max-width: 520px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: $text-color;
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+}

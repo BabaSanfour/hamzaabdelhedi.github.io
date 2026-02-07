@@ -1,5 +1,5 @@
 title: Hamza
 description: Hamza's personal website
 social_media_share_image: /images/main/my-image.jpg
-disqus-identifier:
-google-analytics:
+disqus-identifier: # Add your Disqus shortname here to enable comments
+google-analytics: # Add your GA4 Measurement ID here (e.g., G-XXXXXXXXXX)

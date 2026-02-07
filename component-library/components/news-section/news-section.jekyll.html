@@ -14,7 +14,7 @@
           </div>
 
           {% if include.show_posts %}
-          <div class="row">
+          <div class="c-news-card-list">
             {% if site.posts.size > 0 %}
               {% for post in site.posts offset:0 limit:3 %}
                 {% bookshop news-card post=post %}

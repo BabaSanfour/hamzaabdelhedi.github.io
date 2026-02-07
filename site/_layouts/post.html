@@ -2,6 +2,17 @@
 layout: default
 ---
 
+{% if page.external_url %}
+<div class="post-redirect">
+  <div class="container animate">
+    <div class="post-redirect__inner">
+      <h1 class="post-redirect__title">{{ page.title | escape }}</h1>
+      <p class="post-redirect__message">This update lives on an external page. You should be redirected automatically, but you can jump there manually below.</p>
+      <a class="c-button c-button--primary c-button--small post-redirect__button" href="{{ page.external_url }}" target="_blank" rel="noopener noreferrer">Open the update</a>
+    </div>
+  </div>
+</div>
+{% else %}
 <div class="post-top">
   <div class="container">
     <div class="row">
@@ -68,4 +79,5 @@ layout: default
 
 {% if site.data.general_settings.disqus-identifier %}
   {% include disqus-comments.html %}
+{% endif %}
 {% endif %}
