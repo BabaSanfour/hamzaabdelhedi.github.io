@@ -1,0 +1,30 @@
+- type: publication
+  label: "Latest Publication"
+  icon: "👉"
+  title: "Coord2Region: A Python Package for Mapping 3D Brain Coordinates to Atlas Labels, Literature, and AI Summaries"
+  meta: "arXiv preprint, Dec 2025."
+  url: "https://arxiv.org/abs/2512.18165"
+  image: "/images/main/logo.png"
+  color_class: "is-publication"
+
+- type: media
+  label: "Media"
+  icon: "🎥"
+  title: "Five Minutes With Abundant Intelligences’ Tech Pod Member, Hamza Abdelhedi"
+  meta: "Abundant Intelligences, Feb 2026"
+  url: "https://abundant-intelligences.net/blogs/five-minutes-with-abundant-intelligences-tech-pod-member-hamza-abdelhedi/"
+  image: "/images/main/abint.jpeg"
+  color_class: "is-media"
+
+- type: repos
+  label: "Open Source Tools"
+  icon: "📂"
+  title: "Open Source Projects"
+  repos:
+    - name: "coord2region"
+      stars: 3
+      url: "https://github.com/BabaSanfour/coord2region"
+    - name: "mne-denoise"
+      stars: 17
+      url: "https://github.com/mne-tools/mne-denoise"
+  color_class: "is-repos"

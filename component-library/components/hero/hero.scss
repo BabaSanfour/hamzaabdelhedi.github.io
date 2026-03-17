@@ -2,236 +2,518 @@
 .c-hero {
 	$c: &;
 	padding: 45px 0;
-  
+
 	@media only screen and (max-width: $desktop) {
-	  padding: 80px 0;
+		padding: 80px 0;
 	}
-  
+
 	@media only screen and (max-width: $tablet) {
-	  padding: 40px 0 80px;
+		padding: 40px 0 80px;
 	}
-  
+
 	@media only screen and (max-width: $mobile) {
-	  padding: 30px 0 60px;
+		padding: 30px 0 60px;
 	}
-  
+
 	&__inner {
-	  display: flex;
-	  align-items: center;
-  
-	  @media only screen and (max-width: $tablet) {
-		flex-direction: column;
-	  }
-	}
-  
-	/* Use flex-basis for 2/3 - 1/3 */
-	&__left,
-	&__right {
-	  flex: 0 0 50%;
-  
-	  @media only screen and (max-width: $tablet) {
-		flex: 0 0 100%;
-	  }
-	}
-  
-	&__left {
-	  flex: 0 0 66.666%;
-	  max-width: 66.666%;
-	  padding-right: 20px;
-	  margin-right: auto;
-  
-	  @media only screen and (max-width: $tablet) {
-		flex: 0 0 100%;
-		max-width: 100%;
-		padding-right: 0;
-	  }
-	}
-  
-	&__right {
-	  flex: 0 0 33.333%;
-	  max-width: 33.333%;
-	  position: relative;
-	  margin-left: auto;
-  
-	  @media only screen and (max-width: $tablet) {
-		order: -1;
-		flex: 0 0 100%;
-		max-width: 100%;
-		margin-left: 0;
-	  }
-	}
-  
-	&__title {
-	  margin-bottom: 20px;
-	  font-size: 58px;
-	  color: $heading-font-color;
-  
-	  @media only screen and (max-width: 1130px) {
-		font-size: 44px;
-	  }
-	  @media only screen and (max-width: $desktop) {
-		font-size: 38px;
-		margin-bottom: 24px;
-	  }
-	  @media only screen and (max-width: $mobile) {
-		font-size: 32px;
-	  }
-	}
-  
-	&__description {
-	  p {
-		margin-bottom: 0;
-		font-size: 18px;
-		line-height: 1.6;
-		color: $text-color;
-  
-		@media only screen and (max-width: $desktop) {
-		  font-size: 16px;
-		}
-	  }
-	}
-  
-	&__btn {
-		/* ————————————————————————————————————————————————————————————
-		   Make this nested element span the entire .c-hero width, even though it lives
-		   inside .c-hero__left (which is only 66.666% of .c-hero). The math here:
-		   - "100%"   = full width of .c-hero__left (i.e. 66.666% of hero)
-		   - "50%"    = half of .c-hero__left (i.e. 33.333% of hero)
-		   => width: calc(100% + 50%) = 100% of entire hero
-		   - margin-left: -50% shifts it left by half of .c-hero__left (33.333% of hero),
-			 aligning its left edge with the hero’s left edge.
-		   ———————————————————————————————————————————————————————————— */
 		display: flex;
-		justify-content: center;
-		margin-top: 40px;
-		width: calc(100% + 50%);
-	
-		.cta-button {
-		  margin-right: 8px;
+		align-items: flex-start; // Align items to top
+
+		@media only screen and (max-width: $tablet) {
+			flex-direction: column;
 		}
-	
-		.works-button {
-		  &:hover {
-			.circle-bg {
-			  transition: all .2s cubic-bezier(.215, .61, .355, 1);
-			  transform: scale(.94);
+	}
+
+	&__left {
+		flex: 0 0 66.666%;
+		max-width: 66.666%;
+		padding-right: 40px;
+		margin-right: auto;
+
+		@media only screen and (max-width: $tablet) {
+			flex: 0 0 100%;
+			max-width: 100%;
+			padding-right: 0;
+		}
+	}
+
+	&__right {
+		flex: 0 0 33.333%;
+		max-width: 33.333%;
+		position: relative;
+		margin-left: auto;
+
+		@media only screen and (max-width: $tablet) {
+			order: -1;
+			flex: 0 0 100%;
+			max-width: 100%;
+			margin-left: 0;
+			margin-bottom: 40px;
+		}
+	}
+
+	&__header-card {
+		background: $white;
+		padding: 24px 32px;
+		border-radius: 20px;
+		box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+		margin-bottom: 32px;
+		border-left: 4px solid $primary-color;
+
+		@media only screen and (max-width: $mobile) {
+			padding: 20px;
+			margin-bottom: 24px;
+		}
+	}
+
+	&__name {
+		margin-bottom: 8px;
+		font-size: 42px; // Shrunk from 48px
+		font-weight: 900;
+		color: $heading-font-color;
+		margin-top: 0;
+
+		@media only screen and (max-width: $desktop) {
+			font-size: 34px;
+		}
+
+		@media only screen and (max-width: $mobile) {
+			font-size: 28px;
+		}
+	}
+
+	&__phonetic {
+		font-size: 15px; // Slightly smaller
+		font-weight: 400;
+		color: $text-color;
+		opacity: 0.6;
+		margin-left: 8px;
+
+		@media only screen and (max-width: $mobile) {
+			display: block;
+			margin-left: 0;
+			margin-top: 4px;
+		}
+	}
+
+	&__position {
+		font-size: 17px; // Slightly smaller
+		font-weight: 500;
+		color: $primary-color;
+		margin-bottom: 12px;
+		line-height: 1.4;
+
+		@media only screen and (max-width: $mobile) {
+			font-size: 15px;
+		}
+	}
+
+	&__tagline {
+		font-size: 18px; // Shrunk from 20px
+		font-weight: 400;
+		font-style: italic;
+		color: $text-color;
+		margin-bottom: 0;
+		opacity: 0.85;
+
+		@media only screen and (max-width: $mobile) {
+			font-size: 16px;
+		}
+	}
+
+	&__description {
+		p {
+			margin-bottom: 0;
+			font-size: 18px;
+			line-height: 1.6;
+			color: $text-color;
+
+			@media only screen and (max-width: $desktop) {
+				font-size: 16px;
 			}
-		  }
-	
-		  .circle-bg {
+		}
+
+		p+p {
+			margin-top: 16px;
+		}
+
+		strong {
+			color: $primary-color;
+		}
+	}
+
+	&__btn {
+		display: flex;
+		justify-content: flex-start;
+		margin-top: 40px;
+
+		.cta-button {
+			margin-right: 12px;
+		}
+
+		.works-button {
 			display: flex;
 			align-items: center;
-			justify-content: center;
-			min-width: 18px;
-			height: 18px;
-			margin-right: 8px;
-			font-size: 14px;
-			border-radius: 50%;
-			will-change: transform;
-			background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
-			transition: all .2s cubic-bezier(.215, .61, .355, 1);
-		  }
-	
-		  .button-arrow {
-			color: $white;
-		  }
+			text-decoration: none;
+			color: $text-color;
+			font-weight: 600;
+
+			&:hover {
+				.circle-bg {
+					transition: all .2s cubic-bezier(.215, .61, .355, 1);
+					transform: scale(.94);
+				}
+			}
+
+			.circle-bg {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 18px;
+				height: 18px;
+				margin-right: 8px;
+				font-size: 14px;
+				border-radius: 50%;
+				will-change: transform;
+				background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+				transition: all .2s cubic-bezier(.215, .61, .355, 1);
+			}
+
+			.button-arrow {
+				color: $white;
+			}
 		}
-	
-		@media only screen and (max-width: $desktop) {
-		  margin-top: 32px;
-		}
-	
-		@media only screen and (max-width: $mobile) {
-		  .cta-button,
-		  .works-button {
-			font-size: 15px;
-		  }
-		}
-	
+
 		@media only screen and (max-width: $tablet) {
-		  /* At tablet and below, .c-hero__left becomes 100% wide, so reset */
-		  width: 100%;
-		  margin-left: 0;
+			justify-content: center;
 		}
-	  }  
-	/*============================
-	  IMAGE WRAPPER (no more big blue backdrop)
-	============================*/
+	}
+
 	&__image {
-	  position: relative;
-	  z-index: 10;
-  
-	  /* fill its 1/3 column but never exceed 300px wide */
-	  width: 100%;
-	  max-width: 400px;
-	  margin-left: auto;
-	  height: auto;      /* let the <img> determine height */
-  
-	  /* make the pseudo-element transparent so no large blue shape shows */
-	  &::before {
-		content: "";
-		display: block;
+		position: relative;
+		z-index: 10;
+		width: 100%;
+		max-width: 350px;
+		margin-left: auto;
+		height: auto;
+
+		@media only screen and (max-width: 1130px) {
+			max-width: 280px;
+		}
+
+		@media only screen and (max-width: $tablet) {
+			width: 280px;
+			height: 280px;
+			margin: 0 auto 30px;
+		}
+
+		@media only screen and (max-width: $mobile) {
+			width: 240px;
+			height: 240px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			border-radius: 16px !important;
+			object-fit: cover;
+			box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
+/* --- Spotlight Component --- */
+.c-spotlight {
+	margin-top: 24px;
+	background: $background-color-alt;
+	border-radius: 18px; // Match news-card
+	box-shadow: 0px 2px 12px rgba(15, 23, 42, 0.08); // Match news-card
+	padding: 12px 20px 10px; // Squeezed padding
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	max-width: 350px;
+	margin-left: auto;
+	height: 238px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	border-right: 4px solid $primary-color;
+
+	&:hover {
+		box-shadow: 0px 16px 32px rgba(15, 23, 42, 0.12);
+		transition: transform .2s ease, box-shadow .2s ease;
+	}
+
+	&__wrapper {
+		position: relative;
+		flex: 1;
+	}
+
+	&__item {
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 1;
 		width: 100%;
 		height: 100%;
-		border-radius: 60px;
-		background: blue-gray; /* was $blue-gray originally */
-	  }
-  
-	  @media only screen and (max-width: 1130px) {
-		/* scale down on narrower screens */
-		max-width: 240px;
-	  }
-  
-	  @media only screen and (max-width: $desktop) {
-		max-width: 240px;
-	  }
-  
-	  @media only screen and (max-width: $tablet) {
-		width: 100%;
-		height: 380px;
-		margin-bottom: 40px;
-  
-		&::before {
-		  border-radius: 30px;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		transform: scale(0.98);
+
+		&.is-active {
+			display: flex;
+			flex-direction: column;
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
 		}
-  
-		img {
-		  border-radius: 30px;
-		}
-	  }
-  
-	  @media only screen and (max-width: $mobile) {
-		height: 100%;
-		margin-bottom: 32px;
-  
-		&::before {
-		  border-radius: 16px;
-		}
-  
-		img {
-		  border-radius: 16px;
-		  box-shadow: none;
-		}
-	  }
 	}
 
-	img {
-		position: relative;
-		top: 0;
-		z-index: 2;
-		width: 100%;
-		height: auto;
-		border-radius: 60px;
-		object-fit: cover;
-		user-select: none;
-		background: $blue-gray;
-		box-shadow: 0px 100px 80px rgba($primary-color, 0.07), 0px 41.7776px 33.4221px rgba($primary-color, 0.0503198), 0px 22.3363px 17.869px rgba($primary-color, 0.0417275), 0px 12.5216px 10.0172px rgba($primary-color, 0.035), 0px 6.6501px 5.32008px rgba($primary-color, 0.0282725), 0px 2.76726px 2.21381px rgba($primary-color, 0.0196802);
-		transition: inherit;
-		border-radius: 60px;
+	&__header {
+		margin-bottom: 20px; // Increased for more breathing room
+	}
+
+	&__label {
+		display: inline-flex;
+		align-items: center;
+		font-size: 11px;
+		font-weight: 700;
+		padding: 2px 10px;
+		border-radius: 999px;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+
+		&.is-publication {
+			background: rgba($primary-color, 0.1);
+			color: $primary-color;
 		}
 
-} 
+		&.is-media {
+			background: rgba(#8b5cf6, 0.1); // Purple for media
+			color: #8b5cf6;
+		}
+
+		&.is-news {
+			background: rgba($secondary-color, 0.1);
+			color: $secondary-color;
+		}
+
+		&.is-repos {
+			background: rgba(#64748b, 0.1);
+			color: #64748b;
+		}
+
+		i,
+		.ion {
+			margin-right: 6px;
+			font-size: 13px;
+		}
+	}
+
+	/* Publication & Media Layout */
+	&__pub-layout,
+	&__media-layout {
+		display: flex;
+		gap: 12px; // tighter gap
+		align-items: flex-start;
+	}
+
+	&__thumb {
+		flex: 0 0 80px; // Slightly smaller to ensure fit
+		height: 80px;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__title {
+		font-size: 19px;
+		font-weight: 700;
+		line-height: 1.35;
+		margin: 0 0 4px;
+		color: $heading-font-color;
+
+		/* Line Clamping - prevent overflow */
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		line-clamp: 4;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		a {
+			display: -webkit-box !important;
+			/* Necessary for line clamping on the link itself */
+			-webkit-line-clamp: 4 !important;
+			-webkit-box-orient: vertical !important;
+			line-clamp: 4 !important;
+			overflow: hidden !important;
+			text-overflow: ellipsis !important;
+			text-decoration: none;
+			color: $primary-color;
+
+			&:hover {
+				color: $secondary-color;
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__meta {
+		font-size: 13px;
+		color: $text-color;
+		opacity: 0.8;
+		margin: 0;
+	}
+
+	/* News Layout */
+	&__news-text {
+		font-size: 19px;
+		line-height: 1.6;
+		color: $text-color;
+	}
+
+	&__date {
+		font-weight: 700;
+		color: $secondary-color;
+		display: inline-block;
+		margin-right: 4px;
+	}
+
+	/* Repos Layout */
+	&__repo-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__repo-item {
+		display: flex;
+		align-items: center;
+		padding: 6px 0; // Reduced from 8px
+		border-top: 1px solid #f3f4f6;
+
+		&:first-child {
+			border-top: none;
+			padding-top: 0;
+		}
+	}
+
+	&__repo-icon {
+		margin-right: 12px;
+		color: $primary-color;
+		font-size: 20px; // Scaled up (was 16px)
+	}
+
+	&__repo-name {
+		font-size: 19px;
+		font-weight: 600;
+		color: $heading-font-color;
+		text-decoration: none;
+		flex: 1;
+
+		&:hover {
+			color: $primary-color;
+			text-decoration: underline;
+		}
+	}
+
+	&__repo-stars {
+		display: flex;
+		align-items: center;
+		font-size: 13px; // Scaled up (was 11px)
+	}
+
+	&__star-box {
+		background: #f9fafb;
+		border: 1px solid #e5e7eb;
+		padding: 2px 8px; // Increased breathing room
+		border-radius: 4px 0 0 4px;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		color: #111827;
+
+		i {
+			font-size: 14px; // Scaled up icon
+		}
+	}
+
+	&__star-count {
+		background: #fff;
+		border: 1px solid #e5e7eb;
+		border-left: none;
+		padding: 2px 8px; // Increased breathing room
+		border-radius: 0 4px 4px 0;
+		font-weight: 600;
+		color: #111827;
+	}
+
+	/* Controls */
+	&__controls {
+		margin-top: auto;
+		padding-top: 8px; // Reduced padding
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	&:hover &__controls {
+		opacity: 1;
+	}
+
+	&__btn {
+		background: $white;
+		border: 1px solid $border-color;
+		width: 26px;
+		height: 26px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: $text-color;
+		transition: all 0.2s ease;
+
+		&:hover {
+			background: $primary-color;
+			color: $white;
+			border-color: $primary-color;
+			box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+		}
+	}
+
+	&__dots {
+		display: flex;
+		gap: 8px;
+	}
+
+	&__dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: $border-color;
+		cursor: pointer;
+		transition: all 0.3s ease;
+
+		&.is-active {
+			background: $primary-color;
+			transform: scale(1.3);
+		}
+	}
+
+	@media only screen and (max-width: $tablet) {
+		max-width: 400px;
+		margin: 32px auto 0;
+	}
+}

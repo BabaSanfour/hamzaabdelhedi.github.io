@@ -1,7 +1,7 @@
 {
-  "name": "vonge-jekyll-bookshop-template",
+  "name": "hamza-abdelhedi-website",
   "private": true,
-  "description": "Hamza Abdelhedi website based on Jekyll and Bookshop",
+  "description": "Personal website of Hamza Abdelhedi - PhD student in Biomedical Engineering focused on Neuro-AI. Built with Jekyll and Bookshop, based on CloudCannon's Vonge template.",
   "scripts": {
     "bookshop": "bookshop-browser",
     "jekyll:install": "BUNDLE_GEMFILE=site/Gemfile bundle install",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CloudCannon/vonge-jekyll-bookshop-template.git"
+    "url": "git+https://github.com/BabaSanfour/hamzaabdelhedi.github.io.git"
   },
-  "author": "",
+  "author": "Hamza Abdelhedi <hamza.abdelhedi@umontreal.ca>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CloudCannon/vonge-jekyll-bookshop-template/issues"
+    "url": "https://github.com/BabaSanfour/hamzaabdelhedi.github.io/issues"
   },
-  "homepage": "https://github.com/CloudCannon/vonge-jekyll-bookshop-template#readme",
+  "homepage": "https://hamzaabdelhedi.com",
   "devDependencies": {
     "@bookshop/jekyll-engine": "^3.17.1",
     "@bookshop/live": "3.9.0",

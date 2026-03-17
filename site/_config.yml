@@ -13,6 +13,10 @@ bookshop_locations:
 exclude:
   - postcss.config.js
   - node_modules
+  - vendor
+  - _site
+  - .bundle
+  - .jekyll-cache
 
 include:
   - _cloudcannon
@@ -30,7 +34,7 @@ collections:
     output: false
   posts:
     output: true
-    permalink: /news/:slug
+    permalink: /updates/:slug
   publications:
     output: true
     permalink: /publications/:slug

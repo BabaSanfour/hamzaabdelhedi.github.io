@@ -1,0 +1,25 @@
+spec:
+  structures:
+    - content_blocks
+  label: Updates & Trajectory Split
+  description: A split section combining Recent Updates and an Interactive Trajectory timeline.
+  icon: vertical_split
+  tags:
+    - Content
+
+blueprint:
+  updates_title: "Recent Updates"
+  updates_description_html: "Stay up to date with my latest research, teaching, and community involvement."
+  trajectory_title: "Trajectory"
+  show_updates: true
+  show_trajectory: true
+  max_item_images: 1
+
+preview:
+  updates_title: "Recent Updates"
+  updates_description_html: "Stay up to date with my latest research, teaching, and community involvement."
+  trajectory_title: "Trajectory"
+
+_inputs:
+  updates_description_html:
+    type: text

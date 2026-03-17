@@ -6,76 +6,361 @@ layout: default
 <div class="container">
   <div class="row">
     <div class="col col-12">
-      <div class="page animate">
-        <h1 class="page__title">{{ page.title }}</h1>
-
-        <!-- View Switcher Controls -->
-        <div class="view-switcher">
-          <button id="list-view-button" class="view-button active">List View</button>
-          <button id="post-view-button" class="view-button">Post View</button>
+      <div class="animate">
+        <div class="updates-trajectory split-layout">
+          <div class="column-header">
+            <h1 class="column-title">{{ page.title }}</h1>
+            <div class="publications-controls__search header-search">
+              <i class="ion ion-md-search"></i>
+              <input type="search" id="pub-search" placeholder="Search..." aria-label="Search publications">
+            </div>
+          </div>
+          <div class="column-description-row">
+            <p class="column-description">Peer-reviewed work, preprints, and academic contributions.</p>
+            <div class="c-updates-filter type-filters-inline">
+              <button class="c-updates-filter__btn js-type-filter active" data-filter="all">All</button>
+              <button class="c-updates-filter__btn js-type-filter" data-filter="journal">Journal</button>
+              <button class="c-updates-filter__btn js-type-filter" data-filter="conference">Conf</button>
+              <button class="c-updates-filter__btn js-type-filter" data-filter="preprint">Prep</button>
+            </div>
+          </div>
         </div>
 
-        <!-- List View -->
-        <div id="publication-list-view" class="publication-view active">
-          {% if site.publications.size > 0 %}
-          <ul class="publication-list">
-            {% for publication in site.publications reversed %}
-            <li class="publication-item">
-              <h2 class="publication-item__title"><a href="{{ publication.url | relative_url }}">{{ publication.title
-                  }}</a></h2>
-              <div class="publication-item__meta">
-                {% if publication.authors %}<span class="publication-item__authors">{{ publication.authors }}</span>{%
-                endif %}
-                {% if publication.venue %}<span class="publication-item__venue">{{ publication.venue }}</span>{% endif
-                %}
-                {% if publication.date %}<time class="publication-item__date"
-                  datetime="{{ publication.date | date_to_xmlschema }}">{{ publication.date | date: "%B %d, %Y"
-                  }}</time>{% endif %}
-              </div>
-              {% if publication.pdf_link %}
-              <p><a href="{{ publication.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
-              {% endif %}
-            </li>
-            {% endfor %}
-          </ul>
-          {% else %}
-          <p>No publications found yet.</p>
-          {% endif %}
-        </div>
+        {% if site.publications.size > 0 %}
 
-        <!-- Post View -->
-        <div id="publication-post-view" class="publication-view">
-          {% if site.publications.size > 0 %}
-          {% for publication in site.publications reversed %}
-          <div class="publication-post">
-            <h2 class="publication-post__title"><a href="{{ publication.url | relative_url }}">{{ publication.title
-                }}</a></h2>
-            <div class="publication-post__meta">
-              {% if publication.authors %}<span class="publication-post__authors">{{ publication.authors }}</span>{%
-              endif %}
-              {% if publication.venue %}<span class="publication-post__venue">{{ publication.venue }}</span>{% endif %}
-              {% if publication.date %}<time class="publication-post__date"
-                datetime="{{ publication.date | date_to_xmlschema }}">{{ publication.date | date: "%B %d, %Y"
-                }}</time>{% endif %}
-            </div>
-            {% if publication.abstract %}
-            <div class="publication-post__abstract">
-              <h3>Abstract</h3>
-              {{ publication.abstract | markdownify | truncatewords: 50 }}
-              <a href="{{ publication.url | relative_url }}">Read more</a>
-            </div>
+        <!-- Filter Groups -->
+        {% assign all_keywords = "" %}
+        {% for pub in site.publications %}
+        {% for keyword in pub.keywords %}
+        {% assign all_keywords = all_keywords | append: keyword | append: "," %}
+        {% endfor %}
+        {% endfor %}
+        {% assign unique_keywords = all_keywords | split: "," | uniq | sort %}
+
+        {% assign all_years = "" %}
+        {% for pub in site.publications %}
+        {% assign all_years = all_years | append: pub.year | append: "," %}
+        {% endfor %}
+        {% assign unique_years = all_years | split: "," | uniq | sort | reverse %}
+
+        <div class="c-updates-filter-group">
+          <div class="c-updates-filter c-updates-filter--tight js-keywords-container">
+            <button class="c-updates-filter__btn js-keyword-filter active" data-keyword="all">All Keywords</button>
+            {% for keyword in unique_keywords %}
+            {% if keyword != "" %}
+            <button class="c-updates-filter__btn js-keyword-filter {% if forloop.index > 10 %}is-hidden{% endif %}" 
+                    data-keyword="{{ keyword | downcase }}">{{ keyword }}</button>
             {% endif %}
-            {% if publication.pdf_link %}
-            <p><a href="{{ publication.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
+            {% endfor %}
+            {% if unique_keywords.size > 10 %}
+            <button class="c-updates-filter__btn c-updates-filter__btn--more js-keywords-toggle">More...</button>
             {% endif %}
           </div>
-          {% endfor %}
-          {% else %}
-          <p>No publications found yet.</p>
-          {% endif %}
+
+          <!-- Year Filter -->
+          <div class="c-updates-filter c-updates-filter--tight c-updates-filter--years">
+            <button class="c-updates-filter__btn js-year-filter active" data-year="all">All Years</button>
+            {% for year in unique_years %}
+            {% if year != "" %}
+            <button class="c-updates-filter__btn js-year-filter" data-year="{{ year }}">{{ year }}</button>
+            {% endif %}
+            {% endfor %}
+          </div>
         </div>
+
+        <!-- List -->
+        <div class="publications-list">
+          {% assign grouped = site.publications | group_by: "year" | sort: "name" | reverse %}
+
+          {% for year_group in grouped %}
+          {% if year_group.name != "" %}
+          <div class="publication-year-group" data-year="{{ year_group.name }}">
+            <h2 class="publication-year-heading">{{ year_group.name }}</h2>
+            <div class="publication-year-items">
+              {% assign sorted_items = year_group.items | sort: "date" | reverse %}
+              {% for pub in sorted_items %}
+              <div class="publication-wrapper" data-type="{{ pub.type | downcase }}" data-year="{{ pub.year }}"
+                data-keywords="{{ pub.keywords | join: ',' | downcase }}"
+                data-search="{{ pub.title | downcase }} {{ pub.authors | downcase }} {{ pub.venue | downcase }}">
+                {% bookshop publication-card project=pub %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+          <!-- Papers without a year fallback -->
+          <!-- {% assign no_year = site.publications | where_exp: "item", "item.year == nil" %}
+          {% if no_year.size > 0 %}
+            <div class="publication-year-group" data-year="Unknown">
+              <h2 class="publication-year-heading">Prior Work</h2>
+              <div class="publication-year-items">
+                {% for pub in no_year %}
+                  <div class="publication-wrapper" 
+                       data-type="{{ pub.type | downcase }}" 
+                       data-search="{{ pub.title | downcase }} {{ pub.authors | downcase }} {{ pub.venue | downcase }}">
+                    {% bookshop publication-card project=pub %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %} -->
+
+          <div id="no-results" class="publications-no-results" style="display: none;">
+            <p>No publications found matching your criteria.</p>
+          </div>
+        </div>
+
+        {% else %}
+        <div class="publications-empty">
+          <p>No publications found yet.</p>
+        </div>
+        {% endif %}
 
       </div>
     </div>
   </div>
 </div>
+
+<!-- Inline CSS for the Publications page layout -->
+<style>
+  /* Redesigned Header Alignment (High Density) */
+  .updates-trajectory.split-layout {
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 8px;
+  }
+
+  .column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+  }
+
+  .header-search {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+
+  .column-description-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .column-description {
+    margin: 0;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .type-filters-inline {
+    display: flex;
+    gap: 6px;
+  }
+
+  /* Filter Group Styling (Tightened) */
+  .c-updates-filter-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .c-updates-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+
+    &__btn {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      border-radius: 10px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover,
+      &.active {
+        background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 167%);
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+      }
+    }
+  }
+
+  .publications-controls__search {
+    position: relative;
+    width: 100%;
+  }
+
+  .publications-controls__search i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+  }
+
+  .publications-controls__search input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-size: 14px;
+    background: #fff;
+    transition: all 0.2s;
+  }
+
+  .publications-controls__search input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  /* List */
+  .publication-year-group {
+    margin-bottom: 40px;
+  }
+
+  .publication-year-heading {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: #1e293b;
+    border-left: 3px solid #3b82f6;
+    padding-left: 12px;
+  }
+
+  .publication-year-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .publications-no-results {
+    padding: 30px;
+    text-align: center;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+  }
+  .is-hidden {
+    display: none !important;
+  }
+
+  .c-updates-filter__btn--more {
+    border-style: dashed;
+    color: #3b82f6;
+  }
+</style>
+
+<!-- Vanilla JS Filtering -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('pub-search');
+    const typeBtns = document.querySelectorAll('.js-type-filter');
+    const keywordBtns = document.querySelectorAll('.js-keyword-filter');
+    const yearBtns = document.querySelectorAll('.js-year-filter');
+    const wrappers = document.querySelectorAll('.publication-wrapper');
+    const yearGroups = document.querySelectorAll('.publication-year-group');
+    const noResults = document.getElementById('no-results');
+
+    let currentSearch = '';
+    let currentType = 'all';
+    let currentKeyword = 'all';
+    let currentYear = 'all';
+
+    function filterPublications() {
+      let visibleCount = 0;
+
+      wrappers.forEach(wrapper => {
+        const searchMatch = !currentSearch || wrapper.dataset.search.includes(currentSearch);
+        const typeMatch = currentType === 'all' || wrapper.dataset.type === currentType;
+        const yearMatch = currentYear === 'all' || wrapper.dataset.year === currentYear;
+
+        const pubKeywords = wrapper.dataset.keywords.split(',');
+        const keywordMatch = currentKeyword === 'all' || pubKeywords.includes(currentKeyword);
+
+        if (searchMatch && typeMatch && yearMatch && keywordMatch) {
+          wrapper.style.display = '';
+          visibleCount++;
+        } else {
+          wrapper.style.display = 'none';
+        }
+      });
+
+      yearGroups.forEach(group => {
+        const items = Array.from(group.querySelectorAll('.publication-wrapper'));
+        const hasVisible = items.some(item => item.style.display !== 'none');
+        group.style.display = hasVisible ? '' : 'none';
+      });
+
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    searchInput?.addEventListener('input', (e) => {
+      currentSearch = e.target.value.toLowerCase().trim();
+      filterPublications();
+    });
+
+    typeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        typeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentType = btn.dataset.filter;
+        filterPublications();
+      });
+    });
+
+    keywordBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        keywordBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentKeyword = btn.dataset.keyword;
+        filterPublications();
+      });
+    });
+
+    yearBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        yearBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentYear = btn.dataset.year;
+        filterPublications();
+      });
+    });
+
+    // Keywords Toggle
+    const keywordsToggle = document.querySelector('.js-keywords-toggle');
+    const keywordsContainer = document.querySelector('.js-keywords-container');
+    
+    keywordsToggle?.addEventListener('click', () => {
+      const hiddenKeywords = keywordsContainer.querySelectorAll('.js-keyword-filter.is-hidden');
+      if (hiddenKeywords.length > 0) {
+        hiddenKeywords.forEach(k => k.classList.remove('is-hidden'));
+        keywordsToggle.textContent = 'Less';
+      } else {
+        const keywords = keywordsContainer.querySelectorAll('.js-keyword-filter');
+        keywords.forEach((k, index) => {
+          if (index > 10) k.classList.add('is-hidden'); // index > 10 because index 0 is "All"
+        });
+        keywordsToggle.textContent = 'More...';
+      }
+    });
+  });
+</script>

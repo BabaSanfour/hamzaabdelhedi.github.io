@@ -107,11 +107,36 @@ collections_config:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+  publications:
+    path: collections/_publications
+    output: true
+    description: 'Research publications and papers'
+    icon: article
+    sort:
+      key: date
+      order: desc
+    preview:
+      text:
+        - key: title
+      subtext:
+        - key: venue
+      icon:
+      icon_color:
+      image:
+      metadata:
+      gallery:
+    _enabled_editors:
+      - content
+      - visual
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
 collection_groups:
   - heading: Content
     collections:
       - pages
       - projects
+      - publications
       - affiliations
   - heading: Blogging
     collections:

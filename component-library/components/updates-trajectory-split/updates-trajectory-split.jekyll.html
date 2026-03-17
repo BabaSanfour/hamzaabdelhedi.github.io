@@ -1,0 +1,109 @@
+<!-- begin updates-trajectory-split -->
+<section class="section updates-trajectory split-layout animate">
+    <div class="container">
+        <div class="row">
+
+            <!-- Left Column: Trajectory -->
+            <div class="col col-6 col-m-12 trajectory-column">
+                <div class="interactive-trajectory">
+                    <div class="trajectory-timeline">
+                        {% if include.show_trajectory %}
+                        {% for milestone in site.data.trajectory %}
+                        <div class="trajectory-node" data-aos="fade-up" onclick="this.classList.toggle('is-expanded')">
+                            <div class="trajectory-node__connector"></div>
+                            <div class="trajectory-node__content-wrapper">
+                                <div class="trajectory-node__logo-trigger">
+                                    <img src="{{ milestone.logo | relative_url }}" alt="{{ milestone.institution }}"
+                                        class="trajectory-node__logo">
+                                </div>
+
+                                <div class="trajectory-node__info">
+                                    {% if milestone.roles %}
+                                    <h4 class="trajectory-node__institution trajectory-node__institution--grouped">{{
+                                        milestone.institution }}</h4>
+                                    <div class="trajectory-node__roles">
+                                        {% for role in milestone.roles %}
+                                        <div class="trajectory-node__role">
+                                            <span class="trajectory-node__year">{{ role.year }}</span>
+                                            <h5 class="trajectory-node__title">{{ role.title }}</h5>
+                                            <span class="trajectory-node__department">{{ role.department }}</span>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    <span class="trajectory-node__year">{{ milestone.year }}</span>
+                                    <h4 class="trajectory-node__title">{{ milestone.title }}</h4>
+                                    <span class="trajectory-node__institution">{{ milestone.institution }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Hover Detail Card (Moved here for proper mobile flow) -->
+                            <div class="trajectory-node__detail-card">
+                                {% if milestone.roles %}
+                                <div class="detail-card__header">
+                                    <h4 class="detail-card__institution detail-card__institution--grouped">{{
+                                        milestone.institution }}</h4>
+                                </div>
+                                <div class="detail-card__roles">
+                                    {% for role in milestone.roles %}
+                                    <div class="detail-card__role">
+                                        <span class="detail-card__year">{{ role.year }}</span>
+                                        <h5 class="detail-card__title">{{ role.title }}</h5>
+                                        <p class="detail-card__description">{{ role.description }}</p>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                <div class="detail-card__header">
+                                    <span class="detail-card__year">{{ milestone.year }}</span>
+                                    <h4 class="detail-card__title">{{ milestone.title }}</h4>
+                                    <span class="detail-card__institution">{{ milestone.institution }}</span>
+                                </div>
+                                <p class="detail-card__description">{{ milestone.description }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <p class="trajectory-footer">See <a href="/about">About page</a> for more details.</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Recent Updates -->
+            <div class="col col-6 col-m-12 updates-column">
+                <div class="column-header">
+                    <h2 class="column-title">{{ include.updates_title | default: "Recent Updates" }}</h2>
+                    <a href="/updates" class="view-all">View all updates →</a>
+                </div>
+                {% if include.updates_description_html %}
+                <div class="column-description">{{ include.updates_description_html }}</div>
+                {% endif %}
+
+                <div class="compact-updates-timeline">
+                    {% if site.data.updates.size > 0 %}
+                    {% for item in site.data.updates limit:5 %}
+                    {% assign item_img = item.image %}
+                    {% assign max_images = include.max_item_images | default: 1 %}
+                    {% if forloop.index > max_images %}
+                    {% assign item_img = nil %}
+                    {% endif %}
+                    {% bookshop updates-list-item
+                    title=item.title
+                    date=item.date
+                    description=item.description
+                    link=item.link
+                    icon=item.icon
+                    image=item_img
+                    tags=item.tags
+                    %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- end updates-trajectory-split -->

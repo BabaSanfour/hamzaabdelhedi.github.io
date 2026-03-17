@@ -1,0 +1,93 @@
+---
+title: Updates
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="animate">
+        <div class="updates-trajectory split-layout">
+          <div class="column-header">
+            <h1 class="column-title">{{ page.title }}</h1>
+            <div class="publications-controls__search header-search">
+              <i class="ion ion-md-search"></i>
+              <input type="search" id="update-search" placeholder="Search updates..." aria-label="Search updates">
+            </div>
+          </div>
+          <div class="column-description-row">
+            <p class="column-description">A chronological log of research progress, news, and life updates.</p>
+          </div>
+        </div>
+
+        {% bookshop posts-list show_posts=true %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Redesigned Header Alignment (High Density) */
+  .updates-trajectory.split-layout {
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 8px;
+  }
+
+  .column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+  }
+
+  .header-search {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+
+  .column-description-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .column-description {
+    margin: 0;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .publications-controls__search {
+    position: relative;
+    width: 100%;
+  }
+
+  .publications-controls__search i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+  }
+
+  .publications-controls__search input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-size: 14px;
+    background: #fff;
+    transition: all 0.2s;
+  }
+
+  .publications-controls__search input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+</style>

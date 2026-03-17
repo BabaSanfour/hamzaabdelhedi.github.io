@@ -1,0 +1,20 @@
+# Publication Card
+# Card component used to show individual publications in a list or grid.
+
+blueprint:
+  name: publication-card
+  description: Card for displaying a single publication
+  inline: true
+  
+preview:
+  project:
+    title: "Review of MEG Analysis Techniques Using Artificial Neural Networks"
+    authors: "H. Abdelhedi, M. Lee, K. Jerbi"
+    venue: "Frontiers in Neuroscience"
+    year: 2024
+    type: "journal"
+    url: "/publications/meg-ann-review"
+    thumbnail: "/images/main/01.jpg"
+    pdf_link: "/files/meg-ann-review-article.pdf"
+    doi: "10.3389/fnins.2024.xxxxxx"
+    arxiv_url: "https://arxiv.org/abs/2401.xxxx"

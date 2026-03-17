@@ -4,8 +4,8 @@ menu__settings:
   menu__items:
     - title: 'Home'
       url: '/'
-    - url: '/news/'
-      title: 'News'
+    - url: '/updates/'
+      title: 'Updates'
     - url: '/about/'
       title: 'About'
     - url: '/Hamza_Abdelhedi_cv.pdf'

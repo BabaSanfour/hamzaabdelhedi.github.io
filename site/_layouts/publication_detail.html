@@ -3,52 +3,102 @@ layout: default
 ---
 
 <div class="container">
-  <article class="publication">
-    <h1 class="publication__title">{{ page.title }}</h1>
-    <div class="publication__meta">
-      {% if page.authors %}<span class="publication__authors">{{ page.authors }}</span>{% endif %}
-      {% if page.venue %}<span class="publication__venue">{{ page.venue }}</span>{% endif %}
-      {% if page.date %}<time class="publication__date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% endif %}
-    </div>
+  <div class="row">
+    <div class="col col-12 col-d-10 col-m-12 mx-auto">
+      <div class="page animate">
+        <article class="publication">
+          <div class="publication__header" style="margin-bottom: 32px;">
+            <div class="c-publication-card__badges" style="margin-bottom: 16px;">
+              {% if page.year %}
+              <span class="c-publication-card__year">{{ page.year }}</span>
+              {% endif %}
+              {% if page.type %}
+              <span
+                class="c-publication-card__type c-publication-card__type--{{ page.type | downcase | replace: ' ', '-' }}">{{
+                page.type }}</span>
+              {% endif %}
+            </div>
 
-    {% if page.abstract %}
-      <div class="publication__abstract">
-        <h3>Abstract</h3>
-        {{ page.abstract | markdownify }}
-      </div>
-    {% endif %}
+            <h1 class="page__title" style="margin-bottom: 16px;">{{ page.title }}</h1>
 
-    <div class="publication__content">
-      {{ content }}
-    </div>
+            <div class="c-publication-card__meta" style="font-size: 16px;">
+              {% if page.authors %}
+              <div class="c-publication-card__authors" style="font-size: 16px;">
+                {{ page.authors | replace: 'H. Abdelhedi', '<strong>H. Abdelhedi</strong>' }}
+              </div>
+              {% endif %}
 
-    {% if page.pdf_link %}
-      <p><a href="{{ page.pdf_link | relative_url }}" target="_blank">View PDF</a></p>
-    {% endif %}
+              {% if page.venue %}
+              <div class="c-publication-card__venue" style="font-size: 16px;">
+                <em>{{ page.venue }}</em>
+              </div>
+              {% endif %}
+            </div>
 
-    {% if page.related_research_projects %}
-      <h4>Related Research Projects:</h4>
-      <ul>
-        {% for project_slug in page.related_research_projects %}
-          {% assign related_project = site.research_projects | where: 'slug', project_slug | first %}
-          {% if related_project %}
+            <div class="c-publication-card__actions" style="margin-top: 24px; padding-top: 0; border: none;">
+              {% if page.pdf_link %}
+              <a href="{{ page.pdf_link | relative_url }}" class="c-publication-card__chip" target="_blank"
+                rel="noopener">
+                <i class="ion ion-md-document"></i> PDF
+              </a>
+              {% endif %}
+
+              {% if page.doi %}
+              {% assign doi_url = page.doi %}
+              {% unless doi_url contains 'http' %}
+              {% assign doi_url = "https://doi.org/" | append: page.doi %}
+              {% endunless %}
+              <a href="{{ doi_url }}" class="c-publication-card__chip" target="_blank" rel="noopener">
+                <i class="ion ion-md-link"></i> DOI
+              </a>
+              {% endif %}
+
+              {% if page.arxiv_url %}
+              <a href="{{ page.arxiv_url }}" class="c-publication-card__chip" target="_blank" rel="noopener">
+                <i class="ion ion-logo-buffer"></i> arXiv
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+          {% if page.abstract %}
+          <div class="publication__abstract"
+            style="background: rgba(0,0,0,0.03); padding: 24px; border-radius: 12px; border-left: 4px solid #007bff; margin-bottom: 32px;">
+            <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 18px;">Abstract</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6;">{{ page.abstract }}</p>
+          </div>
+          {% endif %}
+
+          <div class="publication__content page__content">
+            {{ content }}
+          </div>
+
+          {% if page.related_research_projects %}
+          <h4>Related Research Projects:</h4>
+          <ul>
+            {% for project_slug in page.related_research_projects %}
+            {% assign related_project = site.research_projects | where: 'slug', project_slug | first %}
+            {% if related_project %}
             <li><a href="{{ related_project.url | relative_url }}">{{ related_project.title }}</a></li>
+            {% endif %}
+            {% endfor %}
+          </ul>
           {% endif %}
-        {% endfor %}
-      </ul>
-    {% endif %}
 
-    {% if page.related_open_source %}
-      <h4>Related Open Source Contributions:</h4>
-      <ul>
-        {% for os_slug in page.related_open_source %}
-          {% assign related_os = site.open_source | where: 'slug', os_slug | first %}
-          {% if related_os %}
+          {% if page.related_open_source %}
+          <h4>Related Open Source Contributions:</h4>
+          <ul>
+            {% for os_slug in page.related_open_source %}
+            {% assign related_os = site.open_source | where: 'slug', os_slug | first %}
+            {% if related_os %}
             <li><a href="{{ related_os.url | relative_url }}">{{ related_os.title }}</a></li>
+            {% endif %}
+            {% endfor %}
+          </ul>
           {% endif %}
-        {% endfor %}
-      </ul>
-    {% endif %}
 
-  </article>
-</div> 
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

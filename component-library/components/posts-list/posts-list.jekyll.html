@@ -1,11 +1,93 @@
 {% if include.show_posts %}
 <div class="container animate">
-  <div class="c-news-card-list" data-pagebreak="6">
-    {% for post in site.posts %}
-      {% bookshop news-card post=post %}
+
+  {% assign all_tags = "" %}
+  {% for item in site.data.updates %}
+  {% for tag in item.tags %}
+  {% assign all_tags = all_tags | append: tag | append: "," %}
+  {% endfor %}
+  {% endfor %}
+  {% assign unique_tags = all_tags | split: "," | uniq | sort %}
+
+  {% assign all_years = "" %}
+  {% for item in site.data.updates %}
+  {% assign year = item.date | date: "%Y" %}
+  {% assign all_years = all_years | append: year | append: "," %}
+  {% endfor %}
+  {% assign unique_years = all_years | split: "," | uniq | sort | reverse %}
+
+  <div class="c-updates-filter-group">
+    <div class="c-updates-filter js-tags-container">
+      <button class="c-updates-filter__btn js-category-filter active" data-filter="all">All Categories</button>
+      {% for tag in unique_tags %}
+      {% if tag != "" %}
+      <button class="c-updates-filter__btn js-category-filter {% if forloop.index > 10 %}is-hidden{% endif %}" 
+              data-filter="{{ tag | downcase }}">{{ tag }}</button>
+      {% endif %}
+      {% endfor %}
+      {% if unique_tags.size > 10 %}
+      <button class="c-updates-filter__btn c-updates-filter__btn--more js-tags-toggle">More...</button>
+      {% endif %}
+    </div>
+
+    <div class="c-updates-filter c-updates-filter--years">
+      <button class="c-updates-filter__btn js-year-filter active" data-year="all">All Years</button>
+      {% for year in unique_years %}
+      {% if year != "" %}
+      <button class="c-updates-filter__btn js-year-filter" data-year="{{ year }}">{{ year }}</button>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="c-updates-timeline js-updates-list">
+    {% for item in site.data.updates %}
+    {% bookshop updates-list-item
+    title=item.title
+    date=item.date
+    description=item.description
+    tags=item.tags
+    image=item.image
+    link=item.link
+    icon=item.icon
+    %}
     {% endfor %}
   </div>
+
+  <div class="c-updates-pagination" id="js-updates-pagination">
+    <!-- JavaScript will dynamically inject pagination buttons here -->
+  </div>
+</div>
 </div>
 
-{% bookshop_include pagination %}
+<style>
+  .is-hidden {
+    display: none !important;
+  }
+  .c-updates-filter__btn--more {
+    border-style: dashed;
+    color: #3b82f6;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tagsToggle = document.querySelector('.js-tags-toggle');
+  const tagsContainer = document.querySelector('.js-tags-container');
+  
+  tagsToggle?.addEventListener('click', () => {
+    const hiddenTags = tagsContainer.querySelectorAll('.js-category-filter.is-hidden');
+    if (hiddenTags.length > 0) {
+      hiddenTags.forEach(t => t.classList.remove('is-hidden'));
+      tagsToggle.textContent = 'Less';
+    } else {
+      const tags = tagsContainer.querySelectorAll('.js-category-filter');
+      tags.forEach((t, index) => {
+        if (index > 10) t.classList.add('is-hidden');
+      });
+      tagsToggle.textContent = 'More...';
+    }
+  });
+});
+</script>
 {% endif %}

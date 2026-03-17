@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: Hero
-  description: Page hero with the heading, description, buttons, and an image
+  description: Page hero with name, position, tagline, social icons, and image
   icon: wysiwyg
   tags:
     - Structure
@@ -13,27 +13,54 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   title: ""
+  phonetic: ""
+  position: ""
+  tagline: ""
   description_html: ""
   image: ""
   image_alt: ""
+  circular_image: false
+  show_social_icons: true
+  email: ""
   cta_button: ""
   cta_button_link: ""
   works_button: ""
   works_button_link: ""
 
-# Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
-  title: Hi there, I am Vanessa Marley
-  description_html: <strong>Photographer</strong> and <strong>Visual Content
-    Strategist</strong> from Albany. I work as a lifestyle, product, and
-    landscape photographer, creating images for a diverse range of requests,
-    from online media to printed artwork.
-  image: /images/01.jpg
-  image_alt: Vanessa Marley's picture
+  title: Hamza Abdelhedi
+  phonetic: HAM-za ab-del-HE-di
+  position: PhD Student in Biomedical Engineering • Neuro-AI @ UdeM & Mila
+  tagline: Exploring brains & AI, championing Open Science, and building community.
+  description_html: >-
+    <p>Interested in dynamical biological and artificial systems with a focus on 
+    <strong>vision, decision-making, and brain disorders</strong>.</p>
+  image: /images/main/01.jpg
+  image_alt: Hamza Abdelhedi
+  circular_image: true
+  show_social_icons: true
+  email: hamza.abdelhedi@umontreal.ca
   cta_button: Get in touch
   cta_button_link: "#contact"
-  works_button: See my works
+  works_button: What I'm working on
   works_button_link: "#projects"
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
-_inputs: {}
+_inputs:
+  phonetic:
+    type: text
+    comment: Phonetic pronunciation (e.g., HAM-za ab-del-HE-di)
+  position:
+    type: text
+    comment: Your title/position line
+  tagline:
+    type: textarea
+    comment: One-line tagline summarizing your work/values
+  circular_image:
+    type: switch
+  show_social_icons:
+    type: switch
+    comment: Show social icons from _data/social_links.yml
+  email:
+    type: email
+    comment: Email address for contact icon

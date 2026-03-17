@@ -1,0 +1,325 @@
+$c: ".c-publication-card";
+
+#{$c} {
+    background: $white;
+    border-radius: 20px;
+    border: 1px solid rgba($text-color, 0.05);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08); // Hero/Trajectory shadow
+    margin-bottom: 32px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    border-left: 4px solid $primary-color; // Premium accent line
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    &__main-row {
+        display: flex;
+        padding: 24px; // Increased padding for breathing room
+        gap: 24px;
+
+        @media only screen and (max-width: $tablet) {
+            flex-direction: column;
+            gap: 12px;
+        }
+    }
+
+    &__image-container {
+        flex-shrink: 0;
+        width: 140px; // Increased from 100px
+        height: 140px; // Increased from 100px
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        background: #f9f9f9;
+
+        @media only screen and (max-width: $tablet) {
+            width: 100px;
+            height: 100px;
+            align-self: center;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__body {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-family: inherit; // Use site default font
+    }
+
+    &__title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        cursor: pointer;
+        gap: 12px;
+
+        &:hover #{$c}__title {
+            color: $primary-color;
+        }
+    }
+
+    &__title {
+        margin: 4px 0 12px 0; // Increased spacing above and below
+        font-size: 19px; // Slightly larger for prominence
+        font-weight: 700;
+        line-height: 1.4;
+        color: #111;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-family: inherit !important; // Force site default font
+    }
+
+    &__title-icon {
+        font-size: 20px;
+        color: #444;
+        margin-top: 2px;
+    }
+
+    &__toggle {
+        background: none;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        color: #94A3B8;
+        font-size: 20px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $primary-color;
+            transform: scale(1.1);
+        }
+
+        #{$c}.is-expanded & {
+            transform: rotate(180deg);
+            color: $primary-color;
+        }
+    }
+
+    &__tags {
+        display: flex;
+        gap: 8px;
+        margin: 8px 0;
+        flex-wrap: wrap;
+    }
+
+    &__tag {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 6px;
+        background: #F1F5F9;
+        color: #475569;
+        letter-spacing: 0.02em;
+
+        &:nth-child(even) {
+            background: rgba($primary-color, 0.05);
+            color: darken($primary-color, 10%);
+        }
+    }
+
+    &__authors {
+        font-size: 14px;
+        color: #475569;
+        margin-bottom: 0; // Removed margin
+        line-height: 1.5;
+
+        /* Line Clamping for authors */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        strong {
+            font-weight: 700;
+            color: #1E293B;
+        }
+    }
+
+    &__venue {
+        font-size: 14px;
+        color: #64748B;
+        font-weight: 500;
+    }
+
+    &__abstract-container {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden; // Important for zero-height state
+
+        #{$c}.is-expanded & {
+            grid-template-rows: 1fr;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__abstract-content {
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #334155;
+        background: #F8FAFC;
+        border-radius: 8px;
+
+        p {
+            margin: 0;
+            padding: 16px;
+            border-left: 3px solid $primary-color;
+        }
+    }
+
+    &__footer {
+        margin-top: auto; // Pushes footer to the bottom of the card
+        padding-top: 8px; // Tightened
+        border-top: 1px solid #F1F5F9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        @media only screen and (max-width: $tablet) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    &__link {
+        font-size: 14px;
+        font-weight: 600;
+        color: #3b82f6;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+
+        i {
+            font-size: 18px;
+        }
+
+        &:hover {
+            color: darken(#3b82f6, 15%);
+        }
+    }
+
+    &.is-vertical {
+        height: 420px; // Increased from 350px
+        display: flex;
+        flex-direction: column;
+        border-left: none;
+        border-right: 4px solid $primary-color;
+
+        .c-publication-card__main-row {
+            flex-direction: column;
+            padding: 0;
+            gap: 0;
+            height: 100%;
+        }
+
+        .c-publication-card__image-container {
+            width: 100%;
+            height: 180px; // Increased from 140px
+            flex-shrink: 0;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+            @media only screen and (max-width: $tablet) {
+                height: 140px; // Increased mobile height
+            }
+        }
+
+        .c-publication-card__body {
+            padding: 12px 16px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .c-publication-card__top {
+            flex: 1;
+        }
+
+        .c-publication-card__title {
+            font-size: 17px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.45;
+            max-height: 5.8em; // 4 lines * 1.45
+            margin-bottom: 12px;
+            margin-top: 8px;
+            font-family: inherit !important; // Force default font
+        }
+
+        .c-publication-card__authors {
+            margin-top: 2px;
+            font-size: 13px;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            max-height: 4.5em; // 3 lines * 1.5
+        }
+
+        .c-publication-card__footer {
+            margin-top: auto;
+            padding-top: 12px;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .c-publication-card__links {
+            flex-wrap: nowrap;
+            overflow: hidden;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .c-publication-card__link {
+            white-space: nowrap;
+            font-size: 13px;
+        }
+
+        .c-publication-card__venue {
+            white-space: nowrap;
+            margin-left: 12px;
+            font-size: 13px;
+        }
+
+        // Hide abstract toggle on vertical layout
+        .c-publication-card__toggle {
+            display: none;
+        }
+
+        .c-publication-card__title-row {
+            cursor: default;
+            pointer-events: none;
+        }
+    }
+}

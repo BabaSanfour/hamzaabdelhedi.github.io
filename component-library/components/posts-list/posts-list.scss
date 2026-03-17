@@ -1,4 +1,43 @@
-/* Posts List */
+/* Posts List / Updates Filter */
+.c-updates-filter-group {
+  margin-bottom: 40px;
+}
+
+.c-updates-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+  justify-content: center;
+
+  &__btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-color;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+      border-color: transparent;
+      color: $white;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+    }
+
+    &.active {
+      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+      border-color: transparent;
+      color: $white;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+    }
+  }
+}
+
 .article {
   margin-bottom: 20px;
   will-change: transform;
@@ -129,6 +168,7 @@
   color: $text-color;
   overflow-y: hidden;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -175,21 +215,61 @@
     line-height: 18px;
     background: linear-gradient(90deg, $primary-color 0%, $secondary-color 100%); // Corrected gradient color
     -webkit-background-clip: text; // For text gradient effect
+    background-clip: text;
     -webkit-text-fill-color: transparent; // Makes text transparent to show gradient
     font-style: italic; // Use italics for emphasis
     margin-left: auto; // Push the date to the right
     position: relative;
 
     &::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: -8px;
-        transform: translateY(-50%);
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: $blue-gray;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -8px;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: $blue-gray;
+    }
+  }
+}
+
+/* Pagination Controls */
+.c-updates-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+
+  &__btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-color;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+      border-color: transparent;
+      color: $white;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+    }
+
+    &.active {
+      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+      border-color: transparent;
+      color: $white;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
     }
   }
 }

@@ -1,0 +1,49 @@
+.featured-publications {
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        /* Ensure cards in a strip are same height */
+        margin: 0 -15px;
+        /* offset bootstrap row padding */
+    }
+
+    &__item {
+        margin-bottom: 30px;
+        display: flex;
+        /* force child article to stretch */
+        flex-direction: column;
+
+        .c-publication-card__image-link {
+            height: 160px;
+            /* Specific height for the featured card strip layout to stay compact */
+            width: 100%;
+        }
+
+        .c-publication-card {
+            flex-direction: column;
+            /* Force vertical card on homepage regardless of screen size */
+        }
+    }
+
+    &__empty {
+        padding: 40px;
+        background: rgba($text-color, 0.03);
+        border-radius: 12px;
+        border: 1px dashed rgba($text-color, 0.2);
+        text-align: center;
+
+        p {
+            margin: 0;
+            color: rgba($text-color, 0.6);
+            font-size: 15px;
+        }
+
+        code {
+            background: rgba($text-color, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+    }
+}

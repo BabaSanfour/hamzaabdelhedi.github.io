@@ -1,0 +1,140 @@
+{% assign c = "c-publication-card" %}
+<article
+    class="{{c}} {% if include.project.featured %}is-featured{% endif %} {% if include.layout == 'vertical' %}is-vertical{% endif %}"
+    id="pub-{{ include.project.slug }}">
+
+    <div class="{{c}}__main-row">
+        {% assign display_image = include.project.thumbnail %}
+        {% if include.layout == 'vertical' and include.project.banner %}
+        {% assign display_image = include.project.banner %}
+        {% endif %}
+
+        {% if display_image %}
+        <div class="{{c}}__image-container">
+            <img loading="lazy" src="{{ display_image | relative_url }}" alt="{{ include.project.title }}"
+                class="{{c}}__image">
+        </div>
+        {% endif %}
+
+        <div class="{{c}}__body">
+            <div class="{{c}}__top">
+                <div class="{{c}}__title-row" onclick="toggleAbstract('pub-{{ include.project.slug }}')">
+                    <h3 class="{{c}}__title">
+                        <i class="ion ion-md-journal {{c}}__title-icon"></i>
+                        {{ include.project.title }}
+                    </h3>
+                    <button class="{{c}}__toggle" aria-label="Toggle Abstract">
+                        <i class="ion ion-ios-arrow-down"></i>
+                    </button>
+                </div>
+
+                {% if include.layout != 'vertical' %}
+                <div class="{{c}}__tags">
+                    {% for tag in include.project.keywords %}
+                    <span class="{{c}}__tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="{{c}}__authors">
+                    {{ include.project.authors | replace: 'Hamza Abdelhedi', '<strong>Hamza Abdelhedi</strong>' }}
+                </div>
+            </div>
+
+            <div class="{{c}}__abstract-container">
+                <div class="{{c}}__abstract-content">
+                    <p><strong>Abstract:</strong> {{ include.project.content | strip_html }}</p>
+                </div>
+            </div>
+
+            <div class="{{c}}__footer">
+                <div class="{{c}}__links">
+                    {% if include.project.project_url %}
+                    <a href="{{ include.project.project_url | relative_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-md-globe"></i> Project page
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.pdf_link %}
+                    <a href="{{ include.project.pdf_link | relative_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-md-document"></i> Paper
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.code_url %}
+                    <a href="{{ include.project.code_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-md-code"></i> Code
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.zenodo_url %}
+                    <a href="{{ include.project.zenodo_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-md-archive"></i> Zenodo
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.poster_url %}
+                    <a href="{{ include.project.poster_url | relative_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-md-image"></i> Poster
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.doi %}
+                    {% assign doi_url = include.project.doi %}
+                    {% unless doi_url contains 'http' %}
+                    {% assign doi_url = "https://doi.org/" | append: include.project.doi %}
+                    {% endunless %}
+                    <a href="{{ doi_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-md-link"></i> DOI
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.arxiv_url %}
+                    <a href="{{ include.project.arxiv_url }}" class="{{c}}__link" target="_blank">
+                        <i class="ion ion-logo-buffer"></i> arXiv
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.bibtex %}
+                    <a href="#" class="{{c}}__link" data-bibtex="{{ include.project.bibtex | escape }}"
+                        onclick="copyBibtex(event, this)">
+                        <i class="ion ion-md-quote"></i> Cite
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div class="{{c}}__venue">
+                    {{ include.project.venue }}, {{ include.project.year }}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+    if (typeof toggleAbstract === 'undefined') {
+        function toggleAbstract(id) {
+            const card = document.getElementById(id);
+            if (card) {
+                card.classList.toggle('is-expanded');
+            }
+        }
+
+        function copyBibtex(event, element) {
+            event.preventDefault();
+            const bibtex = element.getAttribute('data-bibtex');
+            if (!bibtex) return;
+
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const originalHTML = element.innerHTML;
+                element.innerHTML = '<i class="ion ion-md-checkmark"></i> Copied!';
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert("Failed to copy target text to clipboard.");
+            });
+        }
+    }
+</script>

@@ -1,0 +1,766 @@
+csv was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.4.0.
+You can add csv to your Gemfile or gemspec to silence this warning.
+/Users/hamzaabdelhedi/Projects/websites/personal_website/site/vendor/bundle/ruby/3.3.0/gems/safe_yaml-1.0.5/lib/safe_yaml/load.rb:22: warning: base64 was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.4.0.
+You can add base64 to your Gemfile or gemspec to silence this warning.
+  Logging at level: debug
+    Jekyll Version: 4.3.3
+Configuration file: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_config.yml
+         Requiring: jekyll-bookshop
+         Requiring: jekyll-sitemap
+         Requiring: jekyll/tagging
+            Source: /Users/hamzaabdelhedi/Projects/websites/personal_website/site
+       Destination: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+           Reading: /_layouts/default.html
+           Reading: /_layouts/post.html
+           Reading: /_layouts/project.html
+           Reading: /_layouts/publication_detail.html
+           Reading: /_layouts/tag_page.html
+       EntryFilter: excluded /.bundle
+       EntryFilter: excluded /Gemfile
+       EntryFilter: excluded /Gemfile.lock
+       EntryFilter: excluded /.jekyll-cache
+       EntryFilter: excluded /vendor
+           Reading: schemas/page.html
+           Reading: schemas/project.md
+           Reading: schemas/affiliations.md
+           Reading: schemas/post.md
+           Reading: _posts/2023-09-01-CIRCA-Scholarship.markdown
+           Reading: _posts/2023-09-02-MNC-TA2023.markdown
+           Reading: _posts/2023-10-10-NeuroAI-Workshop.markdown
+           Reading: _posts/2023-10-16-CuttingEEG.markdown
+           Reading: _posts/2023-10-20-UNIQUE-Retreat.markdown
+           Reading: _posts/2023-11-03-Scaling-Workshop.markdown
+           Reading: _posts/2023-11-22-UNIQUE-Get-Together.markdown
+           Reading: _posts/2024-02-28-cosyne-2024.markdown
+           Reading: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown
+           Reading: _posts/2024-09-02-PhD-Biomed-Engineering.markdown
+           Reading: _posts/2024-09-15-med-AI-scholarship.markdown
+           Reading: _posts/2024-09-29-naisys-2024.markdown
+           Reading: _posts/2024-10-25-main2024.markdown
+           Reading: _posts/2024-11-01-AMAI-RG.markdown
+           Reading: _posts/2024-11-09-AbInt-AGM-NZ.markdown
+           Reading: assets/main.scss
+           Reading: components.html
+           Reading: _pages/about.html
+[31m             Error: YAML Exception reading /Users/hamzaabdelhedi/Projects/websites/personal_website/site/collections/_pages/about.html: (<unknown>): did not find expected key while parsing a block mapping at line 2 column 1[0m
+           Reading: _pages/blog.html
+           Reading: _pages/contact.html
+           Reading: _pages/elements.html
+           Reading: _pages/index.html
+           Reading: _pages/projects.html
+           Reading: _pages/publications.html
+           Reading: _pages/updates.html
+[31m             Error: YAML Exception reading /Users/hamzaabdelhedi/Projects/websites/personal_website/site/collections/_pages/updates.html: (<unknown>): did not find expected key while parsing a block mapping at line 2 column 1[0m
+           Reading: _projects/2021-01-05-green-plant.md
+           Reading: _projects/2021-01-06-antelope-anyon.md
+           Reading: _projects/2021-01-08-quiet-lake.md
+           Reading: _projects/2021-01-09-the-rocks.md
+           Reading: _projects/2021-01-10-big-airplane.md
+           Reading: _projects/2021-01-11-mountains.md
+           Reading: _projects/2021-01-12-sea-and-rest.md
+           Reading: _projects/2021-01-14-prague-city.md
+           Reading: _projects/2021-01-15-desk-setup.md
+           Reading: _affiliations/01-cocolab.md
+           Reading: _affiliations/02-mila.md
+           Reading: _affiliations/03-udem.md
+           Reading: _affiliations/04-saint-justine.md
+           Reading: _affiliations/04-snail.md
+           Reading: _affiliations/05-supcom.md
+           Reading: _publications/data-imbalance.md
+           Reading: _publications/meg-ann-review.md
+           Reading: _data/author.yml
+           Reading: _data/footer.yml
+           Reading: _data/general_settings.yml
+           Reading: _data/navigation.yml
+           Reading: _data/newsletter.yml
+           Reading: _data/social_links.yml
+           Reading: _data/spotlight.yml
+           Reading: _data/trajectory.yml
+           Reading: _data/updates.yml
+        Generating: Jekyll::Tagger finished in 0.00222 seconds.
+        Generating: Jekyll::JekyllSitemap finished in 0.002554 seconds.
+         Rendering: _posts/2023-09-01-CIRCA-Scholarship.markdown
+  Pre-Render Hooks: _posts/2023-09-01-CIRCA-Scholarship.markdown
+  Rendering Markup: _posts/2023-09-01-CIRCA-Scholarship.markdown
+Post-Convert Hooks: _posts/2023-09-01-CIRCA-Scholarship.markdown
+  Rendering Layout: _posts/2023-09-01-CIRCA-Scholarship.markdown
+         Rendering: _posts/2023-09-01-CIRCA-Scholarship.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-09-01-CIRCA-Scholarship.markdown/#excerpt
+  Rendering Markup: _posts/2023-09-01-CIRCA-Scholarship.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-09-01-CIRCA-Scholarship.markdown/#excerpt
+         Rendering: _posts/2023-09-02-MNC-TA2023.markdown
+  Pre-Render Hooks: _posts/2023-09-02-MNC-TA2023.markdown
+  Rendering Markup: _posts/2023-09-02-MNC-TA2023.markdown
+Post-Convert Hooks: _posts/2023-09-02-MNC-TA2023.markdown
+  Rendering Layout: _posts/2023-09-02-MNC-TA2023.markdown
+         Rendering: _posts/2023-09-02-MNC-TA2023.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-09-02-MNC-TA2023.markdown/#excerpt
+  Rendering Markup: _posts/2023-09-02-MNC-TA2023.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-09-02-MNC-TA2023.markdown/#excerpt
+         Rendering: _posts/2023-10-10-NeuroAI-Workshop.markdown
+  Pre-Render Hooks: _posts/2023-10-10-NeuroAI-Workshop.markdown
+  Rendering Markup: _posts/2023-10-10-NeuroAI-Workshop.markdown
+Post-Convert Hooks: _posts/2023-10-10-NeuroAI-Workshop.markdown
+  Rendering Layout: _posts/2023-10-10-NeuroAI-Workshop.markdown
+         Rendering: _posts/2023-10-10-NeuroAI-Workshop.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-10-10-NeuroAI-Workshop.markdown/#excerpt
+  Rendering Markup: _posts/2023-10-10-NeuroAI-Workshop.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-10-10-NeuroAI-Workshop.markdown/#excerpt
+         Rendering: _posts/2023-10-16-CuttingEEG.markdown
+  Pre-Render Hooks: _posts/2023-10-16-CuttingEEG.markdown
+  Rendering Markup: _posts/2023-10-16-CuttingEEG.markdown
+Post-Convert Hooks: _posts/2023-10-16-CuttingEEG.markdown
+  Rendering Layout: _posts/2023-10-16-CuttingEEG.markdown
+         Rendering: _posts/2023-10-16-CuttingEEG.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-10-16-CuttingEEG.markdown/#excerpt
+  Rendering Markup: _posts/2023-10-16-CuttingEEG.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-10-16-CuttingEEG.markdown/#excerpt
+         Rendering: _posts/2023-10-20-UNIQUE-Retreat.markdown
+  Pre-Render Hooks: _posts/2023-10-20-UNIQUE-Retreat.markdown
+  Rendering Markup: _posts/2023-10-20-UNIQUE-Retreat.markdown
+Post-Convert Hooks: _posts/2023-10-20-UNIQUE-Retreat.markdown
+  Rendering Layout: _posts/2023-10-20-UNIQUE-Retreat.markdown
+         Rendering: _posts/2023-10-20-UNIQUE-Retreat.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-10-20-UNIQUE-Retreat.markdown/#excerpt
+  Rendering Markup: _posts/2023-10-20-UNIQUE-Retreat.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-10-20-UNIQUE-Retreat.markdown/#excerpt
+         Rendering: _posts/2023-11-03-Scaling-Workshop.markdown
+  Pre-Render Hooks: _posts/2023-11-03-Scaling-Workshop.markdown
+  Rendering Markup: _posts/2023-11-03-Scaling-Workshop.markdown
+Post-Convert Hooks: _posts/2023-11-03-Scaling-Workshop.markdown
+  Rendering Layout: _posts/2023-11-03-Scaling-Workshop.markdown
+         Rendering: _posts/2023-11-03-Scaling-Workshop.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-11-03-Scaling-Workshop.markdown/#excerpt
+  Rendering Markup: _posts/2023-11-03-Scaling-Workshop.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-11-03-Scaling-Workshop.markdown/#excerpt
+         Rendering: _posts/2023-11-22-UNIQUE-Get-Together.markdown
+  Pre-Render Hooks: _posts/2023-11-22-UNIQUE-Get-Together.markdown
+  Rendering Markup: _posts/2023-11-22-UNIQUE-Get-Together.markdown
+Post-Convert Hooks: _posts/2023-11-22-UNIQUE-Get-Together.markdown
+  Rendering Layout: _posts/2023-11-22-UNIQUE-Get-Together.markdown
+         Rendering: _posts/2023-11-22-UNIQUE-Get-Together.markdown/#excerpt
+  Pre-Render Hooks: _posts/2023-11-22-UNIQUE-Get-Together.markdown/#excerpt
+  Rendering Markup: _posts/2023-11-22-UNIQUE-Get-Together.markdown/#excerpt
+Post-Convert Hooks: _posts/2023-11-22-UNIQUE-Get-Together.markdown/#excerpt
+         Rendering: _posts/2024-02-28-cosyne-2024.markdown
+  Pre-Render Hooks: _posts/2024-02-28-cosyne-2024.markdown
+  Rendering Markup: _posts/2024-02-28-cosyne-2024.markdown
+Post-Convert Hooks: _posts/2024-02-28-cosyne-2024.markdown
+  Rendering Layout: _posts/2024-02-28-cosyne-2024.markdown
+         Rendering: _posts/2024-02-28-cosyne-2024.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-02-28-cosyne-2024.markdown/#excerpt
+  Rendering Markup: _posts/2024-02-28-cosyne-2024.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-02-28-cosyne-2024.markdown/#excerpt
+         Rendering: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown
+  Pre-Render Hooks: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown
+  Rendering Markup: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown
+Post-Convert Hooks: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown
+  Rendering Layout: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown
+         Rendering: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown/#excerpt
+  Rendering Markup: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-09-01-TA-MNC-LAB2-A2024.markdown/#excerpt
+         Rendering: _posts/2024-09-02-PhD-Biomed-Engineering.markdown
+  Pre-Render Hooks: _posts/2024-09-02-PhD-Biomed-Engineering.markdown
+  Rendering Markup: _posts/2024-09-02-PhD-Biomed-Engineering.markdown
+Post-Convert Hooks: _posts/2024-09-02-PhD-Biomed-Engineering.markdown
+  Rendering Layout: _posts/2024-09-02-PhD-Biomed-Engineering.markdown
+         Rendering: _posts/2024-09-02-PhD-Biomed-Engineering.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-09-02-PhD-Biomed-Engineering.markdown/#excerpt
+  Rendering Markup: _posts/2024-09-02-PhD-Biomed-Engineering.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-09-02-PhD-Biomed-Engineering.markdown/#excerpt
+         Rendering: _posts/2024-09-15-med-AI-scholarship.markdown
+  Pre-Render Hooks: _posts/2024-09-15-med-AI-scholarship.markdown
+  Rendering Markup: _posts/2024-09-15-med-AI-scholarship.markdown
+Post-Convert Hooks: _posts/2024-09-15-med-AI-scholarship.markdown
+  Rendering Layout: _posts/2024-09-15-med-AI-scholarship.markdown
+         Rendering: _posts/2024-09-15-med-AI-scholarship.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-09-15-med-AI-scholarship.markdown/#excerpt
+  Rendering Markup: _posts/2024-09-15-med-AI-scholarship.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-09-15-med-AI-scholarship.markdown/#excerpt
+         Rendering: _posts/2024-09-29-naisys-2024.markdown
+  Pre-Render Hooks: _posts/2024-09-29-naisys-2024.markdown
+  Rendering Markup: _posts/2024-09-29-naisys-2024.markdown
+Post-Convert Hooks: _posts/2024-09-29-naisys-2024.markdown
+  Rendering Layout: _posts/2024-09-29-naisys-2024.markdown
+         Rendering: _posts/2024-09-29-naisys-2024.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-09-29-naisys-2024.markdown/#excerpt
+  Rendering Markup: _posts/2024-09-29-naisys-2024.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-09-29-naisys-2024.markdown/#excerpt
+         Rendering: _posts/2024-10-25-main2024.markdown
+  Pre-Render Hooks: _posts/2024-10-25-main2024.markdown
+  Rendering Markup: _posts/2024-10-25-main2024.markdown
+Post-Convert Hooks: _posts/2024-10-25-main2024.markdown
+  Rendering Layout: _posts/2024-10-25-main2024.markdown
+         Rendering: _posts/2024-10-25-main2024.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-10-25-main2024.markdown/#excerpt
+  Rendering Markup: _posts/2024-10-25-main2024.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-10-25-main2024.markdown/#excerpt
+         Rendering: _posts/2024-11-01-AMAI-RG.markdown
+  Pre-Render Hooks: _posts/2024-11-01-AMAI-RG.markdown
+  Rendering Markup: _posts/2024-11-01-AMAI-RG.markdown
+Post-Convert Hooks: _posts/2024-11-01-AMAI-RG.markdown
+  Rendering Layout: _posts/2024-11-01-AMAI-RG.markdown
+         Rendering: _posts/2024-11-01-AMAI-RG.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-11-01-AMAI-RG.markdown/#excerpt
+  Rendering Markup: _posts/2024-11-01-AMAI-RG.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-11-01-AMAI-RG.markdown/#excerpt
+         Rendering: _posts/2024-11-09-AbInt-AGM-NZ.markdown
+  Pre-Render Hooks: _posts/2024-11-09-AbInt-AGM-NZ.markdown
+  Rendering Markup: _posts/2024-11-09-AbInt-AGM-NZ.markdown
+Post-Convert Hooks: _posts/2024-11-09-AbInt-AGM-NZ.markdown
+  Rendering Layout: _posts/2024-11-09-AbInt-AGM-NZ.markdown
+         Rendering: _posts/2024-11-09-AbInt-AGM-NZ.markdown/#excerpt
+  Pre-Render Hooks: _posts/2024-11-09-AbInt-AGM-NZ.markdown/#excerpt
+  Rendering Markup: _posts/2024-11-09-AbInt-AGM-NZ.markdown/#excerpt
+Post-Convert Hooks: _posts/2024-11-09-AbInt-AGM-NZ.markdown/#excerpt
+         Rendering: _pages/about.html
+  Pre-Render Hooks: _pages/about.html
+  Rendering Markup: _pages/about.html
+Post-Convert Hooks: _pages/about.html
+  Rendering Layout: _pages/about.html
+         Rendering: _pages/blog.html
+  Pre-Render Hooks: _pages/blog.html
+  Rendering Markup: _pages/blog.html
+Post-Convert Hooks: _pages/blog.html
+  Rendering Layout: _pages/blog.html
+         Rendering: _pages/blog.html/#excerpt
+  Pre-Render Hooks: _pages/blog.html/#excerpt
+  Rendering Markup: _pages/blog.html/#excerpt
+Post-Convert Hooks: _pages/blog.html/#excerpt
+         Rendering: _pages/contact.html
+  Pre-Render Hooks: _pages/contact.html
+  Rendering Markup: _pages/contact.html
+Post-Convert Hooks: _pages/contact.html
+  Rendering Layout: _pages/contact.html
+         Rendering: _pages/contact.html/#excerpt
+  Pre-Render Hooks: _pages/contact.html/#excerpt
+  Rendering Markup: _pages/contact.html/#excerpt
+Post-Convert Hooks: _pages/contact.html/#excerpt
+         Rendering: _pages/elements.html
+  Pre-Render Hooks: _pages/elements.html
+  Rendering Markup: _pages/elements.html
+Post-Convert Hooks: _pages/elements.html
+  Rendering Layout: _pages/elements.html
+         Rendering: _pages/elements.html/#excerpt
+  Pre-Render Hooks: _pages/elements.html/#excerpt
+  Rendering Markup: _pages/elements.html/#excerpt
+Post-Convert Hooks: _pages/elements.html/#excerpt
+         Rendering: _pages/index.html
+  Pre-Render Hooks: _pages/index.html
+  Rendering Markup: _pages/index.html
+Post-Convert Hooks: _pages/index.html
+  Rendering Layout: _pages/index.html
+         Rendering: _pages/projects.html
+  Pre-Render Hooks: _pages/projects.html
+  Rendering Liquid: _pages/projects.html
+  Rendering Markup: _pages/projects.html
+Post-Convert Hooks: _pages/projects.html
+  Rendering Layout: _pages/projects.html
+         Rendering: _pages/projects.html/#excerpt
+  Pre-Render Hooks: _pages/projects.html/#excerpt
+  Rendering Liquid: _pages/projects.html/#excerpt
+  Rendering Markup: _pages/projects.html/#excerpt
+Post-Convert Hooks: _pages/projects.html/#excerpt
+         Rendering: _pages/publications.html
+  Pre-Render Hooks: _pages/publications.html
+  Rendering Liquid: _pages/publications.html
+  Rendering Markup: _pages/publications.html
+Post-Convert Hooks: _pages/publications.html
+  Rendering Layout: _pages/publications.html
+         Rendering: _pages/publications.html/#excerpt
+  Pre-Render Hooks: _pages/publications.html/#excerpt
+  Rendering Liquid: _pages/publications.html/#excerpt
+  Rendering Markup: _pages/publications.html/#excerpt
+Post-Convert Hooks: _pages/publications.html/#excerpt
+         Rendering: _pages/updates.html
+  Pre-Render Hooks: _pages/updates.html
+  Rendering Markup: _pages/updates.html
+Post-Convert Hooks: _pages/updates.html
+  Rendering Layout: _pages/updates.html
+         Rendering: _projects/2021-01-05-green-plant.md
+  Pre-Render Hooks: _projects/2021-01-05-green-plant.md
+  Rendering Markup: _projects/2021-01-05-green-plant.md
+Post-Convert Hooks: _projects/2021-01-05-green-plant.md
+  Rendering Layout: _projects/2021-01-05-green-plant.md
+         Rendering: _projects/2021-01-05-green-plant.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-05-green-plant.md/#excerpt
+  Rendering Markup: _projects/2021-01-05-green-plant.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-05-green-plant.md/#excerpt
+         Rendering: _projects/2021-01-06-antelope-anyon.md
+  Pre-Render Hooks: _projects/2021-01-06-antelope-anyon.md
+  Rendering Markup: _projects/2021-01-06-antelope-anyon.md
+Post-Convert Hooks: _projects/2021-01-06-antelope-anyon.md
+  Rendering Layout: _projects/2021-01-06-antelope-anyon.md
+         Rendering: _projects/2021-01-06-antelope-anyon.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-06-antelope-anyon.md/#excerpt
+  Rendering Markup: _projects/2021-01-06-antelope-anyon.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-06-antelope-anyon.md/#excerpt
+         Rendering: _projects/2021-01-08-quiet-lake.md
+  Pre-Render Hooks: _projects/2021-01-08-quiet-lake.md
+  Rendering Markup: _projects/2021-01-08-quiet-lake.md
+Post-Convert Hooks: _projects/2021-01-08-quiet-lake.md
+  Rendering Layout: _projects/2021-01-08-quiet-lake.md
+         Rendering: _projects/2021-01-08-quiet-lake.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-08-quiet-lake.md/#excerpt
+  Rendering Markup: _projects/2021-01-08-quiet-lake.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-08-quiet-lake.md/#excerpt
+         Rendering: _projects/2021-01-09-the-rocks.md
+  Pre-Render Hooks: _projects/2021-01-09-the-rocks.md
+  Rendering Markup: _projects/2021-01-09-the-rocks.md
+Post-Convert Hooks: _projects/2021-01-09-the-rocks.md
+  Rendering Layout: _projects/2021-01-09-the-rocks.md
+         Rendering: _projects/2021-01-09-the-rocks.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-09-the-rocks.md/#excerpt
+  Rendering Markup: _projects/2021-01-09-the-rocks.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-09-the-rocks.md/#excerpt
+         Rendering: _projects/2021-01-10-big-airplane.md
+  Pre-Render Hooks: _projects/2021-01-10-big-airplane.md
+  Rendering Markup: _projects/2021-01-10-big-airplane.md
+Post-Convert Hooks: _projects/2021-01-10-big-airplane.md
+  Rendering Layout: _projects/2021-01-10-big-airplane.md
+         Rendering: _projects/2021-01-10-big-airplane.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-10-big-airplane.md/#excerpt
+  Rendering Markup: _projects/2021-01-10-big-airplane.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-10-big-airplane.md/#excerpt
+         Rendering: _projects/2021-01-11-mountains.md
+  Pre-Render Hooks: _projects/2021-01-11-mountains.md
+  Rendering Markup: _projects/2021-01-11-mountains.md
+Post-Convert Hooks: _projects/2021-01-11-mountains.md
+  Rendering Layout: _projects/2021-01-11-mountains.md
+         Rendering: _projects/2021-01-11-mountains.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-11-mountains.md/#excerpt
+  Rendering Markup: _projects/2021-01-11-mountains.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-11-mountains.md/#excerpt
+         Rendering: _projects/2021-01-12-sea-and-rest.md
+  Pre-Render Hooks: _projects/2021-01-12-sea-and-rest.md
+  Rendering Markup: _projects/2021-01-12-sea-and-rest.md
+Post-Convert Hooks: _projects/2021-01-12-sea-and-rest.md
+  Rendering Layout: _projects/2021-01-12-sea-and-rest.md
+         Rendering: _projects/2021-01-12-sea-and-rest.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-12-sea-and-rest.md/#excerpt
+  Rendering Markup: _projects/2021-01-12-sea-and-rest.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-12-sea-and-rest.md/#excerpt
+         Rendering: _projects/2021-01-14-prague-city.md
+  Pre-Render Hooks: _projects/2021-01-14-prague-city.md
+  Rendering Markup: _projects/2021-01-14-prague-city.md
+Post-Convert Hooks: _projects/2021-01-14-prague-city.md
+  Rendering Layout: _projects/2021-01-14-prague-city.md
+         Rendering: _projects/2021-01-14-prague-city.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-14-prague-city.md/#excerpt
+  Rendering Markup: _projects/2021-01-14-prague-city.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-14-prague-city.md/#excerpt
+         Rendering: _projects/2021-01-15-desk-setup.md
+  Pre-Render Hooks: _projects/2021-01-15-desk-setup.md
+  Rendering Markup: _projects/2021-01-15-desk-setup.md
+Post-Convert Hooks: _projects/2021-01-15-desk-setup.md
+  Rendering Layout: _projects/2021-01-15-desk-setup.md
+         Rendering: _projects/2021-01-15-desk-setup.md/#excerpt
+  Pre-Render Hooks: _projects/2021-01-15-desk-setup.md/#excerpt
+  Rendering Markup: _projects/2021-01-15-desk-setup.md/#excerpt
+Post-Convert Hooks: _projects/2021-01-15-desk-setup.md/#excerpt
+         Rendering: _affiliations/01-cocolab.md
+  Pre-Render Hooks: _affiliations/01-cocolab.md
+  Rendering Markup: _affiliations/01-cocolab.md
+Post-Convert Hooks: _affiliations/01-cocolab.md
+  Rendering Layout: _affiliations/01-cocolab.md
+         Rendering: _affiliations/01-cocolab.md/#excerpt
+  Pre-Render Hooks: _affiliations/01-cocolab.md/#excerpt
+  Rendering Markup: _affiliations/01-cocolab.md/#excerpt
+Post-Convert Hooks: _affiliations/01-cocolab.md/#excerpt
+         Rendering: _affiliations/02-mila.md
+  Pre-Render Hooks: _affiliations/02-mila.md
+  Rendering Markup: _affiliations/02-mila.md
+Post-Convert Hooks: _affiliations/02-mila.md
+  Rendering Layout: _affiliations/02-mila.md
+         Rendering: _affiliations/02-mila.md/#excerpt
+  Pre-Render Hooks: _affiliations/02-mila.md/#excerpt
+  Rendering Markup: _affiliations/02-mila.md/#excerpt
+Post-Convert Hooks: _affiliations/02-mila.md/#excerpt
+         Rendering: _affiliations/03-udem.md
+  Pre-Render Hooks: _affiliations/03-udem.md
+  Rendering Markup: _affiliations/03-udem.md
+Post-Convert Hooks: _affiliations/03-udem.md
+  Rendering Layout: _affiliations/03-udem.md
+         Rendering: _affiliations/03-udem.md/#excerpt
+  Pre-Render Hooks: _affiliations/03-udem.md/#excerpt
+  Rendering Markup: _affiliations/03-udem.md/#excerpt
+Post-Convert Hooks: _affiliations/03-udem.md/#excerpt
+         Rendering: _affiliations/04-saint-justine.md
+  Pre-Render Hooks: _affiliations/04-saint-justine.md
+  Rendering Markup: _affiliations/04-saint-justine.md
+Post-Convert Hooks: _affiliations/04-saint-justine.md
+  Rendering Layout: _affiliations/04-saint-justine.md
+         Rendering: _affiliations/04-saint-justine.md/#excerpt
+  Pre-Render Hooks: _affiliations/04-saint-justine.md/#excerpt
+  Rendering Markup: _affiliations/04-saint-justine.md/#excerpt
+Post-Convert Hooks: _affiliations/04-saint-justine.md/#excerpt
+         Rendering: _affiliations/04-snail.md
+  Pre-Render Hooks: _affiliations/04-snail.md
+  Rendering Markup: _affiliations/04-snail.md
+Post-Convert Hooks: _affiliations/04-snail.md
+  Rendering Layout: _affiliations/04-snail.md
+         Rendering: _affiliations/04-snail.md/#excerpt
+  Pre-Render Hooks: _affiliations/04-snail.md/#excerpt
+  Rendering Markup: _affiliations/04-snail.md/#excerpt
+Post-Convert Hooks: _affiliations/04-snail.md/#excerpt
+         Rendering: _affiliations/05-supcom.md
+  Pre-Render Hooks: _affiliations/05-supcom.md
+  Rendering Markup: _affiliations/05-supcom.md
+Post-Convert Hooks: _affiliations/05-supcom.md
+  Rendering Layout: _affiliations/05-supcom.md
+         Rendering: _affiliations/05-supcom.md/#excerpt
+  Pre-Render Hooks: _affiliations/05-supcom.md/#excerpt
+  Rendering Markup: _affiliations/05-supcom.md/#excerpt
+Post-Convert Hooks: _affiliations/05-supcom.md/#excerpt
+         Rendering: _publications/data-imbalance.md
+  Pre-Render Hooks: _publications/data-imbalance.md
+  Rendering Markup: _publications/data-imbalance.md
+Post-Convert Hooks: _publications/data-imbalance.md
+  Rendering Layout: _publications/data-imbalance.md
+         Rendering: _publications/data-imbalance.md/#excerpt
+  Pre-Render Hooks: _publications/data-imbalance.md/#excerpt
+  Rendering Markup: _publications/data-imbalance.md/#excerpt
+Post-Convert Hooks: _publications/data-imbalance.md/#excerpt
+         Rendering: _publications/meg-ann-review.md
+  Pre-Render Hooks: _publications/meg-ann-review.md
+  Rendering Markup: _publications/meg-ann-review.md
+Post-Convert Hooks: _publications/meg-ann-review.md
+  Rendering Layout: _publications/meg-ann-review.md
+         Rendering: _publications/meg-ann-review.md/#excerpt
+  Pre-Render Hooks: _publications/meg-ann-review.md/#excerpt
+  Rendering Markup: _publications/meg-ann-review.md/#excerpt
+Post-Convert Hooks: _publications/meg-ann-review.md/#excerpt
+         Rendering: schemas/affiliations.md
+  Pre-Render Hooks: schemas/affiliations.md
+  Rendering Markup: schemas/affiliations.md
+Post-Convert Hooks: schemas/affiliations.md
+  Rendering Layout: schemas/affiliations.md
+         Rendering: components.html
+  Pre-Render Hooks: components.html
+  Rendering Liquid: components.html
+  Rendering Markup: components.html
+Post-Convert Hooks: components.html
+  Rendering Layout: components.html
+         Rendering: assets/main.scss
+  Pre-Render Hooks: assets/main.scss
+  Rendering Liquid: assets/main.scss
+  Rendering Markup: assets/main.scss
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @media all, bookshop {@import "shared/styles/0-settings/_A_variables";@import "shared/styles/0-settings/_B_color-scheme";@import "shared/styles/0-settings/_C_mixins";@import "shared/styles/0-settings/_D_helpers";@import "shared/styles/1-tools/_A_normalize";@import "shared/styles/1-tools/_B_reset";@import "shared/styles/1-tools/_C_shared";@import "shared/styles/1-tools/_D_syntax-highlighting";@import "shared/styles/1-tools/_E_grid";@import "shared/styles/1-tools/_F_tiny-slider";@import "shared/styles/1-tools/_G_animate";@import "shared/styles/2-base/_base";@import "shared/styles/3-modules/_footer";@import "shared/styles/3-modules/_header";@import "shared/styles/3-modules/_pagination";@import "shared/styles/3-modules/_publications";@import "shared/styles/3-modules/_scroll-button-top";@import "shared/styles/3-modules/_sections";@import "shared/styles/3-modules/_social-links";@import "shared/styles/4-layouts/_page-layout";@import "components/affiliation-card/affiliation-card";@import "components/affiliations-section/affiliations-section";@import "components/blog-card/blog-card";@import "components/blog-section/blog-section";@import "components/button/button";@import "components/contact-form/contact-form";@import "components/content/content";@import "components/hero/hero";@import "components/newsletter/newsletter";@import "components/page-heading/page-heading";@import "components/page-image/page-image";@import "components/post-redirect/post-redirect";@import "components/posts-list/posts-list";@import "components/project-card/project-card";@import "components/projects-list/projects-list";@import "components/projects-section/projects-section";@import "components/updates-list-item/news-list-item";@import "components/updates-list-item/updates-list-item";@import "components/updates-section/news-section";@import "components/updates-trajectory-split/updates-trajectory-split";}
+  │                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:31  root stylesheet
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @media all, bookshop {@import "shared/styles/0-settings/_A_variables";@import "shared/styles/0-settings/_B_color-scheme";@import "shared/styles/0-settings/_C_mixins";@import "shared/styles/0-settings/_D_helpers";@import "shared/styles/1-tools/_A_normalize";@import "shared/styles/1-tools/_B_reset";@import "shared/styles/1-tools/_C_shared";@import "shared/styles/1-tools/_D_syntax-highlighting";@import "shared/styles/1-tools/_E_grid";@import "shared/styles/1-tools/_F_tiny-slider";@import "shared/styles/1-tools/_G_animate";@import "shared/styles/2-base/_base";@import "shared/styles/3-modules/_footer";@import "shared/styles/3-modules/_header";@import "shared/styles/3-modules/_pagination";@import "shared/styles/3-modules/_publications";@import "shared/styles/3-modules/_scroll-button-top";@import "shared/styles/3-modules/_sections";@import "shared/styles/3-modules/_social-links";@import "shared/styles/4-layouts/_page-layout";@import "components/affiliation-card/affiliation-card";@import "components/affiliations-section/affiliations-section";@import "components/blog-card/blog-card";@import "components/blog-section/blog-section";@import "components/button/button";@import "components/contact-form/contact-form";@import "components/content/content";@import "components/hero/hero";@import "components/newsletter/newsletter";@import "components/page-heading/page-heading";@import "components/page-image/page-image";@import "components/post-redirect/post-redirect";@import "components/posts-list/posts-list";@import "components/project-card/project-card";@import "components/projects-list/projects-list";@import "components/projects-section/projects-section";@import "components/updates-list-item/news-list-item";@import "components/updates-list-item/updates-list-item";@import "components/updates-section/news-section";@import "components/updates-trajectory-split/updates-trajectory-split";}
+  │                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:79  root stylesheet
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @media all, bookshop {@import "shared/styles/0-settings/_A_variables";@import "shared/styles/0-settings/_B_color-scheme";@import "shared/styles/0-settings/_C_mixins";@import "shared/styles/0-settings/_D_helpers";@import "shared/styles/1-tools/_A_normalize";@import "shared/styles/1-tools/_B_reset";@import "shared/styles/1-tools/_C_shared";@import "shared/styles/1-tools/_D_syntax-highlighting";@import "shared/styles/1-tools/_E_grid";@import "shared/styles/1-tools/_F_tiny-slider";@import "shared/styles/1-tools/_G_animate";@import "shared/styles/2-base/_base";@import "shared/styles/3-modules/_footer";@import "shared/styles/3-modules/_header";@import "shared/styles/3-modules/_pagination";@import "shared/styles/3-modules/_publications";@import "shared/styles/3-modules/_scroll-button-top";@import "shared/styles/3-modules/_sections";@import "shared/styles/3-modules/_social-links";@import "shared/styles/4-layouts/_page-layout";@import "components/affiliation-card/affiliation-card";@import "components/affiliations-section/affiliations-section";@import "components/blog-card/blog-card";@import "components/blog-section/blog-section";@import "components/button/button";@import "components/contact-form/contact-form";@import "components/content/content";@import "components/hero/hero";@import "components/newsletter/newsletter";@import "components/page-heading/page-heading";@import "components/page-image/page-image";@import "components/post-redirect/post-redirect";@import "components/posts-list/posts-list";@import "components/project-card/project-card";@import "components/projects-list/projects-list";@import "components/projects-section/projects-section";@import "components/updates-list-item/news-list-item";@import "components/updates-list-item/updates-list-item";@import "components/updates-section/news-section";@import "components/updates-trajectory-split/updates-trajectory-split";}
+  │                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:130  root stylesheet
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @media all, bookshop {@import "shared/styles/0-settings/_A_variables";@import "shared/styles/0-settings/_B_color-scheme";@import "shared/styles/0-settings/_C_mixins";@import "shared/styles/0-settings/_D_helpers";@import "shared/styles/1-tools/_A_normalize";@import "shared/styles/1-tools/_B_reset";@import "shared/styles/1-tools/_C_shared";@import "shared/styles/1-tools/_D_syntax-highlighting";@import "shared/styles/1-tools/_E_grid";@import "shared/styles/1-tools/_F_tiny-slider";@import "shared/styles/1-tools/_G_animate";@import "shared/styles/2-base/_base";@import "shared/styles/3-modules/_footer";@import "shared/styles/3-modules/_header";@import "shared/styles/3-modules/_pagination";@import "shared/styles/3-modules/_publications";@import "shared/styles/3-modules/_scroll-button-top";@import "shared/styles/3-modules/_sections";@import "shared/styles/3-modules/_social-links";@import "shared/styles/4-layouts/_page-layout";@import "components/affiliation-card/affiliation-card";@import "components/affiliations-section/affiliations-section";@import "components/blog-card/blog-card";@import "components/blog-section/blog-section";@import "components/button/button";@import "components/contact-form/contact-form";@import "components/content/content";@import "components/hero/hero";@import "components/newsletter/newsletter";@import "components/page-heading/page-heading";@import "components/page-image/page-image";@import "components/post-redirect/post-redirect";@import "components/posts-list/posts-list";@import "components/project-card/project-card";@import "components/projects-list/projects-list";@import "components/projects-section/projects-section";@import "components/updates-list-item/news-list-item";@import "components/updates-list-item/updates-list-item";@import "components/updates-section/news-section";@import "components/updates-trajectory-split/updates-trajectory-split";}
+  │                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:175  root stylesheet
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @media all, bookshop {@import "shared/styles/0-settings/_A_variables";@import "shared/styles/0-settings/_B_color-scheme";@import "shared/styles/0-settings/_C_mixins";@import "shared/styles/0-settings/_D_helpers";@import "shared/styles/1-tools/_A_normalize";@import "shared/styles/1-tools/_B_reset";@import "shared/styles/1-tools/_C_shared";@import "shared/styles/1-tools/_D_syntax-highlighting";@import "shared/styles/1-tools/_E_grid";@import "shared/styles/1-tools/_F_tiny-slider";@import "shared/styles/1-tools/_G_animate";@import "shared/styles/2-base/_base";@import "shared/styles/3-modules/_footer";@import "shared/styles/3-modules/_header";@import "shared/styles/3-modules/_pagination";@import "shared/styles/3-modules/_publications";@import "shared/styles/3-modules/_scroll-button-top";@import "shared/styles/3-modules/_sections";@import "shared/styles/3-modules/_social-links";@import "shared/styles/4-layouts/_page-layout";@import "components/affiliation-card/affiliation-card";@import "components/affiliations-section/affiliations-section";@import "components/blog-card/blog-card";@import "components/blog-section/blog-section";@import "components/button/button";@import "components/contact-form/contact-form";@import "components/content/content";@import "components/hero/hero";@import "components/newsletter/newsletter";@import "components/page-heading/page-heading";@import "components/page-image/page-image";@import "components/post-redirect/post-redirect";@import "components/posts-list/posts-list";@import "components/project-card/project-card";@import "components/projects-list/projects-list";@import "components/projects-section/projects-section";@import "components/updates-list-item/news-list-item";@import "components/updates-list-item/updates-list-item";@import "components/updates-section/news-section";@import "components/updates-trajectory-split/updates-trajectory-split";}
+  │                                                                                                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:221  root stylesheet
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.adjust instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+22 │ $button-background-hover: darken($primary-color, 5%);
+   │                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    shared/styles/0-settings/_B_color-scheme.scss 22:27                                  @import
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:79  root stylesheet
+DEPRECATION WARNING [color-functions]: darken() is deprecated. Suggestions:
+
+color.scale($color, $lightness: -13.6363636364%)
+color.adjust($color, $lightness: -5%)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+22 │ $button-background-hover: darken($primary-color, 5%);
+   │                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    shared/styles/0-settings/_B_color-scheme.scss 22:27                                  @import
+    /Users/hamzaabdelhedi/Projects/websites/personal_website/site/assets/main.scss 1:79  root stylesheet
+WARNING: 35 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+Post-Convert Hooks: assets/main.scss
+         Rendering: schemas/page.html
+  Pre-Render Hooks: schemas/page.html
+  Rendering Markup: schemas/page.html
+Post-Convert Hooks: schemas/page.html
+  Rendering Layout: schemas/page.html
+         Rendering: schemas/post.md
+  Pre-Render Hooks: schemas/post.md
+  Rendering Markup: schemas/post.md
+Post-Convert Hooks: schemas/post.md
+  Rendering Layout: schemas/post.md
+         Rendering: schemas/project.md
+  Pre-Render Hooks: schemas/project.md
+  Rendering Markup: schemas/project.md
+Post-Convert Hooks: schemas/project.md
+  Rendering Layout: schemas/project.md
+         Rendering: tag/msc.html
+  Pre-Render Hooks: tag/msc.html
+  Rendering Markup: tag/msc.html
+Post-Convert Hooks: tag/msc.html
+  Rendering Layout: tag/msc.html
+         Rendering: tag/award.html
+  Pre-Render Hooks: tag/award.html
+  Rendering Markup: tag/award.html
+Post-Convert Hooks: tag/award.html
+  Rendering Layout: tag/award.html
+         Rendering: tag/scholarship.html
+  Pre-Render Hooks: tag/scholarship.html
+  Rendering Markup: tag/scholarship.html
+Post-Convert Hooks: tag/scholarship.html
+  Rendering Layout: tag/scholarship.html
+         Rendering: tag/circa.html
+  Pre-Render Hooks: tag/circa.html
+  Rendering Markup: tag/circa.html
+Post-Convert Hooks: tag/circa.html
+  Rendering Layout: tag/circa.html
+         Rendering: tag/teaching.html
+  Pre-Render Hooks: tag/teaching.html
+  Rendering Markup: tag/teaching.html
+Post-Convert Hooks: tag/teaching.html
+  Rendering Layout: tag/teaching.html
+         Rendering: tag/ta.html
+  Pre-Render Hooks: tag/ta.html
+  Rendering Markup: tag/ta.html
+Post-Convert Hooks: tag/ta.html
+  Rendering Layout: tag/ta.html
+         Rendering: tag/udem.html
+  Pre-Render Hooks: tag/udem.html
+  Rendering Markup: tag/udem.html
+Post-Convert Hooks: tag/udem.html
+  Rendering Layout: tag/udem.html
+         Rendering: tag/workshop.html
+  Pre-Render Hooks: tag/workshop.html
+  Rendering Markup: tag/workshop.html
+Post-Convert Hooks: tag/workshop.html
+  Rendering Layout: tag/workshop.html
+         Rendering: tag/poster.html
+  Pre-Render Hooks: tag/poster.html
+  Rendering Markup: tag/poster.html
+Post-Convert Hooks: tag/poster.html
+  Rendering Layout: tag/poster.html
+         Rendering: tag/m.sc.html
+  Pre-Render Hooks: tag/m.sc.html
+  Rendering Markup: tag/m.sc.html
+Post-Convert Hooks: tag/m.sc.html
+  Rendering Layout: tag/m.sc.html
+         Rendering: tag/unique.html
+  Pre-Render Hooks: tag/unique.html
+  Rendering Markup: tag/unique.html
+Post-Convert Hooks: tag/unique.html
+  Rendering Layout: tag/unique.html
+         Rendering: tag/volunteering.html
+  Pre-Render Hooks: tag/volunteering.html
+  Rendering Markup: tag/volunteering.html
+Post-Convert Hooks: tag/volunteering.html
+  Rendering Layout: tag/volunteering.html
+         Rendering: tag/conference.html
+  Pre-Render Hooks: tag/conference.html
+  Rendering Markup: tag/conference.html
+Post-Convert Hooks: tag/conference.html
+  Rendering Layout: tag/conference.html
+         Rendering: tag/m/eeg.html
+  Pre-Render Hooks: tag/m/eeg.html
+  Rendering Markup: tag/m/eeg.html
+Post-Convert Hooks: tag/m/eeg.html
+  Rendering Layout: tag/m/eeg.html
+         Rendering: tag/talk.html
+  Pre-Render Hooks: tag/talk.html
+  Rendering Markup: tag/talk.html
+Post-Convert Hooks: tag/talk.html
+  Rendering Layout: tag/talk.html
+         Rendering: tag/conf.html
+  Pre-Render Hooks: tag/conf.html
+  Rendering Markup: tag/conf.html
+Post-Convert Hooks: tag/conf.html
+  Rendering Layout: tag/conf.html
+         Rendering: tag/cosyne.html
+  Pre-Render Hooks: tag/cosyne.html
+  Rendering Markup: tag/cosyne.html
+Post-Convert Hooks: tag/cosyne.html
+  Rendering Layout: tag/cosyne.html
+         Rendering: tag/ph.d.html
+  Pre-Render Hooks: tag/ph.d.html
+  Rendering Markup: tag/ph.d.html
+Post-Convert Hooks: tag/ph.d.html
+  Rendering Layout: tag/ph.d.html
+         Rendering: tag/faculty-of-medicine.html
+  Pre-Render Hooks: tag/faculty-of-medicine.html
+  Rendering Markup: tag/faculty-of-medicine.html
+Post-Convert Hooks: tag/faculty-of-medicine.html
+  Rendering Layout: tag/faculty-of-medicine.html
+         Rendering: tag/biomed.-eng..html
+  Pre-Render Hooks: tag/biomed.-eng..html
+  Rendering Markup: tag/biomed.-eng..html
+Post-Convert Hooks: tag/biomed.-eng..html
+  Rendering Layout: tag/biomed.-eng..html
+         Rendering: tag/naisys.html
+  Pre-Render Hooks: tag/naisys.html
+  Rendering Markup: tag/naisys.html
+Post-Convert Hooks: tag/naisys.html
+  Rendering Layout: tag/naisys.html
+         Rendering: tag/tutorial.html
+  Pre-Render Hooks: tag/tutorial.html
+  Rendering Markup: tag/tutorial.html
+Post-Convert Hooks: tag/tutorial.html
+  Rendering Layout: tag/tutorial.html
+         Rendering: tag/main.html
+  Pre-Render Hooks: tag/main.html
+  Rendering Markup: tag/main.html
+Post-Convert Hooks: tag/main.html
+  Rendering Layout: tag/main.html
+         Rendering: tag/amai-rg.html
+  Pre-Render Hooks: tag/amai-rg.html
+  Rendering Markup: tag/amai-rg.html
+Post-Convert Hooks: tag/amai-rg.html
+  Rendering Layout: tag/amai-rg.html
+         Rendering: tag/mila.html
+  Pre-Render Hooks: tag/mila.html
+  Rendering Markup: tag/mila.html
+Post-Convert Hooks: tag/mila.html
+  Rendering Layout: tag/mila.html
+         Rendering: tag/indigenous.html
+  Pre-Render Hooks: tag/indigenous.html
+  Rendering Markup: tag/indigenous.html
+Post-Convert Hooks: tag/indigenous.html
+  Rendering Layout: tag/indigenous.html
+         Rendering: tag/ai.html
+  Pre-Render Hooks: tag/ai.html
+  Rendering Markup: tag/ai.html
+Post-Convert Hooks: tag/ai.html
+  Rendering Layout: tag/ai.html
+         Rendering: tag/abundant-intelligences.html
+  Pre-Render Hooks: tag/abundant-intelligences.html
+  Rendering Markup: tag/abundant-intelligences.html
+Post-Convert Hooks: tag/abundant-intelligences.html
+  Rendering Layout: tag/abundant-intelligences.html
+         Rendering: sitemap.xml
+  Pre-Render Hooks: sitemap.xml
+  Rendering Liquid: sitemap.xml
+  Rendering Markup: sitemap.xml
+Post-Convert Hooks: sitemap.xml
+  Rendering Layout: sitemap.xml
+         Rendering: robots.txt
+  Pre-Render Hooks: robots.txt
+  Rendering Liquid: robots.txt
+  Rendering Markup: robots.txt
+Post-Convert Hooks: robots.txt
+  Rendering Layout: robots.txt
+         Rendering: assets/main.css.map
+  Pre-Render Hooks: assets/main.css.map
+  Rendering Markup: assets/main.css.map
+Post-Convert Hooks: assets/main.css.map
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/schemas/affiliations.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/components/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/assets/main.css
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/schemas/page.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/schemas/post.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/schemas/project.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/msc.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/award.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/scholarship.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/circa.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/teaching.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/ta.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/udem.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/workshop.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/poster.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/m.sc.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/unique.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/volunteering.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/conference.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/m/eeg.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/talk.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/conf.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/cosyne.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/ph.d.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/faculty-of-medicine.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/biomed.-eng.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/naisys.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/tutorial.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/main.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/amai-rg.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/mila.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/indigenous.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/ai.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/tag/abundant-intelligences.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/sitemap.xml
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/robots.txt
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/assets/main.css.map
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/circa-scholarship.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/mnc-ta2023.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/neuroai-workshop.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/cuttingeeg.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/unique-retreat.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/scaling-workshop.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/unique-get-together.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/cosyne-2024.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/ta-mnc-lab2-a2024.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/phd-biomed-engineering.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/med-ai-scholarship.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/naisys-2024.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/main2024.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/amai-rg.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/abint-agm-nz.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/about/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/blog/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/contact/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/elements/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/projects/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/publications/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/updates/index.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/green-plant.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/antelope-anyon.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/quiet-lake.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/the-rocks.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/big-airplane.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/mountains.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/sea-and-rest.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/prague-city.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/project/desk-setup.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/publications/data-imbalance.html
+           Writing: /Users/hamzaabdelhedi/Projects/websites/personal_website/site/_site/publications/meg-ann-review.html
+                    done in 0.346 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.

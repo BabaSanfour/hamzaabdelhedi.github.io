@@ -7,20 +7,168 @@
         <div class="{{c}}__inner">
 
           <div class="{{c}}__left">
-            <h1 class="{{c}}__title">{{ include.title }}</h1>
+            <!-- Header Card (Name, Position, Tagline) -->
+            <div class="{{c}}__header-card">
+              <!-- Name with phonetic and pronouns -->
+              <h1 class="{{c}}__name">
+                {{ include.title }}
+                {% if include.phonetic %}
+                <span class="{{c}}__phonetic">({{ include.phonetic }})</span>
+                {% endif %}
+              </h1>
+
+              <!-- Position/Title Line -->
+              {% if include.position %}
+              <p class="{{c}}__position">{{ include.position }}</p>
+              {% endif %}
+
+              <!-- Tagline -->
+              {% if include.tagline %}
+              <p class="{{c}}__tagline">{{ include.tagline }}</p>
+              {% endif %}
+            </div>
+
+            <!-- Social Icons -->
+            {% if include.show_social_icons %}
+            <div class="{{c}}__social">
+              {% for link in site.data.social_links.social %}
+              <a href="{{ link.link }}" target="_blank" rel="noopener" class="{{c}}__social-link"
+                title="{{ link.icon }}">
+                <i class="ion ion-logo-{{ link.icon | downcase }}"></i>
+              </a>
+              {% endfor %}
+              {% if include.email %}
+              <a href="mailto:{{ include.email }}" class="{{c}}__social-link" title="Email">
+                <i class="ion ion-md-mail"></i>
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- Short Description -->
             <div class="{{c}}__description">{{ include.description_html }}</div>
+
+            <!-- CTA Buttons -->
             <div class="{{c}}__btn">
-              <a href="{{ include.cta_button_link }}" class="cta-button c-button c-button--primary c-button--small">{{ include.cta_button }}</a>
-              <a class="works-button c-button c-button--secondary c-button--small" href="{{ include.works_button_link }}">
-                <span class="circle-bg"><i class="ion ion-md-arrow-down button-arrow"></i></span> {{ include.works_button }}
+              <a href="{{ include.cta_button_link }}" class="cta-button c-button c-button--primary c-button--small">{{
+                include.cta_button }}</a>
+              <a class="works-button c-button c-button--secondary c-button--small"
+                href="{{ include.works_button_link }}">
+                <span class="circle-bg"><i class="ion ion-md-arrow-down button-arrow"></i></span> {{
+                include.works_button }}
               </a>
             </div>
           </div>
 
           <div class="{{c}}__right">
-            <div class="{{c}}__image">
-              <img loading="lazy" src="{{ include.image }}" alt="{{ include.hero_image_alt }}">
+            <div class="{{c}}__image {% if include.circular_image %}{{c}}__image--circular{% endif %}">
+              <img loading="lazy" src="{{ include.image }}" alt="{{ include.image_alt }}">
             </div>
+
+            <!-- Spotlight Card -->
+            {% if site.data.spotlight %}
+            <div class="c-spotlight" id="spotlight-card" role="region" aria-label="Spotlight Highlights">
+              <div class="c-spotlight__wrapper">
+                {% for item in site.data.spotlight %}
+                <div
+                  class="c-spotlight__item {% if item.type %}{{ item.type }}{% endif %} {% if forloop.first %}is-active{% endif %}"
+                  data-index="{{ forloop.index0 }}">
+                  <div class="c-spotlight__link">
+                    <!-- Header Pill -->
+                    <div class="c-spotlight__header">
+                      <span class="c-spotlight__label {{ item.color_class }}">{{ item.icon }} {{ item.label }}</span>
+                    </div>
+
+                    <div class="c-spotlight__body">
+                      {% if item.type == 'publication' %}
+                      <!-- Publication Layout -->
+                      <div class="c-spotlight__pub-layout">
+                        {% if item.image %}
+                        <div class="c-spotlight__thumb">
+                          <img src="{{ item.image }}" alt="{{ item.title }}">
+                        </div>
+                        {% endif %}
+                        <div class="c-spotlight__content">
+                          <h4 class="c-spotlight__title">
+                            {% if item.url %}<a href="{{ item.url }}">{% endif %}
+                              {{ item.title }}
+                              {% if item.url %}</a>{% endif %}
+                          </h4>
+                          <p class="c-spotlight__meta">{{ item.meta }}</p>
+                        </div>
+                      </div>
+
+                      {% elsif item.type == 'media' %}
+                      <!-- Media Layout -->
+                      <div class="c-spotlight__media-layout">
+                        {% if item.image %}
+                        <div class="c-spotlight__thumb">
+                          <img src="{{ item.image }}" alt="{{ item.title }}">
+                        </div>
+                        {% endif %}
+                        <div class="c-spotlight__content">
+                          <h4 class="c-spotlight__title">
+                            {% if item.url %}<a href="{{ item.url }}">{% endif %}
+                              {{ item.title }}
+                              {% if item.url %}</a>{% endif %}
+                          </h4>
+                          <p class="c-spotlight__meta">{{ item.meta }}</p>
+                        </div>
+                      </div>
+
+                      {% elsif item.type == 'news' %}
+                      <!-- News Layout -->
+                      <div class="c-spotlight__news-layout">
+                        <p class="c-spotlight__news-text">
+                          <span class="c-spotlight__date">{{ item.meta }} &gt;</span>
+                          {{ item.title }}
+                        </p>
+                      </div>
+
+                      {% elsif item.type == 'repos' %}
+                      <!-- Repos Layout -->
+                      <div class="c-spotlight__repos-layout">
+                        <ul class="c-spotlight__repo-list">
+                          {% for repo in item.repos %}
+                          <li class="c-spotlight__repo-item">
+                            <span class="c-spotlight__repo-icon"><i class="ion ion-logo-github"></i></span>
+                            <a href="{{ repo.url }}" class="c-spotlight__repo-name"
+                              data-repo="{{ repo.url | split: '/' | slice: 3, 2 | join: '/' }}">{{ repo.name }}</a>
+                            <div class="c-spotlight__repo-stars">
+                              <span class="c-spotlight__star-box">
+                                <i class="ion ion-logo-github"></i> Star
+                              </span>
+                              <span class="c-spotlight__star-count">{{ repo.stars }}</span>
+                            </div>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <!-- Controls -->
+              <div class="c-spotlight__controls">
+                <button class="c-spotlight__btn prev" aria-label="Previous Highlight">
+                  <i class="ion ion-ios-arrow-back"></i>
+                </button>
+                <div class="c-spotlight__dots">
+                  {% for item in site.data.spotlight %}
+                  <span class="c-spotlight__dot {% if forloop.first %}is-active{% endif %}"
+                    data-index="{{ forloop.index0 }}"></span>
+                  {% endfor %}
+                </div>
+                <button class="c-spotlight__btn next" aria-label="Next Highlight">
+                  <i class="ion ion-ios-arrow-forward"></i>
+                </button>
+              </div>
+            </div>
+            <script src="/js/spotlight.js" defer></script>
+            {% endif %}
           </div>
 
         </div>

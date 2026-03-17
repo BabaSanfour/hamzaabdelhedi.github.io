@@ -1,0 +1,12 @@
+# Featured Publications
+# Section component used on the homepage to highlight selected publications.
+
+blueprint:
+  name: featured-publications
+  description: Displays a highlight strip of featured publications on the homepage.
+  
+preview:
+  title: "Featured Publications"
+  description_html: "<p>Selected peer-reviewed work and preprints.</p>"
+  link_url: "/publications"
+  max_featured: 3

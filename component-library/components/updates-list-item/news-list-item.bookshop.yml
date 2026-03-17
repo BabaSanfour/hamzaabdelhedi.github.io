@@ -1,0 +1,24 @@
+spec:
+  structures:
+    - content_blocks
+  content:
+    title: String
+    date: String
+    description: String
+    tags:
+      - String
+    image: String
+    link: String
+    icon: String
+  blueprint:
+    title: "News Update"
+    date: "2024-11-09"
+    description: "Brief description of the update."
+    tags: ["Research", "Award"]
+    image: "/images/news/sample.jpg"
+    link: "/news/post"
+    icon: "🚀"
+  preview:
+    title: "Example News Item"
+    date: "2024-11-09"
+    description: "This is a compact news update."

@@ -1,0 +1,43 @@
+{% assign c = "c-news-list-item" %}
+{% assign tags_string = include.tags | join: " " | downcase %}
+
+<div class="{{c}} js-news-item" data-tags="{{ tags_string }}">
+    <div class="{{c}}__date-col">
+        <time class="{{c}}__date" datetime="{{ include.date | date_to_xmlschema }}">
+            {{ include.date | date: "%d %b %Y" }}
+        </time>
+    </div>
+
+    <div class="{{c}}__content-col">
+        <div class="{{c}}__node"></div>
+        <div class="{{c}}__content">
+            <div class="{{c}}__summary">
+                {% if include.icon %}
+                <span class="{{c}}__icon">{{ include.icon }}</span>
+                {% endif %}
+
+                <span class="{{c}}__text">
+                    {% if include.link %}
+                    <a href="{{ include.link | relative_url }}">{{ include.description }}</a>
+                    {% else %}
+                    {{ include.description }}
+                    {% endif %}
+                </span>
+            </div>
+
+            {% if include.image %}
+            <div class="{{c}}__thumbnail">
+                <img src="{{ include.image | relative_url }}" alt="{{ include.title | escape }}" loading="lazy">
+            </div>
+            {% endif %}
+
+            {% if include.tags and include.tags.size > 0 %}
+            <div class="{{c}}__tags">
+                {% for tag in include.tags %}
+                <span class="{{c}}__tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

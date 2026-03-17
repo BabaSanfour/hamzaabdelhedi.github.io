@@ -8,19 +8,29 @@
           <div class="section__info">
             <div class="section__head">
               <h2 class="section__title">{{ include.title }}</h2>
-              <a class="section__link" href="{{ include.link_url | relative_url }}">View all <i class="ion ion-md-arrow-forward"></i></a>
+              <a class="section__link" href="{{ include.link_url | relative_url }}">View all <i
+                  class="ion ion-md-arrow-forward"></i></a>
             </div>
             <div class="section__description">{{ include.description_html }} </div>
           </div>
 
           {% if include.show_posts %}
-          <div class="c-news-card-list">
-            {% if site.posts.size > 0 %}
-              {% for post in site.posts offset:0 limit:3 %}
-                {% bookshop news-card post=post %}
-              {% endfor %}
+          <div class="c-news-timeline">
+            {% if site.data.news.size > 0 %}
+            {% for item in site.data.news limit:3 %}
+            {% bookshop news-list-item
+            title=item.title
+            date=item.date
+            description=item.description
+            tags=item.tags
+            image=item.image
+            link=item.link
+            icon=item.icon
+            %}
+            {% endfor %}
             {% endif %}
           </div>
+
           {% endif %}
 
         </div>

@@ -1,0 +1,42 @@
+<!-- begin featured-publications -->
+<section class="section featured-publications" id="featured-publications">
+    <div class="container animate">
+        <div class="updates-trajectory split-layout">
+            <div class="column-header">
+                <h2 class="column-title">{{ include.section_title | default: "Featured Publications" }}</h2>
+                <a href="{{ '/publications/' | relative_url }}" class="view-all">View all publications →</a>
+            </div>
+            {% if include.section_description %}
+            <p class="column-description">{{ include.section_description }}</p>
+            {% endif %}
+        </div>
+
+        <div class="row featured-publications__grid">
+            {% assign max_count = include.max_featured | default: 3 %}
+            {% assign featured_count = 0 %}
+
+            {% for pub in site.publications reversed %}
+            {% if pub.featured == true and featured_count < max_count %} <div
+                class="col col-4 col-d-6 col-t-12 featured-publications__item">
+                {% bookshop publication-card project=pub layout="vertical" %}
+        </div>
+        {% assign featured_count = featured_count | plus: 1 %}
+        {% endif %}
+        {% endfor %}
+
+        {% if featured_count == 0 %}
+        <div class="col col-12">
+            <div class="featured-publications__empty">
+                <p>No featured publications selected yet. Add <code>featured: true</code> to a publication's
+                    frontmatter to show it here.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+<!-- end featured-publications -->
