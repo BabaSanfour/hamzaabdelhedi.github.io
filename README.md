@@ -53,6 +53,44 @@ The site will be available at **http://localhost:6060**
 | `npm run bookshop` | Run Bookshop browser |
 | `npm run jekyll:install` | Install Ruby gems |
 
+## 🚀 Deployment (GitHub Pages via Actions)
+
+The site is deployed automatically to [GitHub Pages](https://pages.github.com/) via a custom GitHub Actions workflow.
+
+### How it works
+
+1. **Push to `main`** triggers `.github/workflows/deploy.yml`
+2. The workflow:
+   - Installs Node.js 20 deps (`npm ci`)
+   - Generates Bookshop live JS (`npx bookshop-live`)
+   - Installs Ruby 3.3 + Bundler deps (`bundle install`)
+   - Builds the Jekyll site (`bundle exec jekyll build --source site`)
+   - Uploads `_site/` and deploys via `actions/deploy-pages`
+3. The site is live at **https://hamzaabdelhedi.com**
+
+### Custom domain
+
+- The `CNAME` file is at `site/CNAME` → Jekyll copies it to `_site/CNAME` on build
+- DNS must point `hamzaabdelhedi.com` to GitHub Pages (A records or CNAME to `BabaSanfour.github.io`)
+- HTTPS is enforced via **Settings → Pages → Enforce HTTPS**
+
+### First-time setup
+
+1. Go to **Settings → Pages → Source** and select **GitHub Actions**
+2. Set **Custom domain** to `hamzaabdelhedi.com`
+3. Push to `main` — the workflow will build and deploy
+
+### Troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| Bundler install fails | Delete the Actions cache or update `Gemfile.lock` with `bundle lock --add-platform x86_64-linux` |
+| Bookshop JS missing | Ensure `npm ci` ran before the Bookshop generate step |
+| Deploy 403 error | Check workflow has `permissions: pages: write` and `id-token: write` |
+| Wrong output dir | Verify `--source site` is used — output goes to `_site/` at project root |
+| Ruby version mismatch | Check `.ruby-version` matches the `ruby-version` in the workflow |
+| Site shows old content | Check the Actions tab for a failed run; re-run or push a new commit |
+
 ## 📝 License
 
 MIT License - See [LICENSE](LICENSE) for details.
@@ -63,5 +101,5 @@ MIT License - See [LICENSE](LICENSE) for details.
 ## 🙏 Credits
 
 - Template: [Vonge](https://github.com/CloudCannon/vonge-jekyll-bookshop-template) by CloudCannon
-- Hosting: [CloudCannon](https://cloudcannon.com/)
+- Hosting: [GitHub Pages](https://pages.github.com/)
 - Components: [Bookshop](https://github.com/CloudCannon/bookshop)
