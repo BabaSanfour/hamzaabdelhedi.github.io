@@ -1,4 +1,6 @@
 title: Hamza
+url: "https://hamzaabdelhedi.com"
+baseurl: ""
 
 plugins:
   - jekyll-bookshop
