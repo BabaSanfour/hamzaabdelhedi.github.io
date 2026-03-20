@@ -3,8 +3,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.url == "/" %}{{ site.data.general_settings.title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.data.general_settings.title }}{% endif %}</title>
-  <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.general_settings.description }}{% endif %}'>
+  <title>{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} | {{ site.data.general_settings.title }}{% endif %}</title>
+  <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}'>
 
   {% assign canonical_url = page.url | replace:'index.html','' | absolute_url %}
   {% if page.external_url %}
@@ -15,8 +15,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} – {{ site.data.general_settings.title }}{% endif %}">
-  <meta name="twitter:description" content="{% if page.url == "/" %}{{ site.data.general_settings.description | strip_html | xml_escape }}{% elsif page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}">
+  <meta name="twitter:title" content="{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} | {{ site.data.general_settings.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | xml_escape | truncate: 160 }}{% endif %}">
   {% assign share_image = site.data.general_settings.social_media_share_image %}
   {% if page.image %}
     {% assign share_image = page.image %}
@@ -24,9 +24,30 @@
   <meta name="twitter:image:src" content="{{ share_image | absolute_url }}">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} – {{ site.data.general_settings.title }}{% endif %}">
-  <meta property="og:description" content="{% if page.url == "/" %}{{ site.data.general_settings.description | strip_html | xml_escape }}{% elsif page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}">
+  <meta property="og:title" content="{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} | {{ site.data.general_settings.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | xml_escape | truncate: 160 }}{% endif %}">
   <meta property="og:image" content="{{ share_image | absolute_url }}">
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Hamza Abdelhedi",
+      "url": "https://hamzaabdelhedi.com",
+      "sameAs": [
+        "https://twitter.com/hamza_abdelhedi",
+        "https://github.com/BabaSanfour",
+        "https://www.linkedin.com/in/hamza-abdelhedi/",
+        "https://scholar.google.com/citations?user=xcX55QsAAAAJ"
+      ],
+      "jobTitle": "PhD Student in Biomedical Engineering",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Université de Montréal & MILA"
+      },
+      "description": "{{ site.data.general_settings.description }}"
+    }
+  </script>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">

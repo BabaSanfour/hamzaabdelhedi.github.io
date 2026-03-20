@@ -16,7 +16,4 @@ menu__settings:
       url: '/projects/'
     - title: 'Blog'
       url: '/blog/'
-    # - title: 'Pages'
-      # submenu:
-    # - url: '/elements/'
-    #   title: 'Elements'
+
