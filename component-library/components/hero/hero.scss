@@ -44,11 +44,11 @@
 		margin-left: auto;
 
 		@media only screen and (max-width: $tablet) {
-			order: -1;
+			order: 0;
 			flex: 0 0 100%;
 			max-width: 100%;
 			margin-left: 0;
-			margin-bottom: 40px;
+			margin-top: 32px;
 		}
 	}
 
@@ -64,6 +64,16 @@
 			padding: 20px;
 			margin-bottom: 24px;
 		}
+	}
+
+	&__eyebrow {
+		margin: 0 0 12px;
+		color: $primary-color;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		line-height: 1.5;
+		text-transform: uppercase;
 	}
 
 	&__name {
@@ -96,6 +106,20 @@
 		}
 	}
 
+	&__pronouns {
+		display: inline-block;
+		margin-left: 8px;
+		color: $text-color;
+		font-size: 13px;
+		font-weight: 500;
+		vertical-align: middle;
+
+		@media only screen and (max-width: $mobile) {
+			margin-left: 4px;
+			font-size: 12px;
+		}
+	}
+
 	&__position {
 		font-size: 17px; // Slightly smaller
 		font-weight: 500;
@@ -105,6 +129,33 @@
 
 		@media only screen and (max-width: $mobile) {
 			font-size: 15px;
+		}
+	}
+
+	&__affiliations {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		margin: 0;
+		color: $text-color;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	&__statement {
+		max-width: 760px;
+		margin: 0 0 14px;
+		color: $heading-font-color;
+		font-size: 25px;
+		font-weight: 600;
+		line-height: 1.35;
+
+		@media only screen and (max-width: $desktop) {
+			font-size: 22px;
+		}
+
+		@media only screen and (max-width: $mobile) {
+			font-size: 20px;
 		}
 	}
 
@@ -122,6 +173,10 @@
 	}
 
 	&__description {
+		font-size: 16px;
+		line-height: 1.6;
+		color: $text-color;
+
 		p {
 			margin-bottom: 0;
 			font-size: 18px;
@@ -144,11 +199,19 @@
 
 	&__btn {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: flex-start;
+		align-items: center;
+		gap: 12px;
 		margin-top: 40px;
 
+		a:focus-visible {
+			outline: 3px solid #1d4ed8;
+			outline-offset: 3px;
+		}
+
 		.cta-button {
-			margin-right: 12px;
+			margin-right: 0;
 		}
 
 		.works-button {

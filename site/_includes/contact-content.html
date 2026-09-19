@@ -1,0 +1,37 @@
+{% assign profile = site.data.profile %}
+{% assign links = site.data.links %}
+
+<main class="container profile-page contact-page">
+  <header class="profile-page__page-heading">
+    <h1>Contact</h1>
+    <p class="profile-page__lead">For questions about my research, collaborations, or open-source neuroscience tools, email me or connect through one of these profiles.</p>
+  </header>
+
+  <div class="contact-page__details">
+    {% if links.email %}
+    <section aria-labelledby="contact-email">
+      <h2 id="contact-email">Email</h2>
+      <p><a class="contact-page__email" href="mailto:{{ links.email }}">{{ links.email }}</a></p>
+    </section>
+    {% endif %}
+
+    <section aria-labelledby="contact-profiles">
+      <h2 id="contact-profiles">Elsewhere</h2>
+      <ul class="contact-page__links">
+        {% for social in links.social %}
+        {% assign social_url = links[social.key] %}
+        {% if social_url %}
+        <li><a href="{{ social_url }}" target="_blank" rel="noopener noreferrer">{{ social.label | default: social.icon }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if links.orcid %}
+        <li><a href="{{ links.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+        {% endif %}
+      </ul>
+    </section>
+  </div>
+
+  <p class="contact-page__location">
+    Based in <a href="https://www.concordia.ca/indigenous/resources/territorial-acknowledgement.html">{{ profile.location }}</a>.
+  </p>
+</main>

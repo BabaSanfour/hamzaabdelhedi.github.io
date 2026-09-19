@@ -31,7 +31,7 @@
                                 </div>
 
                                 <div class="trajectory-node__info">
-                                    <span class="trajectory-node__year">{{ record.start_year }}{% if record.current %}–Present{% elsif record.end_year %}–{{ record.end_year }}{% endif %}</span>
+                                    <span class="trajectory-node__year">{% include date-range.html record=record %}</span>
                                     <h4 class="trajectory-node__title">{{ record.title | default: record.degree }}</h4>
                                     {% if organization.name %}
                                     <span class="trajectory-node__institution">{{ organization.name }}</span>

@@ -1,0 +1,24 @@
+{%- assign record = include.record -%}
+{%- assign start_label = record.start_year -%}
+{%- if record.start_date -%}
+  {%- assign start_date_value = record.start_date | append: "" -%}
+  {%- assign start_date_parts = start_date_value | split: "-" -%}
+  {%- if start_date_parts.size == 2 -%}
+    {%- assign start_date_value = start_date_value | append: "-01" -%}
+  {%- endif -%}
+  {%- assign start_label = start_date_value | date: "%b %Y" -%}
+{%- endif -%}
+{%- assign end_label = nil -%}
+{%- if record.current -%}
+  {%- assign end_label = "Present" -%}
+{%- elsif record.end_date -%}
+  {%- assign end_date_value = record.end_date | append: "" -%}
+  {%- assign end_date_parts = end_date_value | split: "-" -%}
+  {%- if end_date_parts.size == 2 -%}
+    {%- assign end_date_value = end_date_value | append: "-01" -%}
+  {%- endif -%}
+  {%- assign end_label = end_date_value | date: "%b %Y" -%}
+{%- elsif record.end_year -%}
+  {%- assign end_label = record.end_year -%}
+{%- endif -%}
+{{- start_label -}}{% if end_label %}–{{ end_label }}{% endif -%}

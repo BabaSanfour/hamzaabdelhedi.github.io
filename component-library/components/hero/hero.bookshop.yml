@@ -15,6 +15,8 @@ blueprint:
   use_profile: false
   title: ""
   phonetic: ""
+  eyebrow: ""
+  statement: ""
   position: ""
   tagline: ""
   description_html: ""
@@ -27,30 +29,40 @@ blueprint:
   cta_button_link: ""
   works_button: ""
   works_button_link: ""
+  cv_button: ""
+  cv_button_link: ""
 
 preview:
   title: Hamza Abdelhedi
   phonetic: HAM-za ab-del-HE-di
-  position: PhD Student in Biomedical Engineering • Neuro-AI @ UdeM & Mila
-  tagline: Exploring brains & AI, championing Open Science, and building community.
+  eyebrow: Computational Neuroscience · MEG/EEG · Open Science
+  position: Graduate Research Assistant
+  statement: I study how the human brain transforms changing sensory evidence into decisions and actions.
   description_html: >-
-    <p>Interested in dynamical biological and artificial systems with a focus on 
-    <strong>vision, decision-making, and brain disorders</strong>.</p>
+    I combine MEG/EEG, computational modeling, and neural dynamics to study decision-making and develop reusable neuroscience tools.
   image: /images/main/01.jpg
   image_alt: Hamza Abdelhedi
   circular_image: true
   show_social_icons: true
   email: hamza.abdelhedi@umontreal.ca
-  cta_button: Get in touch
-  cta_button_link: "#contact"
-  works_button: What I'm working on
-  works_button_link: "#projects"
+  cta_button: Research
+  cta_button_link: /projects/
+  works_button: Publications
+  works_button_link: /publications/
+  cv_button: Download CV
+  cv_button_link: /Hamza_Abdelhedi_cv.pdf
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   phonetic:
     type: text
     comment: Phonetic pronunciation (e.g., HAM-za ab-del-HE-di)
+  eyebrow:
+    type: text
+    comment: Short field and methods line above the name
+  statement:
+    type: text
+    comment: One sentence stating the central research question
   position:
     type: text
     comment: Your title/position line
@@ -65,3 +77,7 @@ _inputs:
   email:
     type: email
     comment: Email address for contact icon
+  cv_button:
+    type: text
+  cv_button_link:
+    type: url

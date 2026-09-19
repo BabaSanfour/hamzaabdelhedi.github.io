@@ -11,10 +11,14 @@ cv_source: https://github.com/BabaSanfour/cv-latex
 # through the canonical link key above.
 social:
   - key: twitter
+    label: X
     icon: Twitter
   - key: github
+    label: GitHub
     icon: Github
   - key: scholar
+    label: Google Scholar
     icon: Google
   - key: linkedin
+    label: LinkedIn
     icon: Linkedin
