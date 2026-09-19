@@ -282,6 +282,11 @@
             transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             pointer-events: none;
 
+            @media only screen and (max-width: $desktop) and (min-width: ($tablet + 1px)) {
+                left: auto;
+                right: 20px;
+            }
+
             @media only screen and (max-width: $tablet) {
                 display: none; // Hidden natively on mobile
                 position: relative;

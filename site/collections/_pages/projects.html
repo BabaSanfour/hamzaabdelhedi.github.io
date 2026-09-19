@@ -1,38 +1,15 @@
 ---
 title: Projects
-description: Research projects by Hamza Abdelhedi.
+description: The project collection has moved to the Research section.
+canonical_url: /research/
 layout: default
 ---
 
-{% assign research_projects = site.projects | where: "category", "research" %}
-
-<div class="container">
-  <div class="row">
-    <div class="col col-12">
-      <div class="page animate">
-        <h1 class="page__title">{{ page.title }}</h1>
-
-        {% if research_projects.size > 0 %}
-        <h2>Research Projects</h2>
-        <ul class="project-list">
-          {% for project in research_projects reversed %}
-          <li class="project-item">
-            <h3 class="project-item__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
-            {% if project.summary %}
-            <div class="project-item__summary">
-              {{ project.summary | markdownify | truncatewords: 30 }}
-            </div>
-            {% endif %}
-            {% if project.image %}
-            <img src="{{ project.image | relative_url }}" alt="{{ project.title }} image" class="project-item__image-small">
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-        {% else %}
-        <p>No research projects found.</p>
-        {% endif %}
-      </div>
-    </div>
+<main class="project-compatibility">
+  <div class="project-compatibility__content">
+    <p class="project-compatibility__eyebrow">Research</p>
+    <h1>Projects has moved</h1>
+    <p>The project collection now presents a curated overview of my research themes.</p>
+    <a class="project-compatibility__link" href="{{ '/research/' | relative_url }}">Visit Research <span aria-hidden="true">→</span></a>
   </div>
-</div>
+</main>

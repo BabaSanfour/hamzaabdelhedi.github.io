@@ -1,0 +1,34 @@
+{% assign selection = include.selection | default: "featured_ids" %}
+{% if selection == "ordered_ids" %}
+  {% assign project_ids = site.data.research.ordered_ids %}
+{% else %}
+  {% assign project_ids = site.data.research.featured_ids %}
+{% endif %}
+
+<section class="section research-section" aria-labelledby="research-section-title">
+  <div class="container">
+    <div class="section__info">
+      <div class="section__head">
+        <h2 class="section__title" id="research-section-title">{{ include.title | default: "Selected research" }}</h2>
+        <a class="section__link" href="{{ '/research/' | relative_url }}">View all research <span aria-hidden="true">→</span></a>
+      </div>
+      {% if include.description_html %}
+      <div class="section__description">{{ include.description_html }}</div>
+      {% endif %}
+    </div>
+
+    <div class="research-section__grid">
+      {% assign max_items = include.max_items | default: 3 %}
+      {% assign rendered_items = 0 %}
+      {% for project_id in project_ids %}
+        {% if rendered_items < max_items %}
+          {% assign project = site.projects | where: "slug", project_id | first %}
+          {% if project and project.category == "research" %}
+            {% bookshop research-card project=project %}
+            {% assign rendered_items = rendered_items | plus: 1 %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

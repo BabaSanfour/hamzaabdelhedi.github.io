@@ -1,0 +1,29 @@
+spec:
+  structures: []
+  label: Research Card
+  description: Card for a curated research record from the projects collection.
+  icon: article
+  tags:
+    - Research
+
+blueprint:
+  project:
+    title: ""
+    short_title: ""
+    summary: ""
+    status: ""
+    role: ""
+    url: ""
+
+preview:
+  project:
+    title: Research theme
+    short_title: Research theme
+    summary: Summary text from the selected research record.
+    status: ""
+    role: ""
+    url: ""
+
+_inputs:
+  project:
+    type: object

@@ -1,0 +1,39 @@
+spec:
+  structures: []
+  label: Software Card
+  description: Purpose, role, and verified links for one software record.
+  icon: code
+  tags:
+    - Software
+
+blueprint:
+  software:
+    id: ""
+    name: ""
+    one_liner: ""
+    role: ""
+    status: ""
+    repo: ""
+    docs: ""
+    publication_id: ""
+    paper:
+      label: ""
+      url: ""
+
+preview:
+  software:
+    id: ""
+    name: Software tool
+    one_liner: Purpose of the tool.
+    role: Role
+    status: ""
+    repo: ""
+    docs: ""
+    publication_id: ""
+    paper:
+      label: ""
+      url: ""
+
+_inputs:
+  software:
+    type: object

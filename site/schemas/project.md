@@ -1,7 +1,6 @@
 ---
 id:
 slug:
-date:
 title:
 short_title:
 category:
@@ -13,8 +12,6 @@ collaborators:
 links:
 related_software:
 publication_ids:
-subtitle:
-tag:
-image:
 image_alt:
+image:
 ---

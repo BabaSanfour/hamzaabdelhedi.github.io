@@ -1,0 +1,19 @@
+---
+title: Software
+description: Open-source neuroscience software created, maintained, and contributed to by Hamza Abdelhedi.
+layout: default
+---
+
+<main class="software-index">
+  <header class="software-index__heading">
+    <p class="software-index__eyebrow">Open-source software</p>
+    <h1>Software</h1>
+    <p>Packages and contributions that support practical, reusable EEG, MEG, and neuroimaging workflows.</p>
+  </header>
+
+  <div class="software-index__grid">
+    {% for software in site.data.software %}
+      {% bookshop software-card software=software %}
+    {% endfor %}
+  </div>
+</main>

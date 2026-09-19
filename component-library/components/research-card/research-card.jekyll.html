@@ -1,0 +1,27 @@
+{% assign project = include.project %}
+{% assign project_url = project.url %}
+{% assign project_url_ending = project_url | slice: -5, 5 %}
+{% unless project_url_ending == ".html" %}
+  {% assign project_url = project_url | append: ".html" %}
+{% endunless %}
+<article class="research-card">
+  {% if project.status or project.role %}
+  <div class="research-card__meta">
+    {% if project.status %}<span>{{ project.status }}</span>{% endif %}
+    {% if project.role %}<span>{{ project.role }}</span>{% endif %}
+  </div>
+  {% endif %}
+
+  <h3 class="research-card__title">
+    <a href="{{ project_url | relative_url }}">{{ project.short_title | default: project.title }}</a>
+  </h3>
+
+  {% if project.summary %}
+  <p class="research-card__summary">{{ project.summary }}</p>
+  {% endif %}
+
+  <a class="research-card__link" href="{{ project_url | relative_url }}" aria-label="Read research overview: {{ project.title }}">
+    Read the research overview
+    <span aria-hidden="true">→</span>
+  </a>
+</article>

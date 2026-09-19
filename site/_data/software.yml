@@ -1,1 +1,70 @@
-[]
+- id: mne-denoise
+  name: MNE-Denoise
+  one_liner: Denoising methods for EEG and MEG with NumPy support and MNE-Python integration.
+  role: Co-Creator & Core Maintainer
+  status: Under active development
+  repo: https://github.com/mne-tools/mne-denoise
+  docs: https://mne.tools/mne-denoise/stable/
+  language:
+    - Python
+  tags:
+    - EEG
+    - MEG
+    - denoising
+  featured: true
+
+- id: coco-pipe
+  name: CoCo-PiPe
+  one_liner: Modular pipelines for electrophysiological descriptors, model decoding, and experiment reporting.
+  role: Creator & Maintainer
+  repo: https://github.com/BabaSanfour/coco-pipe
+  docs: https://cocopipe.readthedocs.io/en/latest/index.html
+  language:
+    - Python
+  tags:
+    - EEG
+    - MEG
+    - analysis pipelines
+  featured: true
+
+- id: coord2region
+  name: Coord2Region
+  one_liner: Maps brain coordinates and atlas regions to anatomical labels and related neuroimaging literature.
+  role: Creator & Maintainer
+  repo: https://github.com/BabaSanfour/Coord2Region
+  docs: https://coord2region.readthedocs.io/en/latest/
+  publication_id: coord2region
+  language:
+    - Python
+  tags:
+    - neuroimaging
+    - atlases
+  featured: true
+
+- id: mne-python
+  name: MNE-Python
+  one_liner: Open-source Python tools for exploring, visualizing, and analyzing human neurophysiological data.
+  role: Contributor
+  repo: https://github.com/mne-tools/mne-python
+  docs: https://mne.tools/stable/index.html
+  language:
+    - Python
+  tags:
+    - EEG
+    - MEG
+    - neurophysiology
+  featured: true
+
+- id: jamica
+  name: Jamica
+  one_liner: Python implementation of AMICA for EEG/MEG, with optional JAX acceleration and MNE-Python integration.
+  role: Contributor
+  repo: https://github.com/snesmaeili/jamica
+  docs: https://snesmaeili.github.io/jamica/
+  language:
+    - Python
+  tags:
+    - EEG
+    - MEG
+    - ICA
+  featured: true

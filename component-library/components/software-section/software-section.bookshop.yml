@@ -1,0 +1,20 @@
+spec:
+  structures:
+    - content_blocks
+  label: Software Section
+  description: Lists software records from site.data.software.yml.
+  icon: view_module
+  tags:
+    - Software
+
+blueprint:
+  title: Open-source software
+  description_html: ""
+
+preview:
+  title: Open-source software
+  description_html: Software cards resolve from the shared software data.
+
+_inputs:
+  description_html:
+    type: text

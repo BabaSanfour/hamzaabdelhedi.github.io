@@ -1,0 +1,22 @@
+---
+title: Research
+description: Research themes in dynamic decision-making, EEG/MEG methods, pediatric clinical EEG, and face familiarity.
+layout: default
+---
+
+<main class="research-index">
+  <header class="research-index__heading">
+    <p class="research-index__eyebrow">Research</p>
+    <h1>Research</h1>
+    <p>A curated account of my work on decisions, electrophysiology, clinical EEG collaboration, and visual perception.</p>
+  </header>
+
+  <div class="research-index__grid">
+    {% for project_id in site.data.research.ordered_ids %}
+      {% assign project = site.projects | where: "slug", project_id | first %}
+      {% if project and project.category == "research" %}
+        {% bookshop research-card project=project %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</main>

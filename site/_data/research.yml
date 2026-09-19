@@ -1,2 +1,10 @@
-ordered_ids: []
-featured_ids: []
+ordered_ids:
+  - dynamic-decision-making
+  - eeg-meg-foundation-models
+  - pediatric-clinical-eeg
+  - face-familiarity
+
+featured_ids:
+  - dynamic-decision-making
+  - eeg-meg-foundation-models
+  - pediatric-clinical-eeg

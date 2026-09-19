@@ -1,0 +1,19 @@
+<section class="section software-section" aria-labelledby="software-section-title">
+  <div class="container">
+    <div class="section__info">
+      <div class="section__head">
+        <h2 class="section__title" id="software-section-title">{{ include.title | default: "Open-source software" }}</h2>
+        <a class="section__link" href="{{ '/software/' | relative_url }}">View all software <span aria-hidden="true">→</span></a>
+      </div>
+      {% if include.description_html %}
+      <div class="section__description">{{ include.description_html }}</div>
+      {% endif %}
+    </div>
+
+    <div class="software-section__grid">
+      {% for software in site.data.software %}
+        {% bookshop software-card software=software %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

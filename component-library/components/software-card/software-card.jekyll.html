@@ -1,0 +1,35 @@
+{% assign software = include.software %}
+{% assign related_publication = nil %}
+{% if software.publication_id %}
+  {% assign related_publication = site.publications | where: "slug", software.publication_id | first %}
+{% endif %}
+{% assign publication_url = related_publication.url %}
+{% if related_publication %}
+  {% assign publication_url_ending = publication_url | slice: -5, 5 %}
+  {% unless publication_url_ending == ".html" %}
+    {% assign publication_url = publication_url | append: ".html" %}
+  {% endunless %}
+{% endif %}
+
+<article class="software-card" id="{{ software.id }}">
+  <h3 class="software-card__title">{{ software.name }}</h3>
+  <p class="software-card__purpose">{{ software.one_liner }}</p>
+  <p class="software-card__role"><strong>Role:</strong> {{ software.role }}</p>
+  {% if software.status %}
+  <p class="software-card__status"><strong>Status:</strong> {{ software.status }}</p>
+  {% endif %}
+
+  <ul class="software-card__links" aria-label="{{ software.name }} links">
+    {% if software.repo %}
+    <li><a href="{{ software.repo }}">Repository</a></li>
+    {% endif %}
+    {% if software.docs %}
+    <li><a href="{{ software.docs }}">Documentation</a></li>
+    {% endif %}
+    {% if related_publication %}
+    <li><a href="{{ publication_url | relative_url }}">Publication: {{ related_publication.title }}</a></li>
+    {% elsif software.paper and software.paper.url %}
+    <li><a href="{{ software.paper.url }}">{{ software.paper.label | default: "Publication" }}</a></li>
+    {% endif %}
+  </ul>
+</article>

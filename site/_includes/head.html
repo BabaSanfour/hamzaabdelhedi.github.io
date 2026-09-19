@@ -10,6 +10,17 @@
   <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}'>
 
   {% assign canonical_url = page.url | replace:'index.html','' | absolute_url %}
+  {% if page.category == 'research' %}
+    {% assign canonical_project_path = page.url %}
+    {% assign canonical_project_ending = canonical_project_path | slice: -5, 5 %}
+    {% unless canonical_project_ending == '.html' %}
+      {% assign canonical_project_path = canonical_project_path | append: '.html' %}
+    {% endunless %}
+    {% assign canonical_url = canonical_project_path | absolute_url %}
+  {% endif %}
+  {% if page.canonical_url %}
+    {% assign canonical_url = page.canonical_url | absolute_url %}
+  {% endif %}
   {% if page.external_url %}
     {% assign canonical_url = page.external_url %}
     <meta http-equiv="refresh" content="0; url={{ page.external_url }}">

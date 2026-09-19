@@ -8,20 +8,30 @@ content_blocks:
     circular_image: true
     show_social_icons: false
     cta_button: Research
-    cta_button_link: /projects/
+    cta_button_link: /research/
     works_button: Publications
     works_button_link: /publications/
     cv_button: Download CV
-  - _bookshop_name: updates-trajectory-split
-    updates_title: "Recent Updates"
-    updates_description_html: "Highlighting my latest work in research, outreach, and beyond."
-    trajectory_title: "Trajectory"
-    show_updates: true
-    show_trajectory: true
+  - _bookshop_name: research-section
+    title: Selected research
+    description_html: >-
+      <p>A few connected lines of work, from decision-making and neural methods to clinical collaboration and earlier face-perception research.</p>
+    selection: featured_ids
+    max_items: 3
+  - _bookshop_name: software-section
+    title: Open-source software
+    description_html: >-
+      <p>Tools and contributions for practical, reusable neuroscience workflows.</p>
   - _bookshop_name: featured-publications
     title: Selected Publications
     description_html: >-
-      <p>Selected work on human neuroscience, neural modeling, and open-source methods.</p>
+      <p>Selected work on human neuroscience, computational methods, and open-source tools.</p>
     link_url: /publications
     show_projects: false
+  - _bookshop_name: updates-trajectory-split
+    updates_title: "Recent Updates"
+    updates_description_html: "Research, teaching, and community updates."
+    trajectory_title: "Trajectory"
+    show_updates: true
+    show_trajectory: true
 ---

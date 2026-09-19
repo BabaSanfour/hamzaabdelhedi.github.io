@@ -49,7 +49,7 @@
                         {% endfor %}
                         {% endif %}
                     </div>
-                    <p class="trajectory-footer">See <a href="/about">About page</a> for more details.</p>
+                    <p class="trajectory-footer">See <a href="{{ '/about/' | relative_url }}">About page</a> for more details.</p>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
             <div class="col col-6 col-m-12 updates-column">
                 <div class="column-header">
                     <h2 class="column-title">{{ include.updates_title | default: "Recent Updates" }}</h2>
-                    <a href="/updates" class="view-all">View all updates →</a>
+                    <a href="{{ '/updates/' | relative_url }}" class="view-all">View all updates →</a>
                 </div>
                 {% if include.updates_description_html %}
                 <div class="column-description">{{ include.updates_description_html }}</div>

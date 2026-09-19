@@ -1,13 +1,9 @@
 footer_menu__settings:
   menu__items:
-    - title: 'Home'
-      url: '/'
-    - title: 'About'
-      url: '/about/'
+    - title: 'Updates'
+      url: '/updates/'
     - title: 'Contact'
       url: '/contact/'
-    - title: 'Projects'
-      url: '/projects/'
 
 copyright_text_html: >-
   Template by <a href="https://cloudcannon.com/">CloudCannon</a>. Image by <a href="https://stability.ai">Stability.ai</a>.
