@@ -1,0 +1,39 @@
+- id: phd-graduate-research-assistant
+  institution_id: mila
+  start_year: 2024
+  start_date: 2024-09
+  end_year: null
+  current: true
+  title: Graduate Research Assistant
+  summary: "Cognitive & Computational Neuroscience Lab (CoCo Lab) and Mila; supervisor: Prof. Karim Jerbi."
+  featured: true
+
+- id: saint-justine-research-collaborator
+  institution_id: saint-justine
+  start_year: 2025
+  start_date: 2025-01
+  end_year: null
+  current: true
+  title: Research Collaborator
+  summary: "Collaborating with Dr. Alexander G. Weil and Dr. Aristides Hadjinicolaou on clinical EEG research."
+  featured: true
+
+- id: abundant-intelligences-research-contributor
+  institution_id: abundant-intelligences
+  start_year: 2024
+  end_year: null
+  current: true
+  title: AI Lab Member / Research Contributor
+  summary: "Abundant Intelligences; part-time since March 2026."
+  featured: true
+
+- id: msc-graduate-research-assistant
+  institution_id: snail
+  start_year: 2022
+  start_date: 2022-09
+  end_year: 2024
+  end_date: 2024-08
+  current: false
+  title: Graduate Research Assistant
+  summary: "CoCo Lab, Systems Neuroscience and AI Lab (SNAILab), and Mila; MSc research on face familiarity."
+  featured: true

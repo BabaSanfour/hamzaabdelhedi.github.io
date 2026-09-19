@@ -6,61 +6,43 @@
             <!-- Left Column: Trajectory -->
             <div class="col col-6 col-m-12 trajectory-column">
                 <div class="interactive-trajectory">
+                    <div class="column-header">
+                        <h2 class="column-title">{{ include.trajectory_title | default: "Trajectory" }}</h2>
+                    </div>
                     <div class="trajectory-timeline">
                         {% if include.show_trajectory %}
-                        {% for milestone in site.data.trajectory %}
+                        {% assign timeline_records = site.data.experience | concat: site.data.education | sort: "start_year" | reverse %}
+                        {% for record in timeline_records %}
+                        {% assign organization = nil %}
+                        {% for candidate in site.affiliations %}
+                        {% if candidate.organization_id == record.institution_id %}
+                        {% assign organization = candidate %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
                         <div class="trajectory-node" data-aos="fade-up" onclick="this.classList.toggle('is-expanded')">
                             <div class="trajectory-node__connector"></div>
                             <div class="trajectory-node__content-wrapper">
                                 <div class="trajectory-node__logo-trigger">
-                                    <img src="{{ milestone.logo | relative_url }}" alt="{{ milestone.institution }}"
+                                    {% if organization.image %}
+                                    <img src="{{ organization.image | relative_url }}" alt="{{ organization.name }}"
                                         class="trajectory-node__logo">
+                                    {% endif %}
                                 </div>
 
                                 <div class="trajectory-node__info">
-                                    {% if milestone.roles %}
-                                    <h4 class="trajectory-node__institution trajectory-node__institution--grouped">{{
-                                        milestone.institution }}</h4>
-                                    <div class="trajectory-node__roles">
-                                        {% for role in milestone.roles %}
-                                        <div class="trajectory-node__role">
-                                            <span class="trajectory-node__year">{{ role.year }}</span>
-                                            <h5 class="trajectory-node__title">{{ role.title }}</h5>
-                                            <span class="trajectory-node__department">{{ role.department }}</span>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                    {% else %}
-                                    <span class="trajectory-node__year">{{ milestone.year }}</span>
-                                    <h4 class="trajectory-node__title">{{ milestone.title }}</h4>
-                                    <span class="trajectory-node__institution">{{ milestone.institution }}</span>
+                                    <span class="trajectory-node__year">{{ record.start_year }}{% if record.current %}–Present{% elsif record.end_year %}–{{ record.end_year }}{% endif %}</span>
+                                    <h4 class="trajectory-node__title">{{ record.title | default: record.degree }}</h4>
+                                    {% if organization.name %}
+                                    <span class="trajectory-node__institution">{{ organization.name }}</span>
                                     {% endif %}
                                 </div>
                             </div>
 
                             <!-- Hover Detail Card (Moved here for proper mobile flow) -->
                             <div class="trajectory-node__detail-card">
-                                {% if milestone.roles %}
-                                <div class="detail-card__header">
-                                    <h4 class="detail-card__institution detail-card__institution--grouped">{{
-                                        milestone.institution }}</h4>
-                                </div>
-                                <div class="detail-card__roles">
-                                    {% for role in milestone.roles %}
-                                    <div class="detail-card__role">
-                                        <span class="detail-card__year">{{ role.year }}</span>
-                                        <h5 class="detail-card__title">{{ role.title }}</h5>
-                                        <p class="detail-card__description">{{ role.description }}</p>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                                {% else %}
-                                <div class="detail-card__header">
-                                    <span class="detail-card__year">{{ milestone.year }}</span>
-                                    <h4 class="detail-card__title">{{ milestone.title }}</h4>
-                                    <span class="detail-card__institution">{{ milestone.institution }}</span>
-                                </div>
-                                <p class="detail-card__description">{{ milestone.description }}</p>
+                                {% if record.summary %}
+                                <p class="detail-card__description">{{ record.summary }}</p>
                                 {% endif %}
                             </div>
                         </div>

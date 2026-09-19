@@ -1,0 +1,353 @@
+{% assign profile = site.data.profile %}
+{% assign current_position = site.data.experience | where: "id", profile.current_position_id | first %}
+{% assign profile_image = profile.portrait | default: "/images/main/01.jpg" %}
+{% assign profile_image_alt = profile.portrait_alt | default: profile.name %}
+{% assign profile_name = profile.name | default: "Hamza Abdelhedi" %}
+{% assign profile_tagline = profile.tagline | default: "Neuroscience · AI · Open Science · Outreach" %}
+{% assign current_title = current_position.title | default: "Graduate Research Assistant" %}
+{% assign profile_field = profile.field | default: "Biomedical Engineering" %}
+{% assign cv_url = site.data.links.cv_pdf | default: "/Hamza_Abdelhedi_cv.pdf" %}
+{% assign timeline_records = site.data.experience | concat: site.data.education | sort: "start_year" | reverse %}
+
+<div class="container">
+  <div class="page animate">
+    <div class="c-about-redesign">
+      <!-- Section 1: Hero Profile -->
+      <div class="about-hero animate" data-aos="fade-up">
+        <div class="about-hero__card">
+          <div class="about-hero__image-container">
+            <img src="{{ profile_image | relative_url }}" alt="{{ profile_image_alt }}" class="about-hero__image">
+          </div>
+          <div class="about-hero__content">
+            <h1 class="about-hero__name">{{ profile_name }}</h1>
+            <p class="about-hero__role">{{ current_title }} · {{ profile_field }}</p>
+            <p class="about-hero__tagline">{{ profile_tagline }}</p>
+            <div class="about-hero__actions">
+              <a href="{{ cv_url | relative_url }}" class="c-button c-button--primary c-button--small" target="_blank" rel="noopener">
+                <i class="ion ion-md-download"></i> Download Curriculum Vitae
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Research Pillars -->
+      <div class="about-pillars animate" data-aos="fade-up">
+        <h2 class="about-section-title">Research Pillars</h2>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-card__icon">🧠🤖</div>
+            <h3 class="pillar-card__title">Neuro-AI &amp; Modeling</h3>
+            <p class="pillar-card__text">Investigating the synergy between artificial and biological neural networks to build robust AI platforms and test brain hypotheses.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__icon">🎯</div>
+            <h3 class="pillar-card__title">Decision Making</h3>
+            <p class="pillar-card__text">Exploring the neural correlates of choice behavior and how brain complexity relates to cognitive traits through the lens of EEG/MEG.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__icon">🌍</div>
+            <h3 class="pillar-card__title">Open Science &amp; Ethics</h3>
+            <p class="pillar-card__text">Fostering fairness and equity by building shareable, open-source tools and exploring the socio-environmental risks of scientific tools.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Career & Education Timeline -->
+      <div class="about-timeline-section animate" data-aos="fade-up">
+        <h2 class="about-section-title">Career &amp; Education</h2>
+        <ul class="about-visual-timeline">
+          {% for record in timeline_records %}
+          {% assign organization = nil %}
+          {% for candidate in site.affiliations %}
+          {% if candidate.organization_id == record.institution_id %}
+          {% assign organization = candidate %}
+          {% break %}
+          {% endif %}
+          {% endfor %}
+          <li>
+            <div class="timeline-date">
+              {{ record.start_year }}{% if record.current %}–Present{% elsif record.end_year %}–{{ record.end_year }}{% endif %}
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-info">
+              <h4>{{ record.title | default: record.degree }}</h4>
+              {% if organization.name %}
+              <p>{{ organization.name }}</p>
+              {% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Section 4: Deep Dive (Q&A) -->
+      <div class="about-faq animate" data-aos="fade-up">
+        <h2 class="about-section-title">Beyond the CV</h2>
+        <div class="faq-container">
+          <details class="about-accordion">
+            <summary>Why Neuro-AI? ⟶</summary>
+            <div class="accordion-content">
+              <p>My fascination stems from the incredible synergy between artificial and biological neural networks. By observing how our brains process information, we can build more robust AI systems, which in turn act as platforms to test hypotheses about the brain's mechanisms.</p>
+            </div>
+          </details>
+          <details class="about-accordion">
+            <summary>Community Outreach ⟶</summary>
+            <div class="accordion-content">
+              <p>I firmly believe that science belongs to everyone. I am actively involved in organizing reading groups on the ethical implications of AI and teaching at summer schools like Pathfinders in AI and Arabs in Neuroscience.</p>
+            </div>
+          </details>
+          <details class="about-accordion" style="border-color: rgba(231, 76, 60, 0.3);">
+            <summary style="color: #e74c3c;">Rejections and Failures ⟶</summary>
+            <div class="accordion-content">
+              <p>Failures and rejections are essential learning steps that forge resilience. I am committed to transparency in academia and will soon be sharing my "Failure Resume" updates.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="motivation-quote" data-aos="zoom-in">
+        Making the world a better place is our collective responsibility to each other and to the planet.
+      </div>
+    </div>
+
+    <style>
+      .c-about-redesign {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+      .about-section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 900;
+        color: #1a202c;
+      }
+
+      /* Hero Card */
+      .about-hero {
+        margin-bottom: 60px;
+      }
+      .about-hero__card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid rgba(255,255,255,0.3);
+      }
+      .about-hero__image-container {
+        flex: 0 0 200px;
+      }
+      .about-hero__image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        border: 4px solid #fff;
+      }
+      .about-hero__content {
+        flex: 1;
+      }
+      .about-hero__name {
+        font-size: 42px;
+        margin: 0 0 10px 0;
+        font-weight: 900;
+        color: #1a202c;
+      }
+      .about-hero__role {
+        font-size: 20px;
+        color: #4a5568;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .about-hero__tagline {
+        font-size: 16px;
+        color: #718096;
+        margin-bottom: 25px;
+        letter-spacing: 0.5px;
+      }
+      .about-hero__actions {
+        display: flex;
+        gap: 15px;
+      }
+
+      /* Pillars Grid */
+      .about-pillars {
+        margin-bottom: 60px;
+      }
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .pillar-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .pillar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        background: rgba(255, 255, 255, 0.8);
+      }
+      .pillar-card__icon {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+      .pillar-card__title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        font-weight: 800;
+      }
+      .pillar-card__text {
+        font-size: 14px;
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      /* Timeline */
+      .about-timeline-section {
+        margin-bottom: 60px;
+      }
+      .about-visual-timeline {
+        list-style: none;
+        padding: 0;
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .about-visual-timeline::before {
+        content: '';
+        position: absolute;
+        left: 120px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(0,0,0,0.05);
+      }
+      .about-visual-timeline li {
+        display: flex;
+        margin-bottom: 30px;
+        align-items: flex-start;
+        position: relative;
+      }
+      .timeline-date {
+        flex: 0 0 100px;
+        text-align: right;
+        font-size: 14px;
+        font-weight: 700;
+        color: #718096;
+        padding-top: 5px;
+      }
+      .timeline-dot {
+        flex: 0 0 40px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      .timeline-dot::after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: #3b82f6;
+        border-radius: 50%;
+        margin-top: 8px;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+      }
+      .timeline-info {
+        flex: 1;
+        background: #fff;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      }
+      .timeline-info h4 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+        font-weight: 800;
+      }
+      .timeline-info p {
+        margin: 0;
+        font-size: 14px;
+        color: #4a5568;
+      }
+
+      /* FAQ/Accordion */
+      .about-faq {
+        margin-bottom: 60px;
+      }
+      .faq-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .about-accordion {
+        background: rgba(255,255,255,0.5);
+        border-radius: 12px;
+        padding: 15px 20px;
+        border: 1px solid rgba(0,0,0,0.05);
+        transition: all 0.3s;
+      }
+      .about-accordion[open] {
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+      .about-accordion summary {
+        font-weight: 700;
+        cursor: pointer;
+        list-style: none;
+        color: #2d3748;
+      }
+      .accordion-content {
+        margin-top: 15px;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #4a5568;
+      }
+
+      .motivation-quote {
+        text-align: center;
+        font-size: 20px;
+        font-style: italic;
+        color: #718096;
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+      }
+
+      @media (max-width: 768px) {
+        .about-hero__card {
+          flex-direction: column;
+          text-align: center;
+          padding: 30px 20px;
+        }
+        .pillars-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-visual-timeline::before {
+          left: 20px;
+        }
+        .timeline-date {
+          display: none;
+        }
+        .timeline-dot {
+          flex: 0 0 40px;
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </div>
+</div>

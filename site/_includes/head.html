@@ -1,9 +1,12 @@
 <head>
+  {% assign profile = site.data.profile %}
+  {% assign site_title = site.data.general_settings.title | default: profile.name %}
+  {% assign current_position = site.data.experience | where: "id", profile.current_position_id | first %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} | {{ site.data.general_settings.title }}{% endif %}</title>
+  <title>{% if page.url == "/" %}{{ site_title }}{% else %}{{ page.title }} | {{ site_title }}{% endif %}</title>
   <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}'>
 
   {% assign canonical_url = page.url | replace:'index.html','' | absolute_url %}
@@ -15,16 +18,16 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} | {{ site.data.general_settings.title }}{% endif %}">
+  <meta name="twitter:title" content="{% if page.url == "/" %}{{ site_title }}{% else %}{{ page.title }} | {{ site_title }}{% endif %}">
   <meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | xml_escape | truncate: 160 }}{% endif %}">
-  {% assign share_image = site.data.general_settings.social_media_share_image %}
+  {% assign share_image = profile.portrait | default: site.data.general_settings.social_media_share_image %}
   {% if page.image %}
     {% assign share_image = page.image %}
   {% endif %}
   <meta name="twitter:image:src" content="{{ share_image | absolute_url }}">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="{% if page.url == "/" %}{{ site.data.general_settings.title }}{% else %}{{ page.title }} | {{ site.data.general_settings.title }}{% endif %}">
+  <meta property="og:title" content="{% if page.url == "/" %}{{ site_title }}{% else %}{{ page.title }} | {{ site_title }}{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | xml_escape | truncate: 160 }}{% endif %}">
   <meta property="og:image" content="{{ share_image | absolute_url }}">
   
@@ -32,20 +35,21 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Hamza Abdelhedi",
-      "url": "https://hamzaabdelhedi.com",
+      "name": "{{ profile.name | escape }}",
+      "url": "{{ site.url }}{{ site.baseurl }}",
       "sameAs": [
-        "https://twitter.com/hamza_abdelhedi",
-        "https://github.com/BabaSanfour",
-        "https://www.linkedin.com/in/hamza-abdelhedi/",
-        "https://scholar.google.com/citations?user=xcX55QsAAAAJ"
+        "{{ site.data.links.twitter }}",
+        "{{ site.data.links.github }}",
+        "{{ site.data.links.linkedin }}",
+        "{{ site.data.links.scholar }}",
+        "{{ site.data.links.orcid }}"
       ],
-      "jobTitle": "PhD Student in Biomedical Engineering",
+      "jobTitle": "{{ current_position.title | default: profile.field | escape }}",
       "worksFor": {
         "@type": "Organization",
-        "name": "Université de Montréal & MILA"
+        "name": "{{ profile.field | escape }}"
       },
-      "description": "{{ site.data.general_settings.description }}"
+      "description": "{{ profile.short_bio | strip_html | strip_newlines | escape }}"
     }
   </script>
 

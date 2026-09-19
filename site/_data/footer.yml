@@ -8,8 +8,6 @@ footer_menu__settings:
       url: '/contact/'
     - title: 'Projects'
       url: '/projects/'
-    - title: 'Blog'
-      url: '/blog/'
 
 copyright_text_html: >-
-  <p> 2026 &copy; <a href="/">Hamza Abdelhedi</a>. Template by <a href="https://cloudcannon.com/">CloudCannon</a>. Image by <a href="https://stability.ai">Stability.ai</a>.</p>
+  Template by <a href="https://cloudcannon.com/">CloudCannon</a>. Image by <a href="https://stability.ai">Stability.ai</a>.

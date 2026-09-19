@@ -12,6 +12,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  use_profile: false
   title: ""
   phonetic: ""
   position: ""
@@ -60,7 +61,7 @@ _inputs:
     type: switch
   show_social_icons:
     type: switch
-    comment: Show social icons from _data/social_links.yml
+    comment: Show social icons from _data/links.yml
   email:
     type: email
     comment: Email address for contact icon

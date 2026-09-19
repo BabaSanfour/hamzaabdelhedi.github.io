@@ -77,21 +77,9 @@ layout: default
           <h4>Related Research Projects:</h4>
           <ul>
             {% for project_slug in page.related_research_projects %}
-            {% assign related_project = site.research_projects | where: 'slug', project_slug | first %}
+            {% assign related_project = site.projects | where: 'slug', project_slug | first %}
             {% if related_project %}
             <li><a href="{{ related_project.url | relative_url }}">{{ related_project.title }}</a></li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-          {% endif %}
-
-          {% if page.related_open_source %}
-          <h4>Related Open Source Contributions:</h4>
-          <ul>
-            {% for os_slug in page.related_open_source %}
-            {% assign related_os = site.open_source | where: 'slug', os_slug | first %}
-            {% if related_os %}
-            <li><a href="{{ related_os.url | relative_url }}">{{ related_os.title }}</a></li>
             {% endif %}
             {% endfor %}
           </ul>

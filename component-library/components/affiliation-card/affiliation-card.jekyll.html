@@ -9,10 +9,11 @@
       {% endif %}
       <div class="{{c}}__client-info">
         {% if include.affiliation-item.name %}
-          <h3 class="{{c}}__client-name">{{ include.affiliation-item.name }}</h3>
-        {% endif %}
-        {% if include.affiliation-item.position %}
-          <p class="{{c}}__client-position">{{ include.affiliation-item.position }}</p>
+          {% if include.affiliation-item.external_url %}
+            <h3 class="{{c}}__client-name"><a href="{{ include.affiliation-item.external_url }}" target="_blank" rel="noopener">{{ include.affiliation-item.name }}</a></h3>
+          {% else %}
+            <h3 class="{{c}}__client-name">{{ include.affiliation-item.name }}</h3>
+          {% endif %}
         {% endif %}
       </div>
     </div>

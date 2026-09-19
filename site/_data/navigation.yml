@@ -8,12 +8,9 @@ menu__settings:
       title: 'Updates'
     - url: '/about/'
       title: 'About'
-    - url: '/Hamza_Abdelhedi_cv.pdf'
+    - link_key: cv_pdf
       title: 'CV'
     - title: 'Publications'
       url: '/publications/'
     - title: 'Projects'
       url: '/projects/'
-    - title: 'Blog'
-      url: '/blog/'
-

@@ -1,6 +1,9 @@
 ---
+id: saint-justine
+organization_id: saint-justine
 name: Le Centre hospitalier universitaire Sainte-Justine
-position: Research Assistant
-image: 'images/orgs/saint-justine.png'
-blurb: As part of my PhD journey, I am collaborating with Dr. Alexander G. Weil to investigate neurobiological markers associated with epilepsy and ADHD in pediatric populations, focusing on developing novel diagnostic approaches.
+image: '/images/orgs/saint-justine.png'
+url: 'https://recherche.chusj.org/en/Home'
+external_url: 'https://recherche.chusj.org/en/Home'
+blurb: Research centre at Le Centre hospitalier universitaire Sainte-Justine.
 ---

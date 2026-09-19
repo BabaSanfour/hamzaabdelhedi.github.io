@@ -14,7 +14,9 @@
           {% endfor %}
         </ul>
 
-        <div class="copyright">{{ site.data.footer.copyright_text_html }}</div>
+        <div class="copyright">
+          <p>{{ site.time | date: '%Y' }} &copy; <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>. {{ site.data.footer.copyright_text_html }}</p>
+        </div>
 
       </div>
     </div>

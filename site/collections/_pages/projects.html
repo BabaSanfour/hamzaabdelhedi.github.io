@@ -1,8 +1,10 @@
 ---
 title: Projects
-description: Explore research projects, open-source contributions, and community initiatives by Hamza Abdelhedi.
+description: Research projects by Hamza Abdelhedi.
 layout: default
 ---
+
+{% assign research_projects = site.projects | where: "category", "research" %}
 
 <div class="container">
   <div class="row">
@@ -10,69 +12,26 @@ layout: default
       <div class="page animate">
         <h1 class="page__title">{{ page.title }}</h1>
 
+        {% if research_projects.size > 0 %}
         <h2>Research Projects</h2>
-        {% if site.research_projects.size > 0 %}
-          <ul class="project-list">
-            {% for project in site.research_projects reversed %}
-              <li class="project-item">
-                <h3 class="project-item__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
-                {% if project.summary %}
-                  <div class="project-item__summary">
-                    {{ project.summary | markdownify | truncatewords: 30 }}
-                  </div>
-                {% endif %}
-                {% if project.image %}
-                   <img src="{{ project.image | relative_url }}" alt="{{ project.title }} image" class="project-item__image-small">
-                {% endif %}
-              </li>
-            {% endfor %}
-          </ul>
+        <ul class="project-list">
+          {% for project in research_projects reversed %}
+          <li class="project-item">
+            <h3 class="project-item__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+            {% if project.summary %}
+            <div class="project-item__summary">
+              {{ project.summary | markdownify | truncatewords: 30 }}
+            </div>
+            {% endif %}
+            {% if project.image %}
+            <img src="{{ project.image | relative_url }}" alt="{{ project.title }} image" class="project-item__image-small">
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
         {% else %}
-          <p>No research projects found yet.</p>
+        <p>No research projects found.</p>
         {% endif %}
-
-        <h2>Community Projects</h2>
-        {% if site.community_projects.size > 0 %}
-          <ul class="project-list">
-            {% for project in site.community_projects reversed %}
-              <li class="project-item">
-                <h3 class="project-item__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
-                {% if project.summary %}
-                  <div class="project-item__summary">
-                    {{ project.summary | markdownify | truncatewords: 30 }}
-                  </div>
-                {% endif %}
-                {% if project.image %}
-                   <img src="{{ project.image | relative_url }}" alt="{{ project.title }} image" class="project-item__image-small">
-                {% endif %}
-              </li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>No community projects found yet.</p>
-        {% endif %}
-
-        <h2>Open Source Contributions</h2>
-        {% if site.open_source.size > 0 %}
-          <ul class="project-list">
-            {% for item in site.open_source reversed %}
-              <li class="project-item">
-                <h3 class="project-item__title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
-                {% if item.description %}
-                  <div class="project-item__summary">
-                    {{ item.description | markdownify | truncatewords: 30 }}
-                  </div>
-                {% endif %}
-                {% if item.repository_url %}
-                  <p>Repository: <a href="{{ item.repository_url }}" target="_blank">{{ item.repository_url }}</a></p>
-                {% endif %}
-              </li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>No open source contributions found yet.</p>
-        {% endif %}
-
       </div>
     </div>
   </div>

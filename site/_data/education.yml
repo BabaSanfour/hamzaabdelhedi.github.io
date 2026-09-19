@@ -1,0 +1,31 @@
+- id: phd-biomedical-engineering
+  institution_id: udem
+  start_year: 2024
+  start_date: 2024-09
+  end_year: null
+  current: true
+  degree: PhD in Biomedical Engineering
+  summary: "Supervisor: Prof. Karim Jerbi. Research affiliations: CoCo Lab and Mila."
+  featured: true
+
+- id: msc-artificial-intelligence
+  institution_id: udem
+  start_year: 2022
+  start_date: 2022-09
+  end_year: 2024
+  end_date: 2024-08
+  current: false
+  degree: "MSc in Computer Science — Artificial Intelligence"
+  summary: "Supervisor: Prof. Karim Jerbi; co-supervisor: Prof. Shahab Bakhtiari. Research affiliations: CoCo Lab and Mila."
+  featured: true
+
+- id: engineering-diploma-telecommunication
+  institution_id: supcom
+  start_year: 2018
+  start_date: 2018-09
+  end_year: 2021
+  end_date: 2021-10
+  current: false
+  degree: "Engineering Diploma in Telecommunications — Smart Imaging Applications"
+  summary: "University of Carthage — Higher School of Communication of Tunis (SUP'COM)."
+  featured: true

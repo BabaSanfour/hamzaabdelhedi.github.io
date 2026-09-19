@@ -1,5 +1,30 @@
 <!-- begin hero -->
 {% assign c = "c-hero" %}
+{% assign hero_title = include.title %}
+{% assign hero_position = include.position %}
+{% assign hero_tagline = include.tagline %}
+{% assign hero_description = include.description_html %}
+{% assign hero_image = include.image %}
+{% assign hero_image_alt = include.image_alt %}
+{% assign hero_email = include.email %}
+
+{% if include.use_profile and site.data.profile %}
+{% assign profile = site.data.profile %}
+{% assign hero_title = profile.name | default: hero_title %}
+{% assign hero_tagline = profile.tagline | default: profile.research_statement | default: hero_tagline %}
+{% assign hero_description = profile.short_bio | default: hero_description %}
+{% assign hero_image = profile.portrait | default: hero_image %}
+{% assign hero_image_alt = profile.portrait_alt | default: hero_image_alt %}
+{% assign hero_email = site.data.links.email | default: hero_email %}
+{% assign current_position = site.data.experience | where: "id", profile.current_position_id | first %}
+{% if current_position.title %}
+{% assign hero_position = current_position.title %}
+{% if profile.field %}
+{% assign hero_position = hero_position | append: " · " | append: profile.field %}
+{% endif %}
+{% endif %}
+{% endif %}
+
 <section class="{{c}} animate">
   <div class="container">
     <div class="row">
@@ -11,34 +36,37 @@
             <div class="{{c}}__header-card">
               <!-- Name with phonetic and pronouns -->
               <h1 class="{{c}}__name">
-                {{ include.title }}
+                {{ hero_title }}
                 {% if include.phonetic %}
                 <span class="{{c}}__phonetic">({{ include.phonetic }})</span>
                 {% endif %}
               </h1>
 
               <!-- Position/Title Line -->
-              {% if include.position %}
-              <p class="{{c}}__position">{{ include.position }}</p>
+              {% if hero_position %}
+              <p class="{{c}}__position">{{ hero_position }}</p>
               {% endif %}
 
               <!-- Tagline -->
-              {% if include.tagline %}
-              <p class="{{c}}__tagline">{{ include.tagline }}</p>
+              {% if hero_tagline %}
+              <p class="{{c}}__tagline">{{ hero_tagline }}</p>
               {% endif %}
             </div>
 
             <!-- Social Icons -->
             {% if include.show_social_icons %}
             <div class="{{c}}__social">
-              {% for link in site.data.social_links.social %}
-              <a href="{{ link.link }}" target="_blank" rel="noopener" class="{{c}}__social-link"
-                title="{{ link.icon }}">
-                <i class="ion ion-logo-{{ link.icon | downcase }}"></i>
+              {% for social in site.data.links.social %}
+              {% assign social_url = site.data.links[social.key] %}
+              {% if social_url %}
+              <a href="{{ social_url }}" target="_blank" rel="noopener" class="{{c}}__social-link"
+                title="{{ social.icon }}">
+                <i class="ion ion-logo-{{ social.icon | downcase }}"></i>
               </a>
+              {% endif %}
               {% endfor %}
-              {% if include.email %}
-              <a href="mailto:{{ include.email }}" class="{{c}}__social-link" title="Email">
+              {% if hero_email %}
+              <a href="mailto:{{ hero_email }}" class="{{c}}__social-link" title="Email">
                 <i class="ion ion-md-mail"></i>
               </a>
               {% endif %}
@@ -46,7 +74,7 @@
             {% endif %}
 
             <!-- Short Description -->
-            <div class="{{c}}__description">{{ include.description_html }}</div>
+            <div class="{{c}}__description">{{ hero_description }}</div>
 
             <!-- CTA Buttons -->
             <div class="{{c}}__btn">
@@ -62,7 +90,7 @@
 
           <div class="{{c}}__right">
             <div class="{{c}}__image {% if include.circular_image %}{{c}}__image--circular{% endif %}">
-              <img loading="lazy" src="{{ include.image }}" alt="{{ include.image_alt }}">
+              <img loading="lazy" src="{{ hero_image }}" alt="{{ hero_image_alt }}">
             </div>
 
             <!-- Spotlight Card -->

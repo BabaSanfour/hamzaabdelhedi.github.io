@@ -9,18 +9,23 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   Affiliation-item:
+    id: ""
+    organization_id: ""
     name: ""
-    position: ""
-    blurb: ""
     image: ""
+    url: ""
+    external_url: ""
+    blurb: ""
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
   Affiliation-item:
+    id: cocolab
     name: Hello World
-    position: Author
     blurb: Lorem Ipsum
     image: https://placekitten.com/1000/600
+    url: https://example.com
+    external_url: https://example.com
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs: {}

@@ -1,6 +1,9 @@
 ---
+id: snail
+organization_id: snail
 name: Systems Neuroscience and AI Lab
-position: Graduate Research Student
-image: 'images/orgs/SNAIL.png'
-blurb: During my MSc studies, I joined the Systems Neuroscience and AI Lab (SNAILab) under the supervision of Dr. Bakhtiari.
+image: '/images/orgs/SNAIL.png'
+url: 'https://www.snailab.ca/'
+external_url: 'https://www.snailab.ca/'
+blurb: Systems Neuroscience and AI Lab at Université de Montréal, led by Dr. Shahab Bakhtiari.
 ---

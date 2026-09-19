@@ -7,9 +7,9 @@
         <div class="logo">
           <a class="logo__link" href="{{ site.baseurl }}/">
           {%if site.data.navigation.logo_image %}
-            <img class="logo__image" src="{{ site.baseurl }}{{ site.data.navigation.logo_image }}" alt="{{ site.data.general_settings.title }}">
+            <img class="logo__image" src="{{ site.baseurl }}{{ site.data.navigation.logo_image }}" alt="{{ site.data.profile.name }}">
           {% else %}
-            {{ site.data.settings.title }}
+            {{ site.data.profile.name }}
           {% endif %}
           </a>
         </div>
@@ -38,7 +38,11 @@
 
                 {% else %}
                 <li class="nav__item">
-                  <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+                  {% assign nav_url = item.url %}
+                  {% if item.link_key %}
+                  {% assign nav_url = site.data.links[item.link_key] %}
+                  {% endif %}
+                  <a href="{{ nav_url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
                 </li>
                 {% endif %}
               {% endfor %}
