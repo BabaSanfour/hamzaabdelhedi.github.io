@@ -8,7 +8,7 @@ All implementation stages start as **not started**. Writing this prompt pack did
 | 01 | Implemented, awaiting review | [01_foundation.md](reports/01_foundation.md) | Canonical CV alignment pass applied; review shared career records before Stage 02 |
 | 02 | In progress | [02_profile.md](reports/02_profile.md) | User directed Stage 02 to proceed while Stage 01 remains awaiting review; 1024 px routes and script-free Home preview checked, public email confirmed; keyboard-triggered focus visual remains unverified |
 | 03 | Implemented, awaiting review | [03_research_software.md](reports/03_research_software.md) | User directed Stage 03 while Stages 01–02 remain unaccepted; their review statuses are preserved |
-| 04 | Not started | — | Requires 03 and CV access |
+| 04 | In progress | [publication_reconciliation.md](reports/publication_reconciliation.md); [04_publications_data.md](reports/04_publications_data.md) | EEG-alignment item withheld at owner's request pending a primary source; thesis item permalink and source abstract check remain open |
 | 05 | Not started | — | Requires 04 |
 | 06 | Not started | — | Requires 05 |
 | 07 | Not started | — | Requires 06 and CV build evidence |
@@ -19,7 +19,7 @@ Allowed statuses: Not started; In progress; Blocked; Implemented, awaiting revie
 
 ## Open factual questions
 
-Stage 00 verified the canonical CV revision, PhD/MSc/engineering wording, software roles, teaching/service sections, and 2026 bibliography against `BabaSanfour/cv-latex` revision `e382f9a`. Remaining factual follow-up is the public URL/status for the face-familiarity bioRxiv record and publication title/DOI reconciliation. The owner confirmed on 2026-09-19 that the current shared public email (`hamza.abdelhedi@umontreal.ca`) is the preferred destination.
+Stage 00 verified the canonical CV revision, PhD/MSc/engineering wording, software roles, teaching/service sections, and 2026 bibliography against BabaSanfour/cv-latex revision e382f9a. Stage 04 used that bibliography and publisher, conference, arXiv, bioRxiv and Research Square records to reconcile the CV items. The supplied bioRxiv record resolved the face-familiarity title/URL discrepancy. The under-review EEG-alignment CV item still has no public primary source or abstract and is withheld from the site at the owner's request; the retained thesis still lacks an item-level Papyrus URL and direct source-abstract check. The owner confirmed on 2026-09-19 that the current shared public email (hamza.abdelhedi@umontreal.ca) is the preferred destination.
 
 ## Deferred work
 
@@ -40,3 +40,6 @@ Append a dated entry here if explicit user instructions change scope or a record
 - 2026-09-19 — Owner confirmed `hamza.abdelhedi@umontreal.ca` as the preferred public address. Stage 02 retained the existing shared destination and repaired Contact as a `mailto:` link. Home, About, and Contact were checked at 1024×768; a script-free Home preview remained visible after script tags were removed. Keyboard-triggered focus visual remains unverified, so Stage 02 remains In progress; see `reports/02_profile.md`.
 - 2026-09-19 — User explicitly directed Stage 03 while Stage 01 remains Implemented, awaiting review and Stage 02 remains In progress. Stage 03 work proceeds within its bounded scope; the earlier stage statuses and outstanding reviews are unchanged.
 - 2026-09-19 — Exact-width Chrome checks for Stage 03 found hidden trajectory detail cards widening Home at 1024 px. Added a narrow responsive placement rule for 769–1024 px in the existing trajectory component so the cards remain within the viewport; recorded the scope adjustment and browser evidence in `reports/03_research_software.md`.
+- 2026-09-20 — User explicitly directed Stage 04 while Stage 03 remained Implemented, awaiting review. Stage 04 proceeded within the publication-data scope; Stages 01–03 statuses were preserved. The user supplied the current face-familiarity bioRxiv record, resolving the earlier title/URL question.
+- 2026-09-21 — Stage 04 added optional preprint_url so the existing bioRxiv version remains linked when the canonical record points to its final iScience article. The shared publication contract, schema, CMS inputs and compatible renderers were updated. Stage 04 remains In progress because the EEG-alignment item is intentionally omitted pending a manuscript source and thesis source checks remain open.
+- 2026-09-21 — At the owner's request, removed the EEG-alignment publication record from the site and its foundation-model project outputs until its primary manuscript source is available. The CV item is recorded as intentionally deferred in the reconciliation reports.

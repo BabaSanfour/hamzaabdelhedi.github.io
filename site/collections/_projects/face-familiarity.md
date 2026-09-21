@@ -21,14 +21,12 @@ methods:
 collaborators:
   - Shahab Bakhtiari
   - Karim Jerbi
-links:
-  - label: 2024 CCN paper
-    url: https://2024.ccneuro.org/pdf/596_Paper_authored_ccn2024_final_final.pdf
-  - label: 2022 CCN paper
-    url: https://doi.org/10.32470/CCN.2022.1320-0
 related_software: []
 publication_ids:
   - reconnaissance-faciale-ai-humains
+  - ccn-2024-face-dynamics
+  - ccn-2022-face-representations
+  - face-familiarity-preprint
 ---
 
 ## Scientific question

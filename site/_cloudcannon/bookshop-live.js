@@ -6697,6 +6697,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // component-library/components/publication-card/publication-card.jekyll.html
   var publication_card_jekyll_default = `{% assign c = "c-publication-card" %}
+{% assign card_abstract = include.project.abstract | default: include.project.content %}
 <article
     class="{{c}} {% if include.project.featured %}is-featured{% endif %} {% if include.layout == 'vertical' %}is-vertical{% endif %}"
     id="pub-{{ include.project.slug }}">
@@ -6739,14 +6740,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
 
+            {% if card_abstract %}
             <div class="{{c}}__abstract-container">
                 <div class="{{c}}__abstract-content">
-                    <p><strong>Abstract:</strong> {{ include.project.content | strip_html }}</p>
+                    <p><strong>Abstract:</strong> {{ card_abstract | strip_html }}</p>
                 </div>
             </div>
+            {% endif %}
 
             <div class="{{c}}__footer">
                 <div class="{{c}}__links">
+                    {% if include.project.paper_url %}
+                    <a href="{{ include.project.paper_url }}" class="{{c}}__link" target="_blank" rel="noopener">
+                        <i class="ion ion-md-document"></i> Paper
+                    </a>
+                    {% endif %}
+
+                    {% if include.project.preprint_url %}
+                    <a href="{{ include.project.preprint_url }}" class="{{c}}__link" target="_blank" rel="noopener">
+                        <i class="ion ion-logo-buffer"></i> Preprint
+                    </a>
+                    {% endif %}
+
                     {% if include.project.project_url %}
                     <a href="{{ include.project.project_url | relative_url }}" class="{{c}}__link" target="_blank">
                         <i class="ion ion-md-globe"></i> Project page
@@ -6755,7 +6770,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     {% if include.project.pdf_link %}
                     <a href="{{ include.project.pdf_link | relative_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-document"></i> Paper
+                        <i class="ion ion-md-document"></i> {% if include.project.paper_url %}PDF{% else %}Paper{% endif %}
                     </a>
                     {% endif %}
 
@@ -6835,7 +6850,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-<\/script>`;
+<\/script>
+`;
 
   // bookshop-import-file:components/publication-card/publication-card.jekyll.html__bookshop_file__
   var publication_card_jekyll_default2 = publication_card_jekyll_default;

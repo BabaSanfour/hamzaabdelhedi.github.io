@@ -19,7 +19,8 @@ methods:
 collaborators: []
 links: []
 related_software: []
-publication_ids: []
+publication_ids:
+  - meg-foundation-roadmap
 ---
 
 ## Scientific question
@@ -34,4 +35,4 @@ This work supports, but does not replace, the scientific questions in my doctora
 
 ## Public outputs
 
-A co-authored roadmap on MEG foundation models is publicly available. A separate EEG model-alignment manuscript is listed as under review.
+A co-authored roadmap on MEG foundation models is publicly available.

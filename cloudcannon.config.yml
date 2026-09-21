@@ -128,9 +128,34 @@ collections_config:
     _enabled_editors:
       - content
       - visual
+    _inputs:
+      type:
+        type: select
+        options:
+          values:
+            - journal
+            - conference-proceedings
+            - conference-paper
+            - conference-abstract
+            - preprint
+            - thesis
+      status:
+        type: select
+        options:
+          values:
+            - published
+            - accepted
+            - preprint
+            - under-review
+            - submitted
+      featured:
+        type: checkbox
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+    schemas:
+      default:
+        path: site/schemas/publication.md
 collection_groups:
   - heading: Content
     collections:

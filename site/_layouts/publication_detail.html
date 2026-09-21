@@ -36,6 +36,18 @@ layout: default
             </div>
 
             <div class="c-publication-card__actions" style="margin-top: 24px; padding-top: 0; border: none;">
+              {% if page.paper_url %}
+              <a href="{{ page.paper_url }}" class="c-publication-card__chip" target="_blank" rel="noopener">
+                <i class="ion ion-md-document"></i> Paper
+              </a>
+              {% endif %}
+
+              {% if page.preprint_url %}
+              <a href="{{ page.preprint_url }}" class="c-publication-card__chip" target="_blank" rel="noopener">
+                <i class="ion ion-logo-buffer"></i> Preprint
+              </a>
+              {% endif %}
+
               {% if page.pdf_link %}
               <a href="{{ page.pdf_link | relative_url }}" class="c-publication-card__chip" target="_blank"
                 rel="noopener">
@@ -73,13 +85,31 @@ layout: default
             {{ content }}
           </div>
 
-          {% if page.related_research_projects %}
-          <h4>Related Research Projects:</h4>
+          {% assign related_research_ids = page.related_research | default: page.related_research_projects %}
+          {% if related_research_ids %}
+          <h2>Related research</h2>
           <ul>
-            {% for project_slug in page.related_research_projects %}
-            {% assign related_project = site.projects | where: 'slug', project_slug | first %}
+            {% for project_id in related_research_ids %}
+            {% assign related_project = site.projects | where: 'slug', project_id | first %}
             {% if related_project %}
-            <li><a href="{{ related_project.url | relative_url }}">{{ related_project.title }}</a></li>
+            {% assign related_project_url = related_project.url %}
+            {% assign related_project_url_ending = related_project_url | slice: -5, 5 %}
+            {% unless related_project_url_ending == ".html" %}
+            {% assign related_project_url = related_project_url | append: ".html" %}
+            {% endunless %}
+            <li><a href="{{ related_project_url | relative_url }}">{{ related_project.title }}</a></li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if page.related_software %}
+          <h2>Related software</h2>
+          <ul>
+            {% for software_id in page.related_software %}
+            {% assign related_software = site.data.software | where: 'id', software_id | first %}
+            {% if related_software %}
+            <li><a href="{{ '/software/#' | append: software_id | relative_url }}">{{ related_software.name }}</a></li>
             {% endif %}
             {% endfor %}
           </ul>
