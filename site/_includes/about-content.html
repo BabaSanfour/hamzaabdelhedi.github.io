@@ -3,6 +3,7 @@
 {% assign profile_image = profile.portrait | default: "/images/main/01.jpg" %}
 {% assign profile_image_alt = profile.portrait_alt | default: profile.name %}
 {% assign cv_url = site.data.links.cv_pdf %}
+{% assign cv_source_url = site.data.links.cv_source %}
 {% assign timeline_records = site.data.experience | concat: site.data.education | sort: "start_year" | reverse %}
 
 <main class="container profile-page about-page">
@@ -20,6 +21,7 @@
       {% if cv_url %}
       <p class="profile-page__actions">
         <a class="c-button c-button--primary c-button--small" href="{{ cv_url | relative_url }}" target="_blank" rel="noopener">Download CV</a>
+        {% if cv_source_url %}<a class="c-button c-button--secondary c-button--small" href="{{ cv_source_url }}" target="_blank" rel="noopener">View source on GitHub</a>{% endif %}
       </p>
       {% endif %}
     </div>

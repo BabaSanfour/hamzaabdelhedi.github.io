@@ -10,6 +10,7 @@ Built with [Jekyll](http://jekyllrb.com/) and [Bookshop](https://github.com/Clou
 - **Node.js** (v16+)
 - **Ruby** (3.0+ recommended, install via [rbenv](https://github.com/rbenv/rbenv))
 - **Bundler** (`gem install bundler`)
+- **LaTeX** (`latexmk` and `pdflatex`) for a local CV prebuild
 
 ### Installation
 
@@ -24,9 +25,18 @@ npm install
 # Install Jekyll dependencies
 npm run jekyll:install
 
+# Build the canonical CV PDF for the local preview
+git clone --depth 1 --branch main https://github.com/BabaSanfour/cv-latex.git _cv-src
+(cd _cv-src && latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex)
+bash scripts/sync-cv-pdf.sh _cv-src/main.pdf site
+
 # Start development server
 npm start
 ```
+
+The CV checkout and generated canonical PDF are ignored locally. If `_cv-src`
+already exists, update it with `git -C _cv-src pull --ff-only` before running
+the `latexmk` and synchronization commands again.
 
 The site will be available at **http://localhost:6060**
 
@@ -79,6 +89,23 @@ The site is deployed automatically to [GitHub Pages](https://pages.github.com/) 
 1. Go to **Settings → Pages → Source** and select **GitHub Actions**
 2. Set **Custom domain** to `hamzaabdelhedi.com`
 3. Push to `main` — the workflow will build and deploy
+
+### CV build and refresh
+
+The website deployment checks out the public `BabaSanfour/cv-latex` `main`
+branch into `_cv-src`, compiles its `main.tex` with the same `latexmk`-based
+`xu-cheng/latex-action@v3` recipe used by the CV repository, and verifies the
+fresh PDF before Jekyll runs. It copies those exact bytes to both
+`/assets/files/Hamza_Abdelhedi_CV.pdf` and the legacy
+`/Hamza_Abdelhedi_cv.pdf` path. A failure in checkout, compilation, PDF
+validation, copying, or the final artifact comparison prevents upload and
+deployment.
+
+Changes made only in `cv-latex` do not trigger this website workflow. After
+merging a CV change, run **Actions → Deploy to GitHub Pages → Run workflow** in
+this repository. This manual `workflow_dispatch` synchronization is
+intentional; no cross-repository credentials or scheduled refresh are
+configured.
 
 ### Troubleshooting
 

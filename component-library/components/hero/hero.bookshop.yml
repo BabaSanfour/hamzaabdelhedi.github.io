@@ -50,7 +50,7 @@ preview:
   works_button: Publications
   works_button_link: /publications/
   cv_button: Download CV
-  cv_button_link: /Hamza_Abdelhedi_cv.pdf
+  cv_button_link: /assets/files/Hamza_Abdelhedi_CV.pdf
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:

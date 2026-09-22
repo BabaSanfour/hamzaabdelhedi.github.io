@@ -8,11 +8,9 @@ on:
     branches: [main]
   workflow_dispatch: # Allow manual trigger from Actions tab
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Sets permissions of the GITHUB_TOKEN needed by the build job.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the
 # run in-progress and latest queued. Do NOT cancel in-progress runs as
@@ -27,6 +25,45 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      # ── CV source and PDF ─────────────────────────────────────────
+      - name: Checkout CV source
+        uses: actions/checkout@v4
+        with:
+          repository: BabaSanfour/cv-latex
+          ref: main
+          path: _cv-src
+
+      - name: Record CV source revision
+        working-directory: _cv-src
+        run: |
+          set -euo pipefail
+          test -f main.tex
+          echo "CV source revision: $(git rev-parse HEAD)"
+
+      - name: Prepare fresh CV output
+        run: |
+          set -euo pipefail
+          rm -f _cv-src/main.pdf
+          test ! -e _cv-src/main.pdf
+
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: _cv-src
+
+      - name: Verify compiled CV
+        working-directory: _cv-src
+        run: |
+          set -euo pipefail
+          test -s main.pdf
+          test "$(head -c 5 main.pdf)" = "%PDF-"
+          test "$(file --brief --mime-type main.pdf)" = "application/pdf"
+          echo "Compiled CV: $(wc -c < main.pdf | tr -d ' ') bytes"
+
+      - name: Copy and verify CV artifacts
+        run: bash scripts/sync-cv-pdf.sh _cv-src/main.pdf site
 
       # ── Node.js (Bookshop) ────────────────────────────────────────
       - name: Setup Node.js
@@ -56,6 +93,19 @@ jobs:
           BUNDLE_GEMFILE: site/Gemfile
           JEKYLL_ENV: production
 
+      - name: Verify generated CV artifacts
+        run: |
+          set -euo pipefail
+          test -s _site/assets/files/Hamza_Abdelhedi_CV.pdf
+          test -s _site/Hamza_Abdelhedi_cv.pdf
+          cmp -s _cv-src/main.pdf _site/assets/files/Hamza_Abdelhedi_CV.pdf
+          cmp -s _cv-src/main.pdf _site/Hamza_Abdelhedi_cv.pdf
+          if find _site \( -type d -name '_cv-src' -o -type f \( -name '*.tex' -o -name '*.aux' -o -name '*.log' -o -name '*.fls' -o -name '*.fdb_latexmk' -o -name '*.out' -o -name '*.synctex*' \) \) -print -quit | grep -q .; then
+            echo 'Unexpected CV source or build file found in _site' >&2
+            exit 1
+          fi
+          echo 'Generated CV artifacts match the freshly compiled PDF.'
+
       # ── Upload & Deploy ────────────────────────────────────────────
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -65,6 +115,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
