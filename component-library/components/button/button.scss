@@ -7,14 +7,17 @@
   align-items: center;
   line-height: 1;
   font-weight: 700;
-  border-radius: 16px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: $radius-sm;
   white-space: nowrap;
   border: none;
   outline: none;
   cursor: pointer;
   overflow: hidden;
   transition: all .25s ease;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  box-shadow: none;
   will-change: transform;
 
   &:active {
@@ -23,48 +26,35 @@
 
   &--primary {
     color: $white;
-    background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+    background: $primary-color;
 
     &:hover {
       color: $white !important;
 
-      &:before {
-        opacity: 1;
-      }
+      background: $button-background-hover;
     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      display: block;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      will-change: transform;
-      transition: opacity 0.35s;
-      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 107%);
-    }
   }
 
   &--secondary {
     color: $text-color;
+    border-color: $border-color;
     background: $background-color-alt;
 
     &:hover {
       color: $text-color;
+      border-color: $primary-color;
+      background: rgba($primary-color, 0.06);
     }
   }
 
   &--small {
-    padding: 16px 32px;
-    font-size: 16px;
+    padding: 12px 20px;
+    font-size: 15px;
   }
 
   &--large {
-    padding: 24px 44px;
+    padding: 16px 24px;
     font-size: 18px;
   }
 }

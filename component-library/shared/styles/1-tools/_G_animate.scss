@@ -15,6 +15,17 @@ body:not(.stop-animations) .animate {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body:not(.stop-animations) .animate {
+    animation: none;
+    transition: none;
+  }
+}
+
 .resize-animation-stopper * {
   transition: none !important;
 }

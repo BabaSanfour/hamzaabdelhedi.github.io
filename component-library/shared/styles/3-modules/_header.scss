@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 48px $base-spacing-unit 40px;
+  padding: $space-5 0;
   min-height: 80px;
 
   @media only screen and (max-width: $desktop) {
@@ -17,7 +17,7 @@
   }
 
   @media only screen and (max-width: $mobile) {
-    padding: 30px $base-spacing-unit;
+    padding: $space-4 0;
   }
 }
 
@@ -165,7 +165,9 @@
     font-size: 18px;
     border-radius: 50%;
     cursor: pointer;
-    background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+    color: $text-color;
+    border: 1px solid $border-color;
+    background: $background-color-alt;
 
     &:hover {
       .ion-md-close {
@@ -174,7 +176,7 @@
     }
 
     .ion-md-close {
-      color: $white;
+      color: $text-color;
       transition: $global-transition;
       will-change: transform;
     }
@@ -194,11 +196,11 @@
 
     .nav__title {
       display: block;
-      padding: 0 0 24px 40px;
+      padding: 0 0 $space-4 0;
       margin-bottom: 24px;
-      font-size: 32px;
+      font-size: 24px;
       line-height: 1;
-      font-weight: 900;
+      font-weight: 700;
       color: $heading-font-color;
       border-bottom: 1px solid $border-color;
     }
@@ -215,7 +217,7 @@
 
   .nav__item {
     display: inline-block;
-    margin: 0 24px;
+    margin: 0 $space-4;
 
     &:last-child {
       margin-right: 0;
@@ -223,7 +225,7 @@
 
     .nav__link {
       position: relative;
-      padding-bottom: 10px;
+      padding-bottom: $space-2;
       font-size: 16px;
       line-height: 1;
       font-weight: 600;
@@ -239,12 +241,12 @@
           content: "";
           position: absolute;
           left: 50%;
-          bottom: -6px;
+          bottom: -4px;
           transform: translateX(-50%);
           display: block;
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
+          width: 24px;
+          height: 2px;
+          border-radius: 0;
           background-color: $primary-color;
         }
       }
@@ -276,12 +278,13 @@
     z-index: 100;
     min-width: 150px;
     display: block;
-    padding: 20px;
+    padding: $space-3;
     opacity: 0;
     visibility: hidden;
     transition: all .25s ease;
-    border-radius: 8px;
-    box-shadow: 0px 20px 20px rgba($primary-color, 0.07);
+    border: 1px solid $border-color;
+    border-radius: $radius-sm;
+    box-shadow: none;
     background-color: $white;
 
     .nav__link {
@@ -292,7 +295,7 @@
       will-change: transform;
 
       &:hover {
-        background-color: rgba($primary-color, 0.1);
+        background-color: rgba($primary-color, 0.08);
       }
 
       &.active-link,

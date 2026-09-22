@@ -1,18 +1,18 @@
 /* Sections */
 .section {
-  padding: 40px 0;
+  padding: $space-7 0;
 
   @media only screen and (max-width: $desktop) {
-    padding: 32px 0;
+    padding: $space-6 0;
   }
 
   @media only screen and (max-width: $mobile) {
-    padding: 24px 0;
+    padding: $space-5 0;
   }
 }
 
 .section__info {
-  margin-bottom: 24px;
+  margin-bottom: $space-5;
 
   .section__head {
     display: flex;
@@ -21,8 +21,8 @@
 
     .section__title {
       margin: 0;
-      font-size: 32px;
-      line-height: 1;
+      font-size: 28px;
+      line-height: 1.2;
     }
 
     .section__link {
@@ -58,7 +58,7 @@
   .section__description {
     max-width: 480px;
     line-height: 1.6;
-    margin: 16px 0 0;
+    margin: $space-3 0 0;
 
     p {
       margin: 0;
@@ -72,13 +72,13 @@
   }
 
   @media only screen and (max-width: $mobile) {
-    margin-bottom: 48px;
+    margin-bottom: $space-6;
 
     .section__head {
 
       .section__title {
         margin-right: 12px;
-        font-size: 28px;
+        font-size: 24px;
       }
 
       .section__link {

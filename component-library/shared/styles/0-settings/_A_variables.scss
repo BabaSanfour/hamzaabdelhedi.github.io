@@ -3,31 +3,52 @@
 // *****************
 
 // Spaces
-$base-spacing-unit: 10px;
+$base-spacing-unit: 8px;
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 24px;
+$space-6: 32px;
+$space-7: 48px;
+$space-8: 64px;
+$space-9: 96px;
+
+// Layout
+$content-wide: 1180px;
+$content-reading: 760px;
+
+// Responsive breakpoints
+$desktop: 1024px;
+$tablet: 768px;
+$mobile: 576px;
 
 // Border radius
-$global-radius: 16px;
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 22px;
+$global-radius: $radius-md;
 
 // Transition
-$global-transition: all .35s;
+$global-transition: 180ms ease;
 
 
 // *****************
 // Typography
 // *****************
-$base-font-size: 18px;
+$base-font-size: 16px;
 $base-font-style: normal;
 $base-font-variant: normal;
 $base-font-weight: normal;
 $base-font-family: 'Inter', Helvetica Neue, Helvetica, Arial, sans-serif;
-$base-line-height: 1.8;
+$base-line-height: 1.65;
 
 // Headings
-$heading-font-weight: 900;
+$heading-font-weight: 700;
 $heading-font-family: 'Inter', Helvetica Neue, Helvetica, Arial, sans-serif;
 
-$font-size-h1:  36px;
-$font-size-h2:  28px;
+$font-size-h1:  48px;
+$font-size-h2:  32px;
 $font-size-h3:  24px;
 $font-size-h4:  20px;
 $font-size-h5:  18px;
@@ -35,4 +56,4 @@ $font-size-h6:  16px;
 
 
 $heading-line-height: 1.2;
-$heading-letter-spacing: -1px;
+$heading-letter-spacing: -0.02em;
