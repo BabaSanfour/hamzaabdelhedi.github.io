@@ -6,7 +6,7 @@ blueprint:
   description: Displays a highlight strip of featured publications on the homepage.
   
 preview:
-  title: "Featured Publications"
+  title: "Selected publications"
   description_html: "<p>Selected peer-reviewed work and preprints.</p>"
   link_url: "/publications"
-  max_featured: 3
+  max_items: 3

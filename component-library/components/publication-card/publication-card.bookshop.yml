@@ -8,12 +8,17 @@ blueprint:
   
 preview:
   project:
+    id: "publication-preview"
+    slug: publication-preview
     title: "Review of MEG Analysis Techniques Using Artificial Neural Networks"
     authors: "H. Abdelhedi, M. Lee, K. Jerbi"
     venue: "Frontiers in Neuroscience"
     year: 2024
     type: "journal"
+    status: "published"
     url: "/publications/meg-ann-review"
+    abstract: "A short canonical abstract preview."
+    summary: "A concise context line for this publication."
     thumbnail: "/images/main/01.jpg"
     pdf_link: "/files/meg-ann-review-article.pdf"
     doi: "10.3389/fnins.2024.xxxxxx"

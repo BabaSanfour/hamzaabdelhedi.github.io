@@ -140,19 +140,28 @@
                     <div class="c-spotlight__body">
                       {% if item.type == 'publication' %}
                       <!-- Publication Layout -->
+                      {% assign spotlight_publication = site.publications | where: "slug", item.publication_id | first %}
+                      {% assign spotlight_title = spotlight_publication.title | default: item.title %}
+                      {% assign spotlight_url = spotlight_publication.url | default: item.url %}
+                      {% if spotlight_publication.url %}
+                      {% assign spotlight_url_ending = spotlight_url | slice: -5, 5 %}
+                      {% unless spotlight_url_ending == ".html" %}{% assign spotlight_url = spotlight_url | append: ".html" %}{% endunless %}
+                      {% endif %}
+                      {% assign spotlight_meta = spotlight_publication.venue | append: " · " | append: spotlight_publication.year %}
+                      {% assign spotlight_image = spotlight_publication.thumbnail | default: item.image %}
                       <div class="c-spotlight__pub-layout">
-                        {% if item.image %}
+                        {% if spotlight_image %}
                         <div class="c-spotlight__thumb">
-                          <img src="{{ item.image }}" alt="{{ item.title }}">
+                          <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}">
                         </div>
                         {% endif %}
                         <div class="c-spotlight__content">
                           <h4 class="c-spotlight__title">
-                            {% if item.url %}<a href="{{ item.url }}">{% endif %}
-                              {{ item.title }}
-                              {% if item.url %}</a>{% endif %}
+                            {% if spotlight_url %}<a href="{{ spotlight_url | relative_url }}">{% endif %}
+                              {{ spotlight_title | escape }}
+                              {% if spotlight_url %}</a>{% endif %}
                           </h4>
-                          <p class="c-spotlight__meta">{{ item.meta }}</p>
+                          <p class="c-spotlight__meta">{{ spotlight_meta | escape }}</p>
                         </div>
                       </div>
 
@@ -183,25 +192,6 @@
                         </p>
                       </div>
 
-                      {% elsif item.type == 'repos' %}
-                      <!-- Repos Layout -->
-                      <div class="c-spotlight__repos-layout">
-                        <ul class="c-spotlight__repo-list">
-                          {% for repo in item.repos %}
-                          <li class="c-spotlight__repo-item">
-                            <span class="c-spotlight__repo-icon"><i class="ion ion-logo-github"></i></span>
-                            <a href="{{ repo.url }}" class="c-spotlight__repo-name"
-                              data-repo="{{ repo.url | split: '/' | slice: 3, 2 | join: '/' }}">{{ repo.name }}</a>
-                            <div class="c-spotlight__repo-stars">
-                              <span class="c-spotlight__star-box">
-                                <i class="ion ion-logo-github"></i> Star
-                              </span>
-                              <span class="c-spotlight__star-count">{{ repo.stars }}</span>
-                            </div>
-                          </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
                       {% endif %}
                     </div>
                   </div>
@@ -225,7 +215,6 @@
                 </button>
               </div>
             </div>
-            <script src="/js/spotlight.js" defer></script>
             {% endif %}
           </div>
 

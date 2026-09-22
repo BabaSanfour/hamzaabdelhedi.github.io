@@ -68,32 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     spotlight.addEventListener('focusin', stopRotation);
     spotlight.addEventListener('focusout', startRotation);
 
-    // Live GitHub Stars
-    async function fetchStars() {
-        const repoLinks = spotlight.querySelectorAll('[data-repo]');
-        for (const link of repoLinks) {
-            const repo = link.getAttribute('data-repo');
-            if (!repo) continue;
-
-            const starCountEl = link.closest('.c-spotlight__repo-item')?.querySelector('.c-spotlight__star-count');
-            if (!starCountEl) continue;
-
-            try {
-                const response = await fetch(`https://api.github.com/repos/${repo}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.stargazers_count !== undefined) {
-                        starCountEl.textContent = data.stargazers_count;
-                        starCountEl.classList.add('is-updated');
-                    }
-                }
-            } catch (error) {
-                console.error(`Error fetching stars for ${repo}:`, error);
-            }
-        }
-    }
-
     // Initialize
-    fetchStars();
     startRotation();
 });

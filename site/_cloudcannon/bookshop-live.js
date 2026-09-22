@@ -6249,48 +6249,7 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
   var content_jekyll_default2 = content_jekyll_default;
 
   // component-library/components/featured-publications/featured-publications.jekyll.html
-  var featured_publications_jekyll_default = `<!-- begin featured-publications -->
-<section class="section featured-publications" id="featured-publications">
-    <div class="container animate">
-        <div class="updates-trajectory split-layout">
-            <div class="column-header">
-                <h2 class="column-title">{{ include.section_title | default: "Featured Publications" }}</h2>
-                <a href="{{ '/publications/' | relative_url }}" class="view-all">View all publications \u2192</a>
-            </div>
-            {% if include.section_description %}
-            <p class="column-description">{{ include.section_description }}</p>
-            {% endif %}
-        </div>
-
-        <div class="row featured-publications__grid">
-            {% assign max_count = include.max_featured | default: 3 %}
-            {% assign featured_count = 0 %}
-
-            {% for pub in site.publications reversed %}
-            {% if pub.featured == true and featured_count < max_count %} <div
-                class="col col-4 col-d-6 col-t-12 featured-publications__item">
-                {% bookshop publication-card project=pub layout="vertical" %}
-        </div>
-        {% assign featured_count = featured_count | plus: 1 %}
-        {% endif %}
-        {% endfor %}
-
-        {% if featured_count == 0 %}
-        <div class="col col-12">
-            <div class="featured-publications__empty">
-                <p>No featured publications selected yet. Add <code>featured: true</code> to a publication's
-                    frontmatter to show it here.</p>
-            </div>
-        </div>
-        {% endif %}
-    </div>
-
-    </div>
-    </div>
-    </div>
-    </div>
-</section>
-<!-- end featured-publications -->`;
+  var featured_publications_jekyll_default = '{% assign selected_publications = site.publications | where: "featured", true | sort: "id" | sort: "title" | sort: "date" | sort: "year" | reverse %}\n{% assign max_count = include.max_items | default: 3 %}\n{% if selected_publications.size > 0 %}\n<!-- begin featured-publications -->\n<section class="section featured-publications" id="featured-publications">\n  <div class="container animate">\n    <div class="updates-trajectory split-layout">\n      <div class="column-header">\n        <h2 class="column-title">{{ include.title | default: "Selected publications" }}</h2>\n        {% assign publications_url = include.link_url | default: "/publications/" %}\n        <a href="{{ publications_url | relative_url }}" class="view-all">View all publications <span aria-hidden="true">\u2192</span></a>\n      </div>\n      {% if include.description_html %}\n      <div class="column-description">{{ include.description_html }}</div>\n      {% endif %}\n    </div>\n\n    <div class="row featured-publications__grid">\n      {% assign featured_count = 0 %}\n      {% for pub in selected_publications %}\n      {% if featured_count < max_count %}\n      <div class="col col-4 col-d-6 col-t-12 featured-publications__item">\n        {% bookshop publication-card project=pub layout="vertical" %}\n      </div>\n      {% assign featured_count = featured_count | plus: 1 %}\n      {% endif %}\n      {% endfor %}\n    </div>\n  </div>\n</section>\n<!-- end featured-publications -->\n{% endif %}\n';
 
   // bookshop-import-file:components/featured-publications/featured-publications.jekyll.html__bookshop_file__
   var featured_publications_jekyll_default2 = featured_publications_jekyll_default;
@@ -6438,19 +6397,28 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
                     <div class="c-spotlight__body">
                       {% if item.type == 'publication' %}
                       <!-- Publication Layout -->
+                      {% assign spotlight_publication = site.publications | where: "slug", item.publication_id | first %}
+                      {% assign spotlight_title = spotlight_publication.title | default: item.title %}
+                      {% assign spotlight_url = spotlight_publication.url | default: item.url %}
+                      {% if spotlight_publication.url %}
+                      {% assign spotlight_url_ending = spotlight_url | slice: -5, 5 %}
+                      {% unless spotlight_url_ending == ".html" %}{% assign spotlight_url = spotlight_url | append: ".html" %}{% endunless %}
+                      {% endif %}
+                      {% assign spotlight_meta = spotlight_publication.venue | append: " \xB7 " | append: spotlight_publication.year %}
+                      {% assign spotlight_image = spotlight_publication.thumbnail | default: item.image %}
                       <div class="c-spotlight__pub-layout">
-                        {% if item.image %}
+                        {% if spotlight_image %}
                         <div class="c-spotlight__thumb">
-                          <img src="{{ item.image }}" alt="{{ item.title }}">
+                          <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}">
                         </div>
                         {% endif %}
                         <div class="c-spotlight__content">
                           <h4 class="c-spotlight__title">
-                            {% if item.url %}<a href="{{ item.url }}">{% endif %}
-                              {{ item.title }}
-                              {% if item.url %}</a>{% endif %}
+                            {% if spotlight_url %}<a href="{{ spotlight_url | relative_url }}">{% endif %}
+                              {{ spotlight_title | escape }}
+                              {% if spotlight_url %}</a>{% endif %}
                           </h4>
-                          <p class="c-spotlight__meta">{{ item.meta }}</p>
+                          <p class="c-spotlight__meta">{{ spotlight_meta | escape }}</p>
                         </div>
                       </div>
 
@@ -6481,25 +6449,6 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
                         </p>
                       </div>
 
-                      {% elsif item.type == 'repos' %}
-                      <!-- Repos Layout -->
-                      <div class="c-spotlight__repos-layout">
-                        <ul class="c-spotlight__repo-list">
-                          {% for repo in item.repos %}
-                          <li class="c-spotlight__repo-item">
-                            <span class="c-spotlight__repo-icon"><i class="ion ion-logo-github"></i></span>
-                            <a href="{{ repo.url }}" class="c-spotlight__repo-name"
-                              data-repo="{{ repo.url | split: '/' | slice: 3, 2 | join: '/' }}">{{ repo.name }}</a>
-                            <div class="c-spotlight__repo-stars">
-                              <span class="c-spotlight__star-box">
-                                <i class="ion ion-logo-github"></i> Star
-                              </span>
-                              <span class="c-spotlight__star-count">{{ repo.stars }}</span>
-                            </div>
-                          </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
                       {% endif %}
                     </div>
                   </div>
@@ -6523,7 +6472,6 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
                 </button>
               </div>
             </div>
-            <script src="/js/spotlight.js" defer><\/script>
             {% endif %}
           </div>
 
@@ -6696,161 +6644,173 @@ document.addEventListener('DOMContentLoaded', () => {
   var projects_section_jekyll_default2 = projects_section_jekyll_default;
 
   // component-library/components/publication-card/publication-card.jekyll.html
-  var publication_card_jekyll_default = `{% assign c = "c-publication-card" %}
-{% assign card_abstract = include.project.abstract | default: include.project.content %}
-<article
-    class="{{c}} {% if include.project.featured %}is-featured{% endif %} {% if include.layout == 'vertical' %}is-vertical{% endif %}"
-    id="pub-{{ include.project.slug }}">
+  var publication_card_jekyll_default = `{% assign publication = include.project %}
+{% assign card_type = publication.type | downcase %}
+{% assign card_status = publication.status | downcase %}
+{% assign card_title = publication.title | escape %}
+{% assign publication_url = publication.url %}
+{% if publication_url %}
+{% assign publication_url_ending = publication_url | slice: -5, 5 %}
+{% unless publication_url_ending == ".html" %}
+{% assign publication_url = publication_url | append: ".html" %}
+{% endunless %}
+{% endif %}
 
-    <div class="{{c}}__main-row">
-        {% assign display_image = include.project.thumbnail %}
-        {% if include.layout == 'vertical' and include.project.banner %}
-        {% assign display_image = include.project.banner %}
-        {% endif %}
+<article class="c-publication-card{% if include.layout == 'vertical' %} is-vertical{% endif %}">
+  <div class="c-publication-card__main-row">
+    {% assign display_image = publication.thumbnail %}
+    {% if include.layout == 'vertical' and publication.banner %}
+    {% assign display_image = publication.banner %}
+    {% endif %}
 
-        {% if display_image %}
-        <div class="{{c}}__image-container">
-            <img loading="lazy" src="{{ display_image | relative_url }}" alt="{{ include.project.title }}"
-                class="{{c}}__image">
-        </div>
-        {% endif %}
-
-        <div class="{{c}}__body">
-            <div class="{{c}}__top">
-                <div class="{{c}}__title-row" onclick="toggleAbstract('pub-{{ include.project.slug }}')">
-                    <h3 class="{{c}}__title">
-                        <i class="ion ion-md-journal {{c}}__title-icon"></i>
-                        {{ include.project.title }}
-                    </h3>
-                    <button class="{{c}}__toggle" aria-label="Toggle Abstract">
-                        <i class="ion ion-ios-arrow-down"></i>
-                    </button>
-                </div>
-
-                {% if include.layout != 'vertical' %}
-                <div class="{{c}}__tags">
-                    {% for tag in include.project.keywords %}
-                    <span class="{{c}}__tag">{{ tag }}</span>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                <div class="{{c}}__authors">
-                    {{ include.project.authors | replace: 'Hamza Abdelhedi', '<strong>Hamza Abdelhedi</strong>' }}
-                </div>
-            </div>
-
-            {% if card_abstract %}
-            <div class="{{c}}__abstract-container">
-                <div class="{{c}}__abstract-content">
-                    <p><strong>Abstract:</strong> {{ card_abstract | strip_html }}</p>
-                </div>
-            </div>
-            {% endif %}
-
-            <div class="{{c}}__footer">
-                <div class="{{c}}__links">
-                    {% if include.project.paper_url %}
-                    <a href="{{ include.project.paper_url }}" class="{{c}}__link" target="_blank" rel="noopener">
-                        <i class="ion ion-md-document"></i> Paper
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.preprint_url %}
-                    <a href="{{ include.project.preprint_url }}" class="{{c}}__link" target="_blank" rel="noopener">
-                        <i class="ion ion-logo-buffer"></i> Preprint
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.project_url %}
-                    <a href="{{ include.project.project_url | relative_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-globe"></i> Project page
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.pdf_link %}
-                    <a href="{{ include.project.pdf_link | relative_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-document"></i> {% if include.project.paper_url %}PDF{% else %}Paper{% endif %}
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.code_url %}
-                    <a href="{{ include.project.code_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-code"></i> Code
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.zenodo_url %}
-                    <a href="{{ include.project.zenodo_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-archive"></i> Zenodo
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.poster_url %}
-                    <a href="{{ include.project.poster_url | relative_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-image"></i> Poster
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.doi %}
-                    {% assign doi_url = include.project.doi %}
-                    {% unless doi_url contains 'http' %}
-                    {% assign doi_url = "https://doi.org/" | append: include.project.doi %}
-                    {% endunless %}
-                    <a href="{{ doi_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-md-link"></i> DOI
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.arxiv_url %}
-                    <a href="{{ include.project.arxiv_url }}" class="{{c}}__link" target="_blank">
-                        <i class="ion ion-logo-buffer"></i> arXiv
-                    </a>
-                    {% endif %}
-
-                    {% if include.project.bibtex %}
-                    <a href="#" class="{{c}}__link" data-bibtex="{{ include.project.bibtex | escape }}"
-                        onclick="copyBibtex(event, this)">
-                        <i class="ion ion-md-quote"></i> Cite
-                    </a>
-                    {% endif %}
-                </div>
-
-                <div class="{{c}}__venue">
-                    {{ include.project.venue }}, {{ include.project.year }}
-                </div>
-            </div>
-        </div>
+    {% if display_image %}
+    <div class="c-publication-card__image-container">
+      <img loading="lazy" src="{{ display_image | relative_url | escape }}"
+        alt="{{ publication.image_alt | default: publication.title | escape }}" class="c-publication-card__image">
     </div>
+    {% endif %}
+
+    <div class="c-publication-card__body">
+      <div class="c-publication-card__top">
+        <h3 class="c-publication-card__title">
+          <i class="ion ion-md-journal c-publication-card__title-icon" aria-hidden="true"></i>
+          {% if publication_url %}
+          <a href="{{ publication_url | relative_url | escape }}">{{ publication.title | escape }}</a>
+          {% else %}
+          {{ publication.title | escape }}
+          {% endif %}
+        </h3>
+
+        <div class="c-publication-card__labels" aria-label="Publication type and status">
+          {% if card_type %}
+          <span class="c-publication-card__badge c-publication-card__badge--type c-publication-card__badge--{{ card_type | replace: ' ', '-' | escape }}">
+            {% case card_type %}
+            {% when 'journal' %}Journal article
+            {% when 'conference-proceedings' %}Conference proceedings
+            {% when 'conference-paper' %}Conference paper
+            {% when 'conference-abstract' %}Conference abstract
+            {% when 'preprint' %}Preprint
+            {% when 'thesis' %}Thesis
+            {% else %}{{ publication.type | escape }}
+            {% endcase %}
+          </span>
+          {% endif %}
+          {% if card_status and card_status != card_type %}
+          <span class="c-publication-card__badge c-publication-card__badge--status">
+            {% case card_status %}
+            {% when 'published' %}Published
+            {% when 'accepted' %}Accepted
+            {% when 'preprint' %}Preprint
+            {% when 'under-review' %}Under review
+            {% when 'submitted' %}Submitted
+            {% else %}{{ publication.status | escape }}
+            {% endcase %}
+          </span>
+          {% endif %}
+        </div>
+
+        {% if publication.authors %}
+        <p class="c-publication-card__authors">{{ publication.authors | escape }}</p>
+        {% endif %}
+
+        {% if publication.venue or publication.year %}
+        <p class="c-publication-card__venue">
+          {% if publication.venue %}<span>{{ publication.venue | escape }}</span>{% endif %}
+          {% if publication.venue and publication.year %}<span aria-hidden="true"> \xB7 </span>{% endif %}
+          {% if publication.year %}<span>{{ publication.year | escape }}</span>{% endif %}
+        </p>
+        {% endif %}
+
+        {% if publication.summary %}
+        <p class="c-publication-card__summary">{{ publication.summary | strip_html | strip_newlines | escape | truncate: 180 }}</p>
+        {% endif %}
+      </div>
+
+      {% if publication.abstract and include.layout != 'vertical' %}
+      <details class="c-publication-card__abstract">
+        <summary>Abstract</summary>
+        <p>{{ publication.abstract | escape | newline_to_br }}</p>
+      </details>
+      {% endif %}
+
+      <div class="c-publication-card__footer">
+        {% if publication.paper_url or publication.preprint_url or publication.pdf_link or publication.code_url or publication.data_url or publication.project_url or publication.doi or publication.arxiv_url or publication.zenodo_url or publication.poster_url or publication.bibtex %}
+        <ul class="c-publication-card__links" aria-label="Publication resources">
+          {% if publication.paper_url %}
+          <li><a class="c-publication-card__link" href="{{ publication.paper_url | escape }}" target="_blank" rel="noopener">Paper</a></li>
+          {% endif %}
+          {% if publication.preprint_url %}
+          <li><a class="c-publication-card__link" href="{{ publication.preprint_url | escape }}" target="_blank" rel="noopener">Preprint</a></li>
+          {% endif %}
+          {% if publication.pdf_link %}
+          {% assign pdf_url = publication.pdf_link %}
+          {% unless pdf_url contains '://' %}
+          {% assign pdf_url = pdf_url | relative_url %}
+          {% endunless %}
+          <li><a class="c-publication-card__link" href="{{ pdf_url | escape }}" target="_blank" rel="noopener">PDF</a></li>
+          {% endif %}
+          {% if publication.code_url %}
+          {% assign code_url = publication.code_url %}
+          {% unless code_url contains '://' %}
+          {% assign code_url = code_url | relative_url %}
+          {% endunless %}
+          <li><a class="c-publication-card__link" href="{{ code_url | escape }}" target="_blank" rel="noopener">Code</a></li>
+          {% endif %}
+          {% if publication.data_url %}
+          {% assign data_url = publication.data_url %}
+          {% unless data_url contains '://' %}
+          {% assign data_url = data_url | relative_url %}
+          {% endunless %}
+          <li><a class="c-publication-card__link" href="{{ data_url | escape }}" target="_blank" rel="noopener">Data</a></li>
+          {% endif %}
+          {% if publication.project_url %}
+          {% assign project_url = publication.project_url %}
+          {% unless project_url contains '://' %}
+          {% assign project_url = project_url | relative_url %}
+          {% endunless %}
+          <li><a class="c-publication-card__link" href="{{ project_url | escape }}" target="_blank" rel="noopener">Project</a></li>
+          {% endif %}
+          {% if publication.doi %}
+          {% assign doi_url = publication.doi %}
+          {% unless doi_url contains '://' %}
+          {% assign doi_url = 'https://doi.org/' | append: publication.doi %}
+          {% endunless %}
+          <li><a class="c-publication-card__link" href="{{ doi_url | escape }}" target="_blank" rel="noopener">DOI</a></li>
+          {% endif %}
+          {% if publication.arxiv_url %}
+          <li><a class="c-publication-card__link" href="{{ publication.arxiv_url | escape }}" target="_blank" rel="noopener">arXiv</a></li>
+          {% endif %}
+          {% if publication.zenodo_url %}
+          <li><a class="c-publication-card__link" href="{{ publication.zenodo_url | escape }}" target="_blank" rel="noopener">Zenodo</a></li>
+          {% endif %}
+          {% if publication.poster_url %}
+          {% assign poster_url = publication.poster_url %}
+          {% unless poster_url contains '://' %}
+          {% assign poster_url = poster_url | relative_url %}
+          {% endunless %}
+          <li><a class="c-publication-card__link" href="{{ poster_url | escape }}" target="_blank" rel="noopener">Poster</a></li>
+          {% endif %}
+          {% if publication.bibtex %}
+          <li>
+            <button class="c-publication-card__link c-publication-card__citation-button" type="button"
+              data-copy-bibtex="{{ publication.bibtex | escape }}"
+              aria-label="Copy citation for {{ card_title }}">Copy citation</button>
+          </li>
+          {% endif %}
+        </ul>
+        {% endif %}
+
+        {% if publication.bibtex %}
+        <div class="c-publication-card__citation-feedback">
+          <span data-citation-status role="status" aria-live="polite"></span>
+          <textarea data-citation-fallback hidden readonly rows="5"
+            aria-label="Citation for {{ card_title }}"></textarea>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </article>
-
-<script>
-    if (typeof toggleAbstract === 'undefined') {
-        function toggleAbstract(id) {
-            const card = document.getElementById(id);
-            if (card) {
-                card.classList.toggle('is-expanded');
-            }
-        }
-
-        function copyBibtex(event, element) {
-            event.preventDefault();
-            const bibtex = element.getAttribute('data-bibtex');
-            if (!bibtex) return;
-
-            navigator.clipboard.writeText(bibtex).then(() => {
-                const originalHTML = element.innerHTML;
-                element.innerHTML = '<i class="ion ion-md-checkmark"></i> Copied!';
-                setTimeout(() => {
-                    element.innerHTML = originalHTML;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                alert("Failed to copy target text to clipboard.");
-            });
-        }
-    }
-<\/script>
 `;
 
   // bookshop-import-file:components/publication-card/publication-card.jekyll.html__bookshop_file__
