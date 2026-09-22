@@ -1,74 +1,119 @@
 <head>
   {% assign profile = site.data.profile %}
-  {% assign site_title = site.data.general_settings.title | default: profile.name %}
+  {% assign links = site.data.links %}
+  {% assign settings = site.data.general_settings %}
+  {% assign site_title = settings.title | default: profile.name %}
+  {% assign site_description = settings.description | default: profile.short_bio %}
   {% assign current_position = site.data.experience | where: "id", profile.current_position_id | first %}
+  {% assign current_organization = site.affiliations | where: "organization_id", current_position.institution_id | first %}
+
+  {% assign page_label = page.title | default: page.tag | default: "Page" %}
+  {% if page.tag %}
+    {% assign page_label = "Updates tagged: " | append: page.tag %}
+  {% endif %}
+  {% if page.url == "/" %}
+    {% assign meta_title = site_title %}
+  {% else %}
+    {% assign meta_title = page_label | append: " — " | append: profile.name %}
+  {% endif %}
+
+  {% assign meta_description_source = site_description %}
+  {% if page.collection == "publications" and page.abstract %}
+    {% assign meta_description_source = page.abstract %}
+  {% elsif page.description and page.description != empty %}
+    {% assign meta_description_source = page.description %}
+  {% elsif page.summary and page.summary != empty %}
+    {% assign meta_description_source = page.summary %}
+  {% elsif page.excerpt and page.excerpt != empty %}
+    {% assign meta_description_source = page.excerpt %}
+  {% elsif page.abstract and page.abstract != empty %}
+    {% assign meta_description_source = page.abstract %}
+  {% elsif page.content and page.content != empty %}
+    {% assign meta_description_source = page.content %}
+  {% endif %}
+  {% assign meta_description = meta_description_source | strip_html | strip_newlines | replace: "  ", " " | truncate: 160 %}
+
+  {% assign canonical_path = page.url | default: "/" | replace: "index.html", "" %}
+  {% assign canonical_ending = canonical_path | slice: -5, 5 %}
+  {% if page.category == "research" %}
+    {% unless canonical_ending == ".html" %}
+      {% assign canonical_path = canonical_path | append: ".html" %}
+    {% endunless %}
+  {% endif %}
+  {% assign canonical_url = canonical_path | absolute_url %}
+  {% if page.canonical_url %}
+    {% if page.canonical_url contains "://" %}
+      {% assign canonical_url = page.canonical_url %}
+    {% else %}
+      {% assign canonical_url = page.canonical_url | absolute_url %}
+    {% endif %}
+  {% endif %}
+  {% if page.external_url %}
+    {% assign canonical_url = page.external_url %}
+    <meta http-equiv="refresh" content="0; url={{ page.external_url | escape }}">
+  {% endif %}
+
+  {% assign share_image = page.image | default: profile.portrait | default: settings.social_media_share_image %}
+  {% assign share_image_alt = page.image_alt | default: profile.portrait_alt | default: profile.name %}
+  {% assign share_image_url = share_image %}
+  {% unless share_image contains "://" %}
+    {% assign share_image_url = share_image | absolute_url %}
+  {% endunless %}
+  {% assign canonical_home_url = site.url | append: site.baseurl %}
+  {% assign og_type = "website" %}
+  {% if page.collection == "posts" %}{% assign og_type = "article" %}{% endif %}
+
+  {% assign same_as = "" | split: "" %}
+  {% for social in links.social %}
+    {% assign social_url = links[social.key] %}
+    {% if social_url %}{% assign same_as = same_as | push: social_url %}{% endif %}
+  {% endfor %}
+  {% if links.orcid %}{% assign same_as = same_as | push: links.orcid %}{% endif %}
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.url == "/" %}{{ site_title }}{% else %}{{ page.title }} | {{ site_title }}{% endif %}</title>
-  <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}'>
+  <title>{{ meta_title | escape }}</title>
+  <meta name="description" content="{{ meta_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url | escape }}">
 
-  {% assign canonical_url = page.url | replace:'index.html','' | absolute_url %}
-  {% if page.category == 'research' %}
-    {% assign canonical_project_path = page.url %}
-    {% assign canonical_project_ending = canonical_project_path | slice: -5, 5 %}
-    {% unless canonical_project_ending == '.html' %}
-      {% assign canonical_project_path = canonical_project_path | append: '.html' %}
-    {% endunless %}
-    {% assign canonical_url = canonical_project_path | absolute_url %}
-  {% endif %}
-  {% if page.canonical_url %}
-    {% assign canonical_url = page.canonical_url | absolute_url %}
-  {% endif %}
-  {% if page.external_url %}
-    {% assign canonical_url = page.external_url %}
-    <meta http-equiv="refresh" content="0; url={{ page.external_url }}">
-  {% endif %}
-  <link rel="canonical" href="{{ canonical_url }}">
+  <meta property="og:type" content="{{ og_type }}">
+  <meta property="og:site_name" content="{{ profile.name | escape }}">
+  <meta property="og:title" content="{{ meta_title | escape }}">
+  <meta property="og:description" content="{{ meta_description | escape }}">
+  <meta property="og:url" content="{{ canonical_url | escape }}">
+  <meta property="og:image" content="{{ share_image_url | escape }}">
+  <meta property="og:image:alt" content="{{ share_image_alt | escape }}">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.url == "/" %}{{ site_title }}{% else %}{{ page.title }} | {{ site_title }}{% endif %}">
-  <meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | xml_escape | truncate: 160 }}{% endif %}">
-  {% assign share_image = profile.portrait | default: site.data.general_settings.social_media_share_image %}
-  {% if page.image %}
-    {% assign share_image = page.image %}
-  {% endif %}
-  <meta name="twitter:image:src" content="{{ share_image | absolute_url }}">
+  <meta name="twitter:title" content="{{ meta_title | escape }}">
+  <meta name="twitter:description" content="{{ meta_description | escape }}">
+  <meta name="twitter:image" content="{{ share_image_url | escape }}">
+  <meta name="twitter:image:alt" content="{{ share_image_alt | escape }}">
 
-  <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="{% if page.url == "/" %}{{ site_title }}{% else %}{{ page.title }} | {{ site_title }}{% endif %}">
-  <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape | truncate: 160 }}{% else %}{{ site.data.general_settings.description | strip_html | xml_escape | truncate: 160 }}{% endif %}">
-  <meta property="og:image" content="{{ share_image | absolute_url }}">
-  
   <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
+      "@context": {{ "https://schema.org" | jsonify }},
       "@type": "Person",
-      "name": "{{ profile.name | escape }}",
-      "url": "{{ site.url }}{{ site.baseurl }}",
-      "sameAs": [
-        "{{ site.data.links.twitter }}",
-        "{{ site.data.links.github }}",
-        "{{ site.data.links.linkedin }}",
-        "{{ site.data.links.scholar }}",
-        "{{ site.data.links.orcid }}"
-      ],
-      "jobTitle": "{{ current_position.title | default: profile.field | escape }}",
+      "name": {{ profile.name | jsonify }},
+      "url": {{ canonical_home_url | absolute_url | jsonify }},
+      "sameAs": {{ same_as | jsonify }},
+      "jobTitle": {{ current_position.title | default: profile.field | jsonify }},
       "worksFor": {
         "@type": "Organization",
-        "name": "{{ profile.field | escape }}"
+        "name": {{ current_organization.name | default: profile.field | jsonify }}
       },
-      "description": "{{ profile.short_bio | strip_html | strip_newlines | escape }}"
+      "description": {{ profile.short_bio | strip_html | strip_newlines | jsonify }}
     }
   </script>
 
-  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-  <!-- Ionicons -->
+  <link rel="preconnect" href="https://unpkg.com">
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 </head>

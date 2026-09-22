@@ -6200,7 +6200,7 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
   };
 
   // component-library/components/affiliation-card/affiliation-card.jekyll.html
-  var affiliation_card_jekyll_default = '{% assign c = "c-affiliation-card" %}\n<div class="{{c}}">\n  <div class="{{c}}__content">\n    <div class="{{c}}__client-meta">\n      {% if include.affiliation-item.image %}\n        <div class="{{c}}__image-container">\n          <img class="{{c}}__client-avatar" loading="lazy" src="{{ include.affiliation-item.image }}" alt="{{ include.affiliation-item.name }}">\n        </div>\n      {% endif %}\n      <div class="{{c}}__client-info">\n        {% if include.affiliation-item.name %}\n          {% if include.affiliation-item.external_url %}\n            <h3 class="{{c}}__client-name"><a href="{{ include.affiliation-item.external_url }}" target="_blank" rel="noopener">{{ include.affiliation-item.name }}</a></h3>\n          {% else %}\n            <h3 class="{{c}}__client-name">{{ include.affiliation-item.name }}</h3>\n          {% endif %}\n        {% endif %}\n      </div>\n    </div>\n    {% if include.affiliation-item.blurb %}\n      <p class="{{c}}__client-text">{{ include.affiliation-item.blurb }}</p>\n    {% endif %}\n  </div>\n</div>\n';
+  var affiliation_card_jekyll_default = '{% assign c = "c-affiliation-card" %}\n<div class="{{c}}">\n  <div class="{{c}}__content">\n    <div class="{{c}}__client-meta">\n      {% if include.affiliation-item.image %}\n        <div class="{{c}}__image-container">\n          <img class="{{c}}__client-avatar" loading="lazy" src="{{ include.affiliation-item.image | relative_url }}" alt="{{ include.affiliation-item.name | escape }}" decoding="async">\n        </div>\n      {% endif %}\n      <div class="{{c}}__client-info">\n        {% if include.affiliation-item.name %}\n          {% if include.affiliation-item.external_url %}\n            <h3 class="{{c}}__client-name"><a href="{{ include.affiliation-item.external_url }}" target="_blank" rel="noopener">{{ include.affiliation-item.name }}</a></h3>\n          {% else %}\n            <h3 class="{{c}}__client-name">{{ include.affiliation-item.name }}</h3>\n          {% endif %}\n        {% endif %}\n      </div>\n    </div>\n    {% if include.affiliation-item.blurb %}\n      <p class="{{c}}__client-text">{{ include.affiliation-item.blurb }}</p>\n    {% endif %}\n  </div>\n</div>\n';
 
   // bookshop-import-file:components/affiliation-card/affiliation-card.jekyll.html__bookshop_file__
   var affiliation_card_jekyll_default2 = affiliation_card_jekyll_default;
@@ -6212,7 +6212,56 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
   var affiliations_section_jekyll_default2 = affiliations_section_jekyll_default;
 
   // component-library/components/blog-card/blog-card.jekyll.html
-  var blog_card_jekyll_default = '{% assign c = "c-blog-card" %}\n<div class="{{c}} col col-4 col-d-6 col-t-12">\n  <div class="{{c}}__inner">\n\n    {% if include.post.image %}\n    <div class="{{c}}__image-wrap">\n      <a class="{{c}}__image" href="{{ include.post.url }}">\n        <img loading="lazy" src="{{ include.post.image }}" alt="{{ include.post.title }}">\n      </a>\n    </div>\n    {% endif %}\n\n    <div class="{{c}}__content">\n\n      {% if include.post.tags.size >= 1 %}\n      <div class="{{c}}__tags-box">\n        {% for tag in include.post.tags %}\n        <a href="{{ site.baseurl }}/tag/{{ tag | downcase }}" class="{{c}}__tag">{{ tag }}</a>\n        {% endfor %}\n      </div>\n      {% endif %}\n\n      <h2 class="{{c}}__title">\n        <a href="{{ include.post.url }}">{{ include.post.title }}</a>\n      </h2>\n\n      <p class="{{c}}__excerpt">\n        {% if include.post.description %}{{ include.post.description }}{% else %}{{ include.post.content | strip_html | truncate: 120 }}{% endif\n        %}\n      </p>\n\n      <div class="{{c}}__meta">\n        <div class="{{c}}__author-image">\n          <img loading="lazy" src="{{ site.data.profile.portrait }}" alt="{{ site.data.profile.portrait_alt }}">\n        </div>\n        <div class="{{c}}__info">\n          <div class="{{c}}__author-name">{{ site.data.profile.name }}</div>\n          <span class="{{c}}__date"><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date_to_string\n              }}</time></span>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>\n';
+  var blog_card_jekyll_default = `{% assign c = "c-blog-card" %}
+{% assign post_url = include.post.url %}
+{% assign post_url_ending = post_url | slice: -5, 5 %}
+{% unless post_url_ending == ".html" %}{% assign post_url = post_url | append: ".html" %}{% endunless %}
+<div class="{{c}} col col-4 col-d-6 col-t-12">
+  <div class="{{c}}__inner">
+
+    {% if include.post.image %}
+    <div class="{{c}}__image-wrap">
+      <a class="{{c}}__image" href="{{ post_url | relative_url }}">
+        <img loading="lazy" src="{{ include.post.image | relative_url }}" alt="{{ include.post.image_alt | default: include.post.title | escape }}" decoding="async">
+      </a>
+    </div>
+    {% endif %}
+
+    <div class="{{c}}__content">
+
+      {% if include.post.tags.size >= 1 %}
+      <div class="{{c}}__tags-box">
+        {% for tag in include.post.tags %}
+        {% assign tag_link = tag | tag_url | replace: '..html', '.html' %}
+        <a href="{{ tag_link | relative_url }}" class="{{c}}__tag" rel="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h2 class="{{c}}__title">
+        <a href="{{ post_url | relative_url }}">{{ include.post.title }}</a>
+      </h2>
+
+      <p class="{{c}}__excerpt">
+        {% if include.post.description %}{{ include.post.description }}{% else %}{{ include.post.content | strip_html | truncate: 120 }}{% endif
+        %}
+      </p>
+
+      <div class="{{c}}__meta">
+        <div class="{{c}}__author-image">
+          <img loading="lazy" src="{{ site.data.profile.portrait | relative_url }}" alt="{{ site.data.profile.portrait_alt | escape }}" width="44" height="44" decoding="async">
+        </div>
+        <div class="{{c}}__info">
+          <div class="{{c}}__author-name">{{ site.data.profile.name }}</div>
+          <span class="{{c}}__date"><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date_to_string
+              }}</time></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+`;
 
   // bookshop-import-file:components/blog-card/blog-card.jekyll.html__bookshop_file__
   var blog_card_jekyll_default2 = blog_card_jekyll_default;
@@ -6337,15 +6386,15 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
               {% for social in site.data.links.social %}
               {% assign social_url = site.data.links[social.key] %}
               {% if social_url %}
-              <a href="{{ social_url }}" target="_blank" rel="noopener" class="{{c}}__social-link"
-                title="{{ social.icon }}">
-                <i class="ion ion-logo-{{ social.icon | downcase }}"></i>
+              <a href="{{ social_url }}" target="_blank" rel="noopener noreferrer" class="{{c}}__social-link"
+                aria-label="{{ social.label | default: social.icon }}">
+                <i class="ion ion-logo-{{ social.icon | downcase }}" aria-hidden="true"></i>
               </a>
               {% endif %}
               {% endfor %}
               {% if hero_email %}
-              <a href="mailto:{{ hero_email }}" class="{{c}}__social-link" title="Email">
-                <i class="ion ion-md-mail"></i>
+              <a href="mailto:{{ hero_email }}" class="{{c}}__social-link" aria-label="Email">
+                <i class="ion ion-md-mail" aria-hidden="true"></i>
               </a>
               {% endif %}
             </div>
@@ -6377,17 +6426,17 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
 
           <div class="{{c}}__right">
             <div class="{{c}}__image {% if include.circular_image %}{{c}}__image--circular{% endif %}">
-              <img loading="lazy" src="{{ hero_image }}" alt="{{ hero_image_alt }}">
+              <img src="{{ hero_image | relative_url }}" alt="{{ hero_image_alt | escape }}" width="1280" height="1285" fetchpriority="high">
             </div>
 
             <!-- Spotlight Card -->
             {% if site.data.spotlight %}
             <div class="c-spotlight" id="spotlight-card" role="region" aria-label="Spotlight Highlights">
-              <div class="c-spotlight__wrapper">
+              <div class="c-spotlight__wrapper" aria-live="polite">
                 {% for item in site.data.spotlight %}
                 <div
                   class="c-spotlight__item {% if item.type %}{{ item.type }}{% endif %} {% if forloop.first %}is-active{% endif %}"
-                  data-index="{{ forloop.index0 }}">
+                  data-index="{{ forloop.index0 }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
                   <div class="c-spotlight__link">
                     <!-- Header Pill -->
                     <div class="c-spotlight__header">
@@ -6409,7 +6458,7 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
                       <div class="c-spotlight__pub-layout">
                         {% if spotlight_image %}
                         <div class="c-spotlight__thumb">
-                          <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}">
+                        <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}" width="80" height="80" decoding="async">
                         </div>
                         {% endif %}
                         <div class="c-spotlight__content">
@@ -6427,7 +6476,7 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
                       <div class="c-spotlight__media-layout">
                         {% if item.image %}
                         <div class="c-spotlight__thumb">
-                          <img src="{{ item.image }}" alt="{{ item.title }}">
+                          <img src="{{ item.image | relative_url }}" alt="{{ item.title | escape }}" width="80" height="80" decoding="async">
                         </div>
                         {% endif %}
                         <div class="c-spotlight__content">
@@ -6458,17 +6507,17 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
 
               <!-- Controls -->
               <div class="c-spotlight__controls">
-                <button class="c-spotlight__btn prev" aria-label="Previous Highlight">
-                  <i class="ion ion-ios-arrow-back"></i>
+                <button class="c-spotlight__btn prev" type="button" aria-label="Previous highlight">
+                  <i class="ion ion-ios-arrow-back" aria-hidden="true"></i>
                 </button>
-                <div class="c-spotlight__dots">
+                <div class="c-spotlight__dots" role="group" aria-label="Spotlight highlights">
                   {% for item in site.data.spotlight %}
-                  <span class="c-spotlight__dot {% if forloop.first %}is-active{% endif %}"
-                    data-index="{{ forloop.index0 }}"></span>
+                  <button class="c-spotlight__dot {% if forloop.first %}is-active{% endif %}" type="button"
+                    data-index="{{ forloop.index0 }}" aria-label="Show spotlight highlight {{ forloop.index }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"></button>
                   {% endfor %}
                 </div>
-                <button class="c-spotlight__btn next" aria-label="Next Highlight">
-                  <i class="ion ion-ios-arrow-forward"></i>
+                <button class="c-spotlight__btn next" type="button" aria-label="Next highlight">
+                  <i class="ion ion-ios-arrow-forward" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -6522,7 +6571,7 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
   var page_heading_jekyll_default2 = page_heading_jekyll_default;
 
   // component-library/components/page-image/page-image.jekyll.html
-  var page_image_jekyll_default = '{% assign c = "c-page-image" %}\n<div class="container">\n  <div class="row">\n    <div class="col col-12">\n      <div class="{{c}} animate">\n        <img loading="lazy" src="{{ include.image }}" alt="{{ include.image_alt }}">\n      </div>\n    </div>\n  </div>\n</div>';
+  var page_image_jekyll_default = '{% assign c = "c-page-image" %}\n<div class="container">\n  <div class="row">\n    <div class="col col-12">\n      <div class="{{c}} animate">\n        <img loading="lazy" src="{{ include.image | relative_url }}" alt="{{ include.image_alt | escape }}" decoding="async">\n      </div>\n    </div>\n  </div>\n</div>\n';
 
   // bookshop-import-file:components/page-image/page-image.jekyll.html__bookshop_file__
   var page_image_jekyll_default2 = page_image_jekyll_default;
@@ -6546,29 +6595,31 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
   {% endfor %}
   {% assign unique_years = all_years | split: "," | uniq | sort | reverse %}
 
-  <div class="c-updates-filter-group">
-    <div class="c-updates-filter js-tags-container">
-      <button class="c-updates-filter__btn js-category-filter active" data-filter="all">All Categories</button>
+  <div class="c-updates-filter-group" aria-label="Update filters">
+    <div class="c-updates-filter js-tags-container" id="updates-category-filters" role="group" aria-label="Filter updates by category">
+      <button type="button" class="c-updates-filter__btn js-category-filter active" data-filter="all" aria-pressed="true">All Categories</button>
       {% for tag in unique_tags %}
       {% if tag != "" %}
-      <button class="c-updates-filter__btn js-category-filter {% if forloop.index > 10 %}is-hidden{% endif %}" 
-              data-filter="{{ tag | downcase }}">{{ tag }}</button>
+      <button type="button" class="c-updates-filter__btn js-category-filter {% if forloop.index > 10 %}is-hidden{% endif %}"
+              data-filter="{{ tag | downcase | escape }}" aria-pressed="false">{{ tag | escape }}</button>
       {% endif %}
       {% endfor %}
       {% if unique_tags.size > 10 %}
-      <button class="c-updates-filter__btn c-updates-filter__btn--more js-tags-toggle">More...</button>
+      <button type="button" class="c-updates-filter__btn c-updates-filter__btn--more js-tags-toggle" aria-expanded="false" aria-controls="updates-category-filters">More categories</button>
       {% endif %}
     </div>
 
-    <div class="c-updates-filter c-updates-filter--years">
-      <button class="c-updates-filter__btn js-year-filter active" data-year="all">All Years</button>
+    <div class="c-updates-filter c-updates-filter--years" role="group" aria-label="Filter updates by year">
+      <button type="button" class="c-updates-filter__btn js-year-filter active" data-year="all" aria-pressed="true">All Years</button>
       {% for year in unique_years %}
       {% if year != "" %}
-      <button class="c-updates-filter__btn js-year-filter" data-year="{{ year }}">{{ year }}</button>
+      <button type="button" class="c-updates-filter__btn js-year-filter" data-year="{{ year | escape }}" aria-pressed="false">{{ year | escape }}</button>
       {% endif %}
       {% endfor %}
     </div>
   </div>
+
+  <p class="c-updates-results" id="updates-results" role="status" aria-live="polite"></p>
 
   <div class="c-updates-timeline js-updates-list">
     {% for item in site.data.updates %}
@@ -6584,49 +6635,44 @@ Run %cnpx @bookshop/up@latest%c in your root directory to upgrade all Bookshop d
     {% endfor %}
   </div>
 
+  <p class="c-updates-no-results" id="updates-no-results" hidden>No updates match these filters.</p>
+
   <div class="c-updates-pagination" id="js-updates-pagination">
     <!-- JavaScript will dynamically inject pagination buttons here -->
   </div>
 </div>
 </div>
 
-<style>
-  .is-hidden {
-    display: none !important;
-  }
-  .c-updates-filter__btn--more {
-    border-style: dashed;
-    color: #3b82f6;
-  }
-</style>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const tagsToggle = document.querySelector('.js-tags-toggle');
   const tagsContainer = document.querySelector('.js-tags-container');
   
-  tagsToggle?.addEventListener('click', () => {
-    const hiddenTags = tagsContainer.querySelectorAll('.js-category-filter.is-hidden');
-    if (hiddenTags.length > 0) {
-      hiddenTags.forEach(t => t.classList.remove('is-hidden'));
-      tagsToggle.textContent = 'Less';
-    } else {
-      const tags = tagsContainer.querySelectorAll('.js-category-filter');
-      tags.forEach((t, index) => {
-        if (index > 10) t.classList.add('is-hidden');
-      });
-      tagsToggle.textContent = 'More...';
-    }
+      tagsToggle?.addEventListener('click', () => {
+        const hiddenTags = tagsContainer.querySelectorAll('.js-category-filter.is-hidden');
+        if (hiddenTags.length > 0) {
+          hiddenTags.forEach(t => t.classList.remove('is-hidden'));
+          tagsToggle.textContent = 'Fewer categories';
+          tagsToggle.setAttribute('aria-expanded', 'true');
+        } else {
+          const tags = tagsContainer.querySelectorAll('.js-category-filter');
+          tags.forEach((t, index) => {
+            if (index > 10) t.classList.add('is-hidden');
+          });
+          tagsToggle.textContent = 'More categories';
+          tagsToggle.setAttribute('aria-expanded', 'false');
+        }
   });
 });
 <\/script>
-{% endif %}`;
+{% endif %}
+`;
 
   // bookshop-import-file:components/posts-list/posts-list.jekyll.html__bookshop_file__
   var posts_list_jekyll_default2 = posts_list_jekyll_default;
 
   // component-library/components/project-card/project-card.jekyll.html
-  var project_card_jekyll_default = '{% assign c = "c-project-card" %}\n<article class="{{c}} col col-4 col-d-6 col-t-12">\n  <div class="{{c}}__content">\n    <a href="{{ include.project.url }}" class="{{c}}__image">\n      <img loading="lazy" src="{{ include.project.image }}" alt="{{ include.project.title }}">\n    </a>\n    <div class="{{c}}__info">\n      <div class="{{c}}__info-wrap">\n        <h3 class="{{c}}__title">{{ include.project.title }}</h3>\n      </div>\n      <div class="{{c}}__info-wrap">\n        {% if include.project.subtitle %}\n        <div class="{{c}}__subtitle">{{ include.project.subtitle }}</div>\n        {% endif %}\n      </div>\n    </div>\n  </div>\n</article>';
+  var project_card_jekyll_default = '{% assign c = "c-project-card" %}\n{% assign project_url = include.project.url %}\n{% assign project_url_ending = project_url | slice: -5, 5 %}\n{% unless project_url_ending == ".html" %}{% assign project_url = project_url | append: ".html" %}{% endunless %}\n<article class="{{c}} col col-4 col-d-6 col-t-12">\n  <div class="{{c}}__content">\n    <a href="{{ project_url | relative_url }}" class="{{c}}__image">\n      <img loading="lazy" src="{{ include.project.image | relative_url }}" alt="{{ include.project.image_alt | default: include.project.title | escape }}" decoding="async">\n    </a>\n    <div class="{{c}}__info">\n      <div class="{{c}}__info-wrap">\n        <h3 class="{{c}}__title">{{ include.project.title }}</h3>\n      </div>\n      <div class="{{c}}__info-wrap">\n        {% if include.project.subtitle %}\n        <div class="{{c}}__subtitle">{{ include.project.subtitle }}</div>\n        {% endif %}\n      </div>\n    </div>\n  </div>\n</article>\n';
 
   // bookshop-import-file:components/project-card/project-card.jekyll.html__bookshop_file__
   var project_card_jekyll_default2 = project_card_jekyll_default;
@@ -6929,7 +6975,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             {% if include.image %}
             <div class="{{c}}__thumbnail">
-                <img src="{{ include.image | relative_url }}" alt="{{ include.title | escape }}" loading="lazy">
+                <img src="{{ include.image | relative_url }}" alt="{{ include.title | escape }}" loading="lazy" decoding="async">
             </div>
             {% endif %}
 
@@ -6942,7 +6988,8 @@ document.addEventListener('DOMContentLoaded', () => {
             {% endif %}
         </div>
     </div>
-</div>`;
+</div>
+`;
 
   // bookshop-import-file:components/updates-list-item/updates-list-item.jekyll.html__bookshop_file__
   var updates_list_item_jekyll_default2 = updates_list_item_jekyll_default;
@@ -6982,13 +7029,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         {% break %}
                         {% endif %}
                         {% endfor %}
-                        <div class="trajectory-node" data-aos="fade-up" onclick="this.classList.toggle('is-expanded')">
-                            <div class="trajectory-node__connector"></div>
-                            <div class="trajectory-node__content-wrapper">
+                        <details class="trajectory-node" data-aos="fade-up">
+                            <summary class="trajectory-node__content-wrapper">
                                 <div class="trajectory-node__logo-trigger">
                                     {% if organization.image %}
-                                    <img src="{{ organization.image | relative_url }}" alt="{{ organization.name }}"
-                                        class="trajectory-node__logo">
+                                    <img src="{{ organization.image | relative_url }}" alt="{{ organization.name | escape }}"
+                                        class="trajectory-node__logo" loading="lazy" decoding="async">
                                     {% endif %}
                                 </div>
 
@@ -6999,15 +7045,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span class="trajectory-node__institution">{{ organization.name }}</span>
                                     {% endif %}
                                 </div>
-                            </div>
+                            </summary>
 
-                            <!-- Hover Detail Card (Moved here for proper mobile flow) -->
+                            <div class="trajectory-node__connector" aria-hidden="true"></div>
+
+                            <!-- Native disclosure keeps the additional context keyboard-accessible. -->
                             <div class="trajectory-node__detail-card">
                                 {% if record.summary %}
                                 <p class="detail-card__description">{{ record.summary }}</p>
                                 {% endif %}
                             </div>
-                        </div>
+                        </details>
                         {% endfor %}
                         {% endif %}
                     </div>
@@ -7069,7 +7117,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var pagination_jekyll_default2 = pagination_jekyll_default;
 
   // component-library/shared/jekyll/social-link.jekyll.html
-  var social_link_jekyll_default = '{% if site.data.links.social %}\n<div class="social">\n  <ul class="social__list list-reset">\n    {% for social in site.data.links.social %}\n    {% assign social_url = site.data.links[social.key] %}\n    {% if social_url %}\n    <li class="social__item">\n      <a class="social__link" href="{{ social_url }}" target="_blank" rel="noopener" aria-label="{{ social.icon | downcase }} icon"><i class="ion ion-logo-{{ social.icon | downcase }}"></i></a>\n    </li>\n    {% endif %}\n    {% endfor %}\n  </ul>\n</div>\n{% endif %}\n';
+  var social_link_jekyll_default = '{% if site.data.links.social %}\n<div class="social">\n  <ul class="social__list list-reset">\n    {% for social in site.data.links.social %}\n    {% assign social_url = site.data.links[social.key] %}\n    {% if social_url %}\n    <li class="social__item">\n      <a class="social__link" href="{{ social_url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.label | default: social.icon }}"><i class="ion ion-logo-{{ social.icon | downcase }}" aria-hidden="true"></i></a>\n    </li>\n    {% endif %}\n    {% endfor %}\n  </ul>\n</div>\n{% endif %}\n';
 
   // bookshop-import-file:shared/jekyll/social-link.jekyll.html__bookshop_file__
   var social_link_jekyll_default2 = social_link_jekyll_default;

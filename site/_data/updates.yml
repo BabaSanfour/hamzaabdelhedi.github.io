@@ -60,14 +60,14 @@
   description: "Presented an overview of 'The myth of apolitical science' at the Against Military AI reading group."
   tags: ["Community", "Talks", "Policy/Ethics"]
   image: "/images/other/AMAI-RG-Myth-political-science.png"
-  link: "/2024/11/09/AMAI-RG-Myth-political-science.html"
+  link: "/updates/amai-rg.html"
   icon: "🎤"
 
 - date: 2024-11-01
   title: "Against Military AI Reading Group"
   description: "Participated in the AMAI reading group discussing the social implications of AI."
   tags: ["Community", "Policy/Ethics"]
-  link: "/2024/11/01/AMAI-RG.html"
+  link: "/updates/amai-rg.html"
   icon: "👥"
 
 - date: 2024-10-25
@@ -75,7 +75,7 @@
   description: "Led a workshop on Representational Similarity Analysis (RSA) using MEG data at the MAIN conference."
   tags: ["Methods", "Talks", "Teaching"]
   image: "/images/confs/main2024.jpeg"
-  link: "/2024/10/25/main2024.html"
+  link: "/updates/main2024.html"
   icon: "🚀"
 
 - date: 2024-09-29
@@ -83,7 +83,7 @@
   description: "Presented research results at the NAISys conference at Cold Spring Harbor Laboratory."
   tags: ["Research", "Talks"]
   image: "/images/confs/naisys2024.png"
-  link: "/2024/09/29/naisys-2024.html"
+  link: "/updates/naisys-2024.html"
   icon: "📊"
 
 - date: 2024-09-15
@@ -91,7 +91,7 @@
   description: "Awarded a 25,000 CAD/year AI Merit Research Scholarship for PhD studies."
   tags: ["Awards", "Research"]
   image: "/images/other/fac-med-AI-scholarship.jpeg"
-  link: "/2024/09/15/med-AI-scholarship.html"
+  link: "/updates/med-ai-scholarship.html"
   icon: "🏆"
 
 - date: 2024-09-02
@@ -99,14 +99,14 @@
   description: "Began PhD journey at Université de Montréal under the supervision of Dr. Karim Jerbi."
   tags: ["Research", "Lab"]
   image: "/images/orgs/udem.webp"
-  link: "/2024/09/02/PhD-Biomed-Engineering.html"
+  link: "/updates/phd-biomed-engineering.html"
   icon: "🎓"
 
 - date: 2024-09-01
   title: "TA for MNC LAB2 A2024"
   description: "Serving as Teaching Assistant for the MNC LAB2 course this semester."
   tags: ["Teaching"]
-  link: "/2024/09/01/TA-MNC-LAB2-A2024.html"
+  link: "/updates/ta-mnc-lab2-a2024.html"
   icon: "👨‍🏫"
 
 - date: 2024-02-28
@@ -114,54 +114,54 @@
   description: "Presented a poster on latest research results at CoSyNe 2024, supported by UNIQUE and CoSyNe grants."
   tags: ["Research", "Talks", "Awards"]
   image: "/images/confs/cosyne2024.jpeg"
-  link: "/2024/02/28/cosyne-2024.html"
+  link: "/updates/cosyne-2024.html"
   icon: "🎓"
 
 - date: 2023-11-22
   title: "UNIQUE Get-Together"
   description: "Attended the UNIQUE research center community gathering."
   tags: ["Community"]
-  link: "/2023/11/22/UNIQUE-Get-Together.html"
+  link: "/updates/unique-get-together.html"
   icon: "👥"
 
 - date: 2023-11-03
   title: "Scaling Workshop"
   description: "Participated in the workshop on scaling in neural systems."
   tags: ["Methods", "Research"]
-  link: "/2023/11/03/Scaling-Workshop.html"
+  link: "/updates/scaling-workshop.html"
   icon: "🔧"
 
 - date: 2023-10-20
   title: "UNIQUE Retreat 2023"
   description: "Shared research and connected with peers at the annual UNIQUE retreat."
   tags: ["Community", "Lab"]
-  link: "/2023/10/20/UNIQUE-Retreat.html"
+  link: "/updates/unique-retreat.html"
   icon: "🌲"
 
 - date: 2023-10-16
   title: "CuttingEEG"
   description: "Attended the CuttingEEG conference focused on advanced EEG analysis methods."
   tags: ["Methods", "Research"]
-  link: "/2023/10/16/CuttingEEG.html"
+  link: "/updates/cuttingeeg.html"
   icon: "🧠"
 
 - date: 2023-10-10
   title: "NeuroAI Workshop"
   description: "Dived into the intersection of Neuroscience and AI at this specialized workshop."
   tags: ["Methods", "Research"]
-  link: "/2023/10/10/NeuroAI-Workshop.html"
+  link: "/updates/neuroai-workshop.html"
   icon: "🤖"
 
 - date: 2023-09-02
   title: "TA for MNC 2023"
   description: "Teaching Assistant for the MNC course for the 2023 session."
   tags: ["Teaching"]
-  link: "/2023/09/02/MNC-TA2023.markdown"
+  link: "/updates/mnc-ta2023.html"
   icon: "👨‍🏫"
 
 - date: 2023-09-01
   title: "CIRCA Scholarship Award"
   description: "Honored to receive the CIRCA research scholarship."
   tags: ["Awards", "Research"]
-  link: "/2023/09/01/CIRCA-Scholarship.html"
+  link: "/updates/circa-scholarship.html"
   icon: "🏆"

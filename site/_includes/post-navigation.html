@@ -1,25 +1,35 @@
 <div class="post__navigation animate">
   {% if page.previous.url %}
-  <a class="post__prev" href="{{page.previous.url}}">
+  {% assign previous_url = page.previous.url %}
+  {% assign previous_url_ending = previous_url | slice: -5, 5 %}
+  {% unless previous_url_ending == ".html" %}{% assign previous_url = previous_url | append: ".html" %}{% endunless %}
+  <a class="post__prev" href="{{ previous_url | relative_url }}">
+    {% if page.previous.image %}
     <div class="prev__image">
-      <img loading="lazy" src="{{site.baseurl}}{{page.previous.image}}" alt="{{ page.title }}">
+      <img loading="lazy" src="{{ page.previous.image | relative_url }}" alt="{{ page.previous.image_alt | default: page.previous.title | escape }}" decoding="async">
     </div>
+    {% endif %}
     <div class="prev__box">
       <span class="post__nav post__nav__prev">Prev post</span>
-      <h2 class="post__nav__title">{{page.previous.title}}</h2>
+      <h2 class="post__nav__title">{{ page.previous.title }}</h2>
     </div>
   </a>
   {% endif %}
 
   {% if page.next.url %}
-  <a class="post__next" href="{{page.next.url}}">
+  {% assign next_url = page.next.url %}
+  {% assign next_url_ending = next_url | slice: -5, 5 %}
+  {% unless next_url_ending == ".html" %}{% assign next_url = next_url | append: ".html" %}{% endunless %}
+  <a class="post__next" href="{{ next_url | relative_url }}">
     <div class="next__box">
       <span class="post__nav post__nav__next">Next post</span>
-      <h2 class="post__nav__title">{{page.next.title}}</h2>
+      <h2 class="post__nav__title">{{ page.next.title }}</h2>
     </div>
+    {% if page.next.image %}
     <div class="next__image">
-      <img loading="lazy" src="{{site.baseurl}}{{page.next.image}}" alt="{{ page.title }}">
+      <img loading="lazy" src="{{ page.next.image | relative_url }}" alt="{{ page.next.image_alt | default: page.next.title | escape }}" decoding="async">
     </div>
+    {% endif %}
   </a>
   {% endif %}
 </div>

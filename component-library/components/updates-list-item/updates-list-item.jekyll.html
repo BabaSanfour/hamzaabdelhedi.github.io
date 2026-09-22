@@ -27,7 +27,7 @@
 
             {% if include.image %}
             <div class="{{c}}__thumbnail">
-                <img src="{{ include.image | relative_url }}" alt="{{ include.title | escape }}" loading="lazy">
+                <img src="{{ include.image | relative_url }}" alt="{{ include.title | escape }}" loading="lazy" decoding="async">
             </div>
             {% endif %}
 

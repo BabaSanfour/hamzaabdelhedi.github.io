@@ -20,7 +20,7 @@ layout: default
       {% if page.image %}
       <div class="col col-12">
         <div class="post-image">
-          <img loading="lazy" src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" style="width: 100%; height: auto;">
+          <img class="post-image__img" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}" decoding="async">
         </div>
       </div>
       {% endif %}
@@ -31,7 +31,8 @@ layout: default
           {% if page.tags.size >= 1 %}
           <div class="post-tags">
             {% for tag in page.tags %}
-              <a href="{{ site.baseurl }}/tag/{{ tag }}" class="post-tags__tag">{{ tag }}</a>
+              {% assign tag_link = tag | tag_url | replace: '..html', '.html' %}
+              <a href="{{ tag_link | relative_url }}" class="post-tags__tag" rel="tag">{{ tag }}</a>
             {% endfor %}
           </div>
           {% endif %}

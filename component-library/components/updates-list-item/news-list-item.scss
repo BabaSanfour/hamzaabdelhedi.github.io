@@ -2,6 +2,9 @@
     display: flex;
     margin-bottom: 0;
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
     &:last-child {
         .c-news-list-item__content-col::before {
@@ -11,6 +14,7 @@
 
     &__date-col {
         flex: 0 0 120px;
+        min-width: 0;
         text-align: right;
         padding-right: 24px;
         padding-top: 0;
@@ -35,7 +39,8 @@
     }
 
     &__content-col {
-        flex: 1;
+        flex: 1 1 auto;
+        min-width: 0;
         position: relative;
         padding-left: 24px;
         padding-bottom: 36px;
@@ -81,6 +86,7 @@
         flex-direction: column !important; // Stack Sentence -> Picture -> Keywords
         gap: 12px;
         width: 100%;
+        min-width: 0;
     }
 
     &__summary {
@@ -91,6 +97,7 @@
         line-height: 1.5;
         color: $text-color;
         width: 100%;
+        min-width: 0;
         margin-bottom: 4px; // Bottom spacing
 
         @media only screen and (max-width: $mobile) {
@@ -106,6 +113,8 @@
 
     &__text {
         flex: 1;
+        min-width: 0;
+        overflow-wrap: anywhere;
 
         a {
             color: inherit;

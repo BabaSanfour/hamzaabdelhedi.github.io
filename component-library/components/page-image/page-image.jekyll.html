@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col col-12">
       <div class="{{c}} animate">
-        <img loading="lazy" src="{{ include.image }}" alt="{{ include.image_alt }}">
+        <img loading="lazy" src="{{ include.image | relative_url }}" alt="{{ include.image_alt | escape }}" decoding="async">
       </div>
     </div>
   </div>

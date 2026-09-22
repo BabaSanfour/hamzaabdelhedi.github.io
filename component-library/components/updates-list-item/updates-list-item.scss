@@ -2,6 +2,9 @@
     display: flex;
     margin-bottom: 0;
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
     &:last-child {
         .c-updates-list-item__content-col::before {
@@ -11,6 +14,7 @@
 
     &__date-col {
         flex: 0 0 120px;
+        min-width: 0;
         text-align: right;
         padding-right: 24px;
         padding-top: 0;
@@ -35,7 +39,8 @@
     }
 
     &__content-col {
-        flex: 1;
+        flex: 1 1 auto;
+        min-width: 0;
         position: relative;
         padding-left: 24px;
         padding-bottom: 16px;
@@ -82,6 +87,7 @@
         align-items: flex-start;
         gap: 12px;
         width: 100%;
+        min-width: 0;
     }
 
     &__summary {
@@ -92,6 +98,7 @@
         line-height: 1.5;
         color: $text-color;
         width: 100%;
+        min-width: 0;
 
         @media only screen and (max-width: $mobile) {
             font-size: 15px;
@@ -106,6 +113,8 @@
 
     &__text {
         flex: 1;
+        min-width: 0;
+        overflow-wrap: anywhere;
 
         a {
             color: inherit;
@@ -153,6 +162,9 @@
         flex-wrap: wrap;
         gap: 6px;
         margin-top: 4px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     &__tag {
@@ -164,6 +176,10 @@
         color: $primary-color;
         text-transform: uppercase;
         letter-spacing: 0.02em;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: anywhere;
     }
 
     &.hidden {

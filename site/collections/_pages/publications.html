@@ -38,7 +38,7 @@ layout: default
         <section class="publications-controls" aria-label="Publication filters">
           <div class="publications-filter-group">
             <h2 class="publications-filter-group__title">Type</h2>
-            <div class="c-updates-filter" data-filter-group="type">
+            <div class="c-updates-filter" data-filter-group="type" role="group" aria-label="Filter publications by type">
               <button type="button" class="c-updates-filter__btn js-type-filter" data-filter="all" aria-pressed="true">All types</button>
               {% for type in unique_types %}
               {% if type != "" %}
@@ -60,7 +60,7 @@ layout: default
 
           <div class="publications-filter-group">
             <h2 class="publications-filter-group__title">Year</h2>
-            <div class="c-updates-filter" data-filter-group="year">
+            <div class="c-updates-filter" data-filter-group="year" role="group" aria-label="Filter publications by year">
               <button type="button" class="c-updates-filter__btn js-year-filter" data-year="all" aria-pressed="true">All years</button>
               {% for year in unique_years %}
               {% if year != "" %}
@@ -72,7 +72,7 @@ layout: default
 
           <div class="publications-filter-group">
             <h2 class="publications-filter-group__title">Keyword</h2>
-            <div class="c-updates-filter js-keywords-container" data-filter-group="keyword">
+            <div class="c-updates-filter js-keywords-container" id="publication-keyword-filters" data-filter-group="keyword" role="group" aria-label="Filter publications by keyword">
               <button type="button" class="c-updates-filter__btn js-keyword-filter" data-keyword="all" aria-pressed="true">All keywords</button>
               {% for keyword in unique_keywords %}
               {% if keyword != "" %}
@@ -80,7 +80,7 @@ layout: default
               {% endif %}
               {% endfor %}
               {% if unique_keywords.size > 12 %}
-              <button type="button" class="c-updates-filter__btn c-updates-filter__btn--more js-keywords-toggle" aria-expanded="false">More keywords</button>
+              <button type="button" class="c-updates-filter__btn c-updates-filter__btn--more js-keywords-toggle" aria-expanded="false" aria-controls="publication-keyword-filters">More keywords</button>
               {% endif %}
             </div>
           </div>

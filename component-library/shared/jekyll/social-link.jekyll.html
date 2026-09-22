@@ -5,7 +5,7 @@
     {% assign social_url = site.data.links[social.key] %}
     {% if social_url %}
     <li class="social__item">
-      <a class="social__link" href="{{ social_url }}" target="_blank" rel="noopener" aria-label="{{ social.icon | downcase }} icon"><i class="ion ion-logo-{{ social.icon | downcase }}"></i></a>
+      <a class="social__link" href="{{ social_url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.label | default: social.icon }}"><i class="ion ion-logo-{{ social.icon | downcase }}" aria-hidden="true"></i></a>
     </li>
     {% endif %}
     {% endfor %}

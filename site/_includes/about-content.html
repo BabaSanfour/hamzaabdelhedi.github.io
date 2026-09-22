@@ -6,9 +6,9 @@
 {% assign cv_source_url = site.data.links.cv_source %}
 {% assign timeline_records = site.data.experience | concat: site.data.education | sort: "start_year" | reverse %}
 
-<main class="container profile-page about-page">
+<div class="container profile-page about-page">
   <header class="profile-page__intro">
-    <img class="profile-page__portrait" src="{{ profile_image | relative_url }}" alt="{{ profile_image_alt }}">
+    <img class="profile-page__portrait" src="{{ profile_image | relative_url }}" alt="{{ profile_image_alt | escape }}" width="1280" height="1285" decoding="async">
     <div class="profile-page__intro-copy">
       <p class="profile-page__eyebrow">{{ profile.hero_eyebrow }}</p>
       <h1>About {{ profile.name }}</h1>
@@ -83,4 +83,4 @@
       </ol>
     </section>
   </div>
-</main>
+</div>

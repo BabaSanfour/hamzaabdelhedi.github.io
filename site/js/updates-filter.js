@@ -1,11 +1,15 @@
 (function () {
+    'use strict';
+
     const searchInput = document.getElementById('update-search');
-    const categoryBtns = document.querySelectorAll('.js-category-filter');
-    const yearBtns = document.querySelectorAll('.js-year-filter');
+    const categoryBtns = Array.from(document.querySelectorAll('.js-category-filter'));
+    const yearBtns = Array.from(document.querySelectorAll('.js-year-filter'));
     const allItems = Array.from(document.querySelectorAll('.js-update-item'));
     const paginationContainer = document.getElementById('js-updates-pagination');
+    const results = document.getElementById('updates-results');
+    const noResults = document.getElementById('updates-no-results');
 
-    if (!categoryBtns.length || !allItems.length) return;
+    if (!allItems.length) return;
 
     let activeSearch = '';
     let activeCategory = 'all';
@@ -13,6 +17,14 @@
     let currentPage = 1;
     const ITEMS_PER_PAGE = 10;
     let filteredItems = [...allItems];
+
+    function setPressed(buttons, selected) {
+        buttons.forEach((button) => {
+            const isSelected = button === selected;
+            button.classList.toggle('active', isSelected);
+            button.setAttribute('aria-pressed', String(isSelected));
+        });
+    }
 
     function applyFilters() {
         filteredItems = allItems.filter(item => {
@@ -34,71 +46,72 @@
 
     function renderItems() {
         allItems.forEach(item => {
-            item.style.display = 'none';
-            item.style.opacity = '0';
+            item.hidden = true;
         });
 
         const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
-        const endIdx = startIdx + ITEMS_PER_PAGE;
-        const pageItems = filteredItems.slice(startIdx, endIdx);
+        const pageItems = filteredItems.slice(startIdx, startIdx + ITEMS_PER_PAGE);
 
-        pageItems.forEach((item, index) => {
-            item.style.display = '';
-            setTimeout(() => {
-                item.style.transition = 'opacity 0.3s ease';
-                item.style.opacity = '1';
-            }, 10 * index);
+        pageItems.forEach(item => {
+            item.hidden = false;
         });
+
+        if (results) {
+            results.textContent = `${filteredItems.length} update${filteredItems.length === 1 ? '' : 's'} found`;
+        }
+        if (noResults) noResults.hidden = filteredItems.length !== 0;
     }
 
     function renderPagination() {
         if (!paginationContainer) return;
 
         const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
-        paginationContainer.innerHTML = '';
+        paginationContainer.replaceChildren();
 
         if (totalPages <= 1) return;
 
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement('button');
-            btn.className = `c-updates-pagination__btn ${i === currentPage ? 'active' : ''}`;
-            btn.textContent = i;
-            btn.addEventListener('click', () => {
+        for (let i = 1; i <= totalPages; i += 1) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = `c-updates-pagination__btn ${i === currentPage ? 'active' : ''}`;
+            button.textContent = String(i);
+            button.setAttribute('aria-label', `Show updates page ${i}`);
+            if (i === currentPage) button.setAttribute('aria-current', 'page');
+            button.addEventListener('click', () => {
                 currentPage = i;
                 renderItems();
                 renderPagination();
-                // Scroll up smoothly so user sees the new items
-                document.querySelector('.c-updates-filter-group')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelector('.c-updates-filter-group')?.scrollIntoView({
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                    block: 'start'
+                });
             });
-            paginationContainer.appendChild(btn);
+            paginationContainer.appendChild(button);
         }
     }
 
     categoryBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeCategory = btn.getAttribute('data-filter');
+            activeCategory = btn.getAttribute('data-filter') || 'all';
+            setPressed(categoryBtns, btn);
             applyFilters();
         });
     });
 
     yearBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            yearBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeYear = btn.getAttribute('data-year');
+            activeYear = btn.getAttribute('data-year') || 'all';
+            setPressed(yearBtns, btn);
             applyFilters();
         });
     });
 
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            activeSearch = e.target.value.toLowerCase().trim();
-            applyFilters();
-        });
-    }
+    searchInput?.addEventListener('input', (event) => {
+        activeSearch = event.target.value.toLowerCase().trim();
+        applyFilters();
+    });
 
-    // Initialize
+    setPressed(categoryBtns, categoryBtns[0]);
+    setPressed(yearBtns, yearBtns[0]);
     applyFilters();
-})();
+}());

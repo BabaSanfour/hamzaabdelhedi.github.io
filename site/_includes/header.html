@@ -5,21 +5,21 @@
       <div class="c-header__inner">
 
         <div class="logo">
-          <a class="logo__link" href="{{ site.baseurl }}/">
+          <a class="logo__link" href="{{ '/' | relative_url }}">
           {%if site.data.navigation.logo_image %}
-            <img class="logo__image" src="{{ site.baseurl }}{{ site.data.navigation.logo_image }}" alt="{{ site.data.profile.name }}">
+            <img class="logo__image" src="{{ site.data.navigation.logo_image | relative_url }}" alt="{{ site.data.profile.name | escape }}" width="512" height="512">
           {% else %}
             {{ site.data.profile.name }}
           {% endif %}
           </a>
         </div>
 
-        <nav class="main-nav">
+        <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
           <div class="main-nav__box">
 
-            <div class="nav__icon-close">
-              <i class="ion ion-md-close"></i>
-            </div>
+            <button class="nav__icon-close" type="button" aria-label="Close navigation menu">
+              <i class="ion ion-md-close" aria-hidden="true"></i>
+            </button>
 
             <div class="nav__title">Menu</div>
 
@@ -31,7 +31,7 @@
                   <span class="nav__link dropdown-toggle">{{ item.title }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
                   <div class="dropdown-menu">
                     {% for submenu-item in item.submenu %}
-                      <a href="{{ submenu-item.url }}" class="nav__link{% if page.url == submenu-item.url %} active-link{% endif %}">{{submenu-item.title}}</a>
+                  <a href="{{ submenu-item.url | relative_url }}" class="nav__link{% if page.url == submenu-item.url %} active-link{% endif %}"{% if page.url == submenu-item.url %} aria-current="page"{% endif %}>{{submenu-item.title}}</a>
                     {% endfor %}
                   </div>
                 </li>
@@ -42,7 +42,7 @@
                   {% if item.link_key %}
                   {% assign nav_url = site.data.links[item.link_key] %}
                   {% endif %}
-                  <a href="{{ nav_url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+                  <a href="{{ nav_url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
                 </li>
                 {% endif %}
               {% endfor %}
@@ -53,9 +53,9 @@
           {% bookshop_include social-link %}
         </nav>
 
-        <div class="nav-button">
-          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
-        </div>
+        <button class="nav-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation menu">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu" aria-hidden="true"></i>
+        </button>
 
       </div>
     </div>

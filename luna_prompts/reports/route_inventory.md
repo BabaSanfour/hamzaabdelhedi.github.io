@@ -150,3 +150,35 @@ As-of date: 2026-09-21. The latest production build generated all 14 current pub
 | `/publications/reconnaissance-faciale-ai-humains.html` | `reconnaissance-faciale-ai-humains.md` | thesis / published |
 
 The targeted production-output scan inspected Home, the publication index, and all 14 current details. It confirmed the eight original slugs, one H1 and one abstract panel per detail page, and no unresolved local route, image or fragment links. The EEG-alignment detail route is absent by owner request. This was static production-output inspection; responsive visual review remains outside Stage 04.
+
+## Stage 08 production output and QA inventory
+
+As-of date: 2026-09-22. This section describes the current local production output after the accessibility, SEO, responsive, link, and performance QA pass. It is a local build inventory, not a deployment confirmation.
+
+### Output counts and core routes
+
+| Area | Current count | Result |
+| --- | ---: | --- |
+| Source page documents | 9 | Home, About, Blog compatibility, Contact, Projects compatibility, Publications, Research, Software, Updates |
+| Blog/update posts | 15 | `/updates/:slug.html` files plus `/updates/index.html` |
+| Publications | 14 | All current Stage 04 detail records plus the index |
+| Research projects | 4 | `/project/dynamic-decision-making.html`, `/project/eeg-meg-foundation-models.html`, `/project/face-familiarity.html`, `/project/pediatric-clinical-eeg.html` |
+| Tag pages | 27 | `/tag/*.html` |
+| Generated HTML files | 70 | Static production crawl passed for routes, assets, and fragments |
+| Sitemap locations | 71 | All use `https://hamzaabdelhedi.com`; the collection permalink contract remains extensionless in `page.url`/sitemap output |
+
+The primary page routes are `/`, `/about/`, `/contact/`, `/research/`, `/software/`, `/publications/`, `/updates/`, `/blog/`, and `/projects/`. The latter two remain compatibility routes; Blog no longer displays a “Coming Soon!” placeholder and points visitors to Updates, while Projects points visitors to Research.
+
+### Route, asset, and release-boundary findings
+
+- The output contains no public `/schemas/` directory and no public `build_log.txt`; both are excluded from the Jekyll output while their source/editor uses remain available.
+- Internal `href`, `src`, script, and fragment crawling passed across all 70 generated HTML files. Update cards now target generated `/updates/<slug>.html` routes, tag links use the installed `tag_url` filter, and related-post markup no longer nests anchors.
+- The local static server returned HTTP 404 for `/not-a-stage08-route`, HTTP 200 for the tracked legacy `/Hamza_Abdelhedi_cv.pdf`, and HTTP 404 for `/assets/files/Hamza_Abdelhedi_CV.pdf` because that ignored artifact is created by the Stage 07 remote CV workflow. The canonical CV URL and the remote workflow/deploy remain explicit release-handoff items.
+- `CNAME` is `hamzaabdelhedi.com`; `robots.txt` points to `https://hamzaabdelhedi.com/sitemap.xml`. No local deploy, Pages upload, or remote CI run was started during Stage 08.
+- A representative live-link sample (CV source, ORCID, arXiv, bioRxiv, and Coord2Region documentation) returned HTTP 200 on 2026-09-22. This is a sample reachability check, not an exhaustive guarantee for every external URL.
+
+### Stage 08 evidence
+
+- Static validator: `scripts/validate-site-output.rb` — 70 HTML files; internal routes/assets/fragments, metadata, and JSON-LD passed. The only warning is the expected absent local canonical CV artifact.
+- Isolated Chrome 153 CDP checks: 390 px, 195 px (200%-equivalent), and 1440 px all had zero horizontal overflow; mobile menu open/Escape close and focus restoration passed; native trajectory disclosure opened; publication filtering changed 14 results to 3 with `aria-pressed` state; reduced-motion media emulation passed; script-disabled Home retained one H1, main content, and navigation links; no runtime exceptions were recorded.
+- Exact viewport captures are stored in [`reports/screenshots/`](screenshots/) for 390×844, 768×1024, 1024×900, and 1440×1000.

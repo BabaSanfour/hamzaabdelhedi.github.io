@@ -19,6 +19,8 @@ exclude:
   - _site
   - .bundle
   - .jekyll-cache
+  - schemas
+  - build_log.txt
 
 include:
   - _cloudcannon

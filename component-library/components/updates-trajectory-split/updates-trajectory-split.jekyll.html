@@ -20,13 +20,12 @@
                         {% break %}
                         {% endif %}
                         {% endfor %}
-                        <div class="trajectory-node" data-aos="fade-up" onclick="this.classList.toggle('is-expanded')">
-                            <div class="trajectory-node__connector"></div>
-                            <div class="trajectory-node__content-wrapper">
+                        <details class="trajectory-node" data-aos="fade-up">
+                            <summary class="trajectory-node__content-wrapper">
                                 <div class="trajectory-node__logo-trigger">
                                     {% if organization.image %}
-                                    <img src="{{ organization.image | relative_url }}" alt="{{ organization.name }}"
-                                        class="trajectory-node__logo">
+                                    <img src="{{ organization.image | relative_url }}" alt="{{ organization.name | escape }}"
+                                        class="trajectory-node__logo" loading="lazy" decoding="async">
                                     {% endif %}
                                 </div>
 
@@ -37,15 +36,17 @@
                                     <span class="trajectory-node__institution">{{ organization.name }}</span>
                                     {% endif %}
                                 </div>
-                            </div>
+                            </summary>
 
-                            <!-- Hover Detail Card (Moved here for proper mobile flow) -->
+                            <div class="trajectory-node__connector" aria-hidden="true"></div>
+
+                            <!-- Native disclosure keeps the additional context keyboard-accessible. -->
                             <div class="trajectory-node__detail-card">
                                 {% if record.summary %}
                                 <p class="detail-card__description">{{ record.summary }}</p>
                                 {% endif %}
                             </div>
-                        </div>
+                        </details>
                         {% endfor %}
                         {% endif %}
                     </div>

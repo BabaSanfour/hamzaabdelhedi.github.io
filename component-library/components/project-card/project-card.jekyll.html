@@ -1,8 +1,11 @@
 {% assign c = "c-project-card" %}
+{% assign project_url = include.project.url %}
+{% assign project_url_ending = project_url | slice: -5, 5 %}
+{% unless project_url_ending == ".html" %}{% assign project_url = project_url | append: ".html" %}{% endunless %}
 <article class="{{c}} col col-4 col-d-6 col-t-12">
   <div class="{{c}}__content">
-    <a href="{{ include.project.url }}" class="{{c}}__image">
-      <img loading="lazy" src="{{ include.project.image }}" alt="{{ include.project.title }}">
+    <a href="{{ project_url | relative_url }}" class="{{c}}__image">
+      <img loading="lazy" src="{{ include.project.image | relative_url }}" alt="{{ include.project.image_alt | default: include.project.title | escape }}" decoding="async">
     </a>
     <div class="{{c}}__info">
       <div class="{{c}}__info-wrap">

@@ -80,15 +80,15 @@
               {% for social in site.data.links.social %}
               {% assign social_url = site.data.links[social.key] %}
               {% if social_url %}
-              <a href="{{ social_url }}" target="_blank" rel="noopener" class="{{c}}__social-link"
-                title="{{ social.icon }}">
-                <i class="ion ion-logo-{{ social.icon | downcase }}"></i>
+              <a href="{{ social_url }}" target="_blank" rel="noopener noreferrer" class="{{c}}__social-link"
+                aria-label="{{ social.label | default: social.icon }}">
+                <i class="ion ion-logo-{{ social.icon | downcase }}" aria-hidden="true"></i>
               </a>
               {% endif %}
               {% endfor %}
               {% if hero_email %}
-              <a href="mailto:{{ hero_email }}" class="{{c}}__social-link" title="Email">
-                <i class="ion ion-md-mail"></i>
+              <a href="mailto:{{ hero_email }}" class="{{c}}__social-link" aria-label="Email">
+                <i class="ion ion-md-mail" aria-hidden="true"></i>
               </a>
               {% endif %}
             </div>
@@ -120,17 +120,17 @@
 
           <div class="{{c}}__right">
             <div class="{{c}}__image {% if include.circular_image %}{{c}}__image--circular{% endif %}">
-              <img loading="lazy" src="{{ hero_image }}" alt="{{ hero_image_alt }}">
+              <img src="{{ hero_image | relative_url }}" alt="{{ hero_image_alt | escape }}" width="1280" height="1285" fetchpriority="high">
             </div>
 
             <!-- Spotlight Card -->
             {% if site.data.spotlight %}
             <div class="c-spotlight" id="spotlight-card" role="region" aria-label="Spotlight Highlights">
-              <div class="c-spotlight__wrapper">
+              <div class="c-spotlight__wrapper" aria-live="polite">
                 {% for item in site.data.spotlight %}
                 <div
                   class="c-spotlight__item {% if item.type %}{{ item.type }}{% endif %} {% if forloop.first %}is-active{% endif %}"
-                  data-index="{{ forloop.index0 }}">
+                  data-index="{{ forloop.index0 }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
                   <div class="c-spotlight__link">
                     <!-- Header Pill -->
                     <div class="c-spotlight__header">
@@ -152,7 +152,7 @@
                       <div class="c-spotlight__pub-layout">
                         {% if spotlight_image %}
                         <div class="c-spotlight__thumb">
-                          <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}">
+                        <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}" width="80" height="80" decoding="async">
                         </div>
                         {% endif %}
                         <div class="c-spotlight__content">
@@ -170,7 +170,7 @@
                       <div class="c-spotlight__media-layout">
                         {% if item.image %}
                         <div class="c-spotlight__thumb">
-                          <img src="{{ item.image }}" alt="{{ item.title }}">
+                          <img src="{{ item.image | relative_url }}" alt="{{ item.title | escape }}" width="80" height="80" decoding="async">
                         </div>
                         {% endif %}
                         <div class="c-spotlight__content">
@@ -201,17 +201,17 @@
 
               <!-- Controls -->
               <div class="c-spotlight__controls">
-                <button class="c-spotlight__btn prev" aria-label="Previous Highlight">
-                  <i class="ion ion-ios-arrow-back"></i>
+                <button class="c-spotlight__btn prev" type="button" aria-label="Previous highlight">
+                  <i class="ion ion-ios-arrow-back" aria-hidden="true"></i>
                 </button>
-                <div class="c-spotlight__dots">
+                <div class="c-spotlight__dots" role="group" aria-label="Spotlight highlights">
                   {% for item in site.data.spotlight %}
-                  <span class="c-spotlight__dot {% if forloop.first %}is-active{% endif %}"
-                    data-index="{{ forloop.index0 }}"></span>
+                  <button class="c-spotlight__dot {% if forloop.first %}is-active{% endif %}" type="button"
+                    data-index="{{ forloop.index0 }}" aria-label="Show spotlight highlight {{ forloop.index }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"></button>
                   {% endfor %}
                 </div>
-                <button class="c-spotlight__btn next" aria-label="Next Highlight">
-                  <i class="ion ion-ios-arrow-forward"></i>
+                <button class="c-spotlight__btn next" type="button" aria-label="Next highlight">
+                  <i class="ion ion-ios-arrow-forward" aria-hidden="true"></i>
                 </button>
               </div>
             </div>

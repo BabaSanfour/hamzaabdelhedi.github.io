@@ -124,6 +124,16 @@
         align-items: flex-start;
         margin-bottom: 20px;
 
+        & > summary {
+            list-style: none;
+            width: 100%;
+            max-width: 100%;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+        }
+
         &__connector {
             position: absolute;
             top: 40px;
@@ -157,17 +167,6 @@
                         }
                     }
                 }
-
-                &+.trajectory-node__detail-card {
-                    opacity: 1;
-                    visibility: visible;
-                    // Desktop slide in from the right slightly
-                    transform: translateY(-50%) translateX(12px);
-
-                    @media only screen and (max-width: $tablet) {
-                        transform: none; // Reset on mobile
-                    }
-                }
             }
         }
 
@@ -197,6 +196,8 @@
         &__info {
             display: flex;
             flex-direction: column;
+            flex: 1 1 auto;
+            min-width: 0;
             padding-top: 4px;
         }
 
@@ -206,6 +207,7 @@
             color: $text-color;
             margin: 0;
             display: block;
+            overflow-wrap: anywhere;
 
             &--grouped {
                 margin-bottom: 2px; // Tightened space below grouped institution
@@ -228,6 +230,7 @@
             font-weight: 600;
             color: $text-color;
             line-height: 1.3;
+            overflow-wrap: anywhere;
         }
 
         &__roles {
@@ -386,11 +389,17 @@
             }
         }
 
-        // Expanded state for mobile accordion
-        &.is-expanded {
+        // Expanded state for the native keyboard-accessible disclosure
+        &[open] {
             .trajectory-node__detail-card {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(-50%) translateX(12px);
+                pointer-events: auto;
+
                 @media only screen and (max-width: $tablet) {
-                    display: block; // Show the detail card inline
+                    display: block;
+                    transform: none;
                 }
             }
         }

@@ -1,11 +1,14 @@
 {% assign c = "c-blog-card" %}
+{% assign post_url = include.post.url %}
+{% assign post_url_ending = post_url | slice: -5, 5 %}
+{% unless post_url_ending == ".html" %}{% assign post_url = post_url | append: ".html" %}{% endunless %}
 <div class="{{c}} col col-4 col-d-6 col-t-12">
   <div class="{{c}}__inner">
 
     {% if include.post.image %}
     <div class="{{c}}__image-wrap">
-      <a class="{{c}}__image" href="{{ include.post.url }}">
-        <img loading="lazy" src="{{ include.post.image }}" alt="{{ include.post.title }}">
+      <a class="{{c}}__image" href="{{ post_url | relative_url }}">
+        <img loading="lazy" src="{{ include.post.image | relative_url }}" alt="{{ include.post.image_alt | default: include.post.title | escape }}" decoding="async">
       </a>
     </div>
     {% endif %}
@@ -15,13 +18,14 @@
       {% if include.post.tags.size >= 1 %}
       <div class="{{c}}__tags-box">
         {% for tag in include.post.tags %}
-        <a href="{{ site.baseurl }}/tag/{{ tag | downcase }}" class="{{c}}__tag">{{ tag }}</a>
+        {% assign tag_link = tag | tag_url | replace: '..html', '.html' %}
+        <a href="{{ tag_link | relative_url }}" class="{{c}}__tag" rel="tag">{{ tag }}</a>
         {% endfor %}
       </div>
       {% endif %}
 
       <h2 class="{{c}}__title">
-        <a href="{{ include.post.url }}">{{ include.post.title }}</a>
+        <a href="{{ post_url | relative_url }}">{{ include.post.title }}</a>
       </h2>
 
       <p class="{{c}}__excerpt">
@@ -31,7 +35,7 @@
 
       <div class="{{c}}__meta">
         <div class="{{c}}__author-image">
-          <img loading="lazy" src="{{ site.data.profile.portrait }}" alt="{{ site.data.profile.portrait_alt }}">
+          <img loading="lazy" src="{{ site.data.profile.portrait | relative_url }}" alt="{{ site.data.profile.portrait_alt | escape }}" width="44" height="44" decoding="async">
         </div>
         <div class="{{c}}__info">
           <div class="{{c}}__author-name">{{ site.data.profile.name }}</div>

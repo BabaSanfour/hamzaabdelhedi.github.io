@@ -5,29 +5,35 @@
 
 <body>
 
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     {% if site.data.general_settings.google-analytics %}
     {% include google-analytics.html %}
     {% endif %}
 
     {% include header.html %}
 
-    {{ content }}
+    <main id="main-content">
+        {{ content }}
 
-    <!--
-        Bookshop components are accessed using the bookshop tag,
-        using the same syntax as the standard Jekyll include tag.
-    -->
-    {% bookshop_include page content_blocks=page.content_blocks page_theme=page.page_theme %}
+        <!--
+            Bookshop components are accessed using the bookshop tag,
+            using the same syntax as the standard Jekyll include tag.
+        -->
+        {% bookshop_include page content_blocks=page.content_blocks page_theme=page.page_theme %}
+    </main>
 
-    <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+    <button class="top" type="button" title="Back to top" aria-label="Back to top" hidden>
+        <i class="ion ion-ios-arrow-up" aria-hidden="true"></i>
+    </button>
 
     {% include footer.html %}
 
-    <script src="/js/scripts.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="/js/publications.js"></script>
-    <script src="/js/spotlight.js"></script>
-    <script src="/js/updates-filter.js"></script>
+    <script src="{{ '/js/scripts.js' | relative_url }}"></script>
+    <script src="{{ '/js/common.js' | relative_url }}"></script>
+    <script src="{{ '/js/publications.js' | relative_url }}"></script>
+    <script src="{{ '/js/spotlight.js' | relative_url }}"></script>
+    <script src="{{ '/js/updates-filter.js' | relative_url }}"></script>
 </body>
 
 </html>
