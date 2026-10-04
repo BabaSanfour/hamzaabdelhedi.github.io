@@ -41,13 +41,6 @@
     {% endunless %}
   {% endif %}
   {% assign canonical_url = canonical_path | absolute_url %}
-  {% if page.canonical_url %}
-    {% if page.canonical_url contains "://" %}
-      {% assign canonical_url = page.canonical_url %}
-    {% else %}
-      {% assign canonical_url = page.canonical_url | absolute_url %}
-    {% endif %}
-  {% endif %}
   {% if page.external_url %}
     {% assign canonical_url = page.external_url %}
     <meta http-equiv="refresh" content="0; url={{ page.external_url | escape }}">

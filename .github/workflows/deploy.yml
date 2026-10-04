@@ -97,9 +97,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s _site/assets/files/Hamza_Abdelhedi_CV.pdf
-          test -s _site/Hamza_Abdelhedi_cv.pdf
           cmp -s _cv-src/main.pdf _site/assets/files/Hamza_Abdelhedi_CV.pdf
-          cmp -s _cv-src/main.pdf _site/Hamza_Abdelhedi_cv.pdf
           if find _site \( -type d -name '_cv-src' -o -type f \( -name '*.tex' -o -name '*.aux' -o -name '*.log' -o -name '*.fls' -o -name '*.fdb_latexmk' -o -name '*.out' -o -name '*.synctex*' \) \) -print -quit | grep -q .; then
             echo 'Unexpected CV source or build file found in _site' >&2
             exit 1

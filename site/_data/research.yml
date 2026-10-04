@@ -8,3 +8,9 @@ featured_ids:
   - dynamic-decision-making
   - eeg-meg-foundation-models
   - pediatric-clinical-eeg
+
+# Home-only presentation copy. Titles, roles, and links remain in the project records.
+home_previews:
+  dynamic-decision-making: How does brain activity change as evidence accumulates and a decision becomes an action?
+  eeg-meg-foundation-models: I explore how neural-network methods can help us study and represent EEG and MEG signals.
+  pediatric-clinical-eeg: A related collaboration asks how pediatric EEG can inform questions about ADHD and epilepsy.

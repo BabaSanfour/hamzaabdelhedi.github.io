@@ -4,7 +4,7 @@
 {% unless project_url_ending == ".html" %}
   {% assign project_url = project_url | append: ".html" %}
 {% endunless %}
-<article class="research-card">
+<article class="research-card{% if include.compact %} research-card--compact{% endif %}">
   {% if project.status or project.role %}
   <div class="research-card__meta">
     {% if project.status %}<span>{{ project.status }}</span>{% endif %}
@@ -16,8 +16,10 @@
     <a href="{{ project_url | relative_url }}">{{ project.short_title | default: project.title }}</a>
   </h3>
 
-  {% if project.summary %}
-  <p class="research-card__summary">{{ project.summary }}</p>
+  {% assign card_summary = project.summary %}
+  {% if include.compact and include.preview %}{% assign card_summary = include.preview %}{% endif %}
+  {% if card_summary %}
+  <p class="research-card__summary">{{ card_summary }}</p>
   {% endif %}
 
   <a class="research-card__link" href="{{ project_url | relative_url }}" aria-label="Read research overview: {{ project.title }}">

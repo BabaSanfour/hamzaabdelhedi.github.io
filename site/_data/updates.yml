@@ -18,6 +18,7 @@
   tags: ["Community", "Policy/Ethics"]
   link: "https://abundant-intelligences.net/blogs/a-dictionary-of-blackfoot-metaphysics-2025/"
   icon: "🌿"
+  home_exclude: true
 
 - date: 2025-09-01
   title: "Teaching Assistant — PSY2007 / PSY2008"

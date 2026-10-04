@@ -1,82 +1,122 @@
 {% assign profile = site.data.profile %}
-{% assign current_position = site.data.experience | where: "id", profile.current_position_id | first %}
 {% assign profile_image = profile.portrait | default: "/images/main/01.jpg" %}
-{% assign profile_image_alt = profile.portrait_alt | default: profile.name %}
-{% assign cv_url = site.data.links.cv_pdf %}
-{% assign cv_source_url = site.data.links.cv_source %}
+{% assign current_education = site.data.education | where: "current", true | first %}
+{% assign current_degree = current_education.degree | replace_first: "PhD in", "PhD student in" %}
+{% assign current_university = site.affiliations | where: "organization_id", current_education.institution_id | first %}
+{% assign engineering_education = site.data.education | where: "id", "engineering-diploma-telecommunication" | first %}
+{% assign engineering_school = site.affiliations | where: "organization_id", engineering_education.institution_id | first %}
+{% assign msc_education = site.data.education | where: "id", "msc-artificial-intelligence" | first %}
+{% assign clinical_position = site.data.experience | where: "id", profile.home_clinical_position_id | first %}
+{% assign clinical_organization = site.affiliations | where: "organization_id", clinical_position.institution_id | first %}
+{% assign clinical_organization_label = profile.hero_affiliation_labels[clinical_position.institution_id] | default: clinical_organization.name %}
+{% assign research_affiliation_ids = profile.affiliation_ids | slice: 1, 2 %}
+{% capture research_affiliations -%}
+  {%- assign affiliation_separator = "" -%}
+  {%- for affiliation_id in research_affiliation_ids -%}
+    {%- assign affiliation = site.affiliations | where: "organization_id", affiliation_id | first -%}
+    {%- assign affiliation_label = profile.hero_affiliation_labels[affiliation_id] | default: affiliation.name -%}
+    {%- if affiliation_label -%}{{ affiliation_separator }}{{ affiliation_label }}{%- assign affiliation_separator = " and " -%}{%- endif -%}
+  {%- endfor -%}
+{%- endcapture %}
 {% assign timeline_records = site.data.experience | concat: site.data.education | sort: "start_year" | reverse %}
+{% assign media_interview = site.data.spotlight | where: "type", "media" | first %}
+{% assign origin_city = profile.origin | split: "," | first %}
+{% assign location_city = profile.location | split: "," | first %}
 
 <div class="container profile-page about-page">
   <header class="profile-page__intro">
-    <img class="profile-page__portrait" src="{{ profile_image | relative_url }}" alt="{{ profile_image_alt | escape }}" width="1280" height="1285" decoding="async">
+    <img class="profile-page__portrait" src="{{ profile_image | relative_url }}" alt="{{ profile.portrait_alt | default: profile.name | escape }}" width="1280" height="1285" decoding="async">
     <div class="profile-page__intro-copy">
-      <p class="profile-page__eyebrow">{{ profile.hero_eyebrow }}</p>
+      <p class="profile-page__eyebrow">{{ origin_city }} <span aria-hidden="true">→</span> {{ location_city }}</p>
       <h1>About {{ profile.name }}</h1>
-      <p class="profile-page__lead">{{ profile.research_statement }}</p>
-      <p>{{ profile.short_bio }}</p>
-      <p class="profile-page__byline">
-        {% if current_position.title %}{{ current_position.title }} · {% endif %}{{ profile.field }} · {{ profile.location }}
-        {% if profile.pronouns %}<span class="profile-page__pronouns">({{ profile.pronouns }})</span>{% endif %}
-      </p>
-      {% if cv_url %}
-      <p class="profile-page__actions">
-        <a class="c-button c-button--primary c-button--small" href="{{ cv_url | relative_url }}" target="_blank" rel="noopener">Download CV</a>
-        {% if cv_source_url %}<a class="c-button c-button--secondary c-button--small" href="{{ cv_source_url }}" target="_blank" rel="noopener">View source on GitHub</a>{% endif %}
-      </p>
-      {% endif %}
+      <p class="profile-page__lead">I am a {{ current_degree }} at {{ current_university.name }}, working with {{ research_affiliations | strip }}. My path here began in {{ origin_city }}, Tunisia, and continues in {{ location_city }}.</p>
+      <p>I began with mathematics and physics, then completed an {{ engineering_education.degree }} at {{ engineering_school.name }}. During my engineering research internship, I explored how human brains and artificial neural networks represent faces. That bridge between engineering and neuroscience brought me to an {{ msc_education.degree }} and, eventually, the questions I study now.</p>
     </div>
   </header>
 
+  <nav class="about-page__navigation" aria-label="On this page">
+    <a href="#about-neuroai">Why Neuro-AI? <span aria-hidden="true">↓</span></a>
+    <a href="#about-values">Values <span aria-hidden="true">↓</span></a>
+    <a href="#about-community">Community <span aria-hidden="true">↓</span></a>
+    <a href="#about-failures">Rejections &amp; failures <span aria-hidden="true">↓</span></a>
+    <a href="#about-land">Land acknowledgment <span aria-hidden="true">↓</span></a>
+    <a href="#about-trajectory">Full journey <span aria-hidden="true">↓</span></a>
+  </nav>
+
   <div class="profile-page__content">
-    <section aria-labelledby="about-biography">
-      <h2 id="about-biography">Biography</h2>
-      <p>
-        I am originally from {{ profile.origin }}, and now based in {{ profile.location }}. My academic training spans Biomedical Engineering and Computer Science, and my research brings human neuroscience and computational methods together.
-      </p>
+    <section class="about-page__section about-page__section--neuroai" aria-labelledby="about-neuroai">
+      <h2 id="about-neuroai" tabindex="-1">Why Neuro-AI?</h2>
+      <div class="about-page__section-body">
+      <p>What drew me in was the chance to use computational tools to ask questions about the brain, and to let what we learn about brains challenge how we think about artificial systems. In my earlier <a href="{{ '/project/face-familiarity.html' | relative_url }}">face-familiarity research</a>, I studied how neural representations change over time as we recognize familiar and unfamiliar faces.</p>
+      <p>Today, my doctoral question is how changing sensory evidence becomes a decision and an action. I am interested in how that process unfolds across the brain. Artificial neural networks and foundation models offer complementary ways to study brain signals. In a separate collaboration at {{ clinical_organization_label }}, I work on pediatric clinical EEG questions about ADHD and epilepsy. <a href="{{ '/research/' | relative_url }}">Explore the research directions</a>.</p>
+      <p>I build and contribute to <a href="{{ '/software/' | relative_url }}">open-source neuroscience software</a> because a method becomes more useful when others can inspect it, adapt it, and build on it. Sharing tools and sharing knowledge are both part of how I want to do research.</p>
+      </div>
     </section>
 
-    <section aria-labelledby="about-research-philosophy">
-      <h2 id="about-research-philosophy">Research philosophy</h2>
-      <p>
-        I study how the human brain transforms changing sensory evidence into decisions and actions. I combine MEG and EEG with behavioral measures and computational decision models to examine how evidence develops over time and how neural activity relates to choice and commitment to respond. Source-level analyses and low-dimensional neural dynamics help describe the activity that unfolds during this process. This approach connects the task, model, and electrophysiological signal so the assumptions behind an interpretation can be evaluated against behavior and neural data.
-      </p>
-      <p>
-        Work on neural foundation models for EEG and MEG is a complementary methodological line, including questions about representation learning and generalization across datasets. I also collaborate with researchers at CHU Sainte-Justine on clinical EEG. My earlier MSc research focused on face familiarity, using MEG and task-optimized neural networks to study the timing of visual representations.
-      </p>
+    <section class="about-page__section about-page__section--values" aria-labelledby="about-values">
+      <h2 id="about-values" tabindex="-1">Values and responsibility</h2>
+      <div class="about-page__section-body">
+      <p>I am deeply committed to contributing to society by focusing on <strong>ethics</strong>, <strong>equity</strong>, <strong>diversity</strong>, and <strong>inclusion</strong> in science. I raise awareness about the <strong>socio-environmental risks</strong> and potential dangers of the scientific tools we develop.</p>
+      <p>A fan of <strong>open &amp; accessible science</strong>, I want to build shareable tools that lower research barriers and help foster fairness and equity within the scientific community.</p>
+      <p>I try to stand with people who are marginalized, minoritized, underrepresented, or excluded in science and society, and to help make scientific spaces and resources more accessible.</p>
+      <blockquote class="profile-page__quote"><p>Making the world a better place is our collective responsibility to each other and to the planet.</p></blockquote>
+      </div>
     </section>
 
-    <section aria-labelledby="about-open-science">
-      <h2 id="about-open-science">Open science and software</h2>
-      <p>
-        I build open-source neuroscience software alongside my research. I co-created and maintain MNE-Denoise, created and maintain CoCo-PiPe and Coord2Region, and contribute to MNE-Python and Jamica. This work makes analysis methods and practical tools available for other researchers to inspect, reuse, and adapt. I value clear documentation and accessible workflows, and I want the tools I help build to lower barriers to doing careful neuroscience.
-      </p>
+    <section class="about-page__section about-page__section--community" aria-labelledby="about-community">
+      <h2 id="about-community" tabindex="-1">Teaching, mentoring, and community</h2>
+      <div class="about-page__section-body">
+      <p>I firmly believe that science belongs to everyone. I enjoy sharing knowledge through teaching and mentoring, from cognitive-neuroscience courses at {{ current_university.name }} and Indigenous Pathfinders in AI to graduate and undergraduate research projects. At the <a href="{{ '/updates/main2024.html' | relative_url }}">MAIN 2024 educational sessions</a>, I led a hands-on tutorial on representational similarity analysis with MEG data; the <a href="https://github.com/BabaSanfour/main-edu-courses-rsa">tutorial materials</a> are available to reuse.</p>
+      <p>As a founding member of TuNA, Tunisians in Neuroscience and AI, I help connect people across the fields that shaped my own path. With Abundant Intelligences, I have contributed to research and taught hands-on AI sessions in the Future Imaginaries workshop series. I have also helped organize discussions about the societal impacts and responsible use of AI.</p>
+      {% if media_interview %}
+      <aside class="about-page__interview" aria-label="Interview with Abundant Intelligences">
+        {% if media_interview.image %}<img src="{{ media_interview.image | relative_url }}" alt="Abundant Intelligences graphic" width="96" height="96" loading="lazy" decoding="async">{% endif %}
+        <div>
+          <p class="about-page__interview-label">{{ media_interview.label }} · {{ media_interview.meta }}</p>
+          <h3><a href="{{ media_interview.url }}">{{ media_interview.title }}</a></h3>
+          <p>A conversation about my route into neuroscience, open-source tools, and working with people across disciplines.</p>
+        </div>
+      </aside>
+      {% endif %}
+      </div>
     </section>
 
-    <section aria-labelledby="about-teaching">
-      <h2 id="about-teaching">Teaching and mentoring</h2>
-      <p>
-        My teaching includes UdeM cognitive-neuroscience courses and the Indigenous Pathfinders in AI program. I have mentored undergraduate research interns and led a methods tutorial on representational similarity analysis with MEG data. Across these settings, I have supported students working with neuroscience questions and computational methods.
-      </p>
+    <section class="about-page__section about-page__section--failures" aria-labelledby="about-failures">
+      <h2 id="about-failures" tabindex="-1">Rejections and Failures</h2>
+      <div class="about-page__section-body">
+      <p>Failures and rejections are often seen as a negative aspect of life. However, I see them as an essential part of the learning process—they are the stepping stones that forge resilience.</p>
+      </div>
     </section>
 
-    <section aria-labelledby="about-community">
-      <h2 id="about-community">Community and service</h2>
-      <p>
-        I have helped organize the Against Military AI reading group and workshop, and taken part in neuroscience community events. I care about making scientific spaces and resources more accessible, and about discussing the social effects of technical work alongside its methods. Teaching in Indigenous Pathfinders in AI is one part of that community involvement.
-      </p>
+    <section class="about-page__section about-page__section--land" aria-labelledby="about-land">
+      <h2 id="about-land" tabindex="-1">Land acknowledgment</h2>
+      <div class="about-page__section-body">
+      <details class="profile-page__disclosure" open>
+        <summary>My acknowledgment of Tiohtià:ke / Montréal</summary>
+        <div class="profile-page__disclosure-content">
+          <p>Tiohtià:ke/Montréal is on unceded Indigenous lands. I recognize the Kanien'kehá:ka Nation as the custodians of the lands and waters on which I live and work. During the years I have lived in Montréal, I have come to embrace it as my home and am learning about the rich history of the land and the peoples who have lived here for thousands of years. I extend my deep gratitude to them, celebrate the beauty and diversity of this land, and reaffirm my commitment to truth and reconciliation.</p>
+        </div>
+      </details>
+      </div>
     </section>
 
-    <section aria-labelledby="about-trajectory">
-      <h2 id="about-trajectory">Selected trajectory</h2>
+    <section class="about-page__journey" aria-labelledby="about-trajectory">
+      <h2 id="about-trajectory" tabindex="-1">Education and research roles</h2>
+      <p>The records below include degrees, employment, and collaborations; some took place during the same period. For a formal account, <a href="{{ site.data.links.cv_pdf | relative_url }}">see my CV</a>.</p>
       <ol class="profile-page__trajectory">
         {% for record in timeline_records %}
         {% assign organization = site.affiliations | where: "organization_id", record.institution_id | first %}
-        <li class="profile-page__trajectory-item">
-          <span class="profile-page__date">{% include date-range.html record=record %}</span>
-          <div>
+        {% assign journey_logo = organization.image %}
+        {% if record.institution_id == 'abundant-intelligences' %}{% assign journey_logo = journey_logo | default: media_interview.image %}{% endif %}
+        <li class="profile-page__trajectory-item" data-record-id="{{ record.id | escape }}">
+          <span class="profile-page__date">{% bookshop_include date-range record=record %}</span>
+          <div class="about-page__role">
+            {% if journey_logo %}<span class="about-page__logo{% if record.institution_id == 'udem' or record.institution_id == 'mila' or record.institution_id == 'saint-justine' %} about-page__logo--dark{% endif %}"><img src="{{ journey_logo | relative_url }}" alt="" width="44" height="44" loading="lazy" decoding="async"></span>{% endif %}
+            <div class="about-page__role-copy">
             <h3>{{ record.title | default: record.degree }}</h3>
             {% if organization.name %}<p class="profile-page__organization">{{ organization.name }}</p>{% endif %}
             {% if record.summary %}<p>{{ record.summary }}</p>{% endif %}
+            </div>
           </div>
         </li>
         {% endfor %}

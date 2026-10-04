@@ -1,9 +1,9 @@
 footer_menu__settings:
   menu__items:
-    - title: 'Updates'
-      url: '/updates/'
+    - title: 'About'
+      url: '/about/'
     - title: 'Contact'
       url: '/contact/'
 
 copyright_text_html: >-
-  Template by <a href="https://cloudcannon.com/">CloudCannon</a>. Image by <a href="https://stability.ai">Stability.ai</a>.
+  Built with Jekyll and Bookshop.

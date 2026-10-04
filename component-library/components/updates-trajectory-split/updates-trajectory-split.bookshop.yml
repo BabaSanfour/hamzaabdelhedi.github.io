@@ -19,6 +19,8 @@ preview:
   updates_title: "Recent Updates"
   updates_description_html: "Stay up to date with my latest research, teaching, and community involvement."
   trajectory_title: "Trajectory"
+  show_updates: true
+  show_trajectory: false
 
 _inputs:
   updates_description_html:

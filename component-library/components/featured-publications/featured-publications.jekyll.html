@@ -3,7 +3,7 @@
 {% if selected_publications.size > 0 %}
 <!-- begin featured-publications -->
 <section class="section featured-publications" id="featured-publications">
-  <div class="container animate">
+  <div class="container">
     <div class="updates-trajectory split-layout">
       <div class="column-header">
         <h2 class="column-title">{{ include.title | default: "Selected publications" }}</h2>
@@ -20,7 +20,7 @@
       {% for pub in selected_publications %}
       {% if featured_count < max_count %}
       <div class="col col-4 col-d-6 col-t-12 featured-publications__item">
-        {% bookshop publication-card project=pub layout="vertical" %}
+        {% bookshop publication-card project=pub layout="vertical" compact=include.compact %}
       </div>
       {% assign featured_count = featured_count | plus: 1 %}
       {% endif %}

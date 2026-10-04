@@ -1,29 +1,32 @@
-/* Color Scheme */
-$primary-color: #4457c4;
-$secondary-color: #167d78;
+/* R3 teal/navy proposal. Teal is darkened for text and white-label contrast. */
+$primary-color: #006b78;
+$secondary-color: #003687;
 $white: #ffffff;
-$dark: #15171a;
-$gray: #666b73;
-$light-gray: #f7f7f4;
-$blue-gray: #eef0f3;
+$dark: #110e38;
+$gray: #536176;
+$light-gray: #f2f6ff;
+$blue-gray: #e7edf7;
 
-$background-color: #f7f7f4;
+$background-color: #f2f6ff;
 $background-color-alt: $white;
 
-$text-color: #15171a;
+$text-color: #110e38;
 
 $heading-font-color: $text-color;
 
 $link-color: $primary-color;
-$link-color-hover: #3446ad;
+$link-color-hover: #004f5b;
 
 $button-color: $background-color-alt;
 $button-background-color: $primary-color;
-$button-background-hover: #3446ad;
+$button-background-hover: #004f5b;
 
-$border-color: #dedfe3;
+$border-color: #cfd8e6;
 
 $hr-color: $gray;
 $tr-color: $white;
 
-$syntax-highlighting-background: #f1f2ee;
+$syntax-highlighting-background: #e7edf7;
+
+$focus-color: $secondary-color;
+$control-border-color: #718198;

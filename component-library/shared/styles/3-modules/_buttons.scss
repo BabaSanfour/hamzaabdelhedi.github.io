@@ -1,0 +1,64 @@
+/* Button */
+.c-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 12px 20px;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color $global-transition, border-color $global-transition, color $global-transition, transform $global-transition;
+  border: 1px solid transparent;
+  box-shadow: none;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    translate: 0 1px;
+  }
+
+  &--primary {
+    color: $white;
+    background: $primary-color;
+
+    &:hover,
+    &:focus-visible {
+      color: $white;
+
+      background: $button-background-hover;
+    }
+
+  }
+
+  &--secondary {
+    color: $text-color;
+    border-color: $control-border-color;
+    background: $background-color-alt;
+
+    &:hover,
+    &:focus-visible {
+      color: $text-color;
+      border-color: $primary-color;
+      background: rgba($primary-color, 0.06);
+    }
+  }
+
+  &--small {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  &--large {
+    padding: 16px 24px;
+    font-size: 18px;
+  }
+}

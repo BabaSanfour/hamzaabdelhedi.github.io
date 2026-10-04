@@ -8,217 +8,110 @@
 {% assign hero_image = include.image %}
 {% assign hero_image_alt = include.image_alt %}
 {% assign hero_email = include.email %}
-{% assign hero_pronouns = nil %}
+{% assign hero_pronouns = include.pronouns %}
 {% assign hero_degree = nil %}
+{% assign hero_supervisor = nil %}
+{% assign clinical_position = nil %}
+{% assign clinical_organization_label = nil %}
+{% assign hero_is_profile = false %}
 {% assign hero_cv_button = include.cv_button %}
 {% assign hero_cv_url = include.cv_button_link %}
 {% assign primary_affiliation_ids = nil %}
 
 {% if include.use_profile and site.data.profile %}
 {% assign profile = site.data.profile %}
-{% assign hero_title = profile.name | default: hero_title %}
-{% assign hero_eyebrow = profile.hero_eyebrow | default: hero_eyebrow %}
-{% assign hero_statement = profile.research_statement | default: hero_statement %}
-{% assign hero_description = profile.short_bio | default: hero_description %}
+{% assign hero_is_profile = true %}
+{% assign hero_title = profile.home_greeting | default: profile.name | default: hero_title %}
+{% assign hero_eyebrow = nil %}
+{% assign hero_statement = profile.tagline | default: hero_statement %}
 {% assign hero_image = profile.portrait | default: hero_image %}
 {% assign hero_image_alt = profile.portrait_alt | default: hero_image_alt %}
 {% assign hero_pronouns = profile.pronouns %}
 {% assign hero_email = site.data.links.email | default: hero_email %}
 {% assign current_position = site.data.experience | where: "id", profile.current_position_id | first %}
 {% assign current_education = site.data.education | where: "current", true | first %}
-{% assign hero_degree = current_education.degree %}
-{% assign primary_affiliation_ids = profile.affiliation_ids | slice: 0, 3 %}
-{% assign hero_cv_url = site.data.links.cv_pdf | default: hero_cv_url %}
-{% if current_position.title %}
-{% assign hero_position = current_position.title %}
+{% assign hero_degree = current_education.degree | replace_first: "PhD in", "PhD student in" %}
+{% assign hero_supervisor = current_education.summary | split: "Supervisor: " | last | split: ". Research" | first %}
+{% assign clinical_position = site.data.experience | where: "id", profile.home_clinical_position_id | first %}
+{% if clinical_position %}
+{% assign clinical_organization = site.affiliations | where: "organization_id", clinical_position.institution_id | first %}
+{% assign clinical_organization_label = profile.hero_affiliation_labels[clinical_position.institution_id] | default: clinical_organization.name %}
 {% endif %}
+{% assign primary_affiliation_ids = profile.affiliation_ids | slice: 0, 3 %}
+{% assign university_affiliation_id = primary_affiliation_ids | first %}
+{% assign research_affiliation_ids = primary_affiliation_ids | slice: 1, 2 %}
+{% assign hero_cv_url = site.data.links.cv_pdf | default: hero_cv_url %}
+{% assign hero_position = hero_degree %}
 {% endif %}
 
 <section class="{{c}}">
   <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="{{c}}__inner">
-
-          <div class="{{c}}__left">
-            <!-- Header Card (Name, Research Statement, and Affiliation) -->
-            <div class="{{c}}__header-card">
-              {% if hero_eyebrow %}
-              <p class="{{c}}__eyebrow">{{ hero_eyebrow }}</p>
-              {% endif %}
-
-              <h1 class="{{c}}__name">
-                {{ hero_title }}
-                {% if include.phonetic %}
-                <span class="{{c}}__phonetic">({{ include.phonetic }})</span>
-                {% endif %}
-                {% if hero_pronouns %}
-                <span class="{{c}}__pronouns">({{ hero_pronouns }})</span>
-                {% endif %}
-              </h1>
-
-              <!-- Current title comes from experience.yml. -->
-              {% if hero_position %}
-              <p class="{{c}}__position">{{ hero_position }}</p>
-              {% endif %}
-
-              {% if hero_degree or primary_affiliation_ids.size > 0 %}
-              <p class="{{c}}__affiliations">
-                {% if hero_degree %}<span>{{ hero_degree }}</span>{% endif %}
-                {% for affiliation_id in primary_affiliation_ids %}
+    <div class="{{c}}__inner{% unless hero_image and hero_image != '' %} {{c}}__inner--text-only{% endunless %}">
+      <div class="{{c}}__header-card">
+        {% if hero_eyebrow %}<p class="{{c}}__eyebrow">{{ hero_eyebrow }}</p>{% endif %}
+        <h1 class="{{c}}__name">{{ hero_title }}</h1>
+        {% if include.phonetic or hero_pronouns %}
+        <p class="{{c}}__supporting">
+          {% if include.phonetic %}<span class="{{c}}__phonetic">{{ include.phonetic }}</span>{% endif %}
+          {% if include.phonetic and hero_pronouns %}<span aria-hidden="true">·</span>{% endif %}
+          {% if hero_pronouns %}<span class="{{c}}__pronouns">{{ hero_pronouns }}</span>{% endif %}
+        </p>
+        {% endif %}
+        {% if hero_is_profile %}
+          {% if hero_position or primary_affiliation_ids.size > 0 %}
+          <p class="{{c}}__byline">
+            {% if hero_position %}<span class="{{c}}__byline-degree">{{ hero_position }}</span>{% endif %}
+            <span class="{{c}}__byline-affiliations">
+              {% assign university_affiliation = site.affiliations | where: "organization_id", university_affiliation_id | first %}
+              {% assign university_affiliation_label = profile.hero_affiliation_labels[university_affiliation_id] | default: university_affiliation.name %}
+              {% if university_affiliation_label %}<span class="{{c}}__byline-university">{{ university_affiliation_label }},</span>{% endif %}
+              <span class="{{c}}__byline-research">
+                {% for affiliation_id in research_affiliation_ids %}
                 {% assign affiliation = site.affiliations | where: "organization_id", affiliation_id | first %}
                 {% assign affiliation_label = profile.hero_affiliation_labels[affiliation_id] | default: affiliation.name %}
-                {% if affiliation_label %}<span aria-hidden="true">·</span><span>{{ affiliation_label }}</span>{% endif %}
+                {% if affiliation_label %}{% unless forloop.first %}<span aria-hidden="true">·</span>{% endunless %}<span class="{{c}}__byline-affiliation">{{ affiliation_label }}</span>{% endif %}
                 {% endfor %}
-              </p>
-              {% endif %}
-            </div>
+              </span>
+            </span>
+          </p>
+          {% endif %}
+        {% elsif hero_position %}<p class="{{c}}__position">{{ hero_position }}</p>{% endif %}
+      </div>
 
-            <!-- Social Icons -->
-            {% if include.show_social_icons %}
-            <div class="{{c}}__social">
-              {% for social in site.data.links.social %}
-              {% assign social_url = site.data.links[social.key] %}
-              {% if social_url %}
-              <a href="{{ social_url }}" target="_blank" rel="noopener noreferrer" class="{{c}}__social-link"
-                aria-label="{{ social.label | default: social.icon }}">
-                <i class="ion ion-logo-{{ social.icon | downcase }}" aria-hidden="true"></i>
-              </a>
-              {% endif %}
-              {% endfor %}
-              {% if hero_email %}
-              <a href="mailto:{{ hero_email }}" class="{{c}}__social-link" aria-label="Email">
-                <i class="ion ion-md-mail" aria-hidden="true"></i>
-              </a>
-              {% endif %}
-            </div>
-            {% endif %}
+      {% if hero_image and hero_image != '' %}
+      <div class="{{c}}__visual">
+      <div class="{{c}}__image{% if hero_is_profile %} {{c}}__image--portrait{% endif %} {% if include.circular_image %}{{c}}__image--circular{% endif %}">
+        <img src="{{ hero_image | relative_url }}" alt="{{ hero_image_alt | escape }}" width="1280" height="1285" fetchpriority="high">
+      </div>
+      {% if include.show_spotlight %}{% bookshop_include spotlight %}{% endif %}
+      </div>
+      {% endif %}
 
-            {% if hero_statement %}
-            <p class="{{c}}__statement">{{ hero_statement }}</p>
-            {% endif %}
+      {% if include.show_social_icons %}
+      <div class="{{c}}__social">
+        {% for social in site.data.links.social %}
+        {% assign social_url = site.data.links[social.key] %}
+        {% if social_url %}<a href="{{ social_url }}" target="_blank" rel="noopener noreferrer" class="{{c}}__social-link" aria-label="{{ social.label | default: social.icon }}"><i class="ion ion-logo-{{ social.icon | downcase }}" aria-hidden="true"></i></a>{% endif %}
+        {% endfor %}
+        {% if hero_email %}<a href="mailto:{{ hero_email }}" class="{{c}}__social-link" aria-label="Email"><i class="ion ion-md-mail" aria-hidden="true"></i></a>{% endif %}
+      </div>
+      {% endif %}
 
-            {% if hero_description %}
-            <div class="{{c}}__description">{{ hero_description }}</div>
-            {% endif %}
-
-            <!-- CTA Buttons -->
-            <div class="{{c}}__btn">
-              {% if include.cta_button and include.cta_button_link %}
-              <a href="{{ include.cta_button_link | relative_url }}" class="cta-button c-button c-button--primary c-button--small">{{ include.cta_button }}</a>
-              {% endif %}
-              {% if include.works_button and include.works_button_link %}
-              <a class="works-button c-button c-button--secondary c-button--small" href="{{ include.works_button_link | relative_url }}">
-                <span class="circle-bg"><i class="ion ion-md-arrow-forward button-arrow"></i></span> {{ include.works_button }}
-              </a>
-              {% endif %}
-              {% if hero_cv_button and hero_cv_url %}
-              <a class="cv-button c-button c-button--secondary c-button--small" href="{{ hero_cv_url | relative_url }}" target="_blank" rel="noopener">{{ hero_cv_button }}</a>
-              {% endif %}
-            </div>
-          </div>
-
-          <div class="{{c}}__right">
-            <div class="{{c}}__image {% if include.circular_image %}{{c}}__image--circular{% endif %}">
-              <img src="{{ hero_image | relative_url }}" alt="{{ hero_image_alt | escape }}" width="1280" height="1285" fetchpriority="high">
-            </div>
-
-            <!-- Spotlight Card -->
-            {% if site.data.spotlight %}
-            <div class="c-spotlight" id="spotlight-card" role="region" aria-label="Spotlight Highlights">
-              <div class="c-spotlight__wrapper" aria-live="polite">
-                {% for item in site.data.spotlight %}
-                <div
-                  class="c-spotlight__item {% if item.type %}{{ item.type }}{% endif %} {% if forloop.first %}is-active{% endif %}"
-                  data-index="{{ forloop.index0 }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
-                  <div class="c-spotlight__link">
-                    <!-- Header Pill -->
-                    <div class="c-spotlight__header">
-                      <span class="c-spotlight__label {{ item.color_class }}">{{ item.icon }} {{ item.label }}</span>
-                    </div>
-
-                    <div class="c-spotlight__body">
-                      {% if item.type == 'publication' %}
-                      <!-- Publication Layout -->
-                      {% assign spotlight_publication = site.publications | where: "slug", item.publication_id | first %}
-                      {% assign spotlight_title = spotlight_publication.title | default: item.title %}
-                      {% assign spotlight_url = spotlight_publication.url | default: item.url %}
-                      {% if spotlight_publication.url %}
-                      {% assign spotlight_url_ending = spotlight_url | slice: -5, 5 %}
-                      {% unless spotlight_url_ending == ".html" %}{% assign spotlight_url = spotlight_url | append: ".html" %}{% endunless %}
-                      {% endif %}
-                      {% assign spotlight_meta = spotlight_publication.venue | append: " · " | append: spotlight_publication.year %}
-                      {% assign spotlight_image = spotlight_publication.thumbnail | default: item.image %}
-                      <div class="c-spotlight__pub-layout">
-                        {% if spotlight_image %}
-                        <div class="c-spotlight__thumb">
-                        <img src="{{ spotlight_image | relative_url }}" alt="{{ spotlight_title | escape }}" width="80" height="80" decoding="async">
-                        </div>
-                        {% endif %}
-                        <div class="c-spotlight__content">
-                          <h4 class="c-spotlight__title">
-                            {% if spotlight_url %}<a href="{{ spotlight_url | relative_url }}">{% endif %}
-                              {{ spotlight_title | escape }}
-                              {% if spotlight_url %}</a>{% endif %}
-                          </h4>
-                          <p class="c-spotlight__meta">{{ spotlight_meta | escape }}</p>
-                        </div>
-                      </div>
-
-                      {% elsif item.type == 'media' %}
-                      <!-- Media Layout -->
-                      <div class="c-spotlight__media-layout">
-                        {% if item.image %}
-                        <div class="c-spotlight__thumb">
-                          <img src="{{ item.image | relative_url }}" alt="{{ item.title | escape }}" width="80" height="80" decoding="async">
-                        </div>
-                        {% endif %}
-                        <div class="c-spotlight__content">
-                          <h4 class="c-spotlight__title">
-                            {% if item.url %}<a href="{{ item.url }}">{% endif %}
-                              {{ item.title }}
-                              {% if item.url %}</a>{% endif %}
-                          </h4>
-                          <p class="c-spotlight__meta">{{ item.meta }}</p>
-                        </div>
-                      </div>
-
-                      {% elsif item.type == 'news' %}
-                      <!-- News Layout -->
-                      <div class="c-spotlight__news-layout">
-                        <p class="c-spotlight__news-text">
-                          <span class="c-spotlight__date">{{ item.meta }} &gt;</span>
-                          {{ item.title }}
-                        </p>
-                      </div>
-
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-
-              <!-- Controls -->
-              <div class="c-spotlight__controls">
-                <button class="c-spotlight__btn prev" type="button" aria-label="Previous highlight">
-                  <i class="ion ion-ios-arrow-back" aria-hidden="true"></i>
-                </button>
-                <div class="c-spotlight__dots" role="group" aria-label="Spotlight highlights">
-                  {% for item in site.data.spotlight %}
-                  <button class="c-spotlight__dot {% if forloop.first %}is-active{% endif %}" type="button"
-                    data-index="{{ forloop.index0 }}" aria-label="Show spotlight highlight {{ forloop.index }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"></button>
-                  {% endfor %}
-                </div>
-                <button class="c-spotlight__btn next" type="button" aria-label="Next highlight">
-                  <i class="ion ion-ios-arrow-forward" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-            {% endif %}
-          </div>
-
+      {% if hero_statement %}<p class="{{c}}__statement">{{ hero_statement }}</p>{% endif %}
+      {% if hero_is_profile %}
+        {% assign origin_city = profile.origin | split: "," | first %}
+        {% assign location_city = profile.location | split: "," | first %}
+        <div class="{{c}}__description">
+          <p>{{ profile.research_statement }} {% if hero_supervisor %}With {{ hero_supervisor }}, {% endif %}I use MEG/EEG and computational modeling to follow neural dynamics. I'm also interested in how we can represent brain signals—from low-dimensional trajectories to artificial neural networks and foundation models.{% if clinical_organization_label %} At {{ clinical_organization_label }}, I collaborate on pediatric clinical EEG research, including questions about ADHD and epilepsy.{% endif %}</p>
+          <p>{{ profile.home_values | replace: "open & accessible science", "<strong>open &amp; accessible science</strong>" }}</p>
+          <p class="{{c}}__context">Originally from {{ origin_city }} 🇹🇳, now based in <strong>{{ location_city }}</strong> 🇨🇦. <a href="{{ '/about/' | relative_url }}">More about my path</a>.</p>
         </div>
+      {% elsif hero_description %}<div class="{{c}}__description">{{ hero_description }}</div>{% endif %}
+
+      <div class="{{c}}__btn">
+        {% if include.cta_button and include.cta_button_link %}<a href="{{ include.cta_button_link | relative_url }}" class="cta-button c-button c-button--primary c-button--small">{{ include.cta_button }}</a>{% endif %}
+        {% if include.works_button and include.works_button_link %}<a class="works-button c-button c-button--secondary c-button--small" href="{{ include.works_button_link | relative_url }}"><span class="circle-bg"><i class="ion ion-md-arrow-forward button-arrow"></i></span> {{ include.works_button }}</a>{% endif %}
+        {% if hero_cv_button and hero_cv_url %}<a class="cv-button c-button c-button--secondary c-button--small" href="{{ hero_cv_url | relative_url }}" target="_blank" rel="noopener">{{ hero_cv_button }}</a>{% endif %}
       </div>
     </div>
   </div>

@@ -10,10 +10,19 @@ spec:
 blueprint:
   title: Open-source software
   description_html: ""
+  compact: false
+  # Bookshop clones the first blueprint item when expanding preview arrays.
+  selected_ids:
+    - mne-denoise
 
 preview:
   title: Open-source software
   description_html: Software cards resolve from the shared software data.
+  compact: true
+  selected_ids:
+    - mne-denoise
+    - coco-pipe
+    - coord2region
 
 _inputs:
   description_html:

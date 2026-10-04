@@ -16,43 +16,35 @@
 	}
 
 	&__inner {
-		display: flex;
-		align-items: flex-start; // Align items to top
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+		grid-template-areas:
+			"header portrait"
+			"social portrait"
+			"statement portrait"
+			"description portrait"
+			"actions portrait";
+		align-items: start;
+		gap: 0 $space-7;
+
+		> * { min-width: 0; }
+
+		&--text-only {
+			grid-template-columns: minmax(0, 1fr);
+			grid-template-areas: "header" "social" "statement" "description" "actions";
+		}
 
 		@media only screen and (max-width: $tablet) {
-			flex-direction: column;
+			grid-template-columns: minmax(0, 1fr);
+			grid-template-areas: "header" "portrait" "social" "statement" "description" "actions";
+			gap: 0;
 		}
 	}
 
-	&__left {
-		flex: 0 0 66.666%;
-		max-width: 66.666%;
-		padding-right: 40px;
-		margin-right: auto;
-
-		@media only screen and (max-width: $tablet) {
-			flex: 0 0 100%;
-			max-width: 100%;
-			padding-right: 0;
-		}
-	}
-
-	&__right {
-		flex: 0 0 33.333%;
-		max-width: 33.333%;
-		position: relative;
-		margin-left: auto;
-
-		@media only screen and (max-width: $tablet) {
-			order: 0;
-			flex: 0 0 100%;
-			max-width: 100%;
-			margin-left: 0;
-			margin-top: 32px;
-		}
-	}
+	&__social { grid-area: social; }
 
 	&__header-card {
+		grid-area: header;
 		background: $white;
 		padding: 24px 32px;
 		border-radius: 20px;
@@ -93,31 +85,50 @@
 	}
 
 	&__phonetic {
-		font-size: 15px; // Slightly smaller
+		font-size: 15px;
 		font-weight: 400;
 		color: $text-color;
-		opacity: 0.6;
-		margin-left: 8px;
-
-		@media only screen and (max-width: $mobile) {
-			display: block;
-			margin-left: 0;
-			margin-top: 4px;
-		}
 	}
 
 	&__pronouns {
-		display: inline-block;
-		margin-left: 8px;
 		color: $text-color;
-		font-size: 13px;
+		font-size: 15px;
 		font-weight: 500;
-		vertical-align: middle;
+	}
 
-		@media only screen and (max-width: $mobile) {
-			margin-left: 4px;
-			font-size: 12px;
-		}
+	&__supporting {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		margin: 0 0 12px;
+		color: $text-color;
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+	&__byline {
+		display: block;
+		margin: 0;
+		color: $primary-color;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	&__byline-degree {
+		display: block;
+	}
+
+	&__byline-affiliations {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2px 12px;
+	}
+
+	&__byline-research {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 0 0.35em;
 	}
 
 	&__position {
@@ -132,54 +143,35 @@
 		}
 	}
 
-	&__affiliations {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 4px 8px;
-		margin: 0;
-		color: $text-color;
-		font-size: 14px;
-		line-height: 1.5;
-	}
-
 	&__statement {
+		grid-area: statement;
 		max-width: 760px;
+		text-wrap: balance;
 		margin: 0 0 14px;
 		color: $heading-font-color;
-		font-size: 25px;
+		font-size: 20px;
 		font-weight: 600;
-		line-height: 1.35;
+		line-height: 1.5;
 
 		@media only screen and (max-width: $desktop) {
-			font-size: 22px;
+			font-size: 19px;
 		}
 
 		@media only screen and (max-width: $mobile) {
-			font-size: 20px;
-		}
-	}
-
-	&__tagline {
-		font-size: 18px; // Shrunk from 20px
-		font-weight: 400;
-		font-style: italic;
-		color: $text-color;
-		margin-bottom: 0;
-		opacity: 0.85;
-
-		@media only screen and (max-width: $mobile) {
-			font-size: 16px;
+			font-size: 18px;
 		}
 	}
 
 	&__description {
+		grid-area: description;
 		font-size: 16px;
 		line-height: 1.6;
 		color: $text-color;
 
 		p {
 			margin-bottom: 0;
-			font-size: 18px;
+			text-wrap: pretty;
+			font-size: 17px;
 			line-height: 1.6;
 			color: $text-color;
 
@@ -192,12 +184,18 @@
 			margin-top: 16px;
 		}
 
+		a {
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+
 		strong {
 			color: $primary-color;
 		}
 	}
 
 	&__btn {
+		grid-area: actions;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: flex-start;
@@ -205,8 +203,15 @@
 		gap: 12px;
 		margin-top: 40px;
 
+		.c-button {
+			min-width: 0;
+			max-width: 100%;
+			white-space: normal;
+			text-wrap: balance;
+		}
+
 		a:focus-visible {
-			outline: 3px solid #1d4ed8;
+			outline: 3px solid var(--color-focus);
 			outline-offset: 3px;
 		}
 
@@ -238,7 +243,7 @@
 				font-size: 14px;
 				border-radius: 50%;
 				will-change: transform;
-				background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+				background: $primary-color;
 				transition: all .2s cubic-bezier(.215, .61, .355, 1);
 			}
 
@@ -252,261 +257,45 @@
 		}
 	}
 
+	&__visual {
+		grid-area: portrait;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: $space-5;
+		width: 100%;
+		min-width: 0;
+		@media only screen and (max-width: $tablet) {
+			max-width: 350px;
+			margin: 0 auto $space-5;
+		}
+	}
+
 	&__image {
 		position: relative;
 		z-index: 10;
 		width: 100%;
-		max-width: 350px;
-		margin-left: auto;
+		max-width: 300px;
+		margin: 0;
 		height: auto;
 
-		@media only screen and (max-width: 1130px) {
-			max-width: 280px;
-		}
-
 		@media only screen and (max-width: $tablet) {
-			width: 280px;
-			height: 280px;
-			margin: 0 auto 30px;
-		}
-
-		@media only screen and (max-width: $mobile) {
-			width: 240px;
-			height: 240px;
+			width: min(240px, 100%);
+			margin: 0 auto;
 		}
 
 		img {
 			width: 100%;
 			height: auto;
-			border-radius: 16px !important;
+			border-radius: 16px;
 			object-fit: cover;
 			box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
 		}
-	}
-}
 
-/* --- Spotlight Component --- */
-.c-spotlight {
-	margin-top: 24px;
-	background: $background-color-alt;
-	border-radius: 18px; // Match news-card
-	box-shadow: 0px 2px 12px rgba(15, 23, 42, 0.08); // Match news-card
-	padding: 12px 20px 10px; // Squeezed padding
-	position: relative;
-	overflow: hidden;
-	width: 100%;
-	max-width: 350px;
-	margin-left: auto;
-	height: 238px;
-	display: flex;
-	flex-direction: column;
-	border: 1px solid rgba(148, 163, 184, 0.2);
-	border-right: 4px solid $primary-color;
+		&--portrait img { aspect-ratio: 1; }
 
-	&:hover {
-		box-shadow: 0px 16px 32px rgba(15, 23, 42, 0.12);
-		transition: transform .2s ease, box-shadow .2s ease;
-	}
-
-	&__wrapper {
-		position: relative;
-		flex: 1;
-	}
-
-	&__item {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		visibility: hidden;
-		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		transform: scale(0.98);
-
-		&.is-active {
-			display: flex;
-			flex-direction: column;
-			opacity: 1;
-			visibility: visible;
-			transform: scale(1);
+		&--circular img {
+			border-radius: 50%;
 		}
-	}
-
-	&__header {
-		margin-bottom: 20px; // Increased for more breathing room
-	}
-
-	&__label {
-		display: inline-flex;
-		align-items: center;
-		font-size: 11px;
-		font-weight: 700;
-		padding: 2px 10px;
-		border-radius: 999px;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-
-		&.is-publication {
-			background: rgba($primary-color, 0.1);
-			color: $primary-color;
-		}
-
-		&.is-media {
-			background: rgba(#8b5cf6, 0.1); // Purple for media
-			color: #8b5cf6;
-		}
-
-		&.is-news {
-			background: rgba($secondary-color, 0.1);
-			color: $secondary-color;
-		}
-
-		&.is-repos {
-			background: rgba(#64748b, 0.1);
-			color: #64748b;
-		}
-
-		i,
-		.ion {
-			margin-right: 6px;
-			font-size: 13px;
-		}
-	}
-
-	/* Publication & Media Layout */
-	&__pub-layout,
-	&__media-layout {
-		display: flex;
-		gap: 12px; // tighter gap
-		align-items: flex-start;
-	}
-
-	&__thumb {
-		flex: 0 0 80px; // Slightly smaller to ensure fit
-		height: 80px;
-		border-radius: 8px;
-		overflow: hidden;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-	}
-
-	&__title {
-		font-size: 19px;
-		font-weight: 700;
-		line-height: 1.35;
-		margin: 0 0 4px;
-		color: $heading-font-color;
-
-		/* Line Clamping - prevent overflow */
-		display: -webkit-box;
-		-webkit-line-clamp: 4;
-		-webkit-box-orient: vertical;
-		line-clamp: 4;
-		overflow: hidden;
-		text-overflow: ellipsis;
-
-		a {
-			display: -webkit-box !important;
-			/* Necessary for line clamping on the link itself */
-			-webkit-line-clamp: 4 !important;
-			-webkit-box-orient: vertical !important;
-			line-clamp: 4 !important;
-			overflow: hidden !important;
-			text-overflow: ellipsis !important;
-			text-decoration: none;
-			color: $primary-color;
-
-			&:hover {
-				color: $secondary-color;
-				text-decoration: underline;
-			}
-		}
-	}
-
-	&__meta {
-		font-size: 13px;
-		color: $text-color;
-		opacity: 0.8;
-		margin: 0;
-	}
-
-	/* News Layout */
-	&__news-text {
-		font-size: 19px;
-		line-height: 1.6;
-		color: $text-color;
-	}
-
-	&__date {
-		font-weight: 700;
-		color: $secondary-color;
-		display: inline-block;
-		margin-right: 4px;
-	}
-
-	/* Controls */
-	&__controls {
-		margin-top: auto;
-		padding-top: 8px; // Reduced padding
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		opacity: 0;
-		transition: opacity 0.3s ease;
-	}
-
-	&:hover &__controls {
-		opacity: 1;
-	}
-
-	&__btn {
-		background: $white;
-		border: 1px solid $border-color;
-		width: 26px;
-		height: 26px;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		color: $text-color;
-		transition: all 0.2s ease;
-
-		&:hover {
-			background: $primary-color;
-			color: $white;
-			border-color: $primary-color;
-			box-shadow: 0 4px 12px rgba($primary-color, 0.2);
-		}
-	}
-
-	&__dots {
-		display: flex;
-		gap: 8px;
-	}
-
-	&__dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		background: $border-color;
-		cursor: pointer;
-		transition: all 0.3s ease;
-
-		&.is-active {
-			background: $primary-color;
-			transform: scale(1.3);
-		}
-	}
-
-	@media only screen and (max-width: $tablet) {
-		max-width: 400px;
-		margin: 32px auto 0;
 	}
 }

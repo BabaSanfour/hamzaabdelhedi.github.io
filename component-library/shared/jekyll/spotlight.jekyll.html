@@ -1,0 +1,42 @@
+{% if site.data.spotlight.size > 0 %}
+<section class="c-spotlight" data-spotlight aria-label="Spotlight highlights" aria-roledescription="carousel">
+  <div class="c-spotlight__slides">
+    {% for item in site.data.spotlight %}
+    {% assign spotlight_title = item.title %}
+    {% assign spotlight_url = item.url %}
+    {% assign spotlight_meta = item.meta %}
+    {% assign spotlight_image = item.image %}
+    {% if item.type == 'publication' %}
+      {% assign spotlight_publication = site.publications | where: "slug", item.publication_id | first %}
+      {% assign spotlight_title = spotlight_publication.title | default: item.title %}
+      {% assign spotlight_url = spotlight_publication.url | default: item.url %}
+      {% if spotlight_publication %}
+        {% assign spotlight_url_ending = spotlight_url | slice: -5, 5 %}
+        {% unless spotlight_url_ending == '.html' %}{% assign spotlight_url = spotlight_url | append: '.html' %}{% endunless %}
+        {% assign spotlight_meta = spotlight_publication.venue | append: ' · ' | append: spotlight_publication.year %}
+        {% assign spotlight_image = spotlight_publication.thumbnail | default: item.image %}
+      {% endif %}
+    {% endif %}
+    <div class="c-spotlight__item" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
+      <div class="c-spotlight__header">
+        {% if spotlight_image %}<img class="c-spotlight__thumb" src="{{ spotlight_image | relative_url }}" alt="" width="40" height="40" decoding="async">{% endif %}
+        <span class="c-spotlight__label">{{ item.icon }} {{ item.label | escape }}</span>
+      </div>
+      <h2 class="c-spotlight__title">{% if spotlight_url %}<a href="{{ spotlight_url | relative_url }}">{% endif %}{{ spotlight_title | escape }}{% if spotlight_url %}</a>{% endif %}</h2>
+      {% if spotlight_meta %}<p class="c-spotlight__meta">{{ spotlight_meta | escape }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if site.data.spotlight.size > 1 %}
+  <div class="c-spotlight__controls" hidden>
+    <div class="c-spotlight__navigation">
+      <button class="c-spotlight__step" data-step="-1" type="button" aria-label="Previous highlight">←</button>
+      <div class="c-spotlight__dots" role="group" aria-label="Choose a highlight">
+        {% for item in site.data.spotlight %}<button class="c-spotlight__dot" type="button" data-index="{{ forloop.index0 }}" aria-label="Show highlight {{ forloop.index }}" aria-pressed="false"><span aria-hidden="true"></span></button>{% endfor %}
+      </div>
+      <button class="c-spotlight__step" data-step="1" type="button" aria-label="Next highlight">→</button>
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endif %}

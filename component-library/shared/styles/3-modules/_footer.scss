@@ -4,7 +4,12 @@
   margin-top: $space-8;
   padding: $space-8 0 $space-7;
   overflow: hidden;
-  background: $text-color;
+  background: $blue-gray;
+  border-top: 1px solid $border-color;
+
+  a:focus-visible {
+    outline-color: $focus-color;
+  }
 
   .social {
     margin-bottom: 40px;
@@ -21,14 +26,17 @@
       line-height: 40px;
       font-size: 16px;
       border-radius: 50%;
-      color: $text-color;
+      color: $primary-color;
       background: $background-color-alt;
+      border: 1px solid $control-border-color;
       transition: all .25s;
       will-change: transform;
 
-      &:hover {
-        transform: scale(0.9);
-        color: $secondary-color;
+      &:hover,
+      &:focus-visible {
+        color: $white;
+        background: $primary-color;
+        border-color: $primary-color;
 
         &::after {
           content: none;
@@ -53,7 +61,14 @@
     .footer_nav__link {
       font-size: 16px;
       font-weight: 600;
-      color: $white;
+      color: $primary-color;
+
+      &:hover,
+      &:focus-visible {
+        color: $link-color-hover;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
     }
   }
 
@@ -79,7 +94,7 @@
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
-  color: rgba($white, 0.7);
+  color: $gray;
 
   p {
     margin: 0;
@@ -87,7 +102,7 @@
 
   a {
     font-weight: 500;
-    color: $white;
+    color: $primary-color;
   }
 
   @media only screen and (max-width: $mobile) {

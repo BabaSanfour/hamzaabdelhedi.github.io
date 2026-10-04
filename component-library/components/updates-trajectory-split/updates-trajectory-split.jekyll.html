@@ -1,90 +1,42 @@
 <!-- begin updates-trajectory-split -->
-<section class="section updates-trajectory split-layout animate">
+<section class="section updates-trajectory split-layout{% unless include.show_trajectory %} updates-trajectory--updates-only{% endunless %}{% if include.show_trajectory %} updates-trajectory--compact-path{% endif %}{% if include.show_trajectory %} updates-trajectory--grouped-path{% endif %}">
     <div class="container">
         <div class="row">
 
-            <!-- Left Column: Trajectory -->
-            <div class="col col-6 col-m-12 trajectory-column">
-                <div class="interactive-trajectory">
-                    <div class="column-header">
-                        <h2 class="column-title">{{ include.trajectory_title | default: "Trajectory" }}</h2>
-                    </div>
-                    <div class="trajectory-timeline">
-                        {% if include.show_trajectory %}
-                        {% assign timeline_records = site.data.experience | concat: site.data.education | sort: "start_year" | reverse %}
-                        {% for record in timeline_records %}
-                        {% assign organization = nil %}
-                        {% for candidate in site.affiliations %}
-                        {% if candidate.organization_id == record.institution_id %}
-                        {% assign organization = candidate %}
-                        {% break %}
-                        {% endif %}
-                        {% endfor %}
-                        <details class="trajectory-node" data-aos="fade-up">
-                            <summary class="trajectory-node__content-wrapper">
-                                <div class="trajectory-node__logo-trigger">
-                                    {% if organization.image %}
-                                    <img src="{{ organization.image | relative_url }}" alt="{{ organization.name | escape }}"
-                                        class="trajectory-node__logo" loading="lazy" decoding="async">
-                                    {% endif %}
-                                </div>
-
-                                <div class="trajectory-node__info">
-                                    <span class="trajectory-node__year">{% include date-range.html record=record %}</span>
-                                    <h4 class="trajectory-node__title">{{ record.title | default: record.degree }}</h4>
-                                    {% if organization.name %}
-                                    <span class="trajectory-node__institution">{{ organization.name }}</span>
-                                    {% endif %}
-                                </div>
-                            </summary>
-
-                            <div class="trajectory-node__connector" aria-hidden="true"></div>
-
-                            <!-- Native disclosure keeps the additional context keyboard-accessible. -->
-                            <div class="trajectory-node__detail-card">
-                                {% if record.summary %}
-                                <p class="detail-card__description">{{ record.summary }}</p>
-                                {% endif %}
-                            </div>
-                        </details>
-                        {% endfor %}
-                        {% endif %}
-                    </div>
-                    <p class="trajectory-footer">See <a href="{{ '/about/' | relative_url }}">About page</a> for more details.</p>
-                </div>
-            </div>
-
-            <!-- Right Column: Recent Updates -->
+            {% if include.show_updates %}
             <div class="col col-6 col-m-12 updates-column">
                 <div class="column-header">
                     <h2 class="column-title">{{ include.updates_title | default: "Recent Updates" }}</h2>
                     <a href="{{ '/updates/' | relative_url }}" class="view-all">View all updates →</a>
                 </div>
-                {% if include.updates_description_html %}
-                <div class="column-description">{{ include.updates_description_html }}</div>
-                {% endif %}
-
+                {% if include.updates_description_html %}<div class="column-description">{{ include.updates_description_html }}</div>{% endif %}
                 <div class="compact-updates-timeline">
-                    {% if site.data.updates.size > 0 %}
-                    {% for item in site.data.updates limit:5 %}
+                    {% assign home_updates_count = 0 %}
+                    {% for item in site.data.updates %}
+                    {% unless item.home_exclude %}
                     {% assign item_img = item.image %}
                     {% assign max_images = include.max_item_images | default: 1 %}
-                    {% if forloop.index > max_images %}
-                    {% assign item_img = nil %}
-                    {% endif %}
-                    {% bookshop updates-list-item
-                    title=item.title
-                    date=item.date
-                    description=item.description
-                    link=item.link
-                    icon=item.icon
-                    image=item_img
-                    tags=item.tags
-                    %}
+                    {% if home_updates_count >= max_images %}{% assign item_img = nil %}{% endif %}
+                    {% bookshop updates-list-item title=item.title date=item.date description=item.description link=item.link icon=item.icon image=item_img tags=item.tags %}
+                    {% assign home_updates_count = home_updates_count | plus: 1 %}
+                    {% if home_updates_count >= 5 %}{% break %}{% endif %}
+                    {% endunless %}
                     {% endfor %}
-                    {% endif %}
                 </div>
             </div>
+            {% endif %}
+
+            {% if include.show_trajectory %}
+            <div class="col col-6 col-m-12 trajectory-column">
+                <div class="interactive-trajectory">
+                    <div class="column-header">
+                        <h2 class="column-title">{{ include.trajectory_title | default: "Trajectory" }}</h2>
+                    </div>
+                    {% bookshop_include grouped-trajectory %}
+                    <p class="trajectory-footer"><a href="{{ '/about/#about-trajectory' | relative_url }}">Full journey on About <span aria-hidden="true">→</span></a></p>
+                </div>
+            </div>
+            {% endif %}
 
         </div>
     </div>

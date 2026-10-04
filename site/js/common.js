@@ -72,43 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =======================
-  // Animation Load Page
-  ======================= */
-  window.setTimeout(function () {
-    body.classList.add("is-in");
-  }, 150);
-
-  /* ==================================
-  // Stop Animations After All Have Run
-  ================================== */
-  window.setTimeout(function () {
-    body.classList.add("stop-animations");
-  }, 1500);
-
-  /* ======================================
-  // Stop Animations During Window Resizing
-  ====================================== */
-  var resizeTimer;
-  window.addEventListener("resize", function () {
-    document.body.classList.add("resize-animation-stopper");
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(function () {
-      document.body.classList.remove("resize-animation-stopper");
-    }, 300);
-  });
-
-  /* =======================
-  // Responsive Videos
-  ======================= */
-  if (typeof reframe === "function") {
-    reframe(".post__content iframe:not(.reframe-off), .page__content iframe:not(.reframe-off)");
-  }
-
-  /* =======================
   // Zoom Image
   ======================= */
-  var lightense = document.querySelector(".page img, .post img");
-  var imageLink = document.querySelectorAll(".page a img, .post a img");
+  var lightense = document.querySelector(".post img");
+  var imageLink = document.querySelectorAll(".post a img");
 
   imageLink.forEach(function (image) {
     image.parentNode.classList.add("image-link");
@@ -116,47 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   if (lightense && typeof Lightense === "function") {
-    Lightense(".page img:not(.no-lightense), .post img:not(.no-lightense)", {
+    Lightense(".post img:not(.no-lightense)", {
       padding: 60,
       offset: 30
-    });
-  }
-
-  /* ============================
-  // Affiliations Slider
-  ============================ */
-  if (document.querySelector(".my-slider") && typeof tns === "function") {
-    tns({
-      container: ".my-slider",
-      items: 3,
-      slideBy: 1,
-      gutter: 20,
-      nav: false,
-      mouseDrag: true,
-      autoplay: false,
-      controlsContainer: "#customize-controls",
-      responsive: {
-        1024: { items: 3 },
-        768: { items: 2 },
-        0: { items: 1 }
-      }
-    });
-  }
-
-  /* ============================
-  // iTyped
-  ============================ */
-  if (document.querySelector(".c-subscribe") && typeof ityped !== "undefined") {
-    ityped.init('#ityped', {
-      strings: itype_text,
-      typeSpeed: 100,
-      backSpeed: 50,
-      startDelay: 200,
-      backDelay: 1500,
-      loop: true,
-      showCursor: true,
-      cursorChar: "|",
-      onFinished: function () {}
     });
   }
 

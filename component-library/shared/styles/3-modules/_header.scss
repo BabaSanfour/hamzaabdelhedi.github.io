@@ -65,14 +65,17 @@
     display: block;
     margin: 0;
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     overflow: auto;
     background: $white;
-    transition: all .25s ease;
+    transition: opacity .25s ease;
 
     &.is-open {
       z-index: 999;
       opacity: 1;
-      transition: all .25s ease;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .nav__list {

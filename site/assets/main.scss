@@ -3,7 +3,15 @@
 
 {% bookshop_scss %}
 
+// Bookshop scopes its Sass variables inside a media block. Share the same
+// settings with the site partials instead of maintaining a second palette.
+@import "../../component-library/shared/styles/0-settings/A_variables";
+@import "../../component-library/shared/styles/0-settings/B_color-scheme";
+
 @import "profile-pages";
 @import "research-software";
 @import "publications-page";
 @import "visual-system";
+
+// Shared motion policy is applied after component and page appearance rules.
+@import "motion";

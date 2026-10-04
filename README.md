@@ -1,132 +1,109 @@
-# Hamza Abdelhedi - Personal Website
+# Hamza Abdelhedi — Personal Website
 
-Personal website of **Hamza Abdelhedi**, PhD student in Biomedical Engineering at Université de Montréal, focused on **Neuro-AI**.
+Personal website of **Hamza Abdelhedi**, a computational neuroscience researcher studying how changing sensory evidence becomes decisions and actions with MEG/EEG, neural dynamics, and computational modeling, while building open-source neuroscience software.
 
-Built with [Jekyll](http://jekyllrb.com/) and [Bookshop](https://github.com/CloudCannon/bookshop), based on the [Vonge template](https://github.com/CloudCannon/vonge-jekyll-bookshop-template) by [CloudCannon](http://cloudcannon.com/).
+The site uses Jekyll and Bookshop on top of the existing Vonge-derived component system. The primary navigation has Home, About, Updates, Research, Software, Publications, and CV; Contact is available from Home and the footer.
 
-## 🚀 Quick Start
+## Stack and prerequisites
 
-### Prerequisites
-- **Node.js** (v16+)
-- **Ruby** (3.0+ recommended, install via [rbenv](https://github.com/rbenv/rbenv))
-- **Bundler** (`gem install bundler`)
-- **LaTeX** (`latexmk` and `pdflatex`) for a local CV prebuild
+| Tool | Project/deployment version |
+| --- | --- |
+| Node.js | 20 in GitHub Actions |
+| Ruby | 3.3.0 (`.ruby-version`) |
+| Jekyll | 4.3.3 |
+| Bookshop | 3.9.0 |
+| jekyll-sitemap | 1.4.0 |
+| jekyll-tagging | 1.1.0 |
 
-### Installation
+LaTeX (`latexmk` and `pdflatex`) is optional for a local CV prebuild. The deployment workflow compiles the public `BabaSanfour/cv-latex` repository itself.
+
+## Local production build
+
+From the repository root:
 
 ```bash
-# Clone the repository
-git clone https://github.com/BabaSanfour/hamzaabdelhedi.github.io.git
-cd hamzaabdelhedi.github.io
+npm ci
+BUNDLE_GEMFILE=site/Gemfile bundle install
+npm run bookshop-live
+BUNDLE_GEMFILE=site/Gemfile JEKYLL_ENV=production \
+  bundle exec jekyll build --source site --destination _site --trace
+ruby scripts/validate-site-output.rb _site
+```
 
-# Install npm dependencies
-npm install
+The build writes production output to `_site/`. To preview that output with a static server:
 
-# Install Jekyll dependencies
-npm run jekyll:install
+```bash
+python3 -m http.server 8000 --directory _site
+```
 
-# Build the canonical CV PDF for the local preview
-git clone --depth 1 --branch main https://github.com/BabaSanfour/cv-latex.git _cv-src
-(cd _cv-src && latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex)
+`npm start` is a convenience development command that runs Bookshop and Jekyll with the existing `--unpublished` flag. It is useful for editing, but its output is not release evidence. When a component template or Bookshop schema changes, rerun `npm run bookshop-live`; do not hand-edit the generated Bookshop JavaScript.
+
+Useful checks after a change:
+
+```bash
+git diff --check
+node --check site/js/common.js
+node --check site/js/publications.js
+node --check site/js/spotlight.js
+node --check site/js/updates-filter.js
+```
+
+The browser checks require an isolated Chrome test session with CDP enabled and a local server. They select the first page target; do not point them at a personal browsing session. For example:
+
+```bash
+node scripts/check-browser.js http://127.0.0.1:8000 9222
+node scripts/capture-home-screenshots.js http://127.0.0.1:8000 \
+  _qa/screenshots 9222
+```
+
+## CV integration and deployment
+
+The canonical CV source is [`BabaSanfour/cv-latex`](https://github.com/BabaSanfour/cv-latex). The website workflow in `.github/workflows/deploy.yml` checks out its `main` branch, compiles `main.tex`, verifies a fresh PDF, and copies the verified PDF to `/assets/files/Hamza_Abdelhedi_CV.pdf`, the single website CV path.
+
+Compilation, PDF validation, copying, byte comparison, and Jekyll artifact checks fail the workflow before the Pages artifact is uploaded. A CV-only change does not trigger this repository automatically; after the CV change is merged, use **Actions → Deploy to GitHub Pages → Run workflow**. No schedule or cross-repository credentials are configured.
+
+For a local prebuild, use the ignored `_cv-src/` checkout and the checked-in helper:
+
+```bash
+git clone --depth 1 --branch main \
+  https://github.com/BabaSanfour/cv-latex.git _cv-src
+(cd _cv-src && latexmk -pdf -file-line-error -halt-on-error \
+  -interaction=nonstopmode main.tex)
 bash scripts/sync-cv-pdf.sh _cv-src/main.pdf site
-
-# Start development server
-npm start
 ```
 
-The CV checkout and generated canonical PDF are ignored locally. If `_cv-src`
-already exists, update it with `git -C _cv-src pull --ff-only` before running
-the `latexmk` and synchronization commands again.
+See [`docs/maintenance.md`](docs/maintenance.md) for the exact content-update recipes, source ownership rules, release handoff, and recovery procedure.
 
-The site will be available at **http://localhost:6060**
+## Current repair work and references
 
-## 📁 Project Structure
+R1–R3 repairs and the owner’s visual refinements are implemented. The owner is satisfied with the current design for now. R4 has not started; use the [R4 handoff](docs/R4_HANDOFF.md) in the next discussion. Implementation checks do not replace independent acceptance or release verification.
 
+- [Stage-by-stage identity audit](docs/identity-repair/AUDIT.md)
+- [R1: restore the personal voice](docs/identity-repair/R1_RESTORE_PERSONAL_VOICE.md)
+- [R2: personal story, Home composition, and Contact](docs/identity-repair/R2_CV_STORY_AND_COMPOSITION.md)
+- [Independent review after every stage](docs/identity-repair/REVIEW_PROTOCOL.md)
+- [Content and technical contracts](docs/reference/contracts.md)
+- [Factual source evidence](docs/reference/sources.md) and [publication reconciliation](docs/reference/publications.md)
+- [Decisions and repair status](docs/reference/decisions.md)
+
+Review screenshots, measurements, patches, and implementation reports stay local in ignored `_qa/`, `docs/identity-repair/evidence/`, and `docs/identity-repair/reports/`. These directories are not included in commits. Keep durable decisions and next-stage instructions in tracked Markdown documentation. The generated `site/_cloudcannon/` editor bundle is also ignored and rebuilt locally or in CI.
+
+## Project structure
+
+```text
+site/_data/                      Shared profile, career, links, research, software, and update records
+site/collections/_projects       Curated research detail documents
+site/collections/_publications   Publication records and abstracts
+site/collections/_posts          Existing full update stories
+site/_includes                   Shared page content and metadata includes
+site/assets                     Sass source and active visual-system tokens
+component-library                Bookshop component templates and schemas
+scripts                          Build synchronization and QA helpers
+.github/workflows                GitHub Pages and CV build workflow
 ```
-├── site/                    # Jekyll source files
-│   ├── _config.yml          # Jekyll configuration
-│   ├── _data/               # Site data (navigation, settings)
-│   ├── _layouts/            # Page layouts
-│   ├── collections/         # Content collections (pages, posts, projects, publications)
-│   └── assets/              # CSS, JS, images
-├── component-library/       # Bookshop components
-├── cloudcannon.config.yml   # CloudCannon CMS configuration
-└── package.json             # npm dependencies
-```
 
-## 🛠️ Development
+## License and credits
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Run development server (Jekyll + Bookshop) |
-| `npm run jekyll` | Run Jekyll only |
-| `npm run bookshop` | Run Bookshop browser |
-| `npm run jekyll:install` | Install Ruby gems |
+MIT License — see [LICENSE](LICENSE).
 
-## 🚀 Deployment (GitHub Pages via Actions)
-
-The site is deployed automatically to [GitHub Pages](https://pages.github.com/) via a custom GitHub Actions workflow.
-
-### How it works
-
-1. **Push to `main`** triggers `.github/workflows/deploy.yml`
-2. The workflow:
-   - Installs Node.js 20 deps (`npm ci`)
-   - Generates Bookshop live JS (`npx bookshop-live`)
-   - Installs Ruby 3.3 + Bundler deps (`bundle install`)
-   - Builds the Jekyll site (`bundle exec jekyll build --source site`)
-   - Uploads `_site/` and deploys via `actions/deploy-pages`
-3. The site is live at **https://hamzaabdelhedi.com**
-
-### Custom domain
-
-- The `CNAME` file is at `site/CNAME` → Jekyll copies it to `_site/CNAME` on build
-- DNS must point `hamzaabdelhedi.com` to GitHub Pages (A records or CNAME to `BabaSanfour.github.io`)
-- HTTPS is enforced via **Settings → Pages → Enforce HTTPS**
-
-### First-time setup
-
-1. Go to **Settings → Pages → Source** and select **GitHub Actions**
-2. Set **Custom domain** to `hamzaabdelhedi.com`
-3. Push to `main` — the workflow will build and deploy
-
-### CV build and refresh
-
-The website deployment checks out the public `BabaSanfour/cv-latex` `main`
-branch into `_cv-src`, compiles its `main.tex` with the same `latexmk`-based
-`xu-cheng/latex-action@v3` recipe used by the CV repository, and verifies the
-fresh PDF before Jekyll runs. It copies those exact bytes to both
-`/assets/files/Hamza_Abdelhedi_CV.pdf` and the legacy
-`/Hamza_Abdelhedi_cv.pdf` path. A failure in checkout, compilation, PDF
-validation, copying, or the final artifact comparison prevents upload and
-deployment.
-
-Changes made only in `cv-latex` do not trigger this website workflow. After
-merging a CV change, run **Actions → Deploy to GitHub Pages → Run workflow** in
-this repository. This manual `workflow_dispatch` synchronization is
-intentional; no cross-repository credentials or scheduled refresh are
-configured.
-
-### Troubleshooting
-
-| Problem | Fix |
-|---------|-----|
-| Bundler install fails | Delete the Actions cache or update `Gemfile.lock` with `bundle lock --add-platform x86_64-linux` |
-| Bookshop JS missing | Ensure `npm ci` ran before the Bookshop generate step |
-| Deploy 403 error | Check workflow has `permissions: pages: write` and `id-token: write` |
-| Wrong output dir | Verify `--source site` is used — output goes to `_site/` at project root |
-| Ruby version mismatch | Check `.ruby-version` matches the `ruby-version` in the workflow |
-| Site shows old content | Check the Actions tab for a failed run; re-run or push a new commit |
-
-## 📝 License
-
-MIT License - See [LICENSE](LICENSE) for details.
-
-- Original Vonge template © 2022 [CloudCannon](https://cloudcannon.com/)
-- Modifications and content © 2024 Hamza Abdelhedi
-
-## 🙏 Credits
-
-- Template: [Vonge](https://github.com/CloudCannon/vonge-jekyll-bookshop-template) by CloudCannon
-- Hosting: [GitHub Pages](https://pages.github.com/)
-- Components: [Bookshop](https://github.com/CloudCannon/bookshop)
+The custom site originated from CloudCannon’s Vonge template and uses Bookshop. The upstream MIT attribution is retained in LICENSE. Site modifications and content © Hamza Abdelhedi.

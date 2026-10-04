@@ -12,12 +12,14 @@ blueprint:
   description_html: ""
   selection: featured_ids
   max_items: 3
+  compact: false
 
 preview:
   title: Selected research
   description_html: Research records selected by the shared research data.
   selection: featured_ids
   max_items: 3
+  compact: true
 
 _inputs:
   selection:

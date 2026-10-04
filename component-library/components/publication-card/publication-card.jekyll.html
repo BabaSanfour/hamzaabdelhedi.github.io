@@ -10,6 +10,13 @@
 {% endunless %}
 {% endif %}
 
+{% if include.compact %}
+<article class="c-publication-preview">
+  <p class="c-publication-preview__meta">{{ publication.year | escape }}{% if publication.venue %} · {{ publication.venue | escape }}{% endif %}{% if publication.status and publication.status != 'published' %} · {{ publication.status | replace: '-', ' ' | capitalize }}{% endif %}</p>
+  <h3 class="c-publication-preview__title"><a href="{{ publication_url | relative_url | escape }}">{{ publication.title | escape }}</a></h3>
+  <a class="c-publication-preview__link" href="{{ publication_url | relative_url | escape }}">Publication details <span aria-hidden="true">→</span></a>
+</article>
+{% else %}
 <article class="c-publication-card{% if include.layout == 'vertical' %} is-vertical{% endif %}">
   <div class="c-publication-card__main-row">
     {% assign display_image = publication.thumbnail %}
@@ -165,3 +172,4 @@
     </div>
   </div>
 </article>
+{% endif %}

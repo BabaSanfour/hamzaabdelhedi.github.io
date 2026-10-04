@@ -24,7 +24,8 @@
         {% if rendered_items < max_items %}
           {% assign project = site.projects | where: "slug", project_id | first %}
           {% if project and project.category == "research" %}
-            {% bookshop research-card project=project %}
+            {% assign home_preview = site.data.research.home_previews[project_id] %}
+            {% bookshop research-card project=project compact=include.compact preview=home_preview %}
             {% assign rendered_items = rendered_items | plus: 1 %}
           {% endif %}
         {% endif %}

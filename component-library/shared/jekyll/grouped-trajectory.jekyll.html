@@ -1,0 +1,46 @@
+{% assign journey_records = site.data.education | concat: site.data.experience %}
+<ol class="compact-path compact-path--grouped">
+  {% for group in site.data.home_trajectory %}
+  {% assign organization = site.affiliations | where: "organization_id", group.institution_id | first %}
+  {% assign group_logo = organization.image %}
+  {% if group.institution_id == 'abundant-intelligences' %}
+    {% assign interview = site.data.spotlight | where: "type", "media" | first %}
+    {% assign group_logo = group_logo | default: interview.image %}
+  {% endif %}
+  <li class="compact-path__milestone" data-group-id="{{ group.institution_id | escape }}">
+    <details class="compact-path__entry">
+      <summary class="compact-path__trigger">
+        <span class="compact-path__logo-frame{% if group.institution_id == 'udem' or group.institution_id == 'mila' or group.institution_id == 'saint-justine' %} compact-path__logo-frame--dark{% endif %}">{% if group_logo %}<img class="compact-path__logo" src="{{ group_logo | relative_url }}" alt="" width="44" height="44" loading="lazy" decoding="async">{% endif %}</span>
+        <span class="compact-path__info">
+          <span class="compact-path__group-name">{{ group.label | escape }}</span>
+          {% if group.summary %}<span class="compact-path__title">{{ group.summary | escape }}</span>{% endif %}
+          {% for selection in group.records %}
+            {% assign record = journey_records | where: "id", selection.id | first %}
+            {% if record %}
+            <span class="compact-path__role" data-record-id="{{ record.id | escape }}">
+              <span class="compact-path__date">{{ record.start_year }}–{% if record.current %}Present{% else %}{{ record.end_year }}{% endif %}</span>
+              {% unless group.summary %}<span class="compact-path__title">{{ selection.short_label | default: record.title | default: record.degree | escape }}</span>{% endunless %}
+            </span>
+            {% endif %}
+          {% endfor %}
+        </span>
+      </summary>
+      <div class="compact-path__detail">
+        <p class="compact-path__detail-title">{{ group.label | escape }}</p>
+        {% for selection in group.records %}
+          {% assign record = journey_records | where: "id", selection.id | first %}
+          {% assign record_organization = site.affiliations | where: "organization_id", record.institution_id | first %}
+          {% if record %}
+          <div class="compact-path__detail-role">
+            <p class="compact-path__date">{% bookshop_include date-range record=record %}</p>
+            <p class="compact-path__detail-role-title">{{ record.title | default: record.degree | escape }}</p>
+            <p class="compact-path__institution">{{ record_organization.name | escape }}</p>
+            <p>{{ record.summary | escape }}</p>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </details>
+  </li>
+  {% endfor %}
+</ol>

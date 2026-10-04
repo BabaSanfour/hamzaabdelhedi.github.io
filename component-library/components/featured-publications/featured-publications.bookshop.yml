@@ -10,3 +10,4 @@ preview:
   description_html: "<p>Selected peer-reviewed work and preprints.</p>"
   link_url: "/publications"
   max_items: 3
+  compact: true

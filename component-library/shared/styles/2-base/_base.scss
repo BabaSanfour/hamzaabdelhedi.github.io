@@ -12,7 +12,8 @@ html {
   --color-rule: #{$border-color};
   --color-primary: #{$primary-color};
   --color-secondary: #{$secondary-color};
-  --color-focus: #{$link-color-hover};
+  --color-focus: #{$focus-color};
+  --color-control-border: #{$control-border-color};
 
   --space-1: #{$space-1};
   --space-2: #{$space-2};
@@ -27,9 +28,14 @@ html {
   --radius-sm: #{$radius-sm};
   --radius-md: #{$radius-md};
   --radius-lg: #{$radius-lg};
+  --page-gutter: #{$space-5};
   --content-wide: #{$content-wide};
   --content-reading: #{$content-reading};
 
+}
+
+@media only screen and (max-width: $tablet) {
+  html { --page-gutter: #{$space-4}; }
 }
 
 body {
@@ -185,7 +191,7 @@ a {
   }
 
   &:focus-visible {
-    outline: 3px solid rgba($link-color-hover, 0.35);
+    outline: 3px solid var(--color-focus);
     outline-offset: 3px;
   }
 }

@@ -1,5 +1,5 @@
 {% if include.show_posts %}
-<div class="container animate">
+<div class="container">
 
   {% assign all_tags = "" %}
   {% for item in site.data.updates %}
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <p class="c-updates-results" id="updates-results" role="status" aria-live="polite"></p>
+  <p class="c-updates-results" id="updates-results" role="status" aria-live="polite" tabindex="-1"></p>
 
   <div class="c-updates-timeline js-updates-list">
     {% for item in site.data.updates %}
@@ -62,12 +62,12 @@
     <!-- JavaScript will dynamically inject pagination buttons here -->
   </div>
 </div>
-</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const tagsToggle = document.querySelector('.js-tags-toggle');
-  const tagsContainer = document.querySelector('.js-tags-container');
+  const archive = document.querySelector('.updates-page');
+  const tagsToggle = archive?.querySelector('.js-tags-toggle');
+  const tagsContainer = archive?.querySelector('.js-tags-container');
   
       tagsToggle?.addEventListener('click', () => {
         const hiddenTags = tagsContainer.querySelectorAll('.js-category-filter.is-hidden');

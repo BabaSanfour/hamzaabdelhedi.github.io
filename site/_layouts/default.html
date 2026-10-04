@@ -7,10 +7,6 @@
 
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    {% if site.data.general_settings.google-analytics %}
-    {% include google-analytics.html %}
-    {% endif %}
-
     {% include header.html %}
 
     <main id="main-content">
@@ -29,11 +25,12 @@
 
     {% include footer.html %}
 
-    <script src="{{ '/js/scripts.js' | relative_url }}"></script>
+    <script src="{{ '/js/vendor/lightense.min.js' | relative_url }}"></script>
     <script src="{{ '/js/common.js' | relative_url }}"></script>
     <script src="{{ '/js/publications.js' | relative_url }}"></script>
-    <script src="{{ '/js/spotlight.js' | relative_url }}"></script>
     <script src="{{ '/js/updates-filter.js' | relative_url }}"></script>
+    <script src="{{ '/js/spotlight.js' | relative_url }}"></script>
+    <script src="{{ '/js/trajectory.js' | relative_url }}"></script>
 </body>
 
 </html>

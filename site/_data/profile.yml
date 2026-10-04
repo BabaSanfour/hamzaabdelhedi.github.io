@@ -4,6 +4,7 @@ name: Hamza Abdelhedi
 pronouns: he/him
 field: Biomedical Engineering
 current_position_id: phd-graduate-research-assistant
+home_clinical_position_id: saint-justine-research-collaborator
 # The first three are the primary doctoral affiliations shown in the Home hero.
 affiliation_ids:
   - udem
@@ -13,11 +14,15 @@ affiliation_ids:
   - abundant-intelligences
 location: Tiohtià:ke / Montréal, Québec, Canada
 origin: Sfax, Tunisia
+home_greeting: "Hi 👋, I'm Hamza"
 hero_eyebrow: Computational Neuroscience · MEG/EEG · Open Science
 research_statement: I study how the human brain transforms changing sensory evidence into decisions and actions.
-short_bio: I combine MEG/EEG, computational modeling, and neural dynamics to study decision-making and develop reusable neuroscience tools.
+short_bio: I use MEG/EEG, computational modeling, and neural dynamics to study decision-making.
+tagline: Building things at the intersection of bits 🤖, brains 🧠, and Open-Source 💻.
+home_values: "A fan of open & accessible science, and building shareable tools to lower research barriers. Working to foster fairness and equity within the scientific community."
 hero_affiliation_labels:
   cocolab: CoCo Lab
   mila: Mila
+  saint-justine: CHU Sainte-Justine
 portrait: /images/main/01.jpg
 portrait_alt: Hamza Abdelhedi

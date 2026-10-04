@@ -138,7 +138,7 @@ $c: ".c-publication-card";
       font-weight: 700;
 
       &:focus-visible {
-        outline: 3px solid rgba($primary-color, 0.35);
+        outline: 3px solid var(--color-focus);
         outline-offset: 3px;
       }
     }

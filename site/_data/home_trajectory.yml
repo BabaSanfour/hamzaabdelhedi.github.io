@@ -1,0 +1,32 @@
+# Presentation groups inspired by 9530c70, before Stage 01 flattened the journey.
+# Dates, official titles and descriptions remain in education.yml/experience.yml.
+- label: CHU Sainte-Justine
+  institution_id: saint-justine
+  records:
+    - id: saint-justine-research-collaborator
+
+- label: Abundant Intelligences
+  institution_id: abundant-intelligences
+  records:
+    - id: abundant-intelligences-research-contributor
+      short_label: Research contributor
+
+- label: Université de Montréal
+  institution_id: udem
+  records:
+    - id: phd-biomedical-engineering
+      short_label: PhD · Biomedical Engineering
+    - id: msc-artificial-intelligence
+      short_label: MSc · Computer Science / AI
+
+- label: CoCo Lab · Mila
+  institution_id: mila
+  summary: Graduate research assistant
+  records:
+    - id: phd-graduate-research-assistant
+
+- label: SUP’COM, Tunisia
+  institution_id: supcom
+  records:
+    - id: engineering-diploma-telecommunication
+      short_label: Telecommunications engineering diploma

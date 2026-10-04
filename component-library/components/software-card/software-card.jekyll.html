@@ -11,14 +11,15 @@
   {% endunless %}
 {% endif %}
 
-<article class="software-card" id="{{ software.id }}">
+<article class="software-card{% if include.compact %} software-card--compact{% endif %}"{% unless include.compact %} id="{{ software.id }}"{% endunless %}>
   <h3 class="software-card__title">{{ software.name }}</h3>
   <p class="software-card__purpose">{{ software.one_liner }}</p>
   <p class="software-card__role"><strong>Role:</strong> {{ software.role }}</p>
-  {% if software.status %}
+  {% if software.status and include.compact != true %}
   <p class="software-card__status"><strong>Status:</strong> {{ software.status }}</p>
   {% endif %}
 
+  {% unless include.compact %}
   <ul class="software-card__links" aria-label="{{ software.name }} links">
     {% if software.repo %}
     <li><a href="{{ software.repo }}">Repository</a></li>
@@ -32,4 +33,7 @@
     <li><a href="{{ software.paper.url }}">{{ software.paper.label | default: "Publication" }}</a></li>
     {% endif %}
   </ul>
+  {% else %}
+  <a class="software-card__detail" href="{{ '/software/' | relative_url }}#{{ software.id }}">See {{ software.name }} on Software <span aria-hidden="true">→</span></a>
+  {% endunless %}
 </article>

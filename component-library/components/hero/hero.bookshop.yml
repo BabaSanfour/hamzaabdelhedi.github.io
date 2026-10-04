@@ -15,6 +15,7 @@ blueprint:
   use_profile: false
   title: ""
   phonetic: ""
+  pronouns: ""
   eyebrow: ""
   statement: ""
   position: ""
@@ -23,6 +24,7 @@ blueprint:
   image: ""
   image_alt: ""
   circular_image: false
+  show_spotlight: false
   show_social_icons: true
   email: ""
   cta_button: ""
@@ -33,30 +35,38 @@ blueprint:
   cv_button_link: ""
 
 preview:
-  title: Hamza Abdelhedi
+  title: Hi 👋, I'm Hamza
   phonetic: HAM-za ab-del-HE-di
-  eyebrow: Computational Neuroscience · MEG/EEG · Open Science
-  position: Graduate Research Assistant
-  statement: I study how the human brain transforms changing sensory evidence into decisions and actions.
+  pronouns: he/him
+  position: PhD student in Biomedical Engineering
+  statement: Building things at the intersection of bits 🤖, brains 🧠, and Open-Source 💻.
   description_html: >-
-    I combine MEG/EEG, computational modeling, and neural dynamics to study decision-making and develop reusable neuroscience tools.
+    <p>I study how the human brain transforms changing sensory evidence into decisions and actions. With Prof. Karim Jerbi, I use MEG/EEG and computational modeling to follow neural dynamics. I'm also interested in how we can represent brain signals—from low-dimensional trajectories to artificial neural networks and foundation models. At CHU Sainte-Justine, I collaborate on pediatric clinical EEG research, including questions about ADHD and epilepsy.</p>
+    <p>A fan of <strong>open &amp; accessible science</strong>, and building shareable tools to lower research barriers. Working to foster fairness and equity within the scientific community.</p>
+    <p>Originally from Sfax 🇹🇳, now based in <strong>Tiohtià:ke / Montréal</strong> 🇨🇦.</p>
   image: /images/main/01.jpg
   image_alt: Hamza Abdelhedi
   circular_image: true
   show_social_icons: true
   email: hamza.abdelhedi@umontreal.ca
-  cta_button: Research
-  cta_button_link: /research/
-  works_button: Publications
-  works_button_link: /publications/
+  cta_button: Get in touch
+  cta_button_link: /contact/
+  works_button: What I'm working on
+  works_button_link: /research/
   cv_button: Download CV
   cv_button_link: /assets/files/Hamza_Abdelhedi_CV.pdf
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  show_spotlight:
+    type: switch
+    comment: Show rotating publication and media highlights below the portrait.
   phonetic:
     type: text
     comment: Phonetic pronunciation (e.g., HAM-za ab-del-HE-di)
+  pronouns:
+    type: text
+    comment: Pronouns shown beside the pronunciation
   eyebrow:
     type: text
     comment: Short field and methods line above the name

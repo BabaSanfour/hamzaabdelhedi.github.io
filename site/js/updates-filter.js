@@ -1,13 +1,16 @@
 (function () {
     'use strict';
 
-    const searchInput = document.getElementById('update-search');
-    const categoryBtns = Array.from(document.querySelectorAll('.js-category-filter'));
-    const yearBtns = Array.from(document.querySelectorAll('.js-year-filter'));
-    const allItems = Array.from(document.querySelectorAll('.js-update-item'));
-    const paginationContainer = document.getElementById('js-updates-pagination');
-    const results = document.getElementById('updates-results');
-    const noResults = document.getElementById('updates-no-results');
+    const archive = document.querySelector('.updates-page');
+    const list = archive?.querySelector('.js-updates-list');
+    if (!list) return;
+    const searchInput = archive.querySelector('#update-search');
+    const categoryBtns = Array.from(archive.querySelectorAll('.js-category-filter'));
+    const yearBtns = Array.from(archive.querySelectorAll('.js-year-filter'));
+    const allItems = Array.from(list.querySelectorAll('.js-update-item'));
+    const paginationContainer = archive.querySelector('#js-updates-pagination');
+    const results = archive.querySelector('#updates-results');
+    const noResults = archive.querySelector('#updates-no-results');
 
     if (!allItems.length) return;
 
@@ -57,7 +60,8 @@
         });
 
         if (results) {
-            results.textContent = `${filteredItems.length} update${filteredItems.length === 1 ? '' : 's'} found`;
+            const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+            results.textContent = `${filteredItems.length} update${filteredItems.length === 1 ? '' : 's'} found${totalPages > 1 ? ` — page ${currentPage} of ${totalPages}` : ''}`;
         }
         if (noResults) noResults.hidden = filteredItems.length !== 0;
     }
@@ -81,10 +85,11 @@
                 currentPage = i;
                 renderItems();
                 renderPagination();
-                document.querySelector('.c-updates-filter-group')?.scrollIntoView({
-                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-                    block: 'start'
-                });
+                // Keep focus with the newly displayed results; the next Tab
+                // then reaches their first link instead of skipping the page.
+                const focusTarget = results || paginationContainer.querySelector('[aria-current="page"]');
+                focusTarget?.focus({ preventScroll: true });
+                focusTarget?.scrollIntoView({ behavior: 'instant', block: 'start' });
             });
             paginationContainer.appendChild(button);
         }

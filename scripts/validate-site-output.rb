@@ -68,16 +68,13 @@ required_routes = [
   "index.html",
   "about/index.html",
   "contact/index.html",
-  "projects/index.html",
   "publications/index.html",
   "research/index.html",
   "software/index.html",
   "updates/index.html",
-  "blog/index.html",
   "CNAME",
   "robots.txt",
   "sitemap.xml",
-  "Hamza_Abdelhedi_cv.pdf"
 ]
 required_routes.each do |route|
   errors << "missing required output: #{route}" unless output.join(route).file?

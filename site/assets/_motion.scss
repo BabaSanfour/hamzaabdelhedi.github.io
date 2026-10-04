@@ -1,0 +1,57 @@
+/* One motion policy for page entry and shared interactions.
+   Content is visible without JavaScript; no scroll handler or hidden reveal state. */
+:root {
+  --motion-fast: 180ms;
+  --motion-entry: 400ms;
+  --motion-ease: cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+@keyframes page-enter {
+  from { opacity: 0.85; translate: 0 12px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+body a {
+  transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
+}
+
+body :is(button, .c-button, .social__link, summary, .post__prev, .post__next) {
+  transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease,
+    translate var(--motion-fast) var(--motion-ease);
+}
+
+/* Cards containing several links get surface feedback; their text stays still. */
+body :is(.research-card, .software-card, .c-publication-preview, .c-publication-card, .article__inner) {
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+
+  &:has(a:hover), &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 14px rgba($text-color, 0.07);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #main-content > * { animation: page-enter var(--motion-entry) var(--motion-ease); }
+
+  @media (hover: hover) and (pointer: fine) {
+    body :is(button:not(:disabled), .c-button, .social__link, .post__prev, .post__next):hover { translate: 0 -2px; }
+  }
+
+  body :is(button:not(:disabled), .c-button, .social__link, .post__prev, .post__next):active { translate: 0 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  body :is(button, .c-button, .social__link, .post__prev, .post__next) { translate: none !important; }
+
+  body .c-updates-list-item__thumbnail:hover img { transform: none; }
+  body .c-updates-list-item:hover .c-updates-list-item__node { transform: none; }
+}

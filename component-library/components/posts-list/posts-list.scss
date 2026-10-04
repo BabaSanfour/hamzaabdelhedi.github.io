@@ -13,44 +13,35 @@
   &__btn {
     appearance: none;
     background: transparent;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    border-radius: 12px;
-    padding: 8px 18px;
+    border: 1px solid $control-border-color;
+    border-radius: $radius-sm;
+    padding: 8px 12px;
+    min-height: 44px;
     font-size: 14px;
     font-weight: 600;
     color: $text-color;
     cursor: pointer;
     transition: all 0.25s ease;
 
-    &:hover {
-      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
-      border-color: transparent;
+    &:hover,
+    &:focus-visible {
+      background: $primary-color;
+      border-color: $primary-color;
       color: $white;
-      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+      box-shadow: none;
     }
 
     &.active {
-      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
-      border-color: transparent;
+      background: $primary-color;
+      border-color: $primary-color;
       color: $white;
-      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+      box-shadow: none;
     }
   }
 }
 
 .article {
   margin-bottom: 20px;
-  will-change: transform;
-  transition: transform .2s;
-
-  &:hover {
-    transform: translateY(-4px);
-
-    .article__inner {
-      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
-    }
-  }
-
   @media only screen and (max-width: $tablet) {
     &:last-child {
       margin-bottom: 0;
@@ -112,29 +103,14 @@
     text-transform: capitalize;
     border-radius: 8px;
     overflow: hidden;
-    color: $white;
-    background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
+    color: $primary-color;
+    background: transparent;
+    border: 1px solid $border-color;
 
-    &:hover {
-      &:before {
-        opacity: 1;
-      }
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      display: block;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      border-radius: 8px;
-      will-change: transform;
-      transition: opacity 0.35s;
-      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 107%);
+    &:hover,
+    &:focus-visible {
+      color: $white;
+      background: $primary-color;
     }
 
     &:last-child {
@@ -245,10 +221,10 @@
   &__btn {
     appearance: none;
     background: transparent;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    border-radius: 12px;
-    width: 40px;
-    height: 40px;
+    border: 1px solid $control-border-color;
+    border-radius: $radius-sm;
+    width: 44px;
+    height: 44px;
     font-size: 16px;
     font-weight: 600;
     color: $text-color;
@@ -258,18 +234,19 @@
     align-items: center;
     justify-content: center;
 
-    &:hover {
-      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
-      border-color: transparent;
+    &:hover,
+    &:focus-visible {
+      background: $primary-color;
+      border-color: $primary-color;
       color: $white;
-      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+      box-shadow: none;
     }
 
     &.active {
-      background: linear-gradient(90deg, $primary-color 0%, $secondary-color 167%);
-      border-color: transparent;
+      background: $primary-color;
+      border-color: $primary-color;
       color: $white;
-      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+      box-shadow: none;
     }
   }
 }

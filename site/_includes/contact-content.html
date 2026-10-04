@@ -3,35 +3,29 @@
 
 <div class="container profile-page contact-page">
   <header class="profile-page__page-heading">
-    <h1>Contact</h1>
-    <p class="profile-page__lead">For questions about my research, collaborations, or open-source neuroscience tools, email me or connect through one of these profiles.</p>
+    <h1>Let's get in touch</h1>
+    <p class="profile-page__lead">Want to talk about neuroscience, Python, academic life in Canada, or life more generally? You can also just say hello. I would be glad to hear from you.</p>
   </header>
 
   <div class="contact-page__details">
     {% if links.email %}
     <section aria-labelledby="contact-email">
-      <h2 id="contact-email">Email</h2>
+      <h2 id="contact-email">Write to me</h2>
       <p><a class="contact-page__email" href="mailto:{{ links.email }}">{{ links.email }}</a></p>
     </section>
     {% endif %}
-
     <section aria-labelledby="contact-profiles">
-      <h2 id="contact-profiles">Elsewhere</h2>
+      <h2 id="contact-profiles">Find me elsewhere</h2>
       <ul class="contact-page__links">
         {% for social in links.social %}
         {% assign social_url = links[social.key] %}
-        {% if social_url %}
-        <li><a href="{{ social_url }}" target="_blank" rel="noopener noreferrer">{{ social.label | default: social.icon }}</a></li>
-        {% endif %}
+        {% if social_url %}<li><a href="{{ social_url }}" target="_blank" rel="noopener noreferrer">{{ social.label | default: social.icon }}</a></li>{% endif %}
         {% endfor %}
-        {% if links.orcid %}
-        <li><a href="{{ links.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a></li>
-        {% endif %}
+        {% if links.orcid %}<li><a href="{{ links.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a></li>{% endif %}
       </ul>
     </section>
   </div>
 
-  <p class="contact-page__location">
-    Based in <a href="https://www.concordia.ca/indigenous/resources/territorial-acknowledgement.html">{{ profile.location }}</a>.
-  </p>
+  <p class="contact-page__reflection">The longer I live, the more I realize that personal growth and the advancement of humanity depend on discussion, collaboration, and mutual support. I would not be who I am today without the help of many people. To give back, I try to help others—especially people currently minoritized in Neuro-AI—navigate academia to the best of my ability.</p>
+  <p class="contact-page__location">Based in <a href="https://www.concordia.ca/indigenous/resources/territorial-acknowledgement.html">{{ profile.location }}</a>.</p>
 </div>

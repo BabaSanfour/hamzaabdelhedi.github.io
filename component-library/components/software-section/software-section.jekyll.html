@@ -11,9 +11,16 @@
     </div>
 
     <div class="software-section__grid">
-      {% for software in site.data.software %}
-        {% bookshop software-card software=software %}
-      {% endfor %}
+      {% if include.compact and include.selected_ids %}
+        {% for software_id in include.selected_ids limit:3 %}
+          {% assign software = site.data.software | where: "id", software_id | first %}
+          {% if software %}{% bookshop software-card software=software compact=true %}{% endif %}
+        {% endfor %}
+      {% else %}
+        {% for software in site.data.software %}
+          {% bookshop software-card software=software %}
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>

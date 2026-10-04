@@ -4,13 +4,15 @@ menu__settings:
   menu__items:
     - title: 'Home'
       url: '/'
+    - title: 'About'
+      url: '/about/'
+    - title: 'Updates'
+      url: '/updates/'
     - title: 'Research'
       url: '/research/'
     - title: 'Software'
       url: '/software/'
     - title: 'Publications'
       url: '/publications/'
-    - title: 'About'
-      url: '/about/'
     - title: 'CV'
       link_key: cv_pdf
