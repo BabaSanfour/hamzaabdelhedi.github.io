@@ -20,4 +20,5 @@ bibtex: |-
     booktitle={Proceedings of Machine Learning Research (NeurIPS 2025 Competition Track)},
     year={2026}
   }
+related_research: ["eeg-meg-foundation-models"]
 ---

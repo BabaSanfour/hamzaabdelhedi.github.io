@@ -4,7 +4,21 @@
 {% unless project_url_ending == ".html" %}
   {% assign project_url = project_url | append: ".html" %}
 {% endunless %}
-<article class="research-card{% if include.compact %} research-card--compact{% endif %}">
+<article class="research-card{% if include.compact %} research-card--compact{% endif %}{% if include.connected %} research-card--connected{% endif %}"{% if include.connected %} data-research-project="{{ project.slug }}" data-research-methods="{{ project.method_ids | join: ' ' }}"{% endif %}>
+  <h{{ include.heading_level | default: 3 }} class="research-card__title">
+    <a href="{{ project_url | relative_url }}">{{ project.short_title | default: project.title }}</a>
+  </h{{ include.heading_level | default: 3 }}>
+
+  {% if include.connected and project.question %}
+  <p class="research-card__question">{{ project.question }}</p>
+  {% endif %}
+
+  {% assign card_summary = project.summary %}
+  {% if include.compact and include.preview %}{% assign card_summary = include.preview %}{% endif %}
+  {% if card_summary %}
+  <p class="research-card__summary">{{ card_summary }}</p>
+  {% endif %}
+
   {% if project.status or project.role %}
   <div class="research-card__meta">
     {% if project.status %}<span>{{ project.status }}</span>{% endif %}
@@ -12,14 +26,12 @@
   </div>
   {% endif %}
 
-  <h3 class="research-card__title">
-    <a href="{{ project_url | relative_url }}">{{ project.short_title | default: project.title }}</a>
-  </h3>
-
-  {% assign card_summary = project.summary %}
-  {% if include.compact and include.preview %}{% assign card_summary = include.preview %}{% endif %}
-  {% if card_summary %}
-  <p class="research-card__summary">{{ card_summary }}</p>
+  {% if include.connected %}
+  <ul class="research-methods" aria-label="Shared methods">
+    {% for method in site.data.research.methods %}
+      {% if project.method_ids contains method.id %}<li>{{ method.name }}</li>{% endif %}
+    {% endfor %}
+  </ul>
   {% endif %}
 
   <a class="research-card__link" href="{{ project_url | relative_url }}" aria-label="Read research overview: {{ project.title }}">

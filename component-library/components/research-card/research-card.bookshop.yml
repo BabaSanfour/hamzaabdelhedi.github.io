@@ -7,19 +7,31 @@ spec:
     - Research
 
 blueprint:
+  connected: false
+  heading_level: 3
+  compact: false
+  preview: ""
   project:
     title: ""
     short_title: ""
     summary: ""
+    question: ""
+    method_ids: []
     status: ""
     role: ""
     url: ""
 
 preview:
+  connected: false
+  heading_level: 3
+  compact: false
+  preview: ""
   project:
     title: Research theme
     short_title: Research theme
     summary: Summary text from the selected research record.
+    question: ""
+    method_ids: []
     status: ""
     role: ""
     url: ""

@@ -1,6 +1,7 @@
 - id: mne-denoise
   name: MNE-Denoise
-  one_liner: Denoising methods for EEG and MEG with NumPy support and MNE-Python integration.
+  one_liner: Artifact suppression and signal denoising for EEG and MEG, with NumPy and MNE-Python integration.
+  audience: For researchers cleaning brain-signal recordings who need complementary denoising methods within their Python analysis workflows.
   role: Co-Creator & Core Maintainer
   status: Under active development
   repo: https://github.com/mne-tools/mne-denoise
@@ -15,7 +16,8 @@
 
 - id: coco-pipe
   name: CoCo-PiPe
-  one_liner: Modular pipelines for electrophysiological descriptors, model decoding, and experiment reporting.
+  one_liner: Modular pipelines for brain-signal descriptors, decoding, and experiment reporting.
+  audience: For researchers combining signal processing and machine learning, with reusable steps for feature extraction, model evaluation, and reporting.
   role: Creator & Maintainer
   repo: https://github.com/BabaSanfour/coco-pipe
   docs: https://cocopipe.readthedocs.io/en/latest/index.html
@@ -29,7 +31,8 @@
 
 - id: coord2region
   name: Coord2Region
-  one_liner: Maps brain coordinates and atlas regions to anatomical labels and related neuroimaging literature.
+  one_liner: Connects brain coordinates and atlas regions with anatomical labels and related neuroimaging studies.
+  audience: For neuroimaging researchers interpreting coordinates or regions, with Python and command-line workflows for atlas lookup and literature queries.
   role: Creator & Maintainer
   repo: https://github.com/BabaSanfour/Coord2Region
   docs: https://coord2region.readthedocs.io/en/latest/
@@ -43,7 +46,8 @@
 
 - id: mne-python
   name: MNE-Python
-  one_liner: Open-source Python tools for exploring, visualizing, and analyzing human neurophysiological data.
+  one_liner: Python tools for exploring, visualizing, and analyzing human neurophysiological data.
+  audience: For researchers analyzing EEG, MEG, and related recordings, from preprocessing to source estimation. My contributions include source-estimate processing, covariance estimation, and bug fixes.
   role: Contributor
   repo: https://github.com/mne-tools/mne-python
   docs: https://mne.tools/stable/index.html
@@ -57,7 +61,8 @@
 
 - id: jamica
   name: Jamica
-  one_liner: Python implementation of AMICA for EEG/MEG, with optional JAX acceleration and MNE-Python integration.
+  one_liner: JAX-based Adaptive Mixture Independent Component Analysis (AMICA) in Python, integrated with MNE-Python.
+  audience: For researchers using independent component analysis to separate sources in brain-signal recordings, especially EEG.
   role: Contributor
   repo: https://github.com/snesmaeili/jamica
   docs: https://snesmaeili.github.io/jamica/

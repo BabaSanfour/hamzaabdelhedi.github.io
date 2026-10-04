@@ -1,40 +1,64 @@
 ---
 id: dynamic-decision-making
 slug: dynamic-decision-making
-title: Dynamic decision-making with MEG/EEG
-short_title: Dynamic decision-making
+title: Decisions under changing evidence
+short_title: Decisions & commitment
 category: research
 status: Current doctoral research
 role: Graduate Research Assistant
-summary: >-
-  I study how people turn changing sensory evidence into decisions and
-  commitment to act. This doctoral line combines MEG/EEG, computational
-  decision models, and analyses of neural dynamics to examine how brain
-  activity evolves as evidence accumulates. It is the central thread of my
-  current research; this page describes the questions and methods without
-  claiming project-specific results.
+summary: My PhD asks how urgency, communication between brain regions, and ongoing
+  brain dynamics shape the transition from weighing evidence to committing to an action.
 methods:
-  - MEG
-  - EEG
-  - Computational decision models
-  - Neural-dynamics analysis
+- MEG and EEG
+- Behavioral models
+- Neural trajectories
+- Oscillatory coupling
+- Time-resolved decoding
 collaborators:
-  - Karim Jerbi
-links: []
-related_software: []
+- Karim Jerbi
+links:
+- label: meg-tokens
+  url: https://github.com/BabaSanfour/meg-tokens
+  description: Behavior, MEG preprocessing, source reconstruction, and decision-task
+    analyses.
+related_software:
+- mne-denoise
+- coco-pipe
 publication_ids: []
+question: When the evidence changes, how do we revise a choice—and when do we stop?
+method_ids:
+- dynamics
+- prediction
+software_context:
+  mne-denoise: Cleaning EEG and MEG before studying their dynamics.
+  coco-pipe: Reusable analyses of rhythms, complexity, trajectories, and decoding.
+connections:
+- project: brain-states-and-cognition
+  note: Rhythms, complexity, and individual differences connect decision timing with
+    broader questions about brain state.
+- project: eeg-meg-foundation-models
+  note: Time-resolved decoding asks what information brain activity carries at each
+    stage of a decision.
 ---
 
-## Scientific question
+## Staying open to new evidence
 
-How does the brain represent changing sensory evidence while a person makes a decision, and when does that evolving activity become a commitment to act? This line treats decision-making as a process that unfolds over time, connecting the evidence a person receives with behavior and the changing dynamics of neural activity.
+A driver approaching a moving hazard must respond to new information without reacting to every fluctuation. I ask how the brain balances that need to update with the growing pressure to act. Evidence-accumulation and urgency-based models can make similar predictions when evidence is stable; reversals offer a way to tell them apart.
 
-## Approach and role
+My doctoral project focuses on three connected questions:
 
-My current doctoral research combines MEG and EEG with computational decision models and analyses of neural dynamics. The research direction includes evidence accumulation, neural trajectories, coordination across neural sources, and the transition from continued evidence processing to action. These are questions and analytical themes, not reported findings. My role is Graduate Research Assistant in the CoCo Lab and Mila, with Prof. Karim Jerbi as supervisor.
+- How does urgency change the influence of new and past evidence?
+- Why do people differ in how long they wait before committing?
+- When does new evidence stop changing a choice, and can brain state shift that point?
 
-The aim is to bring behavioral models and time-resolved brain measurements together so that the decision process can be studied as it develops, rather than described only by its final choice.
+## From behavior to brain dynamics
 
-## Public outputs
+I combine a tokens decision task recorded with MEG and a face-morph decision task recorded with EEG. In the first, evidence arrives over time and can reverse; in the second, a face gradually becomes happy or sad, sometimes with informative evidence arriving late.
 
-No project-specific public output is linked on this page at present.
+I fit computational models to behavior and compare their predictions with MRI-guided source estimates, alpha and beta rhythms, low-dimensional neural trajectories, and coupling between cortical regions. Time-resolved decoding helps track the information available in brain activity. A central distinction is whether evidence is still represented in the brain or still influences the eventual choice.
+
+I built the EEG/MEG source-analysis pipeline and develop reusable analysis tools for this work in the CoCo Lab and Mila, supervised by Prof. Karim Jerbi.
+
+## What I am testing next
+
+The project tests how frontal, parietal, and sensorimotor dynamics change around commitment. Planned analyses use change-point and hidden-state models to investigate that transition. An exploratory direction asks whether near-critical brain dynamics—and, in a planned study, caffeine—shift how long a decision remains open.

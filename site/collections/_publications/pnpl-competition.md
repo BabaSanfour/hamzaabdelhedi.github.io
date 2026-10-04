@@ -21,4 +21,5 @@ bibtex: |-
     year={2025},
     url={https://arxiv.org/abs/2506.10165}
   }
+related_research: ["eeg-meg-foundation-models"]
 ---

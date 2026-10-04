@@ -35,4 +35,5 @@ bibtex: >
     year={2023},
     publisher={Elsevier}
   }
+related_research: ["eeg-meg-foundation-models"]
 ---

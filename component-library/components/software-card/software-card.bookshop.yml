@@ -7,10 +7,13 @@ spec:
     - Software
 
 blueprint:
+  heading_level: 3
+  compact: false
   software:
     id: ""
     name: ""
     one_liner: ""
+    audience: ""
     role: ""
     status: ""
     repo: ""
@@ -21,10 +24,13 @@ blueprint:
       url: ""
 
 preview:
+  heading_level: 3
+  compact: false
   software:
     id: ""
     name: Software tool
     one_liner: Purpose of the tool.
+    audience: Intended users and workflow.
     role: Role
     status: ""
     repo: ""

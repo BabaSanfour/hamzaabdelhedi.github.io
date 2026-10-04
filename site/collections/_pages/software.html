@@ -8,12 +8,12 @@ layout: default
   <header class="software-index__heading">
     <p class="software-index__eyebrow">Open-source software</p>
     <h1>Software</h1>
-    <p>Packages and contributions that support practical, reusable EEG, MEG, and neuroimaging workflows.</p>
+    <p>I build and maintain tools for researchers working with brain signals and neuroimaging data, and contribute to shared projects in the Python neuroscience community.</p>
   </header>
 
   <div class="software-index__grid">
     {% for software in site.data.software %}
-      {% bookshop software-card software=software %}
+      {% bookshop software-card software=software heading_level=2 %}
     {% endfor %}
   </div>
 </div>

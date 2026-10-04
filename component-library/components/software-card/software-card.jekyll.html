@@ -12,14 +12,34 @@
 {% endif %}
 
 <article class="software-card{% if include.compact %} software-card--compact{% endif %}"{% unless include.compact %} id="{{ software.id }}"{% endunless %}>
-  <h3 class="software-card__title">{{ software.name }}</h3>
+  <h{{ include.heading_level | default: 3 }} class="software-card__title">{{ software.name }}</h{{ include.heading_level | default: 3 }}>
   <p class="software-card__purpose">{{ software.one_liner }}</p>
+  {% if software.audience and include.compact != true %}
+  <p class="software-card__purpose">{{ software.audience }}</p>
+  {% endif %}
   <p class="software-card__role"><strong>Role:</strong> {{ software.role }}</p>
   {% if software.status and include.compact != true %}
   <p class="software-card__status"><strong>Status:</strong> {{ software.status }}</p>
   {% endif %}
 
   {% unless include.compact %}
+  {% capture research_links %}
+    {% for project in site.projects %}
+      {% if project.related_software contains software.id %}
+        {% assign project_url = project.url %}
+        {% assign ending = project_url | slice: -5, 5 %}
+        {% unless ending == '.html' %}{% assign project_url = project_url | append: '.html' %}{% endunless %}
+        <li><a href="{{ project_url | relative_url }}">{{ project.short_title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  {% endcapture %}
+  {% assign research_links = research_links | strip %}
+  {% if research_links != '' %}
+  <div class="software-card__research">
+    <p>In my research</p>
+    <ul>{{ research_links }}</ul>
+  </div>
+  {% endif %}
   <ul class="software-card__links" aria-label="{{ software.name }} links">
     {% if software.repo %}
     <li><a href="{{ software.repo }}">Repository</a></li>

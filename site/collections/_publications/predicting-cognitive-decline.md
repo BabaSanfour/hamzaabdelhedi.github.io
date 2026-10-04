@@ -19,4 +19,5 @@ bibtex: >
     author={Berrada, Loubna Mekki and Dehgan, Arthur and Postuma, Ronald and Harel, Yann and Abdelhedi, Hamza and Montplaisir, Jacques and Jerbi, Karim and Gagnon, Jean-Fran{\c{c}}ois},
     year={2025}
   }
+related_research: ["pediatric-clinical-eeg"]
 ---

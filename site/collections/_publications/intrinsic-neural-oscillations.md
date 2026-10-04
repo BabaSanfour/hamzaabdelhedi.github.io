@@ -31,4 +31,5 @@ bibtex: |-
     doi={10.1016/j.isci.2026.117377},
     publisher={Elsevier}
   }
+related_research: ["brain-states-and-cognition"]
 ---

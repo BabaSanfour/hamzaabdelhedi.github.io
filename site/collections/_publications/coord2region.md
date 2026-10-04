@@ -27,4 +27,5 @@ bibtex: >
     journal={arXiv preprint arXiv:2512.18165},
     year={2025}
   }
+related_research: ["eeg-meg-foundation-models"]
 ---

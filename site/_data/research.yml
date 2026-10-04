@@ -1,16 +1,29 @@
 ordered_ids:
   - dynamic-decision-making
-  - eeg-meg-foundation-models
-  - pediatric-clinical-eeg
   - face-familiarity
+  - brain-states-and-cognition
+  - pediatric-clinical-eeg
+  - eeg-meg-foundation-models
 
 featured_ids:
   - dynamic-decision-making
   - eeg-meg-foundation-models
   - pediatric-clinical-eeg
 
-# Home-only presentation copy. Titles, roles, and links remain in the project records.
+# Home previews stay concise; the full index connects questions and shared methods.
 home_previews:
-  dynamic-decision-making: How does brain activity change as evidence accumulates and a decision becomes an action?
-  eeg-meg-foundation-models: I explore how neural-network methods can help us study and represent EEG and MEG signals.
-  pediatric-clinical-eeg: A related collaboration asks how pediatric EEG can inform questions about ADHD and epilepsy.
+  dynamic-decision-making: When evidence changes, how do we revise a choice—and when do we stop?
+  eeg-meg-foundation-models: From model representations to decoding benchmarks, I ask what brain-signal methods learn and what transfers.
+  pediatric-clinical-eeg: I bring EEG features and foundation-model representations together to study pediatric clinical questions.
+
+# Shared methods describe connections, not separate projects or exclusive categories.
+methods:
+  - id: dynamics
+    name: Neural dynamics
+    description: Rhythms, complexity, and trajectories connect decisions with differences across people, clinical contexts, and brain states.
+  - id: representations
+    name: Learned representations
+    description: Model representations connect human perception, EEG/MEG foundation models, and clinical-data analysis.
+  - id: prediction
+    name: Prediction & evaluation
+    description: Decoding, behavioral models, and careful evaluation help distinguish useful information from patterns that do not generalize.

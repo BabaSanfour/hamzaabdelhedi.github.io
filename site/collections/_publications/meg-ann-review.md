@@ -27,4 +27,5 @@ bibtex: |-
     doi={10.1088/1741-2552/addd4a},
     publisher={IOP Publishing}
   }
+related_research: ["eeg-meg-foundation-models"]
 ---

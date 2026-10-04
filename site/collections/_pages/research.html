@@ -1,22 +1,135 @@
 ---
 title: Research
-description: Research themes in dynamic decision-making, EEG/MEG methods, pediatric clinical EEG, and face familiarity.
+description: Connected questions about decisions, perception, brain states, and clinical neuroscience, explored through EEG/MEG, computational models, and open software.
 layout: default
 ---
 
-<div class="research-index">
-  <header class="research-index__heading">
-    <p class="research-index__eyebrow">Research</p>
-    <h1>Research</h1>
-    <p>A curated account of my work on decisions, electrophysiology, clinical EEG collaboration, and visual perception.</p>
+<div class="research-index" data-research-explorer>
+  <header class="research-index__heading research-index__intro">
+    <div>
+      <p class="research-index__eyebrow">Questions, methods &amp; open code</p>
+      <h1>Research</h1>
+    </div>
+    <div>
+      <p>I study how brain activity becomes perception, decisions, and behavior—and how that activity differs across people and contexts.</p>
+      <p>These questions share a toolbox. I compare brains with neural networks, use foundation models on clinical EEG, and build software that carries methods from one project to another.</p>
+    </div>
   </header>
 
-  <div class="research-index__grid">
+  <section class="research-explorer" id="research-explorer" aria-labelledby="research-explorer-title">
+    <div class="research-explorer__heading">
+      <h2 id="research-explorer-title">Follow a connection</h2>
+      <p>Select a question or a shared method. Follow the overlaps.</p>
+    </div>
+    <p class="research-explorer__fallback" data-map-fallback>Neural dynamics, learned representations, and prediction connect these research directions. Each question below shows the methods it shares with the others.</p>
+    <div class="research-explorer__controls research-map-controls" hidden>
+      <div class="research-map-layout">
+        <div class="research-map" role="group" aria-label="Research questions and their shared methods">
+          <svg class="research-map__fields" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <ellipse class="research-map__field research-map__field--dynamics" data-field="dynamics" cx="330" cy="340" rx="310" ry="320" />
+            <ellipse class="research-map__field research-map__field--representations" data-field="representations" cx="670" cy="340" rx="310" ry="320" />
+            <ellipse class="research-map__field research-map__field--prediction" data-field="prediction" cx="500" cy="620" rx="310" ry="320" />
+            <g data-map-edges></g>
+          </svg>
+          {% for method in site.data.research.methods %}
+          <button type="button" class="research-map__method" data-method="{{ method.id }}" aria-pressed="false" aria-controls="research-map-detail research-directions">{{ method.name }}</button>
+          {% endfor %}
+          {% for project_id in site.data.research.ordered_ids %}
+            {% assign project = site.projects | where: 'slug', project_id | first %}
+            {% if project %}
+            <button type="button" class="research-map__question" data-project="{{ project.slug }}" data-project-methods="{{ project.method_ids | join: ' ' }}" aria-pressed="false" aria-controls="research-map-detail research-directions" aria-label="Explore {{ project.short_title | escape }}">
+              <span class="research-map__dot" aria-hidden="true"></span>
+              {% case project.slug %}
+                {% when 'dynamic-decision-making' %}Decisions
+                {% when 'face-familiarity' %}Perception
+                {% when 'brain-states-and-cognition' %}Brain states
+                {% when 'pediatric-clinical-eeg' %}Clinical EEG
+                {% when 'eeg-meg-foundation-models' %}Brain-signal models
+              {% endcase %}
+            </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="research-map-detail" id="research-map-detail">
+          <div data-map-panel="all">
+            <p class="research-map-detail__eyebrow">A shared toolbox</p>
+            <h3>One question, several ways in</h3>
+            <p>My research moves between understanding brains and building models. The overlaps are where those approaches meet.</p>
+            <p>For example, clinical EEG brings together brain dynamics, learned representations, and prediction.</p>
+            <div class="research-map-detail__hint">
+              <p><span class="research-map__dot" aria-hidden="true"></span> Select a question to explore its work.</p>
+              <p><span class="research-map__ring" aria-hidden="true"></span> Select a method to follow its connections.</p>
+            </div>
+          </div>
+          {% for method in site.data.research.methods %}
+          <div data-map-panel="method-{{ method.id }}" hidden>
+            <p class="research-map-detail__eyebrow">Shared method</p>
+            <h3>{{ method.name }}</h3>
+            <p>{{ method.description }}</p>
+            <p class="research-map-detail__label">Connected research</p>
+            <ul class="research-map-detail__links">
+              {% for project_id in site.data.research.ordered_ids %}
+                {% assign project = site.projects | where: 'slug', project_id | first %}
+                {% if project.method_ids contains method.id %}
+                <li><a href="{{ '/project/' | append: project.slug | append: '.html' | relative_url }}">{{ project.short_title }} <span aria-hidden="true">→</span></a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+          {% for project_id in site.data.research.ordered_ids %}
+            {% assign project = site.projects | where: 'slug', project_id | first %}
+            {% assign project_url = '/project/' | append: project.slug | append: '.html' | relative_url %}
+            {% if project %}
+            <div data-map-panel="project-{{ project.slug }}" hidden>
+              <p class="research-map-detail__eyebrow">Research question</p>
+              <h3>{{ project.question }}</h3>
+              <p class="research-map-detail__label">How I approach it</p>
+              <p>{{ project.methods | join: ' · ' }}</p>
+              <a class="research-map-detail__read" href="{{ project_url }}">Explore {{ project.short_title }} <span aria-hidden="true">→</span></a>
+              {% if project.publication_ids.size > 0 %}
+              <a class="research-map-detail__papers" href="{{ project_url }}#research-papers">{{ project.publication_ids.size }} related {% if project.publication_ids.size == 1 %}paper{% else %}papers{% endif %} <span aria-hidden="true">↗</span></a>
+              {% endif %}
+              {% if project.related_software.size > 0 %}
+              <p class="research-map-detail__label">Tools in this work</p>
+              <ul class="research-map-detail__tools">
+                {% for software_id in project.related_software %}
+                  {% assign software = site.data.software | where: 'id', software_id | first %}
+                  {% if software %}<li><a href="{{ '/software/' | relative_url }}#{{ software.id }}">{{ software.name }}</a></li>{% endif %}
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="research-map-footer">
+        <button type="button" data-method="all" aria-pressed="true" aria-controls="research-map-detail research-directions">All connections <span aria-hidden="true">↺</span></button>
+        <p class="research-explorer__count" role="status" aria-live="polite" aria-atomic="true" data-research-count></p>
+        <a href="#research-directions">Read the research <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="research-index__grid" id="research-directions">
     {% for project_id in site.data.research.ordered_ids %}
       {% assign project = site.projects | where: "slug", project_id | first %}
       {% if project and project.category == "research" %}
-        {% bookshop research-card project=project %}
+        {% bookshop research-card project=project heading_level=2 connected=true %}
       {% endif %}
     {% endfor %}
   </div>
+
+  <section class="research-index__software" id="research-software" aria-labelledby="research-software-title">
+    <div>
+      <p class="research-index__eyebrow">From analysis to shared tools</p>
+      <h2 id="research-software-title">Software is part of the research</h2>
+    </div>
+    <div>
+      <p>The questions lead me to build tools for cleaning signals, comparing representations, and making analyses reusable. The project pages link to their analysis repositories and to the packages that support them.</p>
+      <a class="research-card__link" href="{{ '/software/' | relative_url }}">Explore the software and my contributions <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
 </div>
+<script src="{{ '/js/research.js' | relative_url }}" defer></script>

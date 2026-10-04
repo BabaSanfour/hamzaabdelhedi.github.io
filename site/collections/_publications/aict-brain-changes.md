@@ -21,4 +21,5 @@ bibtex: >
     journal={arXiv preprint arXiv:2509.19254},
     year={2025}
   }
+related_research: ["brain-states-and-cognition"]
 ---

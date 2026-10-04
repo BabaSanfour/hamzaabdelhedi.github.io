@@ -7,6 +7,10 @@ category:
 status:
 role:
 summary:
+question:
+method_ids: []
+connections: []
+software_context: {}
 methods:
 collaborators:
 links:
