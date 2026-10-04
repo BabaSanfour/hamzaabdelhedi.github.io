@@ -27,7 +27,6 @@ BUNDLE_GEMFILE=site/Gemfile bundle install
 npm run bookshop-live
 BUNDLE_GEMFILE=site/Gemfile JEKYLL_ENV=production \
   bundle exec jekyll build --source site --destination _site --trace
-ruby scripts/validate-site-output.rb _site
 ```
 
 The build writes production output to `_site/`. To preview that output with a static server:
@@ -48,14 +47,6 @@ node --check site/js/spotlight.js
 node --check site/js/updates-filter.js
 ```
 
-The browser checks require an isolated Chrome test session with CDP enabled and a local server. They select the first page target; do not point them at a personal browsing session. For example:
-
-```bash
-node scripts/check-browser.js http://127.0.0.1:8000 9222
-node scripts/capture-home-screenshots.js http://127.0.0.1:8000 \
-  _qa/screenshots 9222
-```
-
 ## CV integration and deployment
 
 The canonical CV source is [`BabaSanfour/cv-latex`](https://github.com/BabaSanfour/cv-latex). The website workflow in `.github/workflows/deploy.yml` checks out its `main` branch, compiles `main.tex`, verifies a fresh PDF, and copies the verified PDF to `/assets/files/Hamza_Abdelhedi_CV.pdf`, the single website CV path.
@@ -72,22 +63,6 @@ git clone --depth 1 --branch main \
 bash scripts/sync-cv-pdf.sh _cv-src/main.pdf site
 ```
 
-See [`docs/maintenance.md`](docs/maintenance.md) for the exact content-update recipes, source ownership rules, release handoff, and recovery procedure.
-
-## Current repair work and references
-
-R1–R3 repairs and the owner’s visual refinements are implemented. The owner is satisfied with the current design for now. R4 has not started; use the [R4 handoff](docs/R4_HANDOFF.md) in the next discussion. Implementation checks do not replace independent acceptance or release verification.
-
-- [Stage-by-stage identity audit](docs/identity-repair/AUDIT.md)
-- [R1: restore the personal voice](docs/identity-repair/R1_RESTORE_PERSONAL_VOICE.md)
-- [R2: personal story, Home composition, and Contact](docs/identity-repair/R2_CV_STORY_AND_COMPOSITION.md)
-- [Independent review after every stage](docs/identity-repair/REVIEW_PROTOCOL.md)
-- [Content and technical contracts](docs/reference/contracts.md)
-- [Factual source evidence](docs/reference/sources.md) and [publication reconciliation](docs/reference/publications.md)
-- [Decisions and repair status](docs/reference/decisions.md)
-
-Review screenshots, measurements, patches, and implementation reports stay local in ignored `_qa/`, `docs/identity-repair/evidence/`, and `docs/identity-repair/reports/`. These directories are not included in commits. Keep durable decisions and next-stage instructions in tracked Markdown documentation. The generated `site/_cloudcannon/` editor bundle is also ignored and rebuilt locally or in CI.
-
 ## Project structure
 
 ```text
@@ -98,7 +73,7 @@ site/collections/_posts          Existing full update stories
 site/_includes                   Shared page content and metadata includes
 site/assets                     Sass source and active visual-system tokens
 component-library                Bookshop component templates and schemas
-scripts                          Build synchronization and QA helpers
+scripts/sync-cv-pdf.sh            CV build synchronization and verification
 .github/workflows                GitHub Pages and CV build workflow
 ```
 
