@@ -30,6 +30,15 @@ def tags_with_name(html, name)
   html.scan(/<#{Regexp.escape(name)}\b[^>]*>/im)
 end
 
+def exact_file?(output, candidate)
+  path = output
+  candidate.relative_path_from(output).each_filename do |part|
+    return false unless path.directory? && Dir.children(path).include?(part)
+    path = path.join(part)
+  end
+  path.file?
+end
+
 def local_target(output, source_file, url, site_host)
   return [nil, nil, nil] if url.nil? || url.empty?
   return [nil, nil, nil] if url.start_with?("mailto:", "tel:", "javascript:", "data:", "blob:")
@@ -55,7 +64,7 @@ def local_target(output, source_file, url, site_host)
     candidates = [output.join(relative_string)]
     candidates << output.join(relative_string, "index.html") unless relative_string.end_with?("/index.html")
     candidates << output.join("#{relative_string}.html") unless relative_string.end_with?(".html")
-    target = candidates.find(&:file?)
+    target = candidates.find { |candidate| exact_file?(output, candidate) }
   end
 
   [target, fragment, parsed]
