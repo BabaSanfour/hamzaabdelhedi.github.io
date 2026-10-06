@@ -16,6 +16,7 @@ site/build_log.txt
 # CV build checkout and generated canonical artifact
 _cv-src/
 site/assets/files/Hamza_Abdelhedi_CV.pdf
+site/assets/files/Hamza_Abdelhedi_CV.json
 
 # Jekyll caches
 .jekyll-cache/

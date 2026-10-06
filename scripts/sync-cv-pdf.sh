@@ -4,6 +4,8 @@ set -euo pipefail
 source_pdf="${1:-_cv-src/main.pdf}"
 site_root="${2:-site}"
 canonical_pdf="$site_root/assets/files/Hamza_Abdelhedi_CV.pdf"
+cv_source="${3:-$(dirname "$source_pdf")}"
+script_dir="$(cd "$(dirname "$0")" && pwd)"
 
 if [[ ! -s "$source_pdf" ]]; then
   echo "Missing or empty compiled CV: $source_pdf" >&2
@@ -37,3 +39,4 @@ if ! cmp -s "$source_pdf" "$canonical_pdf"; then
 fi
 
 echo "CV PDF synchronized: $(wc -c < "$source_pdf" | tr -d ' ') bytes"
+python3 "$script_dir/cv-artifact.py" record "$site_root" --source "$cv_source"

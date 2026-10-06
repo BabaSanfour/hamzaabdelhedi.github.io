@@ -45,6 +45,7 @@ node --check site/js/common.js
 node --check site/js/publications.js
 node --check site/js/spotlight.js
 node --check site/js/updates-filter.js
+ruby scripts/validate-content-links.rb
 ```
 
 ## CV integration and deployment
@@ -60,11 +61,23 @@ The website presents selected CV content as readable pages:
 | `/presentations/` | `site/_data/presentations.yml` |
 | `/awards/` and About recognition highlights | `site/_data/recognition.yml` |
 
-These records are available through the existing CloudCannon data editor. Keep stable `id` values, because they become section links. Records render in file order within each `group`; optional `date_label` preserves the source's precision (including seasons and ongoing roles). Optional `links` contain `{label, url}` entries. `research_id`, `software_id`, and `publication_id` resolve existing site records. Add slides, posters, or recordings only when a public resource exists. Upcoming activities must remain explicitly scheduled until their status is confirmed.
+These records are available through the existing CloudCannon data editor. Keep stable `id` values, because they become section links. Records render in file order within each `group`; optional `date_label` preserves the source's precision (including seasons and ongoing roles). Optional `links` contain `{label, url}` entries. Add slides, posters, or recordings only when a public resource exists. Upcoming activities must remain explicitly scheduled until their status is confirmed.
 
 Teaching records in the `resources` group appear first on the teaching page and in the homepage `teaching-section` component, using an optional `short_title`. This includes the Brainhack Montréal October 2026 workshop and CoCo Lab crash course, linked to their public repositories. Award records are grouped into `scholarships`, `distinctions`, and `travel`; optional `amount` preserves the original currency, and `featured: true` also displays the record on About.
 
 The CV is the upstream source for career facts, supplemented by public event programs and course repositories. These page records are curated manually; they are not automatically imported from LaTeX. Use `activity-record.html` for the shared record layout and `_activities.scss` for its styles. Cards use the site's existing motion tokens and respect reduced-motion preferences. The full CV remains the formal record.
+
+### News and connections
+
+`site/_data/updates.yml` owns news titles, summaries, dates, primary categories, and stable IDs. The homepage shows the five newest entries as a compact dated list. Each headline links to its full archive entry and related resources. The archive sorts by date, groups by year, and supports shareable search/topic/year URLs. Search includes related record titles and topics. Topic filtering matches the primary category or a secondary tag. All entries remain readable without JavaScript.
+
+Use `story_url` for an existing long-form story and add the matching `update_id` to its front matter. Story headings, page titles, related-story cards, and previous/next links then resolve news titles from the shared record. Historical story bodies and URLs remain intact. A story can have its own original publication date; the news date describes the announcement. Preserve uncertain precision: `date_precision: month` displays only the month/year (the first of the month is used solely for sorting). Do not invent a date for an undated course.
+
+`site/_data/connections.yml` declares a relationship once using `from`, `to`, `forward`, and `reverse`. References use `type:id`; supported types are `update`, `research`, `publication`, `software`, `teaching`, `mentoring`, `presentations`, `community`, and `awards`. Labels explain the relationship in each direction. Both sides resolve titles and URLs from their canonical records. Existing project-to-publication/software references stay in their current records; missing publication backlinks are derived from those references. Avoid inferring funding, authorship, or participation from shared keywords.
+
+External resources use labelled `links`. A news entry can set `resources_from: teaching:brainhack-2026` to reuse a course's resources instead of copying URLs. Award amounts live in `recognition.yml`; news links to the award instead of repeating its amount. The Faculty of Medicine amount is **C$25,000/year**, confirmed by the owner on 2026-10-05; the local CV source has the same correction; publish that CV change before deploying the website.
+
+Run `ruby scripts/validate-content-links.rb` when editing records or relationships. It checks IDs, endpoints, relationship labels, and story/resource references. `connected-content.html` renders contextual links, `connection-link.html` resolves destinations, `news-item.html` renders archive entries, `news-brief.html` renders the compact homepage list, and `_news.scss` controls presentation.
 
 ### PDF delivery
 
@@ -72,15 +85,21 @@ The canonical CV source is [`BabaSanfour/cv-latex`](https://github.com/BabaSanfo
 
 Compilation, PDF validation, copying, byte comparison, and Jekyll artifact checks fail the workflow before the Pages artifact is uploaded. A CV-only change does not trigger this repository automatically; after the CV change is merged, use **Actions → Deploy to GitHub Pages → Run workflow**. No schedule or cross-repository credentials are configured.
 
-For a local prebuild, use the ignored `_cv-src/` checkout and the checked-in helper:
+For a local prebuild, use a current canonical checkout and the fresh-build helper (requires Python 3, Ruby, and TeX Live/MacTeX with `latexmk`):
 
 ```bash
 git clone --depth 1 --branch main \
   https://github.com/BabaSanfour/cv-latex.git _cv-src
-(cd _cv-src && latexmk -pdf -file-line-error -halt-on-error \
-  -interaction=nonstopmode main.tex)
-bash scripts/sync-cv-pdf.sh _cv-src/main.pdf site
+bash scripts/build-cv.sh _cv-src
+BUNDLE_GEMFILE=site/Gemfile JEKYLL_ENV=production bundle exec jekyll build --source site
+ruby scripts/validate-content-links.rb
+ruby scripts/validate-site-output.rb --cv-source _cv-src _site
 ```
+
+If `_cv-src` already exists, inspect its changes and update it deliberately; the helper does not reset or overwrite a checkout. It builds into a new temporary directory, then copies the verified PDF and a JSON manifest containing the exact source revision, source-file hashes, local-change status, PDF hash, and build time. Both generated artifacts are ignored by Git. The manifest identifies locally corrected builds; those corrections must reach `cv-latex/main` before deployment.
+
+The checked-in site validator is strict by default: a missing PDF, missing provenance, altered PDF, or source mismatch fails validation. `--diagnostic` permits a missing PDF for layout work only. Always provide `--cv-source` for release checks so changes since compilation are detected. CI runs the strict validator and checks the Faculty of Medicine amount against the website record before compiling. The obsolete `/Hamza_Abdelhedi_cv.pdf` alias remains intentionally removed.
+
 
 ## Project structure
 
@@ -92,7 +111,9 @@ site/collections/_posts          Existing full update stories
 site/_includes                   Shared page content and metadata includes
 site/assets                     Sass source and active visual-system tokens
 component-library                Bookshop component templates and schemas
-scripts/sync-cv-pdf.sh            CV build synchronization and verification
+scripts/build-cv.sh               Fresh local CV compilation
+scripts/sync-cv-pdf.sh            CV synchronization and provenance
+scripts/validate-site-output.rb   Strict release route, metadata and CV checks
 .github/workflows                GitHub Pages and CV build workflow
 ```
 
