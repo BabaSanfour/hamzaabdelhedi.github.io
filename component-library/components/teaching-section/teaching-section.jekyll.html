@@ -1,13 +1,16 @@
-<section class="section teaching-section" aria-labelledby="home-teaching-title">
+<section class="section home-section teaching-section" aria-labelledby="home-teaching-title">
   <div class="container">
     <div class="section__info">
       <div class="section__head">
-        <h2 class="section__title" id="home-teaching-title">{{ include.title | default: 'Teaching & mentoring' }}</h2>
+        <h2 class="section__title section-title--marked" id="home-teaching-title"><span class="section-marker section-marker--warm" aria-hidden="true">{% bookshop_include visual-icon name='teaching' %}</span><span>{{ include.title | default: 'Teaching & mentoring' }}</span></h2>
         <a class="section__link" href="{{ '/teaching/' | relative_url }}">Explore my teaching <span aria-hidden="true">→</span></a>
       </div>
       {% if include.description_html %}<div class="section__description">{{ include.description_html }}</div>{% endif %}
     </div>
-    <div class="teaching-section__grid">
+    {% assign feature_record = site.data.teaching | where: 'id', include.feature_record_id | first %}
+    <div class="teaching-section__body{% if feature_record.visual.src %} teaching-section__body--with-photo{% endif %}">
+      {% bookshop_include teaching-feature record=feature_record %}
+      <div class="teaching-section__grid">
       {% assign resources = site.data.teaching | where: 'group', 'resources' %}
       {% for resource in resources %}
       <article class="learning-preview">
@@ -16,6 +19,7 @@
         <p>{{ resource.summary | escape }}</p>
       </article>
       {% endfor %}
+      </div>
     </div>
     <nav class="teaching-section__more" aria-label="More about my work">
       <a href="{{ '/presentations/' | relative_url }}">Talks &amp; posters <span aria-hidden="true">→</span></a>

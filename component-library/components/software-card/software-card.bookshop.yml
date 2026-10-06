@@ -11,6 +11,7 @@ blueprint:
   compact: false
   software:
     id: ""
+    motif: ""
     name: ""
     one_liner: ""
     audience: ""
@@ -29,6 +30,7 @@ preview:
   software:
     id: ""
     name: Software tool
+    motif: ""
     one_liner: Purpose of the tool.
     audience: Intended users and workflow.
     role: Role
@@ -41,5 +43,14 @@ preview:
       url: ""
 
 _inputs:
+  software.motif:
+    type: select
+    options:
+      values:
+        - ""
+        - denoise
+        - pipeline
+        - atlas
+    comment: Optional decorative site illustration, not an official package logo.
   software:
     type: object

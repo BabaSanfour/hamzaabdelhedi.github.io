@@ -1,0 +1,145 @@
+/* One heading and card treatment for the four main Home sections. */
+.home-section {
+  .section__info {
+    max-width: none;
+    margin-bottom: var(--space-6);
+
+    .section__head {
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3) var(--space-5);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-rule);
+
+      .section__title {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.25;
+        scroll-margin-top: var(--space-5);
+      }
+
+      .section__link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        min-height: 44px;
+        font-size: .875rem;
+        line-height: 1.5;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+
+    .section__description {
+      max-width: var(--content-reading);
+      margin: var(--space-4) 0 0;
+    }
+  }
+
+  .teaching-section__grid,
+  .research-section__grid,
+  .software-section__grid,
+  .featured-publications__grid {
+    gap: var(--space-5);
+  }
+
+  .learning-preview,
+  .research-card,
+  .software-card,
+  .c-publication-preview {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    padding: var(--space-5);
+    border: 1px solid var(--color-rule);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: none;
+    transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+
+    &:hover,
+    &:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 14px rgba($text-color, .07);
+    }
+  }
+
+  .learning-preview h3,
+  .research-card__title,
+  .software-card__title,
+  .c-publication-preview__title {
+    margin: 0 0 var(--space-3);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 700;
+
+    a { color: inherit; }
+    a:hover,
+    a:focus-visible { color: var(--color-primary); }
+  }
+
+  .learning-preview h3 a,
+  .research-card__title a,
+  .c-publication-preview__title a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .software-card__heading .software-card__title { margin: 0; }
+
+  .learning-preview > p:last-child,
+  .research-card__summary,
+  .software-card__purpose {
+    color: var(--color-muted);
+    font-size: .96rem;
+    line-height: 1.65;
+  }
+
+  .learning-preview__meta,
+  .research-card__meta,
+  .c-publication-preview__meta {
+    color: var(--color-muted);
+    font-size: .82rem;
+    line-height: 1.5;
+  }
+
+  .research-card__link,
+  .software-card__detail,
+  .c-publication-preview__link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: var(--space-2);
+    min-height: 44px;
+    margin-top: auto;
+    color: var(--color-primary);
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .home-section {
+    .section__info { margin-bottom: var(--space-5); }
+    .section__info .section__head .section__title { font-size: 24px; }
+    .learning-preview,
+    .research-card,
+    .software-card,
+    .c-publication-preview { padding: var(--space-4); }
+    .teaching-section__grid,
+    .research-section__grid,
+    .software-section__grid,
+    .featured-publications__grid { gap: var(--space-4); }
+  }
+}

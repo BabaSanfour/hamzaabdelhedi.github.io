@@ -54,6 +54,19 @@
   location: Montréal, Canada
   summary: A hands-on introduction to representations and representational similarity analysis, working through
     MEG data and analysis code.
+  visual:
+    src: /images/optimized/main2024-workshop-1280.webp
+    sources:
+    - src: /images/optimized/main2024-workshop-640.webp
+      width: 640
+    - src: /images/optimized/main2024-workshop-960.webp
+      width: 960
+    - src: /images/optimized/main2024-workshop-1280.webp
+      width: 1280
+    width: 1280
+    height: 749
+    alt: Hamza teaching beside representational similarity analysis slides in a classroom.
+    caption: Teaching representational similarity analysis at MAIN, Montréal, October 2024.
   links:
   - label: Tutorial materials
     url: https://github.com/BabaSanfour/main-edu-courses-rsa

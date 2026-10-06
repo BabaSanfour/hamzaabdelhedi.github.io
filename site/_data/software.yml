@@ -1,4 +1,5 @@
 - id: mne-denoise
+  motif: denoise
   name: MNE-Denoise
   one_liner: Artifact suppression and signal denoising for EEG and MEG, with NumPy and MNE-Python integration.
   audience: For researchers cleaning brain-signal recordings who need complementary denoising methods within their Python analysis workflows.
@@ -15,6 +16,7 @@
   featured: true
 
 - id: coco-pipe
+  motif: pipeline
   name: CoCo-PiPe
   one_liner: Modular pipelines for brain-signal descriptors, decoding, and experiment reporting.
   audience: For researchers combining signal processing and machine learning, with reusable steps for feature extraction, model evaluation, and reporting.
@@ -30,6 +32,7 @@
   featured: true
 
 - id: coord2region
+  motif: atlas
   name: Coord2Region
   one_liner: Connects brain coordinates and atlas regions with anatomical labels and related neuroimaging studies.
   audience: For neuroimaging researchers interpreting coordinates or regions, with Python and command-line workflows for atlas lookup and literature queries.

@@ -12,7 +12,13 @@
 {% endif %}
 
 <article class="software-card{% if include.compact %} software-card--compact{% endif %}"{% unless include.compact %} id="{{ software.id }}"{% endunless %}>
-  <h{{ include.heading_level | default: 3 }} class="software-card__title">{{ software.name }}</h{{ include.heading_level | default: 3 }}>
+  <div class="software-card__heading">
+    <h{{ include.heading_level | default: 3 }} class="software-card__title">{{ software.name }}</h{{ include.heading_level | default: 3 }}>
+    {% assign supported_motifs = 'denoise,pipeline,atlas' | split: ',' %}
+    {% if supported_motifs contains software.motif %}
+    <div class="software-card__visual" aria-hidden="true">{% bookshop_include visual-icon name=software.motif %}</div>
+    {% endif %}
+  </div>
   <p class="software-card__purpose">{{ software.one_liner }}</p>
   {% if software.audience and include.compact != true %}
   <p class="software-card__purpose">{{ software.audience }}</p>

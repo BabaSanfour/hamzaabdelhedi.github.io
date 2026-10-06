@@ -6,7 +6,7 @@
             {% if include.show_updates %}
             <div class="col col-6 col-m-12 updates-column">
                 <div class="column-header">
-                    <h2 class="column-title" id="latest-news">{{ include.updates_title | default: "Recent Updates" }}</h2>
+                    <h2 class="column-title section-title--marked" id="latest-news"><span class="section-marker" aria-hidden="true">{% bookshop_include visual-icon name='news' %}</span><span>{{ include.updates_title | default: "Recent Updates" }}</span></h2>
                     <a href="{{ '/updates/' | relative_url }}" class="view-all">View all updates →</a>
                 </div>
                 {% if include.updates_description_html %}<div class="column-description">{{ include.updates_description_html }}</div>{% endif %}
@@ -23,7 +23,7 @@
             <div class="col col-6 col-m-12 trajectory-column">
                 <div class="interactive-trajectory">
                     <div class="column-header">
-                        <h2 class="column-title">{{ include.trajectory_title | default: "Trajectory" }}</h2>
+                        <h2 class="column-title section-title--marked"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='path' %}</span><span>{{ include.trajectory_title | default: "Trajectory" }}</span></h2>
                     </div>
                     {% bookshop_include grouped-trajectory %}
                     <p class="trajectory-footer"><a href="{{ '/about/#about-trajectory' | relative_url }}">Full journey on About <span aria-hidden="true">→</span></a></p>

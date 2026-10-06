@@ -133,6 +133,24 @@
   line-height: 1.5;
 }
 
+.software-card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  margin-bottom: 12px;
+
+  .software-card__title { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+}
+.software-card__visual {
+  flex: 0 0 84px;
+  width: 84px;
+  color: var(--color-primary);
+
+  .visual-icon--motif { width: 100%; height: auto; }
+}
+
 .software-card__links {
   display: flex;
   flex-wrap: wrap;

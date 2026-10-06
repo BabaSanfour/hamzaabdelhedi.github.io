@@ -1,8 +1,8 @@
-<section class="section software-section" aria-labelledby="software-section-title">
+<section class="section home-section software-section" aria-labelledby="software-section-title">
   <div class="container">
     <div class="section__info">
       <div class="section__head">
-        <h2 class="section__title" id="software-section-title">{{ include.title | default: "Open-source software" }}</h2>
+        <h2 class="section__title section-title--marked" id="software-section-title"><span class="section-marker" aria-hidden="true">{% bookshop_include visual-icon name='software' %}</span><span>{{ include.title | default: "Open-source software" }}</span></h2>
         <a class="section__link" href="{{ '/software/' | relative_url }}">View all software <span aria-hidden="true">→</span></a>
       </div>
       {% if include.description_html %}

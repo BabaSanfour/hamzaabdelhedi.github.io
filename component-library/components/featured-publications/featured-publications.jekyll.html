@@ -2,16 +2,16 @@
 {% assign max_count = include.max_items | default: 3 %}
 {% if selected_publications.size > 0 %}
 <!-- begin featured-publications -->
-<section class="section featured-publications" id="featured-publications">
+<section class="section home-section featured-publications" id="featured-publications">
   <div class="container">
-    <div class="updates-trajectory split-layout">
-      <div class="column-header">
-        <h2 class="column-title">{{ include.title | default: "Selected publications" }}</h2>
+    <div class="section__info">
+      <div class="section__head">
+        <h2 class="section__title section-title--marked"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='publication' %}</span><span>{{ include.title | default: "Selected publications" }}</span></h2>
         {% assign publications_url = include.link_url | default: "/publications/" %}
-        <a href="{{ publications_url | relative_url }}" class="view-all">View all publications <span aria-hidden="true">→</span></a>
+        <a href="{{ publications_url | relative_url }}" class="section__link">View all publications <span aria-hidden="true">→</span></a>
       </div>
       {% if include.description_html %}
-      <div class="column-description">{{ include.description_html }}</div>
+      <div class="section__description">{{ include.description_html }}</div>
       {% endif %}
     </div>
 

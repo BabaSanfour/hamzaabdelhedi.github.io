@@ -3,15 +3,20 @@ title: Teaching & mentoring
 permalink: /teaching/
 description: Courses, workshops, reusable teaching materials, and research mentoring by Hamza Abdelhedi in neuroscience, programming, and AI.
 layout: default
+feature_record_id: main-rsa
 ---
 
 <div class="activity-page">
+  {% assign feature_record = site.data.teaching | where: 'id', page.feature_record_id | first %}
+  <div class="teaching-page__intro{% if feature_record.visual.src %} teaching-page__intro--with-photo{% endif %}">
   <header class="activity-page__heading">
     <p class="activity-page__eyebrow">Sharing knowledge</p>
-    <h1>Teaching &amp; mentoring</h1>
+    <h1 class="page-title--marked section-title--marked"><span class="section-marker section-marker--warm" aria-hidden="true">{% bookshop_include visual-icon name='teaching' %}</span><span>Teaching &amp; mentoring</span></h1>
     <p class="activity-page__lead">Teaching is central to my work, from a first Python exercise to an analysis of brain signals.</p>
     <p>I create courses and hands-on workshops, teach cognitive neuroscience, and mentor research projects. The materials below are available to explore and reuse.</p>
   </header>
+    {% bookshop_include teaching-feature record=feature_record sizes='(min-width: 1000px) 360px, (min-width: 761px) 32vw, (min-width: 500px) 440px, calc(100vw - 32px)' %}
+  </div>
 
   <nav class="activity-page__jump" aria-label="On this page">
     <a href="#learning-resources">Courses &amp; materials <span aria-hidden="true">↓</span></a>

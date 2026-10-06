@@ -5,11 +5,11 @@
   {% assign project_ids = site.data.research.featured_ids %}
 {% endif %}
 
-<section class="section research-section" aria-labelledby="research-section-title">
+<section class="section home-section research-section" aria-labelledby="research-section-title">
   <div class="container">
     <div class="section__info">
       <div class="section__head">
-        <h2 class="section__title" id="research-section-title">{{ include.title | default: "Selected research" }}</h2>
+        <h2 class="section__title section-title--marked" id="research-section-title"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='research' %}</span><span>{{ include.title | default: "Selected research" }}</span></h2>
         <a class="section__link" href="{{ '/research/' | relative_url }}">View all research <span aria-hidden="true">→</span></a>
       </div>
       {% if include.description_html %}
