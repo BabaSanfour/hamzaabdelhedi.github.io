@@ -28,7 +28,7 @@
     <img class="profile-page__portrait" src="{{ profile_image | relative_url }}" alt="{{ profile.portrait_alt | default: profile.name | escape }}" width="1280" height="1285" decoding="async">
     <div class="profile-page__intro-copy">
       <p class="profile-page__eyebrow">{{ origin_city }} <span aria-hidden="true">→</span> {{ location_city }}</p>
-      <h1>About {{ profile.name }}</h1>
+      <h1 class="page-title--marked section-title--marked"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='path' %}</span><span>About {{ profile.name }}</span></h1>
       <p class="profile-page__lead">I am a {{ current_degree }} at {{ current_university.name }}, working with {{ research_affiliations | strip }}. My path here began in {{ origin_city }}, Tunisia, and continues in {{ location_city }}.</p>
       <p>I began with mathematics and physics, then completed an {{ engineering_education.degree }} at {{ engineering_school.name }}. During my engineering research internship, I explored how human brains and artificial neural networks represent faces. That bridge between engineering and neuroscience brought me to an {{ msc_education.degree }} and, eventually, the questions I study now.</p>
     </div>
@@ -46,7 +46,7 @@
 
   <div class="profile-page__content">
     <section class="about-page__section about-page__section--neuroai" aria-labelledby="about-neuroai">
-      <h2 id="about-neuroai" tabindex="-1">Why Neuro-AI?</h2>
+      <h2 class="section-title--marked" id="about-neuroai" tabindex="-1"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='research' %}</span><span>Why Neuro-AI?</span></h2>
       <div class="about-page__section-body">
       <p>What drew me in was the chance to use computational tools to ask questions about the brain, and to let what we learn about brains challenge how we think about artificial systems. In my earlier <a href="{{ '/project/face-familiarity.html' | relative_url }}">face-familiarity research</a>, I studied how neural representations change over time as we recognize familiar and unfamiliar faces.</p>
       <p>Today, my doctoral question is how changing sensory evidence becomes a decision and an action. I am interested in how that process unfolds across the brain. Artificial neural networks and foundation models offer complementary ways to study brain signals. In a separate collaboration at {{ clinical_organization_label }}, I work on pediatric clinical EEG questions about ADHD and epilepsy. <a href="{{ '/research/' | relative_url }}">Explore the research directions</a>.</p>
@@ -65,7 +65,7 @@
     </section>
 
     <section class="about-page__section about-page__section--community" aria-labelledby="about-community">
-      <h2 id="about-community" tabindex="-1">Teaching, mentoring, and community</h2>
+      <h2 class="section-title--marked" id="about-community" tabindex="-1"><span class="section-marker section-marker--warm" aria-hidden="true">{% bookshop_include visual-icon name='community' %}</span><span>Teaching, mentoring, and community</span></h2>
       <div class="about-page__section-body">
       <p>I firmly believe that science belongs to everyone. I enjoy sharing knowledge through teaching and mentoring, from cognitive-neuroscience courses at {{ current_university.name }} and Indigenous Pathfinders in AI to graduate and undergraduate research projects. At the <a href="{{ '/updates/main2024.html' | relative_url }}">MAIN 2024 educational sessions</a>, I led a hands-on tutorial on representational similarity analysis with MEG data; the <a href="https://github.com/BabaSanfour/main-edu-courses-rsa">tutorial materials</a> are available to reuse.</p>
       <p>As a founding member of TuNA, Tunisians in Neuroscience and AI, I help connect people across the fields that shaped my own path. With Abundant Intelligences, I have contributed to research and taught hands-on AI sessions in the Future Imaginaries workshop series. I have also helped organize discussions about the societal impacts and responsible use of AI.</p>
@@ -84,7 +84,7 @@
     </section>
 
     <section class="about-page__section" aria-labelledby="about-recognition">
-      <h2 id="about-recognition" tabindex="-1">Selected awards &amp; training</h2>
+      <h2 class="section-title--marked" id="about-recognition" tabindex="-1"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='award' %}</span><span>Selected awards &amp; training</span></h2>
       <div class="about-page__section-body">
         <ul class="about-page__recognition">
           {% assign recognition_highlights = site.data.recognition | where: 'featured', true %}
@@ -120,7 +120,7 @@
     </section>
 
     <section class="about-page__journey" aria-labelledby="about-trajectory">
-      <h2 id="about-trajectory" tabindex="-1">Education and research roles</h2>
+      <h2 class="section-title--marked" id="about-trajectory" tabindex="-1"><span class="section-marker" aria-hidden="true">{% bookshop_include visual-icon name='path' %}</span><span>Education and research roles</span></h2>
       <p>The records below include degrees, employment, and collaborations; some took place during the same period. For a formal account, <a href="{{ site.data.links.cv_pdf | relative_url }}">see my CV</a>.</p>
       <ol class="profile-page__trajectory">
         {% for record in timeline_records %}

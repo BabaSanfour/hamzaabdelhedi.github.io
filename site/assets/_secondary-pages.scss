@@ -1,0 +1,80 @@
+/* Carry Home's heading marks and quiet white/teal surfaces into reading pages. */
+.page-title--marked {
+  min-width: 0;
+
+  > span:last-child { overflow-wrap: anywhere; }
+}
+
+.research-index__heading,
+.software-index__heading,
+.news-heading {
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.research-index .research-card,
+.software-index .software-card,
+.about-page .about-page__interview,
+.about-page .about-page__role {
+  border-top: 3px solid var(--color-accent);
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 14px rgba($text-color, .07);
+  }
+}
+
+.research-index .research-card__title a,
+.software-index .software-card__title,
+.about-page .about-page__interview h3 a {
+  color: var(--color-text);
+}
+
+.research-index .research-card__title a,
+.about-page .about-page__interview h3 a {
+  &:hover,
+  &:focus-visible { color: var(--color-primary); }
+}
+
+.research-index .research-card__link {
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.research-explorer {
+  border-left: 1px solid var(--color-rule);
+  border-top: 3px solid var(--color-accent);
+}
+
+.about-page {
+  .profile-page__eyebrow {
+    padding-left: var(--space-3);
+    border-left: 2px solid var(--color-warm-accent);
+  }
+
+  .about-page__section > h2::before { background: var(--color-accent); }
+  .about-page__section > .section-title--marked::before { content: none; }
+
+  .about-page__section > .section-title--marked {
+    align-self: start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .about-page__section--values { border-top: 3px solid var(--color-accent); }
+  .profile-page__quote {
+    border-left-color: var(--color-accent);
+    background: var(--color-accent-surface);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-page .about-page__section > .section-title--marked {
+    flex-direction: row;
+    align-items: center;
+  }
+}
