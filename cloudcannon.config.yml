@@ -129,6 +129,13 @@ collections_config:
       - content
       - visual
     _inputs:
+      date_precision:
+        type: select
+        comment: Use year without an exact date; use day with a verified date.
+        options:
+          values:
+            - year
+            - day
       type:
         type: select
         options:

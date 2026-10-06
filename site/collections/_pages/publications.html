@@ -10,87 +10,85 @@ layout: default
       <div>
         <header class="publications-page__header">
           <div>
-            <p class="publications-page__eyebrow">Research outputs</p>
             <h1 class="column-title">{{ page.title }}</h1>
             <p class="column-description">Peer-reviewed work, preprints, and academic contributions.</p>
           </div>
-          <div class="publications-controls__search">
+          <div class="publications-controls__search" data-publication-controls hidden>
             <label for="pub-search">Search publications</label>
-            <input type="search" id="pub-search" placeholder="Search title, author, or venue" autocomplete="off">
+            <input type="search" id="pub-search" placeholder="Title, author, venue, keyword" autocomplete="off">
           </div>
         </header>
 
         {% if site.publications.size > 0 %}
-        {% assign all_keywords = "" %}
+        {% assign all_keywords = "" | split: "," %}
+        {% assign keyword_keys = "" | split: "," %}
         {% assign all_years = "" %}
         {% assign all_types = "" %}
         {% for pub in site.publications %}
         {% assign all_years = all_years | append: pub.year | append: "," %}
         {% assign all_types = all_types | append: pub.type | append: "," %}
         {% for keyword in pub.keywords %}
-        {% assign all_keywords = all_keywords | append: keyword | append: "," %}
+        {% assign keyword_key = keyword | downcase %}
+        {% unless keyword_keys contains keyword_key %}
+        {% assign keyword_keys = keyword_keys | push: keyword_key %}
+        {% assign all_keywords = all_keywords | push: keyword %}
+        {% endunless %}
         {% endfor %}
         {% endfor %}
-        {% assign unique_keywords = all_keywords | split: "," | uniq | sort %}
+        {% assign unique_keywords = all_keywords | sort_natural %}
         {% assign unique_years = all_years | split: "," | uniq | sort | reverse %}
         {% assign unique_types = all_types | split: "," | uniq | sort %}
 
-        <section class="publications-controls" aria-label="Publication filters">
-          <div class="publications-filter-group">
-            <h2 class="publications-filter-group__title">Type</h2>
-            <div class="c-updates-filter" data-filter-group="type" role="group" aria-label="Filter publications by type">
-              <button type="button" class="c-updates-filter__btn js-type-filter" data-filter="all" aria-pressed="true">All types</button>
-              {% for type in unique_types %}
-              {% if type != "" %}
-              <button type="button" class="c-updates-filter__btn js-type-filter" data-filter="{{ type | downcase | escape }}" aria-pressed="false">
-                {% case type %}
-                {% when 'journal' %}Journal articles
-                {% when 'conference-proceedings' %}Conference proceedings
-                {% when 'conference-paper' %}Conference papers
-                {% when 'conference-abstract' %}Conference abstracts
-                {% when 'preprint' %}Preprints
-                {% when 'thesis' %}Theses
-                {% else %}{{ type | escape }}
-                {% endcase %}
-              </button>
-              {% endif %}
-              {% endfor %}
-            </div>
+        <section class="publications-controls" aria-label="Publication filters" data-publication-controls hidden>
+          <p class="publications-controls__hint">Choose multiple options in each filter.</p>
+          <div class="publications-controls__fields">
+            <details class="publication-filter" data-filter-group="type">
+              <summary>Types <span data-filter-summary>All</span></summary>
+              <div class="publication-filter__panel">
+                <fieldset>
+                  <legend class="screen-reader-text">Types</legend>
+                  {% for type in unique_types %}{% if type != "" %}
+                  <label class="publication-filter__option"><input type="checkbox" value="{{ type | downcase | escape }}"> <span>{% case type %}{% when 'journal' %}Journal articles{% when 'conference-proceedings' %}Conference proceedings{% when 'conference-paper' %}Conference papers{% when 'conference-abstract' %}Conference abstracts{% when 'preprint' %}Preprints{% when 'thesis' %}Theses{% else %}{{ type | escape }}{% endcase %}</span></label>
+                  {% endif %}{% endfor %}
+                </fieldset>
+                <button type="button" class="publication-filter__clear" data-clear-filter>Clear types</button>
+              </div>
+            </details>
+            <details class="publication-filter" data-filter-group="year">
+              <summary>Years <span data-filter-summary>All</span></summary>
+              <div class="publication-filter__panel">
+                <fieldset>
+                  <legend class="screen-reader-text">Years</legend>
+                  {% for year in unique_years %}{% if year != "" %}
+                  <label class="publication-filter__option"><input type="checkbox" value="{{ year | downcase | escape }}"> <span>{{ year | escape }}</span></label>
+                  {% endif %}{% endfor %}
+                </fieldset>
+                <button type="button" class="publication-filter__clear" data-clear-filter>Clear years</button>
+              </div>
+            </details>
+            <details class="publication-filter" data-filter-group="keyword">
+              <summary>Keywords <span data-filter-summary>All</span></summary>
+              <div class="publication-filter__panel">
+                <label class="publication-filter__match" for="pub-keyword-match">Match keywords
+                  <select id="pub-keyword-match"><option value="any">Any selected keyword</option><option value="all">All selected keywords</option></select>
+                </label>
+                <fieldset>
+                  <legend class="screen-reader-text">Keywords</legend>
+                  {% for keyword in unique_keywords %}{% if keyword != "" %}
+                  <label class="publication-filter__option"><input type="checkbox" value="{{ keyword | downcase | escape }}"> <span>{{ keyword | escape }}</span></label>
+                  {% endif %}{% endfor %}
+                </fieldset>
+                <button type="button" class="publication-filter__clear" data-clear-filter>Clear keywords</button>
+              </div>
+            </details>
           </div>
-
-          <div class="publications-filter-group">
-            <h2 class="publications-filter-group__title">Year</h2>
-            <div class="c-updates-filter" data-filter-group="year" role="group" aria-label="Filter publications by year">
-              <button type="button" class="c-updates-filter__btn js-year-filter" data-year="all" aria-pressed="true">All years</button>
-              {% for year in unique_years %}
-              {% if year != "" %}
-              <button type="button" class="c-updates-filter__btn js-year-filter" data-year="{{ year | escape }}" aria-pressed="false">{{ year | escape }}</button>
-              {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-
-          <div class="publications-filter-group">
-            <h2 class="publications-filter-group__title">Keyword</h2>
-            <div class="c-updates-filter js-keywords-container" id="publication-keyword-filters" data-filter-group="keyword" role="group" aria-label="Filter publications by keyword">
-              <button type="button" class="c-updates-filter__btn js-keyword-filter" data-keyword="all" aria-pressed="true">All keywords</button>
-              {% for keyword in unique_keywords %}
-              {% if keyword != "" %}
-              <button type="button" class="c-updates-filter__btn js-keyword-filter{% if forloop.index > 12 %} is-hidden{% endif %}" data-keyword="{{ keyword | downcase | escape }}" aria-pressed="false">{{ keyword | escape }}</button>
-              {% endif %}
-              {% endfor %}
-              {% if unique_keywords.size > 12 %}
-              <button type="button" class="c-updates-filter__btn c-updates-filter__btn--more js-keywords-toggle" aria-expanded="false" aria-controls="publication-keyword-filters">More keywords</button>
-              {% endif %}
-            </div>
-          </div>
-
           <div class="publications-controls__actions">
             <button type="button" class="c-updates-filter__btn publications-reset js-publications-reset">Reset filters</button>
-            <p class="publications-results" id="publications-results" role="status" aria-live="polite"></p>
+            <p class="publications-results" id="publications-results" role="status" aria-live="polite" aria-atomic="true"></p>
           </div>
         </section>
 
+        <p class="publications-order">Newest first; year-only dates last within each year.</p>
         <div class="publications-list">
           {% assign grouped = site.publications | group_by: "year" | sort: "name" | reverse %}
           {% for year_group in grouped %}
@@ -98,12 +96,14 @@ layout: default
           <section class="publication-year-group" data-year="{{ year_group.name | escape }}">
             <h2 class="publication-year-heading">{{ year_group.name | escape }}</h2>
             <div class="publication-year-items">
-              {% assign sorted_items = year_group.items | sort: "title" | sort: "date" | reverse %}
+              {% assign dated_items = year_group.items | where_exp: "pub", "pub.date_precision != 'year'" | sort: "title" | sort: "date" | reverse %}
+              {% assign year_only_items = year_group.items | where_exp: "pub", "pub.date_precision == 'year'" | sort: "title" %}
+              {% assign sorted_items = dated_items | concat: year_only_items %}
               {% for pub in sorted_items %}
-              {% assign publication_search = pub.title | append: " " | append: pub.authors | append: " " | append: pub.venue | append: " " | append: pub.type | append: " " | append: pub.status %}
               {% assign publication_keywords = pub.keywords | join: "," %}
+              {% assign publication_search = pub.title | append: " " | append: pub.authors | append: " " | append: pub.venue | append: " " | append: pub.type | append: " " | append: pub.status | append: " " | append: publication_keywords %}
               <div class="publication-wrapper" data-type="{{ pub.type | downcase | escape }}" data-year="{{ pub.year | escape }}" data-keywords="{{ publication_keywords | downcase | escape }}" data-search="{{ publication_search | downcase | escape }}">
-                {% bookshop publication-card project=pub %}
+                {% bookshop publication-card project=pub layout="list" %}
               </div>
               {% endfor %}
             </div>
@@ -112,7 +112,8 @@ layout: default
           {% endfor %}
 
           <div id="no-results" class="publications-no-results" hidden>
-            <p>No publications match these filters.</p>
+            <p>No publications match your search and filters.</p>
+            <button type="button" class="c-updates-filter__btn publications-reset js-publications-reset">Reset filters</button>
           </div>
         </div>
         {% else %}

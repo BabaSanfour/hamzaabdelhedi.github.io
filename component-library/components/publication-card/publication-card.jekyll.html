@@ -17,14 +17,14 @@
   <a class="c-publication-preview__link" href="{{ publication_url | relative_url | escape }}">Publication details <span aria-hidden="true">→</span></a>
 </article>
 {% else %}
-<article class="c-publication-card{% if include.layout == 'vertical' %} is-vertical{% endif %}">
+<article class="c-publication-card{% if include.layout == 'vertical' %} is-vertical{% endif %}" data-citation-scope>
   <div class="c-publication-card__main-row">
     {% assign display_image = publication.thumbnail %}
     {% if include.layout == 'vertical' and publication.banner %}
     {% assign display_image = publication.banner %}
     {% endif %}
 
-    {% if display_image %}
+    {% if display_image and include.layout != 'list' %}
     <div class="c-publication-card__image-container">
       <img loading="lazy" src="{{ display_image | relative_url | escape }}"
         alt="{{ publication.image_alt | default: publication.title | escape }}" class="c-publication-card__image">
@@ -34,13 +34,26 @@
     <div class="c-publication-card__body">
       <div class="c-publication-card__top">
         <h3 class="c-publication-card__title">
-          <i class="ion ion-md-journal c-publication-card__title-icon" aria-hidden="true"></i>
+          {% unless include.layout == 'list' %}<i class="ion ion-md-journal c-publication-card__title-icon" aria-hidden="true"></i>{% endunless %}
           {% if publication_url %}
           <a href="{{ publication_url | relative_url | escape }}">{{ publication.title | escape }}</a>
           {% else %}
           {{ publication.title | escape }}
           {% endif %}
         </h3>
+
+        {% if publication.authors %}
+        <p class="c-publication-card__authors">{{ publication.authors | escape | replace: 'Hamza Abdelhedi', '<strong>Hamza Abdelhedi</strong>' }}</p>
+        {% endif %}
+
+        <div class="c-publication-card__meta">
+        {% if publication.venue or publication.year %}
+        <p class="c-publication-card__venue">
+          {% if publication.venue %}<span>{{ publication.venue | escape }}</span>{% endif %}
+          {% if publication.venue and publication.year %}<span aria-hidden="true"> · </span>{% endif %}
+          {% if include.layout == 'list' and publication.date_precision != 'year' and publication.date %}<time datetime="{{ publication.date | date: '%Y-%m-%d' }}">{{ publication.date | date: '%B %Y' }}</time>{% elsif publication.year %}<span>{{ publication.year | escape }}</span>{% endif %}
+        </p>
+        {% endif %}
 
         <div class="c-publication-card__labels" aria-label="Publication type and status">
           {% if card_type %}
@@ -70,23 +83,14 @@
           {% endif %}
         </div>
 
-        {% if publication.authors %}
-        <p class="c-publication-card__authors">{{ publication.authors | escape }}</p>
-        {% endif %}
-
-        {% if publication.venue or publication.year %}
-        <p class="c-publication-card__venue">
-          {% if publication.venue %}<span>{{ publication.venue | escape }}</span>{% endif %}
-          {% if publication.venue and publication.year %}<span aria-hidden="true"> · </span>{% endif %}
-          {% if publication.year %}<span>{{ publication.year | escape }}</span>{% endif %}
-        </p>
-        {% endif %}
+        </div>
 
         {% if publication.summary %}
         <p class="c-publication-card__summary">{{ publication.summary | strip_html | strip_newlines | escape | truncate: 180 }}</p>
         {% endif %}
       </div>
 
+      <div class="c-publication-card__footer">
       {% if publication.abstract and include.layout != 'vertical' %}
       <details class="c-publication-card__abstract">
         <summary>Abstract</summary>
@@ -94,7 +98,6 @@
       </details>
       {% endif %}
 
-      <div class="c-publication-card__footer">
         {% if publication.paper_url or publication.preprint_url or publication.pdf_link or publication.code_url or publication.data_url or publication.project_url or publication.doi or publication.arxiv_url or publication.zenodo_url or publication.poster_url or publication.bibtex %}
         <ul class="c-publication-card__links" aria-label="Publication resources">
           {% if publication.paper_url %}
@@ -153,7 +156,10 @@
           {% endif %}
           {% if publication.bibtex %}
           <li>
-            <button class="c-publication-card__link c-publication-card__citation-button" type="button"
+            <a class="c-publication-card__link" href="{{ publication_url | relative_url | escape }}#publication-citation">BibTeX</a>
+          </li>
+          <li>
+            <button class="c-publication-card__link c-publication-card__citation-button" type="button" hidden
               data-copy-bibtex="{{ publication.bibtex | escape }}"
               aria-label="Copy citation for {{ card_title }}">Copy citation</button>
           </li>

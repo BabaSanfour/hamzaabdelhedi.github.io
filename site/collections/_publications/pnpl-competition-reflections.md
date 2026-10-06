@@ -4,6 +4,7 @@ slug: "pnpl-competition-reflections"
 title: "Benchmarking Non-Invasive Speech BCIs: Lessons Learned from the 2025 PNPL Competition"
 authors: "Gereon Elvers, Gilad Landau, Francesco Mantegna, Miran Özdogan, Tasha Kim, Teyun Kwon, SungJun Cho, Benjamin Ballyk, Luisa Kurth, Dulhan Jayalath, Pratik Somaiya, Chetan Gohil, Brendan Shillingford, Greg Farquhar, Minqi Jiang, Caglar Gulcehre, Xabier de Zuazo, Hamza Abdelhedi, Yorguin Mantilla Ramos, Karim Jerbi, Mark Woolrich, Natalie Voets, Oiwi Parker Jones"
 year: 2026
+date_precision: year
 venue: "Proceedings of Machine Learning Research (NeurIPS 2025 Competition Track)"
 type: "conference-proceedings"
 status: "published"

@@ -4,6 +4,7 @@ slug: reconnaissance-faciale-ai-humains
 authors: "Hamza Abdelhedi"
 venue: "Université de Montréal"
 year: 2025
+date_precision: year
 type: "thesis"
 keywords: ["Face Recognition", "Artificial Neural Networks", "CNN", "MEG", "Neuroscience"]
 id: "reconnaissance-faciale-ai-humains"

@@ -4,6 +4,7 @@ slug: pnpl-competition-2025
 authors: "Gilad Landau, Miran Özdogan, Gereon Elvers, Francesco Mantegna, Pratik Somaiya, Dulhan Jayalath, Luisa Kurth, Teyun Kwon, Brendan Shillingford, Greg Farquhar, Minqi Jiang, Karim Jerbi, Hamza Abdelhedi, Yorguin Mantilla Ramos, Caglar Gulcehre, Mark Woolrich, Natalie Voets, Oiwi Parker Jones"
 venue: "NeurIPS 2025 Competition Track"
 year: 2025
+date_precision: year
 type: "conference-paper"
 arxiv_url: "https://arxiv.org/abs/2506.10165"
 keywords: ["Research", "Methods", "Open-source", "Community"]

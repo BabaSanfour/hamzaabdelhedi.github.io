@@ -4,7 +4,7 @@ layout: default
 
 <div class="publication-detail">
   <div class="container">
-    <article class="publication-detail__article">
+    <article class="publication-detail__article" data-citation-scope>
       <header class="publication-detail__header">
         <div class="publication-detail__labels" aria-label="Publication type and status">
           {% if page.type %}
@@ -20,7 +20,7 @@ layout: default
             {% endcase %}
           </span>
           {% endif %}
-          {% if page.status %}
+          {% if page.status and page.status != page.type %}
           <span class="c-publication-card__badge c-publication-card__badge--status">
             {% case page.status %}
             {% when 'published' %}Published
@@ -37,7 +37,7 @@ layout: default
         <h1 class="publication-detail__title">{{ page.title | escape }}</h1>
 
         {% if page.authors %}
-        <p class="publication-detail__authors">{{ page.authors | escape }}</p>
+        <p class="publication-detail__authors">{{ page.authors | escape | replace: 'Hamza Abdelhedi', '<strong>Hamza Abdelhedi</strong>' }}</p>
         {% endif %}
 
         {% if page.venue or page.year %}
@@ -49,7 +49,7 @@ layout: default
         {% endif %}
       </header>
 
-      {% if page.paper_url or page.preprint_url or page.pdf_link or page.code_url or page.data_url or page.project_url or page.doi or page.arxiv_url or page.zenodo_url or page.poster_url %}
+      {% if page.paper_url or page.preprint_url or page.pdf_link or page.code_url or page.data_url or page.project_url or page.doi or page.arxiv_url or page.zenodo_url or page.poster_url or page.bibtex %}
       <nav class="publication-detail__links" aria-label="Publication resources">
         {% if page.paper_url %}<a href="{{ page.paper_url | escape }}" target="_blank" rel="noopener">Paper</a>{% endif %}
         {% if page.preprint_url %}<a href="{{ page.preprint_url | escape }}" target="_blank" rel="noopener">Preprint</a>{% endif %}
@@ -85,6 +85,7 @@ layout: default
         {% unless detail_poster_url contains '://' %}{% assign detail_poster_url = detail_poster_url | relative_url %}{% endunless %}
         <a href="{{ detail_poster_url | escape }}" target="_blank" rel="noopener">Poster</a>
         {% endif %}
+        {% if page.bibtex %}<a href="#publication-citation">Citation</a>{% endif %}
       </nav>
       {% endif %}
 
@@ -98,6 +99,18 @@ layout: default
       {% if content != blank %}
       <section class="publication-detail__content">
         {{ content }}
+      </section>
+      {% endif %}
+
+      {% if page.bibtex %}
+      <section class="publication-detail__citation" id="publication-citation" aria-labelledby="publication-citation-heading">
+        <h2 id="publication-citation-heading">Citation</h2>
+        <details>
+          <summary>BibTeX</summary>
+          <textarea data-citation-fallback readonly rows="8" spellcheck="false" aria-label="BibTeX citation for {{ page.title | escape }}">{{ page.bibtex | escape }}</textarea>
+          <button class="c-updates-filter__btn" type="button" hidden data-copy-bibtex="{{ page.bibtex | escape }}">Copy citation</button>
+          <span data-citation-status role="status" aria-live="polite"></span>
+        </details>
       </section>
       {% endif %}
 

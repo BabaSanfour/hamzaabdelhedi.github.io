@@ -1,5 +1,6 @@
 # Publication Card
-# Card component used to show individual publications in a list or grid.
+# Layouts: compact (Home previews), list (text-only publication index),
+# vertical (image-led grid), or default rich card. Canonical data stays in project.
 
 blueprint:
   name: publication-card

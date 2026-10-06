@@ -8,6 +8,9 @@ authors:
 year:
 venue:
 date:
+# Use year when no exact date is verified; use day with a verified date above.
+# Jekyll supplies a build-time date for undated documents, so precision is explicit.
+date_precision: year
 type:
 status:
 featured:
