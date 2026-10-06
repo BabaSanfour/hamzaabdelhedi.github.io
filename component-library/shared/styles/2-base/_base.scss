@@ -12,6 +12,11 @@ html {
   --color-rule: #{$border-color};
   --color-primary: #{$primary-color};
   --color-secondary: #{$secondary-color};
+  --color-accent: #{$accent-color};
+  --color-accent-surface: #{$accent-surface};
+  --color-secondary-surface: #{$secondary-surface};
+  --color-warm-accent: #{$warm-accent};
+  --color-warm-surface: #{$warm-surface};
   --color-focus: #{$focus-color};
   --color-control-border: #{$control-border-color};
 

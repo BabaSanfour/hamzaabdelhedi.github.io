@@ -45,17 +45,24 @@
 
 	&__header-card {
 		grid-area: header;
+		padding: $space-5 $space-6;
+		margin-bottom: $space-6;
+		border: 1px solid $border-color;
+		border-left: 3px solid $secondary-color;
+		border-radius: $radius-md;
 		background: $white;
-		padding: 24px 32px;
-		border-radius: 20px;
-		box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
-		margin-bottom: 32px;
-		border-left: 4px solid $primary-color;
+		box-shadow: none;
 
 		@media only screen and (max-width: $mobile) {
-			padding: 20px;
-			margin-bottom: 24px;
+			padding: $space-4;
 		}
+	}
+
+	&__signal {
+		margin-bottom: $space-4;
+		color: $accent-color;
+
+		.visual-icon--signal { width: 128px; height: auto; }
 	}
 
 	&__eyebrow {

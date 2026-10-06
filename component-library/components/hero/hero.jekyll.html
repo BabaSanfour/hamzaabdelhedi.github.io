@@ -44,10 +44,11 @@
 {% assign hero_position = hero_degree %}
 {% endif %}
 
-<section class="{{c}}">
+<section class="{{c}}{% if include.show_signal_motif %} {{c}}--with-signal{% endif %}">
   <div class="container">
     <div class="{{c}}__inner{% unless hero_image and hero_image != '' %} {{c}}__inner--text-only{% endunless %}">
       <div class="{{c}}__header-card">
+        {% if include.show_signal_motif %}<div class="{{c}}__signal">{% bookshop_include visual-icon name='signal' %}</div>{% endif %}
         {% if hero_eyebrow %}<p class="{{c}}__eyebrow">{{ hero_eyebrow }}</p>{% endif %}
         <h1 class="{{c}}__name">{{ hero_title }}</h1>
         {% if include.phonetic or hero_pronouns %}

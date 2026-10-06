@@ -1,6 +1,12 @@
-/* R3 teal/navy proposal. Teal is darkened for text and white-label contrast. */
+/* Original teal/navy family: bright decoration, darker readable controls. */
 $primary-color: #006b78;
 $secondary-color: #003687;
+$accent-color: #1495a7;
+$accent-surface: #e3f5f4;
+$secondary-surface: #e7edf7;
+/* Warm decoration only; use ink/navy for text and teal for controls. */
+$warm-accent: #B85C4A;
+$warm-surface: #FFF0E8;
 $white: #ffffff;
 $dark: #110e38;
 $gray: #536176;

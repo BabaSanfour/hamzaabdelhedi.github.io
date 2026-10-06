@@ -25,6 +25,7 @@ blueprint:
   image_alt: ""
   circular_image: false
   show_spotlight: false
+  show_signal_motif: false
   show_social_icons: true
   email: ""
   cta_button: ""
@@ -58,6 +59,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  show_signal_motif:
+    type: switch
+    comment: Add a static decorative brain-signal trace above the greeting.
   show_spotlight:
     type: switch
     comment: Show rotating publication and media highlights below the portrait.

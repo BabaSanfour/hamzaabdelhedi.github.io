@@ -1,0 +1,39 @@
+/* Static, decorative marks share one shape and color vocabulary. */
+.visual-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.section-title--marked {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  > span:last-child { min-width: 0; }
+}
+
+.section-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: $primary-color;
+  background: $accent-surface;
+
+  &--navy {
+    color: $secondary-color;
+    background: $secondary-surface;
+  }
+
+  &--warm {
+    color: $warm-accent;
+    background: $warm-surface;
+  }
+}
+
+.visual-icon__secondary { color: $secondary-color; }
