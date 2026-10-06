@@ -11,6 +11,7 @@ layout: default
       <div class="contaniner__inner">
         <div class="row">
           {% for post in page.posts %}
+          {% assign linked_news = site.data.updates | where: 'id', post.update_id | first %}
           {% assign post_url = post.url %}
           {% assign post_url_ending = post_url | slice: -5, 5 %}
           {% unless post_url_ending == ".html" %}{% assign post_url = post_url | append: ".html" %}{% endunless %}
@@ -37,11 +38,11 @@ layout: default
                 {% endif %}
           
                 <h2 class="article__title">
-                  <a href="{{ post_url | relative_url }}">{{ post.title }}</a>
+                  <a href="{{ post_url | relative_url }}">{{ linked_news.title | default: post.title | escape }}</a>
                 </h2>
           
                 <p class="article__excerpt">
-                  {% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | truncate: 120 }}{% endif
+                  {% if linked_news.description %}{{ linked_news.description | escape }}{% elsif post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | truncate: 120 }}{% endif
                   %}
                 </p>
           

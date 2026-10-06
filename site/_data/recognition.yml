@@ -1,4 +1,4 @@
-# Full award record from cv-latex/awards.tex. Featured records also appear on About.
+# CV-backed records; Faculty of Medicine amount corrected to C$25,000/year by owner, 2026-10-05.
 - id: imbizo
   group: scholarships
   featured: true
@@ -21,7 +21,7 @@
   title: Merit Scholarship, AI Research Fund
   date_label: 2024–2027
   organization: Faculty of Medicine, Université de Montréal
-  amount: C$15,000/year
+  amount: C$25,000/year
   summary: Support for my AI research at Université de Montréal.
 - id: computer-science-merit
   group: scholarships
@@ -68,9 +68,6 @@
   date_label: '2022'
   organization: Institut intelligence et données
   amount: C$200
-  links:
-    - label: Award-winning poster presentation
-      url: /presentations/#main-2022
 - id: ieee-ambassador
   group: distinctions
   title: Best Ambassador, Entrepreneurship Initiative

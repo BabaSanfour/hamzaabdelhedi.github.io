@@ -1,89 +1,27 @@
 {% if include.show_posts %}
-<div class="container">
-
-  {% assign all_tags = "" %}
-  {% for item in site.data.updates %}
-  {% for tag in item.tags %}
-  {% assign all_tags = all_tags | append: tag | append: "," %}
-  {% endfor %}
-  {% endfor %}
-  {% assign unique_tags = all_tags | split: "," | uniq | sort %}
-
-  {% assign all_years = "" %}
-  {% for item in site.data.updates %}
-  {% assign year = item.date | date: "%Y" %}
-  {% assign all_years = all_years | append: year | append: "," %}
-  {% endfor %}
-  {% assign unique_years = all_years | split: "," | uniq | sort | reverse %}
-
-  <div class="c-updates-filter-group" aria-label="Update filters">
-    <div class="c-updates-filter js-tags-container" id="updates-category-filters" role="group" aria-label="Filter updates by category">
-      <button type="button" class="c-updates-filter__btn js-category-filter active" data-filter="all" aria-pressed="true">All Categories</button>
-      {% for tag in unique_tags %}
-      {% if tag != "" %}
-      <button type="button" class="c-updates-filter__btn js-category-filter {% if forloop.index > 10 %}is-hidden{% endif %}"
-              data-filter="{{ tag | downcase | escape }}" aria-pressed="false">{{ tag | escape }}</button>
-      {% endif %}
-      {% endfor %}
-      {% if unique_tags.size > 10 %}
-      <button type="button" class="c-updates-filter__btn c-updates-filter__btn--more js-tags-toggle" aria-expanded="false" aria-controls="updates-category-filters">More categories</button>
-      {% endif %}
-    </div>
-
-    <div class="c-updates-filter c-updates-filter--years" role="group" aria-label="Filter updates by year">
-      <button type="button" class="c-updates-filter__btn js-year-filter active" data-year="all" aria-pressed="true">All Years</button>
-      {% for year in unique_years %}
-      {% if year != "" %}
-      <button type="button" class="c-updates-filter__btn js-year-filter" data-year="{{ year | escape }}" aria-pressed="false">{{ year | escape }}</button>
-      {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-
-  <p class="c-updates-results" id="updates-results" role="status" aria-live="polite" tabindex="-1"></p>
-
-  <div class="c-updates-timeline js-updates-list">
-    {% for item in site.data.updates %}
-    {% bookshop updates-list-item
-    title=item.title
-    date=item.date
-    description=item.description
-    tags=item.tags
-    image=item.image
-    link=item.link
-    icon=item.icon
-    %}
+{% assign news_items = site.data.updates | sort: 'date' | reverse %}
+{% assign news_categories = news_items | map: 'category' | uniq | sort %}
+{% capture news_years %}{% for news in news_items %}{{ news.date | date: '%Y' }},{% endfor %}{% endcapture %}
+{% assign news_years = news_years | split: ',' | uniq %}
+<form class="news-controls" role="search" aria-label="Find updates" hidden data-news-controls>
+  <div class="news-controls__search"><label for="update-search">Search news</label><input type="search" id="update-search" placeholder="Search titles, topics, or related work"></div>
+  <div><label for="update-category">Topic</label><select id="update-category"><option value="all">All topics</option>{% for category in news_categories %}<option value="{{ category | escape }}">{{ category }}</option>{% endfor %}</select></div>
+  <div><label for="update-year">Year</label><select id="update-year"><option value="all">All years</option>{% for year in news_years %}<option value="{{ year }}">{{ year }}</option>{% endfor %}</select></div>
+  <button type="reset" class="news-controls__reset">Clear filters</button>
+</form>
+<p class="news-results" id="updates-results" role="status" aria-live="polite">{{ news_items.size }} updates</p>
+<div class="news-archive">
+{% for year in news_years %}
+  <section class="news-year" data-news-year aria-labelledby="news-year-{{ year }}">
+    <h2 id="news-year-{{ year }}">{{ year }}</h2>
+    <div class="news-year__items">
+    {% for news in news_items %}
+      {% assign item_year = news.date | date: '%Y' %}
+      {% if item_year == year %}{% include news-item.html item=news %}{% endif %}
     {% endfor %}
-  </div>
-
-  <p class="c-updates-no-results" id="updates-no-results" hidden>No updates match these filters.</p>
-
-  <div class="c-updates-pagination" id="js-updates-pagination">
-    <!-- JavaScript will dynamically inject pagination buttons here -->
-  </div>
+    </div>
+  </section>
+{% endfor %}
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const archive = document.querySelector('.updates-page');
-  const tagsToggle = archive?.querySelector('.js-tags-toggle');
-  const tagsContainer = archive?.querySelector('.js-tags-container');
-  
-      tagsToggle?.addEventListener('click', () => {
-        const hiddenTags = tagsContainer.querySelectorAll('.js-category-filter.is-hidden');
-        if (hiddenTags.length > 0) {
-          hiddenTags.forEach(t => t.classList.remove('is-hidden'));
-          tagsToggle.textContent = 'Fewer categories';
-          tagsToggle.setAttribute('aria-expanded', 'true');
-        } else {
-          const tags = tagsContainer.querySelectorAll('.js-category-filter');
-          tags.forEach((t, index) => {
-            if (index > 10) t.classList.add('is-hidden');
-          });
-          tagsToggle.textContent = 'More categories';
-          tagsToggle.setAttribute('aria-expanded', 'false');
-        }
-  });
-});
-</script>
+<p class="news-empty" id="updates-no-results" hidden>No updates match your search. Try another topic or clear the filters.</p>
 {% endif %}

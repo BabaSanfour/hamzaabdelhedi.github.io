@@ -2,71 +2,45 @@
 layout: default
 ---
 
+{% assign story_news = site.data.updates | where: 'id', page.update_id | first %}
 {% if page.external_url %}
 <div class="post-redirect">
   <div class="container">
     <div class="post-redirect__inner">
-      <h1 class="post-redirect__title">{{ page.title | escape }}</h1>
+      <h1 class="post-redirect__title">{{ story_news.title | default: page.title | escape }}</h1>
       <p class="post-redirect__message">This update lives on an external page. You should be redirected automatically, but you can jump there manually below.</p>
       <a class="c-button c-button--primary c-button--small post-redirect__button" href="{{ page.external_url }}" target="_blank" rel="noopener noreferrer">Open the update</a>
     </div>
   </div>
 </div>
 {% else %}
-<div class="post-top">
-  <div class="container">
-    <div class="row">
-
+<div class="news-story">
+  <p class="news-story__back"><a href="{{ '/updates/' | relative_url }}{% if page.update_id %}#{{ page.update_id }}{% endif %}">← News &amp; updates</a></p>
+  <article>
+    <header class="news-story__heading">
+      <div class="news-story__meta">
+        {% if story_news.category %}<a href="{{ '/updates/' | relative_url }}?category={{ story_news.category | url_encode }}">{{ story_news.category | escape }}</a>{% endif %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %b %Y' }}</time>
+      </div>
+      <h1>{{ story_news.title | default: page.title | escape }}</h1>
+    </header>
+    <div class="news-story__body{% if page.image %} news-story__body--with-image{% endif %}">
+      <div class="news-story__copy">{{ content }}</div>
       {% if page.image %}
-      <div class="col col-12">
-        <div class="post-image">
-          <img class="post-image__img" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}" decoding="async">
-        </div>
-      </div>
+      <figure class="news-story__figure">
+        <a href="{{ page.image | relative_url }}" aria-label="View full image: {{ page.image_alt | default: page.title | escape }}">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}" decoding="async">
+        </a>
+        <figcaption><a href="{{ page.image | relative_url }}">View full image ↗</a></figcaption>
+      </figure>
       {% endif %}
-
-      <div class="col col-12">
-        <div class="post__info">
-
-          {% if page.tags.size >= 1 %}
-          <div class="post-tags">
-            {% for tag in page.tags %}
-              {% assign tag_link = tag | tag_url | replace: '..html', '.html' %}
-              <a href="{{ tag_link | relative_url }}" class="post-tags__tag" rel="tag">{{ tag }}</a>
-            {% endfor %}
-          </div>
-          {% endif %}
-
-          <h1 class="post__title">{{ page.title | escape }}</h1>
-
-          <div class="post__meta">
-
-            <div class="post__meta-bottom">
-              <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-<div class="container">
-  <article class="post">
-    <div class="post__content">
-      {{ content }}
-    </div>
+    {% if page.update_id %}
+      {% assign story_ref = 'update:' | append: page.update_id %}
+      {% include connected-content.html ref=story_ref heading='Related work' %}
+    {% endif %}
   </article>
+  {% include post-navigation.html %}
+  {% include related-posts.html %}
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col col-12">
-      {% include post-navigation.html %}
-    </div>
-  </div>
-</div>
-
-{% include related-posts.html %}
-
 {% endif %}

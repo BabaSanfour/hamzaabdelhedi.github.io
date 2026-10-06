@@ -1,7 +1,7 @@
 /*
  * Site composition and integration styles
  *
- * This is the final source layer in main.scss. It gives the active site
+ * This integration layer in main.scss gives the active site
  * surfaces one token-driven treatment while leaving collection data and
  * Bookshop interfaces unchanged.
  */
@@ -102,15 +102,6 @@ summary:focus-visible {
 
 .nav__list .nav__item .nav__link.active-link::after {
   background: var(--color-primary);
-}
-
-.main-nav .social__link {
-  color: var(--color-muted);
-}
-
-.main-nav .social__link:hover,
-.main-nav .social__link:focus-visible {
-  color: $white;
 }
 
 .nav-button {
@@ -381,10 +372,6 @@ summary:focus-visible {
   border-color: var(--color-rule);
 }
 
-.publications-controls .c-updates-filter {
-  gap: var(--space-2);
-}
-
 .publications-results {
   color: var(--color-muted);
 }
@@ -496,14 +483,6 @@ summary:focus-visible {
   font-size: 24px;
 }
 
-.updates-trajectory .updates-column .compact-updates-timeline {
-  max-height: none;
-  overflow: visible;
-  padding-right: 0;
-  min-width: 0;
-  max-width: 100%;
-}
-
 .updates-trajectory .interactive-trajectory {
   padding: var(--space-5);
   border: 1px solid var(--color-rule);
@@ -522,113 +501,14 @@ summary:focus-visible {
   color: var(--color-muted);
 }
 
-.c-updates-list-item {
-  padding-bottom: var(--space-4);
-}
-
-.c-updates-list-item__date {
-  color: var(--color-muted);
-}
-
-.c-updates-list-item__content-col::before {
-  background: var(--color-rule);
-}
-
-.c-updates-list-item__node {
-  border-color: var(--color-bg);
-  background: var(--color-secondary);
-}
-
-.c-updates-list-item__summary {
-  color: var(--color-text);
-}
-
-.c-updates-list-item__text a:hover {
-  color: var(--color-primary);
-}
-
-.c-updates-list-item__thumbnail {
-  border-color: var(--color-rule);
-  box-shadow: none;
-}
-
-.c-updates-list-item__tag {
-  border: 1px solid rgba($secondary-color, 0.2);
-  border-radius: var(--radius-sm);
-  color: var(--color-secondary);
-  background: rgba($secondary-color, 0.06);
-}
-
 .updates-page {
   padding-top: var(--space-7);
   padding-bottom: var(--space-8);
 }
 
-.updates-page > .row > .col {
-  width: 100%;
-}
-
-.updates-page .updates-trajectory.split-layout {
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-rule);
-}
-
-.updates-page .updates-page__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-5);
-  margin-bottom: var(--space-3);
-}
-
-.updates-page .updates-page__title {
-  margin: 0;
-  color: var(--color-text);
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1;
-}
-
-.updates-page .updates-page__description {
-  margin: 0;
-  color: var(--color-muted);
-}
-
-.updates-page .header-search {
-  flex: 0 1 300px;
-}
-
-.updates-page .publications-controls__search {
-  position: relative;
-}
-
-.updates-page .publications-controls__search input {
-  width: 100%;
-  padding-left: var(--space-6);
-}
-
-.updates-page .publications-controls__search i {
-  position: absolute;
-  top: 50%;
-  left: var(--space-3);
-  z-index: 1;
-  color: var(--color-muted);
-  transform: translateY(-50%);
-}
-
-.is-hidden {
-  display: none !important;
-}
-
-.c-updates-filter__btn--more {
-  border-style: dashed;
-  color: var(--color-primary);
-}
-
-/* Profile, research detail, and posts */
+/* Profile and research detail */
 .profile-page,
-.research-project,
-.post {
+.research-project {
   color: var(--color-text);
 }
 
@@ -636,14 +516,12 @@ summary:focus-visible {
 .profile-page h2,
 .profile-page h3,
 .research-project h1,
-.research-project h2,
-.post__title {
+.research-project h2 {
   color: var(--color-text);
 }
 
 .profile-page p,
-.research-project p,
-.post__content {
+.research-project p {
   line-height: 1.7;
 }
 
@@ -675,49 +553,24 @@ summary:focus-visible {
 }
 
 .research-project a,
-.profile-page a,
-.post a {
+.profile-page a {
   color: var(--color-primary);
 }
 
 .research-project a.c-button--primary,
-.profile-page a.c-button--primary,
-.post a.c-button--primary {
+.profile-page a.c-button--primary {
   color: $white;
 }
 
 .research-project a.c-button--secondary,
-.profile-page a.c-button--secondary,
-.post a.c-button--secondary {
+.profile-page a.c-button--secondary {
   color: var(--color-text);
 }
 
-.post-top {
-  padding-top: var(--space-7);
-}
-
-.post-image {
-  min-height: 280px;
-  border: 1px solid var(--color-rule);
-  border-radius: var(--radius-md);
-  background: var(--color-blue-gray, #eef0f3);
-}
-
-.post__title {
-  max-width: 100%;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-}
-
-.post__date,
 .article-info .article__date {
   color: var(--color-muted);
   background: none;
   -webkit-text-fill-color: currentColor;
-}
-
-.post {
-  max-width: 100%;
-  margin-bottom: var(--space-7);
 }
 
 .top {
@@ -729,19 +582,6 @@ summary:focus-visible {
 .top:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-}
-
-.post__navigation .post__prev,
-.post__navigation .post__next {
-  padding: var(--space-5);
-  border: 1px solid var(--color-rule);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
-
-.post__navigation .post__nav,
-.post__navigation .post__nav__title {
-  color: var(--color-text);
 }
 
 .article__inner {
@@ -923,9 +763,6 @@ summary:focus-visible {
     gap: var(--space-1);
   }
 
-  .c-updates-list-item__date-col {
-    flex-basis: 74px;
-  }
 }
 
 @media (max-width: 240px) {

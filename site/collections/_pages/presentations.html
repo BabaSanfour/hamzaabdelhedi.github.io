@@ -24,7 +24,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign talks = site.data.presentations | where: 'group', 'talks' %}
-      {% for record in talks %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in talks %}{% include activity-record.html record=record kind="presentations" %}{% endfor %}
     </ul>
   </section>
 
@@ -34,7 +34,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign posters = site.data.presentations | where: 'group', 'posters' %}
-      {% for record in posters %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in posters %}{% include activity-record.html record=record kind="presentations" %}{% endfor %}
     </ul>
   </section>
   {% include activity-navigation.html %}

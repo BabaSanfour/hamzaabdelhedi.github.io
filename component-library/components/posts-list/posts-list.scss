@@ -1,45 +1,4 @@
-/* Posts List / Updates Filter */
-.c-updates-filter-group {
-  margin-bottom: 40px;
-}
-
-.c-updates-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 40px;
-  justify-content: center;
-
-  &__btn {
-    appearance: none;
-    background: transparent;
-    border: 1px solid $control-border-color;
-    border-radius: $radius-sm;
-    padding: 8px 12px;
-    min-height: 44px;
-    font-size: 14px;
-    font-weight: 600;
-    color: $text-color;
-    cursor: pointer;
-    transition: all 0.25s ease;
-
-    &:hover,
-    &:focus-visible {
-      background: $primary-color;
-      border-color: $primary-color;
-      color: $white;
-      box-shadow: none;
-    }
-
-    &.active {
-      background: $primary-color;
-      border-color: $primary-color;
-      color: $white;
-      box-shadow: none;
-    }
-  }
-}
-
+/* Cards used by the historical tag archives. */
 .article {
   margin-bottom: 20px;
   @media only screen and (max-width: $tablet) {

@@ -91,7 +91,7 @@
           {% for record in recognition_highlights %}
           <li>
             <p class="profile-page__date">{{ record.date_label | escape }}</p>
-            <h3>{{ record.title | escape }}</h3>
+            <h3><a href="{{ '/awards/#' | append: record.id | relative_url }}">{{ record.title | escape }}</a></h3>
             <p>{{ record.summary | escape }}</p>
           </li>
           {% endfor %}

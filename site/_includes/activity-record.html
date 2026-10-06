@@ -17,26 +17,14 @@
       {% for detail in activity.details %}<li>{{ detail | escape }}</li>{% endfor %}
     </ul>
     {% endif %}
-    {% if activity.links or activity.research_id or activity.software_id or activity.publication_id %}
+    {% if activity.links.size > 0 %}
     <ul class="activity-record__links" aria-label="Resources for {{ activity.title | escape }}">
       {% for link in activity.links %}
-        {% assign activity_url = link.url %}
-        {% unless activity_url contains '://' %}{% assign activity_url = activity_url | relative_url %}{% endunless %}
-        <li><a href="{{ activity_url | escape }}">{{ link.label | escape }} <span aria-hidden="true">↗</span></a></li>
+        <li><a href="{{ link.url | relative_url }}">{{ link.label | escape }} <span aria-hidden="true">{% if link.url contains '://' %}↗{% else %}→{% endif %}</span></a></li>
       {% endfor %}
-      {% if activity.research_id %}
-        {% assign activity_project = site.projects | where: 'slug', activity.research_id | first %}
-        {% if activity_project %}<li><a href="{{ '/project/' | append: activity_project.slug | append: '.html' | relative_url }}">Related research: {{ activity_project.short_title | escape }} <span aria-hidden="true">→</span></a></li>{% endif %}
-      {% endif %}
-      {% if activity.software_id %}
-        {% assign activity_software = site.data.software | where: 'id', activity.software_id | first %}
-        {% if activity_software %}<li><a href="{{ '/software/' | relative_url }}#{{ activity_software.id }}">{{ activity_software.name | escape }} <span aria-hidden="true">→</span></a></li>{% endif %}
-      {% endif %}
-      {% if activity.publication_id %}
-        {% assign activity_paper = site.publications | where: 'slug', activity.publication_id | first %}
-        {% if activity_paper %}<li><a href="{{ '/publications/' | append: activity_paper.slug | append: '.html' | relative_url }}">Related conference paper <span aria-hidden="true">→</span></a></li>{% endif %}
-      {% endif %}
     </ul>
     {% endif %}
+    {% assign activity_ref = include.kind | append: ':' | append: activity.id %}
+    {% include connected-content.html ref=activity_ref compact=true %}
   </div>
 </li>

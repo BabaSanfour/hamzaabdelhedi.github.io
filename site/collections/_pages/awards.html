@@ -22,7 +22,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign scholarships = site.data.recognition | where: 'group', 'scholarships' %}
-      {% for record in scholarships %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in scholarships %}{% include activity-record.html record=record kind="awards" %}{% endfor %}
     </ul>
   </section>
   <section class="activity-section" aria-labelledby="distinctions">
@@ -31,7 +31,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign distinctions = site.data.recognition | where: 'group', 'distinctions' %}
-      {% for record in distinctions %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in distinctions %}{% include activity-record.html record=record kind="awards" %}{% endfor %}
     </ul>
   </section>
   <section class="activity-section" aria-labelledby="travel">
@@ -40,7 +40,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign grants = site.data.recognition | where: 'group', 'travel' %}
-      {% for record in grants %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in grants %}{% include activity-record.html record=record kind="awards" %}{% endfor %}
     </ul>
   </section>
   {% include activity-navigation.html %}

@@ -1,0 +1,26 @@
+{%- assign ref_parts = include.ref | split: ':' -%}
+{%- assign ref_kind = ref_parts[0] -%}
+{%- assign ref_id = ref_parts[1] -%}
+{%- assign ref_record = nil -%}
+{%- assign ref_url = nil -%}
+{%- case ref_kind -%}
+  {%- when 'research' -%}
+    {%- assign ref_record = site.projects | where: 'slug', ref_id | first -%}
+    {%- assign ref_url = '/project/' | append: ref_id | append: '.html' -%}
+  {%- when 'publication' -%}
+    {%- assign ref_record = site.publications | where: 'slug', ref_id | first -%}
+    {%- assign ref_url = '/publications/' | append: ref_id | append: '.html' -%}
+  {%- when 'update' -%}
+    {%- assign ref_record = site.data.updates | where: 'id', ref_id | first -%}
+    {%- assign ref_url = '/updates/#' | append: ref_id -%}
+  {%- else -%}
+    {%- assign ref_data = ref_kind -%}
+    {%- assign ref_route = ref_kind -%}
+    {%- if ref_kind == 'awards' -%}{%- assign ref_data = 'recognition' -%}{%- endif -%}
+    {%- if ref_kind == 'mentoring' -%}{%- assign ref_route = 'teaching' -%}{%- endif -%}
+    {%- assign ref_record = site.data[ref_data] | where: 'id', ref_id | first -%}
+    {%- assign ref_url = '/' | append: ref_route | append: '/#' | append: ref_id -%}
+{%- endcase -%}
+{%- if ref_record -%}
+<li><span class="connected-links__kind">{{ include.label | escape }}</span><a href="{{ ref_url | relative_url }}">{{ ref_record.short_title | default: ref_record.title | default: ref_record.name | escape }} <span aria-hidden="true">→</span></a></li>
+{%- endif -%}

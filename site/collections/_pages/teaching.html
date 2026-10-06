@@ -27,7 +27,7 @@ layout: default
     </div>
     <ul class="activity-list activity-list--featured">
       {% assign resources = site.data.teaching | where: 'group', 'resources' %}
-      {% for record in resources %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in resources %}{% include activity-record.html record=record kind="teaching" %}{% endfor %}
     </ul>
   </section>
 
@@ -38,7 +38,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign workshops = site.data.teaching | where: 'group', 'workshops' %}
-      {% for record in workshops %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in workshops %}{% include activity-record.html record=record kind="teaching" %}{% endfor %}
     </ul>
   </section>
 
@@ -49,7 +49,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign courses = site.data.teaching | where: 'group', 'courses' %}
-      {% for record in courses %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in courses %}{% include activity-record.html record=record kind="teaching" %}{% endfor %}
     </ul>
   </section>
 
@@ -59,7 +59,7 @@ layout: default
       <p>Projects I have supported across brain-signal analysis, machine learning, and neural representations.</p>
     </div>
     <ul class="activity-list">
-      {% for record in site.data.mentoring %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in site.data.mentoring %}{% include activity-record.html record=record kind="mentoring" %}{% endfor %}
     </ul>
   </section>
   {% include activity-navigation.html %}

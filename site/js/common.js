@@ -72,24 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =======================
-  // Zoom Image
-  ======================= */
-  var lightense = document.querySelector(".post img");
-  var imageLink = document.querySelectorAll(".post a img");
-
-  imageLink.forEach(function (image) {
-    image.parentNode.classList.add("image-link");
-    image.classList.add("no-lightense");
-  });
-
-  if (lightense && typeof Lightense === "function") {
-    Lightense(".post img:not(.no-lightense)", {
-      padding: 60,
-      offset: 30
-    });
-  }
-
-  /* =======================
   // Scroll to top
   ======================= */
   var btnScrollToTop = document.querySelector(".top");

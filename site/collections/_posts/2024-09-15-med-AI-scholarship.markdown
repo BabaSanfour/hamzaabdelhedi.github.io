@@ -1,11 +1,12 @@
 ---
-title:  "Faculty of Medicine AI Merit Research Scholarship: 25000CAD/year" 
+title: "Faculty of Medicine AI Merit Research Scholarship"
 date:   2024-09-15 
 image:  '/images/other/fac-med-AI-scholarship.jpeg'
 tags:   
     - Ph.D
     - Scholarship
     - Faculty of Medicine
+update_id: medicine-merit
 ---
 
 Awarded the Faculty of Medicine AI Merit Research Scholarship for the next three years ! A fantastic start to my PhD journey 🎉.

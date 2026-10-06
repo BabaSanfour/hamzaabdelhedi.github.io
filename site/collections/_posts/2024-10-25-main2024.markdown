@@ -1,5 +1,5 @@
 ---
-title:  Educational Tutorial - MAIN Montreal AI and Neuroscience 2024 
+title: "Educational Tutorial @ MAIN 2024"
 date:   2024-10-25
 image:  '/images/confs/main2024.jpeg'
 tags:   
@@ -7,6 +7,7 @@ tags:
     - MAIN
     - Conf
     - UNIQUE
+update_id: main-2024
 ---
 
 From the 22nd to the 25th of October, I attended the Montreal AI and Neuroscience conference (MAIN) for the third time! This time was extra special because I had the privilege of leading a workshop on Representational Similarity Analysis (RSA) during the MAIN educational sessions! 🚀
@@ -22,6 +23,6 @@ A big thanks to the UNIQUE center for organizing this event with an amazing dive
 </div>
 
 
-[MAIN Website](https://www.main2024.org/) | [MAIN Educational Website](https://main-educational.github.io/intro.html#) |  [Session Materials](https://github.com/BabaSanfour/main-edu-courses-rsa)
+[MAIN Website](https://www.main2024.org/) · [MAIN Educational Website](https://main-educational.github.io/intro.html#) · [Session Materials](https://github.com/BabaSanfour/main-edu-courses-rsa)
 
 #NeuroAI #Research #MAIN2024 #RepresentationalSimilarityAnalysis

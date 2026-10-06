@@ -129,23 +129,18 @@ pre {
   word-break: break-all;
 }
 
-img,
-.lightense-wrap {
+img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
 }
 
 img,
-.lightense-wrap,
 .gallery {
 
   img {
     border-radius: 16px;
-    
-    &.lightense-open {
-      border-radius: 0;
-    }
+
   }
 
   &+em {

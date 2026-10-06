@@ -1,0 +1,185 @@
+# Explicit bidirectional relationships; labels describe the connection.
+- from: community:mne-sprint
+  to: software:mne-python
+  forward: Software
+  reverse: Related community activity
+- from: mentoring:syrine-mattousi
+  to: research:pediatric-clinical-eeg
+  forward: Related research
+  reverse: Research mentoring
+- from: mentoring:fouad-lbakali
+  to: research:eeg-meg-foundation-models
+  forward: Related research
+  reverse: Research mentoring
+- from: mentoring:alexandre-louis
+  to: research:brain-states-and-cognition
+  forward: Related research
+  reverse: Research mentoring
+- from: mentoring:mehdi-jerbi
+  to: research:pediatric-clinical-eeg
+  forward: Related research
+  reverse: Research mentoring
+- from: mentoring:anis-abdeladim
+  to: research:face-familiarity
+  forward: Related research
+  reverse: Research mentoring
+- from: mentoring:meriem-rebaani
+  to: research:face-familiarity
+  forward: Related research
+  reverse: Research mentoring
+- from: presentations:mne-denoise-talk
+  to: software:mne-denoise
+  forward: Software
+  reverse: Related talk
+- from: presentations:circa-2024
+  to: research:face-familiarity
+  forward: Related research
+  reverse: Presentation
+- from: presentations:naisys-2024
+  to: research:face-familiarity
+  forward: Related research
+  reverse: Presentation
+- from: presentations:ccn-2024
+  to: publication:ccn-2024-face-dynamics
+  forward: Conference paper
+  reverse: Presentation
+- from: presentations:cosyne-2024
+  to: research:face-familiarity
+  forward: Related research
+  reverse: Presentation
+- from: presentations:main-2022
+  to: research:face-familiarity
+  forward: Related research
+  reverse: Presentation
+- from: update:brainhack-2026
+  to: teaching:brainhack-2026
+  forward: Workshop
+  reverse: News
+- from: update:brainhack-2026
+  to: research:eeg-meg-foundation-models
+  forward: Related research
+  reverse: News
+- from: update:mne-sprint-2026
+  to: presentations:mne-denoise-talk
+  forward: Talk
+  reverse: News
+- from: update:mne-sprint-2026
+  to: community:mne-sprint
+  forward: Community activity
+  reverse: News
+- from: update:mne-sprint-2026
+  to: software:mne-denoise
+  forward: Software
+  reverse: News
+- from: update:imbizo-2026
+  to: awards:imbizo
+  forward: Scholarship
+  reverse: News
+- from: update:pathfinders-2025
+  to: teaching:pathfinders
+  forward: Teaching
+  reverse: News
+- from: update:unique-phd
+  to: awards:unique-phd
+  forward: Scholarship
+  reverse: News
+- from: update:sainte-justine
+  to: research:pediatric-clinical-eeg
+  forward: Related research
+  reverse: News
+- from: update:amai-talk
+  to: community:against-military-ai
+  forward: Reading group
+  reverse: News
+- from: update:amai-group
+  to: community:against-military-ai
+  forward: Reading group
+  reverse: News
+- from: update:main-2024
+  to: teaching:main-rsa
+  forward: Workshop
+  reverse: News
+- from: update:naisys-2024
+  to: presentations:naisys-2024
+  forward: Poster
+  reverse: News
+- from: update:naisys-2024
+  to: research:face-familiarity
+  forward: Related research
+  reverse: News
+- from: update:medicine-merit
+  to: awards:medicine-merit
+  forward: Scholarship
+  reverse: News
+- from: update:psy2007-2024
+  to: teaching:psy2007
+  forward: Course
+  reverse: News
+- from: update:ta-2025
+  to: teaching:psy2007
+  forward: Course
+  reverse: News
+- from: update:ta-2025
+  to: teaching:psy2008
+  forward: Course
+  reverse: News
+- from: update:cosyne-2024
+  to: presentations:cosyne-2024
+  forward: Poster
+  reverse: News
+- from: update:cosyne-2024
+  to: research:face-familiarity
+  forward: Related research
+  reverse: News
+- from: update:unique-gathering
+  to: community:unique-committee
+  forward: Community service
+  reverse: News
+- from: update:unique-retreat
+  to: community:unique-committee
+  forward: Community service
+  reverse: News
+- from: update:scaling-2023
+  to: presentations:scaling-2023
+  forward: Talk
+  reverse: News
+- from: update:cuttingeeg-2023
+  to: community:cuttingeeg
+  forward: Organizing
+  reverse: News
+- from: update:psy2008-2023
+  to: teaching:psy2008
+  forward: Course
+  reverse: News
+- from: update:circa-2023
+  to: awards:circa
+  forward: Scholarship
+  reverse: News
+- from: teaching:brainhack-2026
+  to: research:eeg-meg-foundation-models
+  forward: Related research
+  reverse: Workshop
+- from: teaching:main-rsa
+  to: research:face-familiarity
+  forward: Related methods
+  reverse: Teaching these methods
+- from: presentations:mne-denoise-talk
+  to: community:mne-sprint
+  forward: Event
+  reverse: Talk at this event
+- from: awards:main-poster
+  to: presentations:main-2022
+  forward: Award-winning poster
+  reverse: Recognition
+- from: awards:cosyne-travel
+  to: presentations:cosyne-2024
+  forward: Supported attendance
+  reverse: Travel support
+- from: awards:unique-travel
+  to: presentations:cosyne-2024
+  forward: Supported attendance
+  reverse: Travel support
+- from: teaching:cocolab-crash-course
+  to: software:mne-python
+  forward: Tool taught in the course
+  reverse: Learn with this course

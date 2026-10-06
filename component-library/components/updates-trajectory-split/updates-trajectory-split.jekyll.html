@@ -6,21 +6,14 @@
             {% if include.show_updates %}
             <div class="col col-6 col-m-12 updates-column">
                 <div class="column-header">
-                    <h2 class="column-title">{{ include.updates_title | default: "Recent Updates" }}</h2>
+                    <h2 class="column-title" id="latest-news">{{ include.updates_title | default: "Recent Updates" }}</h2>
                     <a href="{{ '/updates/' | relative_url }}" class="view-all">View all updates →</a>
                 </div>
                 {% if include.updates_description_html %}<div class="column-description">{{ include.updates_description_html }}</div>{% endif %}
-                <div class="compact-updates-timeline">
-                    {% assign home_updates_count = 0 %}
-                    {% for item in site.data.updates %}
-                    {% unless item.home_exclude %}
-                    {% assign item_img = item.image %}
-                    {% assign max_images = include.max_item_images | default: 1 %}
-                    {% if home_updates_count >= max_images %}{% assign item_img = nil %}{% endif %}
-                    {% bookshop updates-list-item title=item.title date=item.date description=item.description link=item.link icon=item.icon image=item_img tags=item.tags %}
-                    {% assign home_updates_count = home_updates_count | plus: 1 %}
-                    {% if home_updates_count >= 5 %}{% break %}{% endif %}
-                    {% endunless %}
+                <div class="home-news">
+                    {% assign recent_news = site.data.updates | sort: 'date' | reverse %}
+                    {% for news in recent_news limit: 5 %}
+                      {% include news-brief.html item=news %}
                     {% endfor %}
                 </div>
             </div>

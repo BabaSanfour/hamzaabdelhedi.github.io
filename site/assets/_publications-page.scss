@@ -1,3 +1,33 @@
+/* Shared publication actions. */
+.publications-button {
+  appearance: none;
+  background: transparent;
+  border: 1px solid $control-border-color;
+  border-radius: $radius-sm;
+  padding: 8px 12px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $text-color;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: $primary-color;
+      border-color: $primary-color;
+      color: $white;
+      box-shadow: none;
+    }
+
+    &.active {
+      background: $primary-color;
+      border-color: $primary-color;
+      color: $white;
+      box-shadow: none;
+    }
+  }
+
 $publication-text: $text-color;
 $publication-primary: $primary-color;
 $publication-secondary: $secondary-color;
@@ -80,23 +110,7 @@ $publication-white: $white;
   background: rgba($publication-text, 0.025);
 }
 
-.publications-controls .c-updates-filter {
-  justify-content: flex-start;
-  gap: 7px;
-  margin: 0;
 
-  &__btn {
-    min-height: 44px;
-    padding: 8px 12px;
-    border-radius: $radius-sm;
-    font-size: 12px;
-
-    &:focus-visible {
-      outline: 3px solid var(--color-focus);
-      outline-offset: 2px;
-    }
-  }
-}
 
 .publications-controls__actions {
   display: flex;

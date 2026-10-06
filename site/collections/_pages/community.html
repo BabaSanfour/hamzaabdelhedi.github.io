@@ -26,7 +26,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign scientific_service = site.data.community | where: 'group', 'scientific' %}
-      {% for record in scientific_service %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in scientific_service %}{% include activity-record.html record=record kind="community" %}{% endfor %}
     </ul>
   </section>
 
@@ -37,7 +37,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign leadership = site.data.community | where: 'group', 'leadership' %}
-      {% for record in leadership %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in leadership %}{% include activity-record.html record=record kind="community" %}{% endfor %}
     </ul>
   </section>
 
@@ -48,7 +48,7 @@ layout: default
     </div>
     <ul class="activity-list">
       {% assign outreach = site.data.community | where: 'group', 'outreach' %}
-      {% for record in outreach %}{% include activity-record.html record=record %}{% endfor %}
+      {% for record in outreach %}{% include activity-record.html record=record kind="community" %}{% endfor %}
     </ul>
   </section>
   {% include activity-navigation.html %}

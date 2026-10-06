@@ -1,12 +1,11 @@
-# Career facts: cv-latex/service.tex. Groups and order are editorial.
 - id: tuna
   group: scientific
   title: TuNA — Tunisians in Neuroscience and AI
   role: Founding member
   date_label: February 2025–present
   location: Montréal, Canada
-  summary: Connecting Tunisians working across neuroscience, artificial intelligence, cognitive science, and related fields.
-
+  summary: Connecting Tunisians working across neuroscience, artificial intelligence, cognitive science, and related
+    fields.
 - id: mne-sprint
   group: scientific
   title: MNE-Python Maintainers Conference and Sprint
@@ -14,8 +13,6 @@
   date_label: August 2026
   location: Meta Paris Office, Paris, France
   summary: Maintainer discussions and a development sprint for MNE-Python and the broader MNE ecosystem.
-  software_id: mne-python
-
 - id: against-military-ai
   group: scientific
   title: Against Military AI Reading Group
@@ -23,27 +20,24 @@
   date_label: March 2024–December 2025
   organization: Mila
   location: Montréal, Canada
-  summary: Organized biweekly discussions on the harms, risks, and misuse of artificial intelligence in military applications.
-  links:
-    - label: A reading-group presentation
-      url: /updates/AMAI-RG.html
-
+  summary: Organized biweekly discussions on the harms, risks, and misuse of artificial intelligence in military
+    applications.
 - id: military-ai-workshop
   group: scientific
   title: Harms and Risks of AI in the Military Workshop
   role: Organizer
   date_label: December 2024
   location: Montréal, Canada
-  summary: Co-organized a two-day workshop bringing people across disciplines together to discuss the harms and risks of military uses of AI.
-
+  summary: Co-organized a two-day workshop bringing people across disciplines together to discuss the harms and
+    risks of military uses of AI.
 - id: unique-committee
   group: scientific
   title: UNIQUE Scientific Committee
   role: Student representative
   date_label: September 2022–August 2024
   location: Montréal, Canada
-  summary: Represented student interests and helped organize MAIN, the UNIQUE Student Symposium, Fellows Get-Together, Scientific Retreat, and related activities.
-
+  summary: Represented student interests and helped organize MAIN, the UNIQUE Student Symposium, Fellows Get-Together,
+    Scientific Retreat, and related activities.
 - id: unique-dei-panel
   group: scientific
   title: DEI and Ethics in Neuro-AI Panel
@@ -51,7 +45,6 @@
   date_label: May 2024
   organization: UNIQUE Student Symposium
   location: Québec City, Canada
-
 - id: cuttingeeg
   group: scientific
   title: CuttingEEG Montreal Garden
@@ -59,7 +52,6 @@
   date_label: October 2023
   location: Montréal, Canada
   summary: Helped organize a three-day gathering of researchers and practitioners working with EEG and MEG.
-
 - id: main-careers-panel
   group: scientific
   title: Career Perspectives in Neuro-AI Panel
@@ -67,7 +59,6 @@
   date_label: December 2022
   organization: Montreal AI & Neuroscience Conference (MAIN)
   location: Montréal, Canada
-
 - id: ieee-supcom
   group: leadership
   title: IEEE SUP’COM Student Branch
@@ -75,34 +66,34 @@
   date_label: September 2018–December 2023
   location: Ariana, Tunisia
   details:
-    - "Chair, June 2019–May 2020: led committee meetings, general assemblies, events, workshops, and student projects. The branch ranked third nationally and received two IEEE Region 8 awards during this period."
-    - "Mentor, June 2020–December 2023: advised successive executive committees on strategic planning and projects."
-    - "Member, September 2018–May 2019: supported activities including IEEEXtreme and Coding 101."
-
+  - 'Chair, June 2019–May 2020: led committee meetings, general assemblies, events, workshops, and student projects.
+    The branch ranked third nationally and received two IEEE Region 8 awards during this period.'
+  - 'Mentor, June 2020–December 2023: advised successive executive committees on strategic planning and projects.'
+  - 'Member, September 2018–May 2019: supported activities including IEEEXtreme and Coding 101.'
 - id: supcom-council
   group: leadership
   title: SUP’COM Scientific Council
   role: Student representative
   date_label: March 2019–February 2020
   location: Ariana, Tunisia
-  summary: Represented students and relayed their priorities and proposals to school leadership at the Higher School of Communication of Tunis.
-
+  summary: Represented students and relayed their priorities and proposals to school leadership at the Higher School
+    of Communication of Tunis.
 - id: entrepreneurship-summit
   group: outreach
   title: Tunisia Entrepreneurship Summit
   role: Event manager
   date_label: November 2020
   location: Tunis, Tunisia
-  summary: A month-long program within the IEEE Region 8 Entrepreneurship Initiative, combining keynotes, workshops, and a final competition. The initiative received the IEEE Region 8 Best Entrepreneurship Initiative Award.
-
+  summary: A month-long program within the IEEE Region 8 Entrepreneurship Initiative, combining keynotes, workshops,
+    and a final competition. The initiative received the IEEE Region 8 Best Entrepreneurship Initiative Award.
 - id: smart-green-tunisia
   group: outreach
   title: Smart Green TUNISIA Makeathon
   role: Organizer
   date_label: September 2020
   location: Tunis, Tunisia
-  summary: A live makeathon bringing together 120 participants to develop, build, and pitch software and hardware projects.
-
+  summary: A live makeathon bringing together 120 participants to develop, build, and pitch software and hardware
+    projects.
 - id: hack-for-earth
   group: outreach
   title: Hack for Earth
@@ -110,23 +101,22 @@
   date_label: November 2019
   location: Ariana, Tunisia
   summary: A one-day hackathon with Zindi, focused on technology-based solutions to environmental challenges.
-
 - id: rightscon
   group: outreach
   title: RightsCon Tunis
   role: Volunteer
   date_label: June 2019
   location: Tunis, Tunisia
-  summary: Supported logistics and attendee coordination at the international conference on human rights in the digital age.
-
+  summary: Supported logistics and attendee coordination at the international conference on human rights in the
+    digital age.
 - id: indabax
   group: outreach
   title: Deep Learning IndabaX Tunis
   role: Organizer
   date_label: April 2019
   location: Ariana, Tunisia
-  summary: Helped organize the first local Deep Learning IndabaX edition in Tunisia, featuring AI research talks and technical workshops.
-
+  summary: Helped organize the first local Deep Learning IndabaX edition in Tunisia, featuring AI research talks
+    and technical workshops.
 - id: pacte
   group: outreach
   title: PACTE Project
@@ -134,11 +124,11 @@
   date_label: February 2019
   location: Kef, Tunisia
   summary: A breast-cancer awareness initiative serving women in rural communities in the Kef region.
-
 - id: coding-101
   group: outreach
   title: Coding 101
   role: Volunteer
   date_label: October 2018
   location: Ariana, Tunisia
-  summary: A three-day Scratch programming event for primary-school students, with a focus on encouraging girls in STEM.
+  summary: A three-day Scratch programming event for primary-school students, with a focus on encouraging girls
+    in STEM.

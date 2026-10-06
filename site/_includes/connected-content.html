@@ -1,0 +1,39 @@
+{% capture connected_items %}
+  {% for edge in site.data.connections %}
+    {% if edge.from == include.ref %}
+      {% include connection-link.html ref=edge.to label=edge.forward %}
+    {% elsif edge.to == include.ref %}
+      {% include connection-link.html ref=edge.from label=edge.reverse %}
+    {% endif %}
+  {% endfor %}
+  {% comment %}Publication backlinks derive from existing canonical project/software references.{% endcomment %}
+  {% assign context_parts = include.ref | split: ':' %}
+  {% if context_parts[0] == 'publication' %}
+    {% assign context_publication = site.publications | where: 'slug', context_parts[1] | first %}
+    {% assign explicit_research = context_publication.related_research | default: context_publication.related_research_projects %}
+    {% assign explicit_software = context_publication.related_software | default: context_publication.related_open_source %}
+    {% for context_project in site.projects %}
+      {% if context_project.publication_ids contains context_parts[1] %}
+        {% unless explicit_research contains context_project.slug %}
+          {% assign context_ref = 'research:' | append: context_project.slug %}
+          {% include connection-link.html ref=context_ref label='Related research' %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    {% for context_software in site.data.software %}
+      {% if context_software.publication_id == context_parts[1] %}
+        {% unless explicit_software contains context_software.id %}
+          {% assign context_ref = 'software:' | append: context_software.id %}
+          {% include connection-link.html ref=context_ref label='Software' %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endcapture %}
+{% assign connected_items = connected_items | strip %}
+{% if connected_items != '' %}
+<div class="connected-content{% if include.compact %} connected-content--compact{% endif %}">
+  {% unless include.compact %}<h2>{{ include.heading | default: 'Explore this work' }}</h2>{% endunless %}
+  <ul class="connected-links" aria-label="{{ include.heading | default: 'Related work and updates' | escape }}">{{ connected_items }}</ul>
+</div>
+{% endif %}

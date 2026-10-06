@@ -1,26 +1,14 @@
 ---
-title: Updates
-description: A chronological log of research progress, news, and life updates from Hamza Abdelhedi.
+title: News & updates
+description: Research, teaching, software, and community news, connected to the work behind each announcement.
 layout: default
+permalink: /updates/
 ---
-
 <div class="container updates-page">
-  <div class="row">
-    <div class="col col-12">
-      <div>
-        <div class="updates-trajectory split-layout">
-          <div class="updates-page__header">
-            <h1 class="updates-page__title">{{ page.title }}</h1>
-            <div class="publications-controls__search header-search">
-              <i class="ion ion-md-search"></i>
-              <input type="search" id="update-search" placeholder="Search updates..." aria-label="Search updates">
-            </div>
-          </div>
-          <p class="updates-page__description">A chronological log of research progress, news, and life updates.</p>
-        </div>
-
-        {% bookshop posts-list show_posts=true %}
-      </div>
-    </div>
-  </div>
+  <header class="news-heading">
+    <p class="news-heading__eyebrow">Along the way</p>
+    <h1>News &amp; updates</h1>
+    <p>Workshops, research, shared tools, and community moments. Follow each update into the work behind it.</p>
+  </header>
+  {% bookshop posts-list show_posts=true %}
 </div>

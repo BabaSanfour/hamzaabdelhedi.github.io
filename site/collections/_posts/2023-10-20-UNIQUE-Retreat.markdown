@@ -1,11 +1,12 @@
 ---
 date: 2023-10-21 
-title: Invited Talk - UNIQUE Scientific Retreat
+title: "UNIQUE Retreat 2023"
 tags:
   - UNIQUE
   - Talk
   - M.Sc
 image: /images/confs/unique_retreat.jpeg
+update_id: unique-retreat
 ---
  🌟 My First Invited Scientific Presentation! 🌟
  

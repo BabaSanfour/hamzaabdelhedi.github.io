@@ -1,48 +1,38 @@
-# Mentoring, not formal supervision. Source: cv-latex/mentoring.tex.
 - id: maryem-benslimane
   title: Maryem Benslimane
   role: MSc student
   date_label: Summer 2024–present
-  summary: EEG–ANN representational similarity analysis of emotion processing, from an engineering graduation internship through ongoing MSc work.
-
+  summary: EEG–ANN representational similarity analysis of emotion processing, from an engineering graduation internship
+    through ongoing MSc work.
 - id: syrine-mattousi
   title: Syrine Mattousi
   role: MSc student
   date_label: Summer 2025–present
-  summary: EEG-based analysis of epilepsy versus non-epilepsy using electrophysiological features, machine learning, and foundation models.
-  research_id: pediatric-clinical-eeg
-
+  summary: EEG-based analysis of epilepsy versus non-epilepsy using electrophysiological features, machine learning,
+    and foundation models.
 - id: fouad-lbakali
   title: Fouad Lbakali
   role: Undergraduate research intern
   date_label: Summer 2026
   summary: Foundation-model development for MEG data.
-  research_id: eeg-meg-foundation-models
-
 - id: alexandre-louis
   title: Alexandre Louis
   role: Undergraduate research intern
   date_label: Summer 2026
   summary: Classification of low versus high dream recallers using Riemannian geometry and machine learning.
-  research_id: brain-states-and-cognition
-
 - id: mehdi-jerbi
   title: Mehdi Jerbi
   role: Undergraduate research intern
   date_label: Summer 2025
   summary: ADHD versus non-ADHD classification from pediatric EEG using machine-learning methods.
-  research_id: pediatric-clinical-eeg
-
 - id: anis-abdeladim
   title: Anis Abdeladim
   role: Undergraduate research intern
   date_label: Summer 2024
   summary: Face-identity classification extending computational analyses developed during my MSc research.
-  research_id: face-familiarity
-
 - id: meriem-rebaani
   title: Meriem Rebaani
   role: Engineering graduation intern
   date_label: Summer 2024
-  summary: The effect of loss functions on learned representations in face-recognition models. Subsequently completed her engineering degree.
-  research_id: face-familiarity
+  summary: The effect of loss functions on learned representations in face-recognition models. Subsequently completed
+    her engineering degree.

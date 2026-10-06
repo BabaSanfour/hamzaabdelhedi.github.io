@@ -1,0 +1,8 @@
+{% assign brief = include.item %}
+<article class="news-brief">
+  <a class="news-brief__date" href="{{ '/updates/#' | append: brief.id | relative_url }}" aria-label="Link to update: {{ brief.title | escape }}"><time datetime="{% if brief.date_precision == 'month' %}{{ brief.date | date: '%Y-%m' }}{% else %}{{ brief.date | date: '%Y-%m-%d' }}{% endif %}">{% if brief.date_precision == 'month' %}{{ brief.date | date: '%b %Y' }}{% else %}{{ brief.date | date: '%d %b %Y' }}{% endif %}</time></a>
+  <div class="news-brief__body">
+    <h3><a href="{{ '/updates/#' | append: brief.id | relative_url }}">{{ brief.title | escape }}</a></h3>
+    <a class="news-brief__category" href="{{ '/updates/' | relative_url }}?category={{ brief.category | url_encode }}">{{ brief.category | escape }}</a>
+  </div>
+</article>

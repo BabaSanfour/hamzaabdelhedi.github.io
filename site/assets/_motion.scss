@@ -16,7 +16,7 @@ body a {
     border-color var(--motion-fast) ease;
 }
 
-body :is(button, .c-button, .social__link, summary, .post__prev, .post__next) {
+body :is(button, .c-button, .social__link, summary) {
   transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease,
     border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease,
     translate var(--motion-fast) var(--motion-ease);
@@ -36,10 +36,10 @@ body :is(.research-card, .software-card, .c-publication-preview, .c-publication-
   #main-content > * { animation: page-enter var(--motion-entry) var(--motion-ease); }
 
   @media (hover: hover) and (pointer: fine) {
-    body :is(button:not(:disabled), .c-button, .social__link, .post__prev, .post__next):hover { translate: 0 -2px; }
+    body :is(button:not(:disabled), .c-button, .social__link):hover { translate: 0 -2px; }
   }
 
-  body :is(button:not(:disabled), .c-button, .social__link, .post__prev, .post__next):active { translate: 0 1px; }
+  body :is(button:not(:disabled), .c-button, .social__link):active { translate: 0 1px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -50,8 +50,6 @@ body :is(.research-card, .software-card, .c-publication-preview, .c-publication-
     transition-duration: 0.01ms !important;
   }
 
-  body :is(button, .c-button, .social__link, .post__prev, .post__next) { translate: none !important; }
+  body :is(button, .c-button, .social__link) { translate: none !important; }
 
-  body .c-updates-list-item__thumbnail:hover img { transform: none; }
-  body .c-updates-list-item:hover .c-updates-list-item__node { transform: none; }
 }

@@ -53,6 +53,8 @@
     <li><a href="{{ software.paper.url }}">{{ software.paper.label | default: "Publication" }}</a></li>
     {% endif %}
   </ul>
+  {% assign software_ref = 'software:' | append: software.id %}
+  {% include connected-content.html ref=software_ref compact=true %}
   {% else %}
   <a class="software-card__detail" href="{{ '/software/' | relative_url }}#{{ software.id }}">See {{ software.name }} on Software <span aria-hidden="true">→</span></a>
   {% endunless %}

@@ -108,7 +108,7 @@ layout: default
         <details>
           <summary>BibTeX</summary>
           <textarea data-citation-fallback readonly rows="8" spellcheck="false" aria-label="BibTeX citation for {{ page.title | escape }}">{{ page.bibtex | escape }}</textarea>
-          <button class="c-updates-filter__btn" type="button" hidden data-copy-bibtex="{{ page.bibtex | escape }}">Copy citation</button>
+          <button class="publications-button" type="button" hidden data-copy-bibtex="{{ page.bibtex | escape }}">Copy citation</button>
           <span data-citation-status role="status" aria-live="polite"></span>
         </details>
       </section>
@@ -145,6 +145,8 @@ layout: default
         </ul>
       </section>
       {% endif %}
-    </article>
+    {% assign page_ref = 'publication:' | append: page.slug %}
+    {% include connected-content.html ref=page_ref %}
+  </article>
   </div>
 </div>

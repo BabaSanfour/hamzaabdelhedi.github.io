@@ -8,6 +8,10 @@
   {% assign current_organization = site.affiliations | where: "organization_id", current_position.institution_id | first %}
 
   {% assign page_label = page.title | default: page.tag | default: "Page" %}
+  {% if page.update_id %}
+    {% assign metadata_news = site.data.updates | where: 'id', page.update_id | first %}
+    {% assign page_label = metadata_news.title | default: page_label %}
+  {% endif %}
   {% if page.tag %}
     {% assign page_label = "Updates tagged: " | append: page.tag %}
   {% endif %}

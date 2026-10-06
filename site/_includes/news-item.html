@@ -1,0 +1,25 @@
+{% assign news = include.item %}
+<article class="news-item" id="{{ news.id }}" data-news-item data-category="{{ news.category | escape }}" data-categories="{{ news.tags | jsonify | escape }}" data-year="{{ news.date | date: '%Y' }}" data-topics="{{ news.tags | join: ' ' | escape }}">
+  <div class="news-item__meta">
+    <a class="news-item__permalink" href="{{ '/updates/#' | append: news.id | relative_url }}" aria-label="Link to update: {{ news.title | escape }}"><time datetime="{% if news.date_precision == 'month' %}{{ news.date | date: '%Y-%m' }}{% else %}{{ news.date | date: '%Y-%m-%d' }}{% endif %}">{% if news.date_precision == 'month' %}{{ news.date | date: '%b %Y' }}{% else %}{{ news.date | date: '%d %b %Y' }}{% endif %}</time></a>
+    <a href="{{ '/updates/' | relative_url }}?category={{ news.category | url_encode }}">{{ news.category | escape }}</a>
+  </div>
+  <h3 class="news-item__title">{% if news.story_url %}<a href="{{ news.story_url | relative_url }}">{{ news.title | escape }}</a>{% else %}{{ news.title | escape }}{% endif %}</h3>
+  <p class="news-item__summary">{{ news.description | escape }}</p>
+  {% assign news_ref = 'update:' | append: news.id %}
+  {% include connected-content.html ref=news_ref compact=true %}
+  {% assign news_resources = news.links %}
+  {% if news.resources_from %}
+    {% assign resource_parts = news.resources_from | split: ':' %}
+    {% assign resource_type = resource_parts[0] %}
+    {% assign resource_id = resource_parts[1] %}
+    {% assign resource_record = site.data[resource_type] | where: 'id', resource_id | first %}
+    {% assign news_resources = resource_record.links %}
+  {% endif %}
+  {% if news.story_url or news_resources.size > 0 %}
+  <ul class="news-item__resources" aria-label="Resources for {{ news.title | escape }}">
+    {% if news.story_url %}<li><a href="{{ news.story_url | relative_url }}">Read the story <span aria-hidden="true">→</span></a></li>{% endif %}
+    {% for resource in news_resources %}<li><a href="{{ resource.url | relative_url }}">{{ resource.label | escape }} <span aria-hidden="true">{% if resource.url contains '://' %}↗{% else %}→{% endif %}</span></a></li>{% endfor %}
+  </ul>
+  {% endif %}
+</article>

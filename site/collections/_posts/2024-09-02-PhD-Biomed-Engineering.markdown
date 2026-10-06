@@ -1,5 +1,5 @@
 ---
-title:  "Started a Biomedical Engineering PhD program at the Faculty of Medicine" 
+title: "Started Biomedical Engineering PhD at UdeM"
 date:   2024-09-02
 image:  '/images/orgs/udem.webp'
 tags:   
@@ -7,6 +7,7 @@ tags:
     - Faculty of Medicine
     - Biomed. Eng.
 
+update_id: phd-start
 ---
 
 I started a biomedical engineering PhD program at the Faculté de Médecine, université de montréal under the supervision of Dr. Karim Jerbi

@@ -1,9 +1,10 @@
 ---
 date:   2023-09-02 
-title:  Méthodes en neurosciences cognitives 1 TA autumn 2023
+title: "Teaching methods in cognitive neuroscience"
 tags:   [Teaching, TA, UdeM]
 image:  '/images/orgs/udem.webp'
 
+update_id: psy2008-2023
 ---
 Starting as a TA for the course 'Méthodes en neurosciences cognitives 1' at the Département de psychologie - Université de Montréal.
 
