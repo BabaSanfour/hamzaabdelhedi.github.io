@@ -1,0 +1,42 @@
+{% assign activity = include.record %}
+<li class="activity-record" id="{{ activity.id | escape }}">
+  <div class="activity-record__meta">
+    {% if activity.role %}<p class="activity-record__role">{{ activity.role | escape }}</p>{% endif %}
+    {% if activity.date_label %}<p class="activity-record__date">{{ activity.date_label | escape }}</p>{% endif %}
+  </div>
+  <div class="activity-record__body">
+    <h3>{{ activity.title | escape }}</h3>
+    {% if activity.organization or activity.location %}
+    <p class="activity-record__context">{% if activity.organization %}{{ activity.organization | escape }}{% endif %}{% if activity.organization and activity.location %}<span aria-hidden="true"> · </span>{% endif %}{{ activity.location | escape }}</p>
+    {% endif %}
+    {% if activity.distinction %}<p class="activity-record__distinction">{{ activity.distinction | escape }}</p>{% endif %}
+    {% if activity.amount %}<p class="activity-record__distinction">{{ activity.amount | escape }}</p>{% endif %}
+    {% if activity.summary %}<p>{{ activity.summary | escape }}</p>{% endif %}
+    {% if activity.details %}
+    <ul class="activity-record__details">
+      {% for detail in activity.details %}<li>{{ detail | escape }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    {% if activity.links or activity.research_id or activity.software_id or activity.publication_id %}
+    <ul class="activity-record__links" aria-label="Resources for {{ activity.title | escape }}">
+      {% for link in activity.links %}
+        {% assign activity_url = link.url %}
+        {% unless activity_url contains '://' %}{% assign activity_url = activity_url | relative_url %}{% endunless %}
+        <li><a href="{{ activity_url | escape }}">{{ link.label | escape }} <span aria-hidden="true">↗</span></a></li>
+      {% endfor %}
+      {% if activity.research_id %}
+        {% assign activity_project = site.projects | where: 'slug', activity.research_id | first %}
+        {% if activity_project %}<li><a href="{{ '/project/' | append: activity_project.slug | append: '.html' | relative_url }}">Related research: {{ activity_project.short_title | escape }} <span aria-hidden="true">→</span></a></li>{% endif %}
+      {% endif %}
+      {% if activity.software_id %}
+        {% assign activity_software = site.data.software | where: 'id', activity.software_id | first %}
+        {% if activity_software %}<li><a href="{{ '/software/' | relative_url }}#{{ activity_software.id }}">{{ activity_software.name | escape }} <span aria-hidden="true">→</span></a></li>{% endif %}
+      {% endif %}
+      {% if activity.publication_id %}
+        {% assign activity_paper = site.publications | where: 'slug', activity.publication_id | first %}
+        {% if activity_paper %}<li><a href="{{ '/publications/' | append: activity_paper.slug | append: '.html' | relative_url }}">Related conference paper <span aria-hidden="true">→</span></a></li>{% endif %}
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+</li>

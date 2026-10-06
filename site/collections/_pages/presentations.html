@@ -1,0 +1,41 @@
+---
+title: Talks & posters
+permalink: /presentations/
+description: Selected scientific talks and posters by Hamza Abdelhedi on brain representations, MEG, and open-source neuroscience methods.
+layout: default
+---
+
+<div class="activity-page">
+  <header class="activity-page__heading">
+    <p class="activity-page__eyebrow">Sharing the research</p>
+    <h1>Talks &amp; posters</h1>
+    <p class="activity-page__lead">Selected presentations on brain representations and the methods we use to study them.</p>
+    <p>These meetings have been places to share my work, discuss methods, and connect with other researchers. For hands-on sessions and reusable learning materials, visit <a href="{{ '/teaching/' | relative_url }}#workshops">Teaching &amp; mentoring</a>.</p>
+  </header>
+
+  <nav class="activity-page__jump" aria-label="On this page">
+    <a href="#talks">Oral presentations <span aria-hidden="true">↓</span></a>
+    <a href="#posters">Poster presentations <span aria-hidden="true">↓</span></a>
+  </nav>
+
+  <section class="activity-section" aria-labelledby="talks">
+    <div class="activity-section__heading">
+      <h2 id="talks" tabindex="-1">Oral presentations</h2>
+    </div>
+    <ul class="activity-list">
+      {% assign talks = site.data.presentations | where: 'group', 'talks' %}
+      {% for record in talks %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="activity-section" aria-labelledby="posters">
+    <div class="activity-section__heading">
+      <h2 id="posters" tabindex="-1">Poster presentations</h2>
+    </div>
+    <ul class="activity-list">
+      {% assign posters = site.data.presentations | where: 'group', 'posters' %}
+      {% for record in posters %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+  {% include activity-navigation.html %}
+</div>

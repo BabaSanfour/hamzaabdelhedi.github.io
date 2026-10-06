@@ -1,0 +1,55 @@
+---
+title: Community & service
+permalink: /community/
+description: Community building, scientific service, student leadership, and outreach by Hamza Abdelhedi, from Tunisia to Montréal.
+layout: default
+---
+
+<div class="activity-page">
+  <header class="activity-page__heading">
+    <p class="activity-page__eyebrow">From Tunisia to Montréal</p>
+    <h1>Community &amp; service</h1>
+    <p class="activity-page__lead">Science belongs to everyone. For me, that also means helping build the communities around it.</p>
+    <p>My involvement spans student representation, scientific gatherings, AI education, and discussions about the harms and responsibilities of the tools we develop. It began in Tunisia and continues in Montréal.</p>
+  </header>
+
+  <nav class="activity-page__jump" aria-label="On this page">
+    <a href="#scientific">Scientific &amp; community service <span aria-hidden="true">↓</span></a>
+    <a href="#leadership">Leadership &amp; representation <span aria-hidden="true">↓</span></a>
+    <a href="#outreach">Outreach &amp; events <span aria-hidden="true">↓</span></a>
+  </nav>
+
+  <section class="activity-section" aria-labelledby="scientific">
+    <div class="activity-section__heading">
+      <h2 id="scientific" tabindex="-1">Scientific &amp; community service</h2>
+      <p>Connecting researchers, representing students, and making space for difficult conversations about AI.</p>
+    </div>
+    <ul class="activity-list">
+      {% assign scientific_service = site.data.community | where: 'group', 'scientific' %}
+      {% for record in scientific_service %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="activity-section" aria-labelledby="leadership">
+    <div class="activity-section__heading">
+      <h2 id="leadership" tabindex="-1">Leadership &amp; representation</h2>
+      <p>Supporting student initiatives and the people who carry them forward.</p>
+    </div>
+    <ul class="activity-list">
+      {% assign leadership = site.data.community | where: 'group', 'leadership' %}
+      {% for record in leadership %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="activity-section" aria-labelledby="outreach">
+    <div class="activity-section__heading">
+      <h2 id="outreach" tabindex="-1">Outreach &amp; events</h2>
+      <p>Earlier initiatives in Tunisia, bringing together technology, education, environmental questions, and community needs.</p>
+    </div>
+    <ul class="activity-list">
+      {% assign outreach = site.data.community | where: 'group', 'outreach' %}
+      {% for record in outreach %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+  {% include activity-navigation.html %}
+</div>

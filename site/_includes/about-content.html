@@ -38,6 +38,7 @@
     <a href="#about-neuroai">Why Neuro-AI? <span aria-hidden="true">↓</span></a>
     <a href="#about-values">Values <span aria-hidden="true">↓</span></a>
     <a href="#about-community">Community <span aria-hidden="true">↓</span></a>
+    <a href="#about-recognition">Awards &amp; training <span aria-hidden="true">↓</span></a>
     <a href="#about-failures">Rejections &amp; failures <span aria-hidden="true">↓</span></a>
     <a href="#about-land">Land acknowledgment <span aria-hidden="true">↓</span></a>
     <a href="#about-trajectory">Full journey <span aria-hidden="true">↓</span></a>
@@ -68,6 +69,7 @@
       <div class="about-page__section-body">
       <p>I firmly believe that science belongs to everyone. I enjoy sharing knowledge through teaching and mentoring, from cognitive-neuroscience courses at {{ current_university.name }} and Indigenous Pathfinders in AI to graduate and undergraduate research projects. At the <a href="{{ '/updates/main2024.html' | relative_url }}">MAIN 2024 educational sessions</a>, I led a hands-on tutorial on representational similarity analysis with MEG data; the <a href="https://github.com/BabaSanfour/main-edu-courses-rsa">tutorial materials</a> are available to reuse.</p>
       <p>As a founding member of TuNA, Tunisians in Neuroscience and AI, I help connect people across the fields that shaped my own path. With Abundant Intelligences, I have contributed to research and taught hands-on AI sessions in the Future Imaginaries workshop series. I have also helped organize discussions about the societal impacts and responsible use of AI.</p>
+      <p>Explore my <a href="{{ '/community/' | relative_url }}">community and service roles</a>, from student leadership in Tunisia to scientific gatherings in Montréal, and my <a href="{{ '/teaching/' | relative_url }}">teaching and research mentoring</a>.</p>
       {% if media_interview %}
       <aside class="about-page__interview" aria-label="Interview with Abundant Intelligences">
         {% if media_interview.image %}<img src="{{ media_interview.image | relative_url }}" alt="Abundant Intelligences graphic" width="96" height="96" loading="lazy" decoding="async">{% endif %}
@@ -78,6 +80,23 @@
         </div>
       </aside>
       {% endif %}
+      </div>
+    </section>
+
+    <section class="about-page__section" aria-labelledby="about-recognition">
+      <h2 id="about-recognition" tabindex="-1">Selected awards &amp; training</h2>
+      <div class="about-page__section-body">
+        <ul class="about-page__recognition">
+          {% assign recognition_highlights = site.data.recognition | where: 'featured', true %}
+          {% for record in recognition_highlights %}
+          <li>
+            <p class="profile-page__date">{{ record.date_label | escape }}</p>
+            <h3>{{ record.title | escape }}</h3>
+            <p>{{ record.summary | escape }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+        <p><a href="{{ '/awards/' | relative_url }}">Explore all awards and scholarships</a>.</p>
       </div>
     </section>
 

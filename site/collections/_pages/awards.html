@@ -1,0 +1,47 @@
+---
+title: Awards & scholarships
+permalink: /awards/
+description: Scholarships, research awards, distinctions, and travel support received by Hamza Abdelhedi.
+layout: default
+---
+
+<div class="activity-page awards-page">
+  <header class="activity-page__heading">
+    <p class="activity-page__eyebrow">Recognition &amp; support</p>
+    <h1>Awards &amp; scholarships</h1>
+    <p class="activity-page__lead">The scholarships, awards, and travel support that have accompanied my path through research and community work.</p>
+  </header>
+  <nav class="activity-page__jump" aria-label="On this page">
+    <a href="#scholarships">Scholarships &amp; fellowships <span aria-hidden="true">↓</span></a>
+    <a href="#distinctions">Awards &amp; distinctions <span aria-hidden="true">↓</span></a>
+    <a href="#travel">Travel grants <span aria-hidden="true">↓</span></a>
+  </nav>
+  <section class="activity-section" aria-labelledby="scholarships">
+    <div class="activity-section__heading">
+      <h2 id="scholarships" tabindex="-1">Scholarships &amp; fellowships</h2>
+    </div>
+    <ul class="activity-list">
+      {% assign scholarships = site.data.recognition | where: 'group', 'scholarships' %}
+      {% for record in scholarships %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+  <section class="activity-section" aria-labelledby="distinctions">
+    <div class="activity-section__heading">
+      <h2 id="distinctions" tabindex="-1">Awards &amp; distinctions</h2>
+    </div>
+    <ul class="activity-list">
+      {% assign distinctions = site.data.recognition | where: 'group', 'distinctions' %}
+      {% for record in distinctions %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+  <section class="activity-section" aria-labelledby="travel">
+    <div class="activity-section__heading">
+      <h2 id="travel" tabindex="-1">Travel grants</h2>
+    </div>
+    <ul class="activity-list">
+      {% assign grants = site.data.recognition | where: 'group', 'travel' %}
+      {% for record in grants %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+  {% include activity-navigation.html %}
+</div>

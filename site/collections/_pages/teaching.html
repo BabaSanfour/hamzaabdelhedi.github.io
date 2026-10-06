@@ -1,0 +1,66 @@
+---
+title: Teaching & mentoring
+permalink: /teaching/
+description: Courses, workshops, reusable teaching materials, and research mentoring by Hamza Abdelhedi in neuroscience, programming, and AI.
+layout: default
+---
+
+<div class="activity-page">
+  <header class="activity-page__heading">
+    <p class="activity-page__eyebrow">Sharing knowledge</p>
+    <h1>Teaching &amp; mentoring</h1>
+    <p class="activity-page__lead">Teaching is central to my work, from a first Python exercise to an analysis of brain signals.</p>
+    <p>I create courses and hands-on workshops, teach cognitive neuroscience, and mentor research projects. The materials below are available to explore and reuse.</p>
+  </header>
+
+  <nav class="activity-page__jump" aria-label="On this page">
+    <a href="#learning-resources">Courses &amp; materials <span aria-hidden="true">↓</span></a>
+    <a href="#workshops">Workshops &amp; tutorials <span aria-hidden="true">↓</span></a>
+    <a href="#courses">University courses <span aria-hidden="true">↓</span></a>
+    <a href="#mentoring">Research mentoring <span aria-hidden="true">↓</span></a>
+  </nav>
+
+  <section class="activity-section" aria-labelledby="learning-resources">
+    <div class="activity-section__heading">
+      <h2 id="learning-resources" tabindex="-1">Courses &amp; materials</h2>
+      <p>Start with a workshop or work through a course at your own pace.</p>
+    </div>
+    <ul class="activity-list activity-list--featured">
+      {% assign resources = site.data.teaching | where: 'group', 'resources' %}
+      {% for record in resources %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="activity-section" aria-labelledby="workshops">
+    <div class="activity-section__heading">
+      <h2 id="workshops" tabindex="-1">Workshops &amp; tutorials</h2>
+      <p>Hands-on learning in AI and computational neuroscience.</p>
+    </div>
+    <ul class="activity-list">
+      {% assign workshops = site.data.teaching | where: 'group', 'workshops' %}
+      {% for record in workshops %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="activity-section" aria-labelledby="courses">
+    <div class="activity-section__heading">
+      <h2 id="courses" tabindex="-1">University courses</h2>
+      <p>Teaching assistant roles in cognitive neuroscience at Université de Montréal.</p>
+    </div>
+    <ul class="activity-list">
+      {% assign courses = site.data.teaching | where: 'group', 'courses' %}
+      {% for record in courses %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+
+  <section class="activity-section" aria-labelledby="mentoring">
+    <div class="activity-section__heading">
+      <h2 id="mentoring" tabindex="-1">Research mentoring</h2>
+      <p>Projects I have supported across brain-signal analysis, machine learning, and neural representations.</p>
+    </div>
+    <ul class="activity-list">
+      {% for record in site.data.mentoring %}{% include activity-record.html record=record %}{% endfor %}
+    </ul>
+  </section>
+  {% include activity-navigation.html %}
+</div>

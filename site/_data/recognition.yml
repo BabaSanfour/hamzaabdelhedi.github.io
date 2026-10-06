@@ -1,0 +1,108 @@
+# Full award record from cv-latex/awards.tex. Featured records also appear on About.
+- id: imbizo
+  group: scholarships
+  featured: true
+  title: Simons Computational Neuroscience Imbizo — Full Scholarship
+  date_label: '2026'
+  organization: Simons Computational Neuroscience Imbizo
+  amount: Full funding
+  summary: Selected scholar for intensive computational neuroscience training in Cape Town, South Africa.
+- id: unique-phd
+  group: scholarships
+  featured: true
+  title: UNIQUE Excellence Scholarship, PhD level
+  date_label: '2025'
+  organization: Centre UNIQUE
+  amount: C$15,000
+  summary: Competitive merit-based research scholarship.
+- id: medicine-merit
+  group: scholarships
+  featured: true
+  title: Merit Scholarship, AI Research Fund
+  date_label: 2024–2027
+  organization: Faculty of Medicine, Université de Montréal
+  amount: C$15,000/year
+  summary: Support for my AI research at Université de Montréal.
+- id: computer-science-merit
+  group: scholarships
+  title: Computer Science Merit Scholarship for Excellent Students
+  date_label: '2024'
+  organization: Université de Montréal
+  amount: C$3,000
+- id: circa
+  group: scholarships
+  title: CIRCA Master’s Scholarship
+  date_label: '2023'
+  organization: CIRCA
+  amount: C$8,000
+  summary: Competitive research scholarship.
+- id: cerebrum
+  group: scholarships
+  title: Cerebrum Scholarship
+  date_label: '2023'
+  organization: Cerebrum
+  amount: C$5,000
+  summary: Competitive research scholarship.
+- id: unique-msc
+  group: scholarships
+  title: UNIQUE Excellence Scholarship, MSc level
+  date_label: '2023'
+  organization: Centre UNIQUE
+  amount: C$10,000
+  summary: Competitive merit-based research scholarship.
+- id: computer-science-international
+  group: scholarships
+  title: Computer Science International Student Scholarship
+  date_label: '2023'
+  organization: Université de Montréal
+  amount: C$3,000
+- id: mitacs
+  group: scholarships
+  title: Globalink Research Award
+  date_label: '2021'
+  organization: Mitacs
+  amount: C$6,000
+- id: main-poster
+  group: distinctions
+  title: Best Poster Award — Montreal AI & Neuroscience Conference
+  date_label: '2022'
+  organization: Institut intelligence et données
+  amount: C$200
+  links:
+    - label: Award-winning poster presentation
+      url: /presentations/#main-2022
+- id: ieee-ambassador
+  group: distinctions
+  title: Best Ambassador, Entrepreneurship Initiative
+  date_label: '2020'
+  organization: IEEE Region 8
+- id: supcom-challenge
+  group: distinctions
+  title: Third Prize, SUP’COM Entrepreneurial Challenge
+  date_label: '2020'
+  organization: SUP’COM
+  amount: TND 2,500
+- id: cosyne-travel
+  group: travel
+  title: New Attendee Travel Award
+  date_label: '2024'
+  organization: COSYNE
+  amount: US$1,000
+- id: unique-travel
+  group: travel
+  title: Conference Travel Grant
+  date_label: '2024'
+  organization: Centre UNIQUE
+  amount: C$1,000
+- id: rbiq-travel
+  group: travel
+  title: Conference Travel Grant
+  date_label: '2024'
+  organization: Réseau de Bio-Imagerie du Québec (RBIQ)
+  amount: C$500
+- id: green-island-travel
+  group: travel
+  title: Smart Green Island Makeathon Travel Grant
+  date_label: '2020'
+  organization: Smart Green Island
+  amount: €500

@@ -1,0 +1,90 @@
+# Career facts: cv-latex/teaching.tex; MAIN from the existing 2024 update.
+# Brainhack: official fall2026 program + owner confirmation of delivery, 2026-10-05.
+# Crash course: owner confirms creation; public thecocolab/crash-course repository.
+- id: brainhack-2026
+  group: resources
+  title: 'Foundation models for M/EEG: from classical decoding to pretrained representations'
+  short_title: Foundation models for M/EEG
+  role: Workshop instructor
+  date_label: October 2, 2026
+  organization: Brainhack Montréal Fall 2026
+  location: Thomson House, Montréal
+  summary: A hands-on comparison of classical EEG decoding and pretrained foundation models on the same motor-imagery data, from frozen representations to fine-tuning.
+  links:
+    - label: Code & notebooks
+      url: https://github.com/BabaSanfour/meeg-fm-workshop
+    - label: Workshop program
+      url: https://brainhackmtl.github.io/fall2026/#tutorials
+
+- id: cocolab-crash-course
+  group: resources
+  title: CoCo Lab crash course
+  role: Course creator
+  organization: CoCo Lab
+  summary: A practical introduction for new lab members, covering Git, Python, MNE-Python, Alliance Canada computing, machine learning, and source estimation.
+  links:
+    - label: Explore the course
+      url: https://github.com/thecocolab/crash-course
+
+- id: pathfinders
+  group: workshops
+  title: Indigenous Pathfinders in AI
+  role: Teaching assistant & instructor
+  date_label: Summers 2024–2026
+  organization: Mila — Quebec AI Institute
+  location: Montréal, Canada
+  summary: Designed and delivered sessions on programming in the age of AI, supervised learning, model evaluation, and building AI systems. Held office hours and supported exercises and participant projects.
+
+- id: future-imaginaries
+  group: workshops
+  title: Future Imaginaries Workshop Series
+  role: Workshop instructor
+  date_label: '2026'
+  organization: Abundant Intelligences
+  location: USA & Canada
+  details:
+    - "Nitsitapi Pod, University of Lethbridge (March): introduction to AI with hands-on activities."
+    - "Haudenosaunee Pod, Western University (March): language-modeling concepts and a technical working session on LLMs."
+    - "Tkaronto Pod, OCAD University (June): introduction to AI and hands-on activities using CNNs and LLMs."
+    - "Huwai Pod (November): an additional workshop is scheduled."
+
+- id: main-rsa
+  group: workshops
+  title: Representational Similarity Analysis with MEG
+  role: Tutorial instructor
+  date_label: October 2024
+  organization: MAIN educational sessions
+  location: Montréal, Canada
+  summary: A hands-on introduction to representations and representational similarity analysis, working through MEG data and analysis code.
+  links:
+    - label: Tutorial materials
+      url: https://github.com/BabaSanfour/main-edu-courses-rsa
+    - label: Workshop story
+      url: /updates/main2024.html
+
+- id: arabs-neuroscience
+  group: workshops
+  title: Computational Neuroscience Summer School
+  role: Teaching assistant
+  date_label: Summer 2024
+  organization: Arabs in Neuroscience
+  location: Online
+  summary: Supported coding tutorials in probability, calculus, linear algebra, and statistics, and mentored a two-day project applying machine learning to fMRI decoding.
+
+- id: psy2008
+  group: courses
+  title: 'PSY2008: Methods in Cognitive Neuroscience I'
+  role: Teaching assistant
+  date_label: Fall 2023–2026
+  organization: Department of Psychology, Université de Montréal
+  location: Montréal, Canada
+  summary: Led question-and-answer and recap sessions, supported students throughout course activities, and assessed session assignments.
+
+- id: psy2007
+  group: courses
+  title: 'PSY2007: Cognitive neuroscience laboratory'
+  role: Teaching assistant
+  date_label: Fall 2024–2026
+  organization: Department of Psychology, Université de Montréal
+  location: Montréal, Canada
+  summary: Taught Python programming and computational EEG analysis. Designed hands-on tutorials spanning preprocessing and cleaning through machine-learning analyses of data collected during the course.

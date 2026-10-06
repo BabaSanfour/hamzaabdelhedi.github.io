@@ -2,7 +2,7 @@
 
 Personal website of **Hamza Abdelhedi**, a computational neuroscience researcher studying how changing sensory evidence becomes decisions and actions with MEG/EEG, neural dynamics, and computational modeling, while building open-source neuroscience software.
 
-The site uses Jekyll and Bookshop on top of the existing Vonge-derived component system. The primary navigation has Home, About, Updates, Research, Software, Publications, and CV; Contact is available from Home and the footer.
+The site uses Jekyll and Bookshop on top of the existing Vonge-derived component system. The primary navigation has Research, Teaching, Software, Publications, Talks & Posters, Community, and Awards. Home, About, Updates, and CV are in a smaller utility row. Teaching also has a homepage section immediately after the introduction; Contact is available from Home and the footer.
 
 ## Stack and prerequisites
 
@@ -48,6 +48,25 @@ node --check site/js/updates-filter.js
 ```
 
 ## CV integration and deployment
+
+### Teaching, mentoring, service, presentations, and awards
+
+The website presents selected CV content as readable pages:
+
+| Route | Editable records |
+| --- | --- |
+| `/community/` | `site/_data/community.yml` |
+| `/teaching/` | `site/_data/teaching.yml`, `site/_data/mentoring.yml` |
+| `/presentations/` | `site/_data/presentations.yml` |
+| `/awards/` and About recognition highlights | `site/_data/recognition.yml` |
+
+These records are available through the existing CloudCannon data editor. Keep stable `id` values, because they become section links. Records render in file order within each `group`; optional `date_label` preserves the source's precision (including seasons and ongoing roles). Optional `links` contain `{label, url}` entries. `research_id`, `software_id`, and `publication_id` resolve existing site records. Add slides, posters, or recordings only when a public resource exists. Upcoming activities must remain explicitly scheduled until their status is confirmed.
+
+Teaching records in the `resources` group appear first on the teaching page and in the homepage `teaching-section` component, using an optional `short_title`. This includes the Brainhack Montréal October 2026 workshop and CoCo Lab crash course, linked to their public repositories. Award records are grouped into `scholarships`, `distinctions`, and `travel`; optional `amount` preserves the original currency, and `featured: true` also displays the record on About.
+
+The CV is the upstream source for career facts, supplemented by public event programs and course repositories. These page records are curated manually; they are not automatically imported from LaTeX. Use `activity-record.html` for the shared record layout and `_activities.scss` for its styles. Cards use the site's existing motion tokens and respect reduced-motion preferences. The full CV remains the formal record.
+
+### PDF delivery
 
 The canonical CV source is [`BabaSanfour/cv-latex`](https://github.com/BabaSanfour/cv-latex). The website workflow in `.github/workflows/deploy.yml` checks out its `main` branch, compiles `main.tex`, verifies a fresh PDF, and copies the verified PDF to `/assets/files/Hamza_Abdelhedi_CV.pdf`, the single website CV path.
 

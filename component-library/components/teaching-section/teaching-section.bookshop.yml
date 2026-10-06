@@ -1,0 +1,16 @@
+spec:
+  structures:
+    - content_blocks
+  label: Teaching Section
+  description: Featured learning resources from the shared teaching records.
+  icon: school
+  tags:
+    - Teaching
+blueprint:
+  title: Teaching & mentoring
+  description_html: >-
+    <p>Teaching is central to my work. I create hands-on courses, share analysis tools, and mentor research projects.</p>
+preview:
+  title: Teaching & mentoring
+  description_html: >-
+    <p>Courses, workshops, and materials to explore and reuse.</p>

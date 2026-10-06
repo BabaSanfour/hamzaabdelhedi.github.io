@@ -1,0 +1,26 @@
+<section class="section teaching-section" aria-labelledby="home-teaching-title">
+  <div class="container">
+    <div class="section__info">
+      <div class="section__head">
+        <h2 class="section__title" id="home-teaching-title">{{ include.title | default: 'Teaching & mentoring' }}</h2>
+        <a class="section__link" href="{{ '/teaching/' | relative_url }}">Explore my teaching <span aria-hidden="true">→</span></a>
+      </div>
+      {% if include.description_html %}<div class="section__description">{{ include.description_html }}</div>{% endif %}
+    </div>
+    <div class="teaching-section__grid">
+      {% assign resources = site.data.teaching | where: 'group', 'resources' %}
+      {% for resource in resources %}
+      <article class="learning-preview">
+        <p class="learning-preview__meta">{{ resource.organization | escape }}{% if resource.date_label %} · {{ resource.date_label | escape }}{% endif %}</p>
+        <h3><a href="{{ '/teaching/' | relative_url }}#{{ resource.id }}">{{ resource.short_title | default: resource.title | escape }} <span aria-hidden="true">→</span></a></h3>
+        <p>{{ resource.summary | escape }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <nav class="teaching-section__more" aria-label="More about my work">
+      <a href="{{ '/presentations/' | relative_url }}">Talks &amp; posters <span aria-hidden="true">→</span></a>
+      <a href="{{ '/community/' | relative_url }}">Community &amp; service <span aria-hidden="true">→</span></a>
+      <a href="{{ '/awards/' | relative_url }}">Awards &amp; scholarships <span aria-hidden="true">→</span></a>
+    </nav>
+  </div>
+</section>

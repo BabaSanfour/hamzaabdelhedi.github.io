@@ -1,0 +1,60 @@
+# Selected presentations included by cv-latex/main.tex, from presentations.tex.
+# Resource links appear only when an actual public resource is available.
+- id: mne-denoise-talk
+  group: talks
+  title: 'MNE-Denoise: Denoising methods for the MNE ecosystem'
+  date_label: August 2026
+  organization: MNE-Python Maintainers Conference and Sprint
+  location: Meta Paris Office, Paris, France
+  software_id: mne-denoise
+
+- id: circa-2024
+  group: talks
+  title: Linking human and artificial neural representations underlying face recognition
+  date_label: April 2024
+  organization: CIRCA Scientific Day
+  location: Montréal, Canada
+  research_id: face-familiarity
+
+- id: scaling-2023
+  group: talks
+  title: Brain Similarity Scaling
+  date_label: November 2023
+  organization: 4th Scaling Workshop
+  location: Mont-Tremblant, Canada
+
+- id: naisys-2024
+  group: posters
+  title: 'Temporal dynamics of face recognition: Insights from combining MEG and artificial neural networks'
+  date_label: October 2024
+  organization: From Neuroscience to Artificially Intelligent Systems (NAISys)
+  location: Cold Spring Harbor, USA
+  research_id: face-familiarity
+
+- id: ccn-2024
+  group: posters
+  title: 'Temporal dynamics of face recognition: Insights from combining MEG and artificial neural networks'
+  date_label: August 2024
+  organization: Conference on Cognitive Computational Neuroscience (CCN)
+  location: Boston, USA
+  publication_id: ccn-2024-face-dynamics
+
+- id: cosyne-2024
+  group: posters
+  title: 'Neural representations of face recognition in biological and artificial systems: Insights from MEG and CNNs'
+  date_label: March 2024
+  organization: Computational and Systems Neuroscience (COSYNE)
+  location: Lisbon, Portugal
+  research_id: face-familiarity
+  links:
+    - label: Conference story
+      url: /updates/cosyne-2024.html
+
+- id: main-2022
+  group: posters
+  title: 'Linking human and artificial neural representations underlying face recognition: A spectro-temporal analysis'
+  date_label: December 2022
+  organization: Montreal AI & Neuroscience Conference (MAIN)
+  location: Montréal, Canada
+  distinction: Best Poster Award
+  research_id: face-familiarity

@@ -1,0 +1,10 @@
+<nav class="activity-navigation" aria-label="Explore more">
+  <p class="activity-navigation__label">Explore more</p>
+  <div>
+    {% unless page.url == '/community/' %}<a href="{{ '/community/' | relative_url }}">Community &amp; service <span aria-hidden="true">→</span></a>{% endunless %}
+    {% unless page.url == '/teaching/' %}<a href="{{ '/teaching/' | relative_url }}">Teaching &amp; mentoring <span aria-hidden="true">→</span></a>{% endunless %}
+    {% unless page.url == '/presentations/' %}<a href="{{ '/presentations/' | relative_url }}">Talks &amp; posters <span aria-hidden="true">→</span></a>{% endunless %}
+    {% unless page.url == '/awards/' %}<a href="{{ '/awards/' | relative_url }}">Awards &amp; scholarships <span aria-hidden="true">→</span></a>{% endunless %}
+    <a href="{{ site.data.links.cv_pdf | relative_url }}">Full CV (PDF) <span aria-hidden="true">↗</span></a>
+  </div>
+</nav>

@@ -40,7 +40,14 @@
 
             <div class="nav__title">Menu</div>
 
-              <ul class="nav__list list-reset">
+            <ul class="nav__utility list-reset" aria-label="Profile and updates">
+              {% for item in site.data.navigation.menu__settings.utility_items %}
+                {% assign utility_url = item.url %}
+                {% if item.link_key %}{% assign utility_url = site.data.links[item.link_key] %}{% endif %}
+                <li><a href="{{ utility_url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+              {% endfor %}
+            </ul>
+              <ul class="nav__list nav__list--primary list-reset">
 
               {% for item in site.data.navigation.menu__settings.menu__items %}
                 {% if item.submenu %}
@@ -65,9 +72,8 @@
               {% endfor %}
 
             </ul>
-          </div>
 
-          {% bookshop_include social-link %}
+          </div>
         </nav>
 
         <button class="nav-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation menu">

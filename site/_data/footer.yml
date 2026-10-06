@@ -2,6 +2,16 @@ footer_menu__settings:
   menu__items:
     - title: 'About'
       url: '/about/'
+    - title: 'Community'
+      url: '/community/'
+    - title: 'Teaching & mentoring'
+      url: '/teaching/'
+    - title: 'Talks & posters'
+      url: '/presentations/'
+    - title: 'Awards'
+      url: '/awards/'
+    - title: 'Updates'
+      url: '/updates/'
     - title: 'Contact'
       url: '/contact/'
 
