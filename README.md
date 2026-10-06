@@ -103,6 +103,94 @@ The checked-in site validator is strict by default: a missing PDF, missing prove
 
 ## Project structure
 
+### Visual styles
+
+The historical bright teal (`#1495a7`) is a decorative accent, exposed as
+`--color-accent`; links and buttons retain the darker readable teal. Pale teal
+and navy surfaces are available as `--color-accent-surface` and
+`--color-secondary-surface`. Palette values live in the shared Bookshop color
+settings rather than being repeated in page styles.
+
+`component-library/shared/jekyll/visual-icon.jekyll.html` supplies original,
+static section marks through `bookshop_include visual-icon name='teaching'`
+(also `publication`, `research`, `software`, `news`, `path`, `community`,
+`award`, `presentation`, and `signal`).
+These marks are decorative; keep the adjacent text labels. The hero's optional
+`show_signal_motif` switch displays the signal trace above the greeting. Shared
+icon geometry lives in `_visual-icons.scss`, and the site integration styles
+live in `site/assets/_visual-system.scss`.
+
+Home's Teaching, Publications, Research, and Software sections share heading
+markup and the `.home-section` rules in `site/assets/_home-sections.scss`:
+full-width headings, matching spacing, and white cards with teal top borders,
+consistent padding, ink titles, and the same hover/focus treatment. Their
+photo and illustration layouts remain suited to their content.
+
+Secondary-page headings reuse the same marks. `_secondary-pages.scss` carries
+the white surfaces, teal top borders and ink titles into Research, Software,
+and selected About panels, while activity and publication archives keep their
+compact records. About's existing origin line and the Community marks extend
+the warm decoration; no place photographs or publication thumbnails are added.
+
+Teaching features and selected personal/community accents use
+`--color-warm-accent` (terracotta `#B85C4A`) for decorative rules and marks,
+with `--color-warm-surface` (peach `#FFF0E8`) behind the marks only. Keep text
+ink/navy and controls teal: terracotta does not meet normal-text contrast on
+peach, the page canvas, or white.
+
+Home's teaching component and the Teaching page select `feature_record_id:
+main-rsa`. Optional `visual` metadata on that teaching record supplies one
+shared caption, alt text, intrinsic dimensions, and responsive `sources`
+(each with `src` and `width`). `teaching-feature` renders nothing without
+`visual.src`, and both layouts return to their text layout. Below-fold media
+is lazy-loaded; the full photograph is preserved rather than cropped.
+
+Software records can set `motif: denoise`, `pipeline`, or `atlas`. The shared
+`visual-icon` include supplies these original decorative site illustrations;
+they are not official package logos or scientific results. Missing or unknown
+motifs leave the card text and links intact. Compact and full cards share small
+illustrations beside their titles, without additional colored tiles.
+
+Responsive MAIN photo derivatives are committed under `site/images/optimized/`.
+To reproduce them locally, install Pillow in your preferred Python environment
+and run `python3 scripts/prepare-teaching-image.py`; deployment needs neither
+Pillow nor this script. Sources, dimensions, and context are documented in
+`site/images/optimized/README.md`. Preserve originals and only add photo
+credits when confirmed.
+
+Teaching media fields live under a record's optional `visual` object:
+
+| Field | Purpose |
+| --- | --- |
+| `src`, `width`, `height` | Default image and its intrinsic dimensions |
+| `alt`, `caption` | Image description and confirmed event context |
+| `sources: [{src, width}]` | Responsive alternatives in ascending pixel widths |
+| `credit`, `credit_url` | Optional confirmed photographer credit and link |
+
+Keep `feature_record_id` tied to an existing teaching record. Omitting
+`visual.src` removes the photograph and its wrapper; missing or unknown
+software motifs produce complete text cards. Do not add empty image slots.
+
+### Visual release checks
+
+After a production build, inspect Home and the nine main index/activity pages
+at 320, 390, 768, 1024 and 1440 CSS pixels. Include publication, project and
+news detail pages in overflow/image checks. Check actual 200% browser zoom,
+visible keyboard focus, the mobile menu's Escape/focus return, spotlight and
+journey controls, Research selection/reset, publication multi-select/search/
+reset/citation controls, and news filters and explicit record links.
+
+With JavaScript disabled, all records and links must remain readable; enhanced
+filters/copy controls stay hidden, BibTeX links remain available, and the
+Research summary replaces the map. With reduced motion enabled, page entry
+and hover movement must be suppressed. Check missing-photo and unknown-motif
+variants in an isolated build rather than editing production records.
+
+Run the content validator and the strict site validator with the unchanged,
+verified CV source as described above. Record diagnostic and strict results
+separately. The [visual refresh handoff](docs/visual-refresh-handoff.md) records
+the completed review, evidence limits and deferred optional imagery.
+
 ```text
 site/_data/                      Shared profile, career, links, research, software, and update records
 site/collections/_projects       Curated research detail documents
