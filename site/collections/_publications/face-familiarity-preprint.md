@@ -8,7 +8,25 @@ date: 2026-09-09
 venue: "bioRxiv"
 type: "preprint"
 status: "preprint"
-featured: false
+featured: true
+figure:
+  preview_src: /images/publications/task-optimized-design-preview.webp
+  title: "Comparing brain and task-optimized network representations"
+  src: /images/publications/task-optimized-design-960.webp
+  full_src: /images/publications/task-optimized-design-1280.webp
+  width: 960
+  height: 842
+  sources:
+    - {src: /images/publications/task-optimized-design-640.webp, width: 640}
+    - {src: /images/publications/task-optimized-design-960.webp, width: 960}
+    - {src: /images/publications/task-optimized-design-1280.webp, width: 1280}
+  alt: "Five-panel study-design diagram showing familiar, unfamiliar and scrambled face stimuli; MEG sensor and cortical source activity; CNNs trained for face identity, objects, or objects including faces; and brain and CNN dissimilarity matrices compared over time."
+  caption: "The study compares source-resolved MEG responses with seven CNN architectures trained on face identity, object categories, or object categories including faces, alongside untrained controls. Representational similarity analysis compares brain and network dissimilarity matrices for the same stimuli across time and network layers. This figure explains the design rather than the measured familiarity effects."
+  credit: "Abdelhedi, Bakhtiari and Jerbi (2026)"
+  source_label: "bioRxiv v1, Figure 1"
+  source_url: "https://www.biorxiv.org/content/10.64898/2026.09.08.750266v1.full#F1"
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
 doi: "10.64898/2026.09.08.750266"
 paper_url: "https://www.biorxiv.org/content/10.64898/2026.09.08.750266v1.full"
 keywords: ["Face familiarity", "MEG", "Visual recognition", "Convolutional neural networks"]

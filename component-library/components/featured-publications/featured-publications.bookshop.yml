@@ -11,3 +11,5 @@ preview:
   link_url: "/publications"
   max_items: 3
   compact: true
+  selected_ids: []
+  show_figures: false

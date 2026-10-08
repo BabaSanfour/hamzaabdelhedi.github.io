@@ -21,6 +21,8 @@ exclude:
   - .jekyll-cache
   - schemas
   - build_log.txt
+  - images/optimized/README.md
+  - images/publications/README.md
 
 include:
   - _cloudcannon

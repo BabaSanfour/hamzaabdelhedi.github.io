@@ -65,10 +65,13 @@
     gap: var(--space-3);
   }
 
-  .about-page__section--values { border-top: 3px solid var(--color-accent); }
+  .about-page__section--values { border-top: 3px solid var(--color-ochre-accent); }
   .profile-page__quote {
-    border-left-color: var(--color-accent);
+    border-left-color: var(--color-ochre-accent);
     background: var(--color-accent-surface);
+  }
+  .about-page__interview {
+    border-top-color: var(--color-ochre-accent);
   }
 }
 

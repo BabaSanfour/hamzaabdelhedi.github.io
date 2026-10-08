@@ -1,5 +1,5 @@
 # Publication Card
-# Layouts: compact (Home previews), list (text-only publication index),
+# Layouts: compact (Home previews), list (publication index with optional figures),
 # vertical (image-led grid), or default rich card. Canonical data stays in project.
 
 blueprint:
@@ -8,6 +8,7 @@ blueprint:
   inline: true
   
 preview:
+  show_figure: false
   project:
     id: "publication-preview"
     slug: publication-preview

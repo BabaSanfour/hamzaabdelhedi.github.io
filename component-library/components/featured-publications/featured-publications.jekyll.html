@@ -1,8 +1,15 @@
 {% assign selected_publications = site.publications | where: "featured", true | sort: "id" | sort: "title" | sort: "date" | sort: "year" | reverse %}
+{% if include.selected_ids and include.selected_ids.size > 0 %}
+  {% assign selected_publications = "" | split: "" %}
+  {% for publication_id in include.selected_ids %}
+    {% assign selected_publication = site.publications | where: "slug", publication_id %}
+    {% assign selected_publications = selected_publications | concat: selected_publication %}
+  {% endfor %}
+{% endif %}
 {% assign max_count = include.max_items | default: 3 %}
 {% if selected_publications.size > 0 %}
 <!-- begin featured-publications -->
-<section class="section home-section featured-publications" id="featured-publications">
+<section class="section home-section featured-publications{% if include.show_figures %} featured-publications--figures{% endif %}" id="featured-publications">
   <div class="container">
     <div class="section__info">
       <div class="section__head">
@@ -20,7 +27,7 @@
       {% for pub in selected_publications %}
       {% if featured_count < max_count %}
       <div class="col col-4 col-d-6 col-t-12 featured-publications__item">
-        {% bookshop publication-card project=pub layout="vertical" compact=include.compact %}
+        {% bookshop publication-card project=pub layout="vertical" compact=include.compact show_figure=include.show_figures %}
       </div>
       {% assign featured_count = featured_count | plus: 1 %}
       {% endif %}

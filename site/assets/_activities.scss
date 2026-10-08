@@ -70,7 +70,20 @@
 .activity-record__body > :last-child { margin-bottom: 0; }
 .activity-page .activity-record__context { color: var(--color-muted); font-size: .85rem; }
 .activity-page .activity-record__distinction { display: inline-block; margin: 0 0 6px; padding: 2px 8px; border-radius: var(--radius-sm); background: #e7f3f5; color: var(--color-primary); font-size: .83rem; font-weight: 700; }
+
+/* Recognition uses small warm details; keep its cards white and links teal. */
+.awards-page {
+  .activity-section__heading { border-left-color: var(--color-ochre-accent); }
+  .activity-record__distinction {
+    color: var(--color-text);
+    background: var(--color-cream-surface);
+  }
+}
 .activity-record__details { margin: 6px 0 8px; padding-left: 18px; }
+/* Community repeats the small warm section rules. Teaching keeps teal. */
+.community-page {
+  .activity-section__heading { border-left-color: var(--color-ochre-accent); }
+}
 .activity-record__details li { padding-left: 2px; margin-bottom: 6px; line-height: 1.55; }
 .activity-record__links {
   display: flex; flex-wrap: wrap; gap: 0 20px; list-style: none; padding: 0; margin: 4px 0 0;

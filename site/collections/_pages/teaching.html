@@ -6,7 +6,7 @@ layout: default
 feature_record_id: main-rsa
 ---
 
-<div class="activity-page">
+<div class="activity-page teaching-page">
   {% assign feature_record = site.data.teaching | where: 'id', page.feature_record_id | first %}
   <div class="teaching-page__intro{% if feature_record.visual.src %} teaching-page__intro--with-photo{% endif %}">
   <header class="activity-page__heading">

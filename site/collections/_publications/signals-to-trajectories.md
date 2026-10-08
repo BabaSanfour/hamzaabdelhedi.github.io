@@ -9,7 +9,25 @@ date_precision: "day"
 venue: "arXiv"
 type: "preprint"
 status: "preprint"
-featured: false
+featured: true
+figure:
+  preview_src: /images/publications/signals-to-trajectories-workflow-preview.webp
+  title: "From neural signals to trajectories"
+  src: /images/publications/signals-to-trajectories-workflow-960.webp
+  full_src: /images/publications/signals-to-trajectories-workflow-1600.webp
+  width: 960
+  height: 890
+  sources:
+    - {src: /images/publications/signals-to-trajectories-workflow-640.webp, width: 640}
+    - {src: /images/publications/signals-to-trajectories-workflow-960.webp, width: 960}
+    - {src: /images/publications/signals-to-trajectories-workflow-1600.webp, width: 1600}
+  alt: "Ten-step PCA workflow grouped into data preparation, dimensionality reduction, and analysis and interpretation, with neural representations, preprocessing, data matrices, principal components, scalp loadings, trajectories, behavioural measures and validation."
+  caption: "The primer's ten-step guide moves from choosing and preparing an EEG/MEG representation to PCA, component selection and projection into a shared state space. It then examines component loadings, trajectory geometry, links to behaviour and robustness checks. The illustrated trajectories and component choices explain the method; they are not empirical results."
+  credit: "Hadid et al. (2026)"
+  source_label: "Preprint v1, Figure 1 (PDF page 8)"
+  source_url: "https://arxiv.org/pdf/2609.32315v1#page=8"
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
 arxiv_url: "https://arxiv.org/abs/2609.32315"
 pdf_link: "https://arxiv.org/pdf/2609.32315"
 keywords: ["EEG", "MEG", "PCA", "Neural trajectories"]

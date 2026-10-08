@@ -32,6 +32,26 @@ bibtex:
 thumbnail:
 banner:
 image_alt:
+# Optional verified scientific figure, shown on the detail page and, when enabled,
+# as a full-frame preview on Home and in the compact publication index.
+# Index search and filters use only the publication's text metadata.
+# See README Visual styles for required provenance and responsive media fields.
+figure:
+  src:
+  # Optional small full-frame asset used only by the archive.
+  preview_src:
+  full_src:
+  width:
+  height:
+  alt:
+  title:
+  caption:
+  credit:
+  source_label:
+  source_url:
+  license:
+  license_url:
+  sources: []
 related_research:
 related_software:
 ---

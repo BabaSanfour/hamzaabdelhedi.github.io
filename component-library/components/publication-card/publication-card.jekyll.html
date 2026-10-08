@@ -11,10 +11,29 @@
 {% endif %}
 
 {% if include.compact %}
-<article class="c-publication-preview">
+<article class="c-publication-preview{% if include.show_figure and publication.figure.src and publication.figure.src != empty %} c-publication-preview--with-figure{% endif %}">
+  <div class="c-publication-preview__row">
+  {% if include.show_figure and publication.figure.src and publication.figure.src != empty %}
+  {% assign figure = publication.figure %}
+  <figure class="c-publication-preview__figure">
+    <a class="c-publication-preview__image-link" href="{{ publication_url | relative_url | escape }}#publication-figure" aria-label="View figure and publication details: {{ publication.title | escape }}">
+      <img src="{{ figure.src | relative_url | escape }}"
+        {% if figure.sources %}srcset="{% for source in figure.sources %}{{ source.src | relative_url | escape }} {{ source.width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}" sizes="(max-width: 360px) 64px, (max-width: 576px) 80px, 96px"{% endif %}
+        width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt | escape }}" loading="lazy" decoding="async">
+    </a>
+  </figure>
+  {% endif %}
+  <div class="c-publication-preview__body">
   <p class="c-publication-preview__meta">{{ publication.year | escape }}{% if publication.venue %} · {{ publication.venue | escape }}{% endif %}{% if publication.status and publication.status != 'published' %} · {{ publication.status | replace: '-', ' ' | capitalize }}{% endif %}</p>
   <h3 class="c-publication-preview__title"><a href="{{ publication_url | relative_url | escape }}">{{ publication.title | escape }}</a></h3>
-  <a class="c-publication-preview__link" href="{{ publication_url | relative_url | escape }}">Publication details <span aria-hidden="true">→</span></a>
+  {% if publication.authors %}
+  {% assign authors = publication.authors | split: ', ' %}
+  {% assign author_limit = authors.size %}
+  {% if authors.size > 3 %}{% assign author_limit = 2 %}{% endif %}
+  <p class="c-publication-preview__authors">{% for author in authors limit: author_limit %}{% if author == 'Hamza Abdelhedi' %}<strong>{{ author | escape }}</strong>{% else %}{{ author | escape }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% if authors.size > 3 %} et al.{% endif %}</p>
+  {% endif %}
+  </div>
+  </div>
 </article>
 {% else %}
 <article class="c-publication-card{% if include.layout == 'vertical' %} is-vertical{% endif %}" data-citation-scope>
@@ -24,7 +43,14 @@
     {% assign display_image = publication.banner %}
     {% endif %}
 
-    {% if display_image and include.layout != 'list' %}
+    {% if include.layout == 'list' and include.show_figure and publication.figure.src and publication.figure.src != empty %}
+    {% assign figure = publication.figure %}
+    <a class="c-publication-card__figure-link" href="{{ publication_url | relative_url | escape }}#publication-figure" aria-label="View figure and publication details: {{ publication.title | escape }}">
+      <img src="{{ figure.preview_src | default: figure.src | relative_url | escape }}"
+        {% unless figure.preview_src %}{% if figure.sources %}srcset="{% for source in figure.sources %}{{ source.src | relative_url | escape }} {{ source.width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}" sizes="(max-width: 360px) 64px, (max-width: 576px) 80px, 96px"{% endif %}{% endunless %}
+        width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt | escape }}" loading="lazy" decoding="async">
+    </a>
+    {% elsif display_image and include.layout != 'list' %}
     <div class="c-publication-card__image-container">
       <img loading="lazy" src="{{ display_image | relative_url | escape }}"
         alt="{{ publication.image_alt | default: publication.title | escape }}" class="c-publication-card__image">

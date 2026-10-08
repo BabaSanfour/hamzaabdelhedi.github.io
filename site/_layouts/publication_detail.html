@@ -96,6 +96,10 @@ layout: default
       </section>
       {% endif %}
 
+      {% if page.figure.src and page.figure.src != empty %}
+      {% include publication-figure.html figure=page.figure %}
+      {% endif %}
+
       {% if content != blank %}
       <section class="publication-detail__content">
         {{ content }}

@@ -1,7 +1,7 @@
 - type: publication
   label: "Selected publication"
   icon: "👉"
-  publication_id: "coord2region"
+  publication_id: "face-familiarity-preprint"
   image: "/images/main/logo.png"
   color_class: "is-publication"
 

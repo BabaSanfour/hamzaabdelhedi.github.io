@@ -11,6 +11,27 @@ status: "preprint"
 featured: false
 arxiv_url: "https://arxiv.org/abs/2609.03231"
 keywords: ["MEG", "Speech decoding", "Brain-computer interfaces", "Cross-subject generalisation"]
+figure:
+  preview_src: /images/publications/pnpl-2026-splits-preview.webp
+  src: "/images/publications/pnpl-2026-splits-960.webp"
+  full_src: "/images/publications/pnpl-2026-splits-993.webp"
+  width: 960
+  height: 800
+  alt: "Two panels show subject-wise training and holdout data, with a deeply recorded participant and progressively smaller training sets for other participants."
+  title: "LibriBrain100 competition data splits"
+  caption: "Figure 1 from the September 2026 v1 preprint depicts the competition data allocation. The broken vertical axis preserves the contrast between the deeply recorded participant and the remaining participants."
+  credit: "Mantegna et al. (2026)"
+  source_label: "arXiv:2609.03231v1, Figure 1"
+  source_url: "https://arxiv.org/html/2609.03231v1#S1.F1"
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  sources:
+    - src: /images/publications/pnpl-2026-splits-640.webp
+      width: 640
+    - src: /images/publications/pnpl-2026-splits-960.webp
+      width: 960
+    - src: /images/publications/pnpl-2026-splits-993.webp
+      width: 993
 abstract: |-
   The ambition of the 2025 PNPL competition (Landau et al., 2025) was to launch a multi-year curriculum for non-invasive speech decoding. Designed to progress from foundational tasks toward the linguistic complexity required for a practical brain-computer interface (BCI), it set the stage with speech detection and phoneme classification tasks. Winning submissions reached F1-macro scores of 95.6% and 73.6% on the respective tasks (Elvers et al., 2026), highly significant advances. This success was built on the LibriBrain dataset (Özdogan et al., 2025), the largest within-subject MEG dataset recorded at the time with ~50 hours of data for one subject. However, while within-subject scale drives strong decoding performance, a practical BCI must generalise to new users from minutes of data, not hours. The 2026 PNPL competition responds to this challenge with LibriBrain100 (Mantegna et al., 2026), an extended LibriBrain dataset with 32 additional subjects (~40 minutes each) plus even more within-subject data (~80 hours). Advancing the curriculum of tasks to focus on word classification, two complementary tracks are presented in this competition: the Deep track targets within-subject word classification at scale, aiming at the best possible performance; the Broad track targets cross-subject generalisation, progressively reducing the amount of subject-specific fine-tuning data from ~40 to ~20 to ~10 minutes, a duration that falls within a clinically feasible range and brings us a step closer to a non-invasive BCI capable of restoring communication to people living with profound paralysis.
 bibtex: |-

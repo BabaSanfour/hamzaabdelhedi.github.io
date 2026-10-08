@@ -48,7 +48,7 @@
 .news-brief:last-child { padding-bottom: 0; }
 .news-brief__date { align-self: start; padding-top: 3px; color: var(--color-muted); font-size: .78rem; line-height: 1.5; text-align: right; }
 .news-brief__body { position: relative; min-width: 0; padding-left: 18px; border-left: 1px solid var(--color-rule); }
-.news-brief__body::before { content: ''; position: absolute; left: -4px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-primary); }
+.news-brief__body::before { content: ''; position: absolute; left: -4px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-ochre-accent); }
 .news-brief h3 { margin: 0 0 4px; font-size: .95rem; line-height: 1.5; }
 .news-brief h3 a { color: var(--color-text); }
 .news-brief a:hover { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }

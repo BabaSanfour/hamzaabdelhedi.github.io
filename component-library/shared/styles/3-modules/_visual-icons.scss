@@ -34,6 +34,11 @@
     color: $warm-accent;
     background: $warm-surface;
   }
+
+  &--ochre {
+    color: $ochre-accent;
+    background: $cream-surface;
+  }
 }
 
 .visual-icon__secondary { color: $secondary-color; }

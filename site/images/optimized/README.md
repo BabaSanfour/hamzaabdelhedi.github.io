@@ -2,8 +2,8 @@
 
 Source: `site/images/confs/main2024_workshop_me.jpg` (1713 × 1002, 399,956 bytes).
 This existing site photograph appears in the October 2024 MAIN story and
-documents Hamza teaching representational similarity analysis. The pilot
-reuses it on Home and Teaching through the `main-rsa` record. No photographer
+documents Hamza teaching representational similarity analysis. It is
+used on Home and Teaching through the `main-rsa` record. No photographer
 credit is recorded in the existing source; none has been invented.
 
 The full frame is retained, including the instructor, projected slides and

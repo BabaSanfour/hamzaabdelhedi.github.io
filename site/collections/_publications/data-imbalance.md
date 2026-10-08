@@ -15,6 +15,27 @@ keywords: ["Research", "Methods"]
 id: "class-imbalance-brain-decoding"
 status: "published"
 paper_url: "https://www.sciencedirect.com/science/article/pii/S1053811923004044"
+figure:
+  preview_src: /images/publications/class-imbalance-methods-preview.webp
+  src: "/images/publications/class-imbalance-methods-960.webp"
+  full_src: "/images/publications/class-imbalance-methods-1600.webp"
+  width: 960
+  height: 485
+  alt: "Three panels illustrate undersampling and oversampling, stratified cross-validation, and the class-imbalance experiment pipeline."
+  title: "Class balancing and evaluation framework"
+  caption: "Published Figure 1 explains balancing strategies, stratified cross-validation and the combinations of sample size, classifier and evaluation metric examined in the study."
+  credit: "Thölke et al. (2023), NeuroImage 277, 120253"
+  source_label: "Published Figure 1 · DOI: 10.1016/j.neuroimage.2023.120253"
+  source_url: "https://doi.org/10.1016/j.neuroimage.2023.120253"
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  sources:
+    - src: /images/publications/class-imbalance-methods-640.webp
+      width: 640
+    - src: /images/publications/class-imbalance-methods-960.webp
+      width: 960
+    - src: /images/publications/class-imbalance-methods-1600.webp
+      width: 1600
 abstract: |-
   Machine learning (ML) is increasingly used in cognitive, computational and clinical neuroscience. The reliable and efficient application of ML requires a sound understanding of its subtleties and limitations. Training ML models on datasets with imbalanced classes is a particularly common problem, and it can have severe consequences if not adequately addressed.
 

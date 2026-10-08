@@ -10,6 +10,25 @@ type: "conference-proceedings"
 status: "published"
 featured: false
 keywords: ["Speech decoding", "Brain-computer interfaces", "MEG", "Competition", "Benchmark"]
+figure:
+  preview_src: /images/publications/pnpl-reflections-leaderboard-preview.webp
+  src: "/images/publications/pnpl-reflections-leaderboard-960.webp"
+  full_src: "/images/publications/pnpl-reflections-leaderboard-1305.webp"
+  width: 960
+  height: 424
+  alt: "Scatter plot of speech-detection submissions over time, with Standard and Extended track leader trajectories and a chance reference line."
+  title: "Speech detection competition progress"
+  caption: "Figure 1 from the competition retrospective shows Phase 1 public-leaderboard F1-macro scores. These submission trajectories are distinct from the final held-out rankings reported in the paper."
+  credit: "© 2026 Elvers, Landau, Mantegna et al."
+  source_label: "Official competition retrospective, Figure 1, PDF page 3"
+  source_url: "https://neural-processing-lab.github.io/2025-libribrain-competition/publications/2025-pnpl-competition-reflections.pdf#page=3"
+  sources:
+    - src: /images/publications/pnpl-reflections-leaderboard-640.webp
+      width: 640
+    - src: /images/publications/pnpl-reflections-leaderboard-960.webp
+      width: 960
+    - src: /images/publications/pnpl-reflections-leaderboard-1305.webp
+      width: 1305
 abstract: |-
   We present a retrospective on the 2025 PNPL Competition, an open machine-learning benchmark for decoding speech from non-invasive brain recordings, which ran from June to September 2025 and culminated in a workshop at NeurIPS that December. The competition used the LibriBrain dataset—over 50 hours of within-subject MEG with standard data splits—and challenged participants to tackle two tasks: Speech Detection (binary frame-level classification) and Phoneme Classification (39-class ARPAbet prediction). Across 155 registered teams and 6,041 submissions, top F1-macro scores reached 95.6% for Speech Detection and 73.6% for Phoneme Classification, exceeding prior baselines of 68% and 44%, respectively, by wide margins. High-performing submissions converged on a common architectural template—temporal CNN or TCN backbones with task-specific recurrent or attention-based heads—whilst task-specific strategies such as temporal smoothing and ensemble voting proved critical for competitive performance. Hidden track evaluations suggest that main-track Speech Detection models generalised poorly to balanced class distributions. This could imply a reliance on class priors rather than robust neural decoding, highlighting a useful lesson: evaluation distributions should reflect intended deployment conditions. We further reflect on design choices, organisational lessons, and plans for future competitions in this series.
 paper_url: "https://neural-processing-lab.github.io/2025-libribrain-competition/editions/2025/publications/"

@@ -84,7 +84,7 @@
     </section>
 
     <section class="about-page__section" aria-labelledby="about-recognition">
-      <h2 class="section-title--marked" id="about-recognition" tabindex="-1"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='award' %}</span><span>Selected awards &amp; training</span></h2>
+      <h2 class="section-title--marked" id="about-recognition" tabindex="-1"><span class="section-marker section-marker--ochre" aria-hidden="true">{% bookshop_include visual-icon name='award' %}</span><span>Selected awards &amp; training</span></h2>
       <div class="about-page__section-body">
         <ul class="about-page__recognition">
           {% assign recognition_highlights = site.data.recognition | where: 'featured', true %}
@@ -120,7 +120,7 @@
     </section>
 
     <section class="about-page__journey" aria-labelledby="about-trajectory">
-      <h2 class="section-title--marked" id="about-trajectory" tabindex="-1"><span class="section-marker" aria-hidden="true">{% bookshop_include visual-icon name='path' %}</span><span>Education and research roles</span></h2>
+      <h2 class="section-title--marked" id="about-trajectory" tabindex="-1"><span class="section-marker section-marker--ochre" aria-hidden="true">{% bookshop_include visual-icon name='path' %}</span><span>Education and research roles</span></h2>
       <p>The records below include degrees, employment, and collaborations; some took place during the same period. For a formal account, <a href="{{ site.data.links.cv_pdf | relative_url }}">see my CV</a>.</p>
       <ol class="profile-page__trajectory">
         {% for record in timeline_records %}

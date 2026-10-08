@@ -129,6 +129,89 @@
   }
 }
 
+.featured-publications--figures {
+  .featured-publications__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .c-publication-preview { padding: var(--space-4); }
+
+  .c-publication-preview--with-figure .c-publication-preview__row {
+    display: grid;
+    flex: 1;
+    grid-template-columns: 96px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-4);
+  }
+
+  .c-publication-preview__body { min-width: 0; }
+
+  .c-publication-preview__meta { margin-bottom: var(--space-1); }
+
+  .c-publication-preview__title {
+    font-size: 18px;
+    margin-bottom: var(--space-1);
+
+    a { min-height: 0; }
+  }
+
+  .c-publication-preview__authors {
+    margin: var(--space-2) 0 var(--space-1);
+    color: var(--color-muted);
+    font-size: .8rem;
+    line-height: 1.5;
+    text-align: left;
+
+    strong { color: var(--color-text); }
+  }
+
+  .c-publication-preview__figure {
+    margin: 0;
+    align-self: center;
+  }
+
+  .c-publication-preview__image-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    padding: 2px;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: white;
+  }
+
+  .c-publication-preview__figure img {
+    display: block;
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .featured-publications__grid { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  @media (max-width: $mobile) {
+    .c-publication-preview--with-figure .c-publication-preview__row {
+      grid-template-columns: 80px minmax(0, 1fr);
+      gap: var(--space-3);
+    }
+
+    .c-publication-preview__image-link { min-height: 64px; }
+    .c-publication-preview__figure img { height: 64px; }
+    .c-publication-preview__title { font-size: 17px; }
+  }
+
+  @media (max-width: 360px) {
+    .c-publication-preview--with-figure .c-publication-preview__row {
+      grid-template-columns: 64px minmax(0, 1fr);
+    }
+  }
+}
+
 @media (max-width: $mobile) {
   .home-section {
     .section__info { margin-bottom: var(--space-5); }

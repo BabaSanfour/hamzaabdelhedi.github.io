@@ -103,7 +103,7 @@ layout: default
               {% assign publication_keywords = pub.keywords | join: "," %}
               {% assign publication_search = pub.title | append: " " | append: pub.authors | append: " " | append: pub.venue | append: " " | append: pub.type | append: " " | append: pub.status | append: " " | append: publication_keywords %}
               <div class="publication-wrapper" data-type="{{ pub.type | downcase | escape }}" data-year="{{ pub.year | escape }}" data-keywords="{{ publication_keywords | downcase | escape }}" data-search="{{ publication_search | downcase | escape }}">
-                {% bookshop publication-card project=pub layout="list" %}
+                {% bookshop publication-card project=pub layout="list" show_figure=true %}
               </div>
               {% endfor %}
             </div>

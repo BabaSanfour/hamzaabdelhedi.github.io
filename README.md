@@ -75,7 +75,7 @@ Use `story_url` for an existing long-form story and add the matching `update_id`
 
 `site/_data/connections.yml` declares a relationship once using `from`, `to`, `forward`, and `reverse`. References use `type:id`; supported types are `update`, `research`, `publication`, `software`, `teaching`, `mentoring`, `presentations`, `community`, and `awards`. Labels explain the relationship in each direction. Both sides resolve titles and URLs from their canonical records. Existing project-to-publication/software references stay in their current records; missing publication backlinks are derived from those references. Avoid inferring funding, authorship, or participation from shared keywords.
 
-External resources use labelled `links`. A news entry can set `resources_from: teaching:brainhack-2026` to reuse a course's resources instead of copying URLs. Award amounts live in `recognition.yml`; news links to the award instead of repeating its amount. The Faculty of Medicine amount is **C$25,000/year**, confirmed by the owner on 2026-10-05; the local CV source has the same correction; publish that CV change before deploying the website.
+External resources use labelled `links`. A news entry can set `resources_from: teaching:brainhack-2026` to reuse a course's resources instead of copying URLs. Award amounts live in `recognition.yml`; news links to the award instead of repeating its amount. The Faculty of Medicine amount is **C$25,000/year**, matching the canonical CV source.
 
 Run `ruby scripts/validate-content-links.rb` when editing records or relationships. It checks IDs, endpoints, relationship labels, and story/resource references. `connected-content.html` renders contextual links, `connection-link.html` resolves destinations, `news-item.html` renders archive entries, `news-brief.html` renders the compact homepage list, and `_news.scss` controls presentation.
 
@@ -122,21 +122,39 @@ live in `site/assets/_visual-system.scss`.
 
 Home's Teaching, Publications, Research, and Software sections share heading
 markup and the `.home-section` rules in `site/assets/_home-sections.scss`:
-full-width headings, matching spacing, and white cards with teal top borders,
+full-width headings, matching spacing, and primarily white cards with teal top borders,
 consistent padding, ink titles, and the same hover/focus treatment. Their
-photo and illustration layouts remain suited to their content.
+photo and illustration layouts remain suited to their content. Featured
+teaching resources retain white surfaces and teal borders.
 
 Secondary-page headings reuse the same marks. `_secondary-pages.scss` carries
 the white surfaces, teal top borders and ink titles into Research, Software,
 and selected About panels, while activity and publication archives keep their
 compact records. About's existing origin line and the Community marks extend
-the warm decoration; no place photographs or publication thumbnails are added.
+the warm decoration. About retains its original portrait and introduction,
+with the existing interview image and institutional logos providing visual
+context for the biography and career records.
 
 Teaching features and selected personal/community accents use
 `--color-warm-accent` (terracotta `#B85C4A`) for decorative rules and marks,
 with `--color-warm-surface` (peach `#FFF0E8`) behind the marks only. Keep text
 ink/navy and controls teal: terracotta does not meet normal-text contrast on
 peach, the page canvas, or white.
+
+Warm accents use ochre (`--color-ochre-accent`, `#96702E`) and cream
+(`--color-cream-surface`, `#FBF4E6`) only for small details, like the Awards
+treatment: news/journey/award marks, Home news dots, small award labels,
+selected About/Community/Awards rules and the portrait halo. Path and Teaching
+borders retain teal. `.section-marker--ochre`
+supplies the decorative ochre/cream marks. Large cards and panels stay white;
+the About quote retains its established pale teal surface. Do not use warm
+colors as block backgrounds.
+
+Navy and teal remain the primary colors: text stays ink/navy, links dark teal
+and focus outlines navy, against the pale-blue canvas. Ink on small cream
+labels measures 16.77:1. Research, Software and publication figures retain
+their established treatment. Accents reuse existing content and introduce
+no extra image assets.
 
 Home's teaching component and the Teaching page select `feature_record_id:
 main-rsa`. Optional `visual` metadata on that teaching record supplies one
@@ -171,25 +189,52 @@ Keep `feature_record_id` tied to an existing teaching record. Omitting
 `visual.src` removes the photograph and its wrapper; missing or unknown
 software motifs produce complete text cards. Do not add empty image slots.
 
-### Visual release checks
+Selected publication detail pages can supply an optional `figure` object,
+rendered by `site/_includes/publication-figure.html` after the abstract. Home
+selects four papers through the `featured-publications` component's ordered
+`selected_ids` (publication slugs), `max_items: 4`, and `show_figures: true`.
+Its compact cards form a two-by-two block above 900px and stack below that
+width. Small full-frame figure previews sit beside the titles and link to the
+detail-page figures, where captions and source/license credits are shown.
+Author lines show all names for up to three authors, otherwise the first two
+and “et al.”, with Hamza's name emphasized.
+The PCA primer and MEG foundation-model roadmap share the second row. Figure columns are 96px
+wide on desktop, 80px on mobile, and 64px at 360px or below.
+The publication archive also shows compact figure previews beside all 15 entries,
+with 96px desktop, 80px mobile and 64px tiny-screen slots. Search and filters
+continue to match only the existing text metadata. Without `selected_ids`, the component
+uses the date-sorted `featured: true` records. Keep the featured flags aligned
+with the chosen Home selection.
 
-After a production build, inspect Home and the nine main index/activity pages
-at 320, 390, 768, 1024 and 1440 CSS pixels. Include publication, project and
-news detail pages in overflow/image checks. Check actual 200% browser zoom,
-visible keyboard focus, the mobile menu's Escape/focus return, spotlight and
-journey controls, Research selection/reset, publication multi-select/search/
-reset/citation controls, and news filters and explicit record links.
+Use verified figures from the associated publication, preserve the full frame
+and explain dense labels in the detail caption; the detail image and a text
+link open the full-size local file. Missing/empty `figure.src` leaves a complete
+text card on Home and a full-width text record in the archive, without a blank image slot.
+Source/license notes and reproduction instructions live in
+[`site/images/publications/README.md`](site/images/publications/README.md).
 
-With JavaScript disabled, all records and links must remain readable; enhanced
-filters/copy controls stay hidden, BibTeX links remain available, and the
-Research summary replaces the map. With reduced motion enabled, page entry
-and hover movement must be suppressed. Check missing-photo and unknown-motif
-variants in an isolated build rather than editing production records.
+| Publication `figure` field | Purpose |
+| --- | --- |
+| `src`, `width`, `height` | Default image and intrinsic dimensions; omit `src` to render no figure or wrapper |
+| `sources: [{src, width}]`, `full_src` | Responsive alternatives and the largest local image |
+| `preview_src` | Optional 288px full-frame archive asset; falls back to responsive `src` sources |
+| `alt`, `title`, `caption` | Descriptive alternative, short figure title and verified context |
+| `credit`, `source_label`, `source_url` | Author/year attribution and direct link to the figure in its source publication |
+| `license`, `license_url` | Confirmed license name and link |
 
-Run the content validator and the strict site validator with the unchanged,
-verified CV source as described above. Record diagnostic and strict results
-separately. The [visual refresh handoff](docs/visual-refresh-handoff.md) records
-the completed review, evidence limits and deferred optional imagery.
+Publication figures are styled in `_publications-page.scss`, use native
+links without JavaScript, and load lazily with reserved intrinsic dimensions.
+Home previews are enabled only through the component's `show_figures` option
+and styled in `_home-sections.scss`; `publication-card` accepts `show_figure`.
+The archive opts in separately and uses `_publications-page.scss`. Its previews
+link to the same detail figures and credits, center beside collapsed records,
+and stay near the top when an abstract opens.
+
+Run `python3 scripts/prepare-publication-previews.py` after preparing figure
+assets to reproduce the archive-only 288px WebPs (Pillow and `rsvg-convert`).
+Their combined encoded size is 156,194 bytes for all 15 records; native lazy
+loading defers offscreen requests. Home and detail-page sources stay intact.
+Do not populate this field from decorative `thumbnail`/`banner` assets.
 
 ```text
 site/_data/                      Shared profile, career, links, research, software, and update records
