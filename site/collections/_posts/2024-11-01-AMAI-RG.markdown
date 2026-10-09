@@ -1,14 +1,16 @@
 ---
-title:  Against Military AI Reading Group -  The myth of apolitical science
-date:   2024-11-01
-update_id: amai-talk
-image:  '/images/other/AMAI-RG-Myth-political-science.png'
+title:  Against Military AI Reading Group — Deepfakes in warfare
+date:   2024-05-03
+update_id: amai-group
 tags:   
     - AMAI RG
     - Mila
 ---
 
-As part of the Against Military AI RG, I gave an overview on the <strong>[The myth of apolitical science](https://www.science.org/doi/10.1126/science.aav4900)</strong> paper that summerizes Audra Wolfe's provocative new book, [Freedom's Laboratory](https://www.press.jhu.edu/books/title/11739/freedoms-laboratory?srsltid=AfmBOop4xkIBIKunqqR3O_dA6KRG-0axD6_ZrIUPaTcFsGtkDalwrnzt)
+On May 3, 2024, I presented a reading recap on deepfakes in warfare at the Against Military AI Reading Group at Mila.
 
+We discussed voice cloning, synthetic images, and manipulated video through examples from Sudan, Gaza, and Ukraine. The session explored how fabricated media can spread misinformation and also make people doubt authentic reporting, asking what fact-checking can and cannot address.
 
-[Slides](https://docs.google.com/presentation/d/1KT9e7_GqtApJkzoigSqnilXcyY19p0XLNTIDMJJLvoc/edit#slide=id.g26c5dbc17fb_1_1005) · [Reading Group Website](https://sun-curtain-9a1.notion.site/Against-Military-AI-RG-e25479293a6041c7aabe399842bdf324?pvs=4)
+The readings included a [study of trust and deepfakes during the Russian invasion of Ukraine](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0291668), reporting on [voice cloning in Sudan](https://www.bbc.com/news/world-africa-66987869), and reporting on [AI-generated misinformation around the Gaza war](https://apnews.com/article/artificial-intelligence-hamas-israel-misinformation-ai-gaza-a1bb303b637ffbbb9cbc3aa1e000db47).
+
+[Slides (PDF)](/assets/files/presentations/amai-deepfakes-in-warfare.pdf) · [Slides (Google Slides)](https://docs.google.com/presentation/d/1_XGUSKX9r9zejL-e8Ms71x5H1rDYhyumqzCHQSCu05M/edit?usp=sharing) · [Reading group & session archive](https://sun-curtain-9a1.notion.site/Against-Military-AI-RG-e25479293a6041c7aabe399842bdf324)

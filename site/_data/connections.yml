@@ -95,6 +95,22 @@
   to: community:against-military-ai
   forward: Reading group
   reverse: News
+- from: update:amai-talk
+  to: presentations:amai-apolitical-science
+  forward: Presentation & slides
+  reverse: News
+- from: update:amai-group
+  to: presentations:amai-deepfakes
+  forward: Presentation & slides
+  reverse: News
+- from: presentations:amai-apolitical-science
+  to: community:against-military-ai
+  forward: Reading group
+  reverse: Presentation & slides
+- from: presentations:amai-deepfakes
+  to: community:against-military-ai
+  forward: Reading group
+  reverse: Presentation & slides
 - from: update:main-2024
   to: teaching:main-rsa
   forward: Workshop

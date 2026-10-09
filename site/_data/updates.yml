@@ -95,9 +95,10 @@
   links:
   - label: Scholarship program
     url: https://www.unique.quebec/unique-excellence-scholarships
-- date: 2025-02-01
-  title: Research Assistant — CHU Sainte-Justine
-  description: Joined CHU Sainte-Justine as a Research Assistant (ADHD & Epilepsy projects).
+- date: 2025-01-01
+  date_precision: month
+  title: Research Collaborator — CHU Sainte-Justine
+  description: Started collaborating with CHU Sainte-Justine on ADHD and epilepsy research.
   tags:
   - Lab
   - Research
@@ -106,9 +107,9 @@
   links:
   - label: Research group
     url: https://recherche.chusj.org/fr/Axes-de-recherche/Bio?id=78f4c41c-7908-47b7-a441-a2891eac19a5
-- date: 2024-11-09
-  title: Against Military AI Reading Group — 'Myth of apolitical science'
-  description: Presented an overview of 'The myth of apolitical science' at the Against Military AI reading group.
+- date: 2024-11-01
+  title: Against Military AI Reading Group — The myth of apolitical science
+  description: Presented a reading recap on scientific neutrality, Cold War politics, and researchers' responsibilities.
   tags:
   - Community
   - Talks
@@ -117,14 +118,18 @@
   id: amai-talk
   category: Talks
   story_url: /updates/abint-agm-nz.html
-- date: 2024-11-01
-  title: Against Military AI Reading Group
-  description: Participated in the AMAI reading group discussing the social implications of AI.
+  resources_from: presentations:amai-apolitical-science
+- date: 2024-05-03
+  title: Against Military AI Reading Group — Deepfakes in warfare
+  description: Presented a reading recap on synthetic images, video, and voice cloning in conflict, misinformation, and trust.
   tags:
   - Community
   - Policy/Ethics
+  - Talks
   id: amai-group
-  category: Community
+  category: Talks
+  story_url: /updates/amai-rg.html
+  resources_from: presentations:amai-deepfakes
 - date: 2024-10-25
   title: Educational Tutorial @ MAIN 2024
   description: Led a workshop on Representational Similarity Analysis (RSA) using MEG data at the MAIN conference.

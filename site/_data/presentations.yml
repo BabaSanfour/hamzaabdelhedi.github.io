@@ -4,6 +4,37 @@
   date_label: August 2026
   organization: MNE-Python Maintainers Conference and Sprint
   location: Meta Paris Office, Paris, France
+  links:
+  - label: Code
+    url: https://github.com/mne-tools/mne-denoise
+- id: amai-apolitical-science
+  group: talks
+  title: The myth of apolitical science
+  role: Reading recap presenter
+  date_label: November 1, 2024
+  organization: Against Military AI Reading Group, Mila
+  location: Montréal, Canada
+  summary: A discussion of scientific neutrality, Cold War funding and diplomacy, and the political responsibilities
+    of researchers, drawing on The myth of apolitical science and Audra Wolfe's Freedom's Laboratory.
+  links:
+  - label: Slides (PDF)
+    url: /assets/files/presentations/amai-apolitical-science.pdf
+  - label: Slides (Google Slides)
+    url: https://docs.google.com/presentation/d/1KT9e7_GqtApJkzoigSqnilXcyY19p0XLNTIDMJJLvoc/edit?usp=sharing
+- id: amai-deepfakes
+  group: talks
+  title: Deepfakes in warfare
+  role: Reading recap presenter
+  date_label: May 3, 2024
+  organization: Against Military AI Reading Group, Mila
+  location: Montréal, Canada
+  summary: A reading recap on voice cloning, synthetic images and video in conflict, and how misinformation
+    can undermine trust in authentic reporting, with examples from Sudan, Gaza, and Ukraine.
+  links:
+  - label: Slides (PDF)
+    url: /assets/files/presentations/amai-deepfakes-in-warfare.pdf
+  - label: Slides (Google Slides)
+    url: https://docs.google.com/presentation/d/1_XGUSKX9r9zejL-e8Ms71x5H1rDYhyumqzCHQSCu05M/edit?usp=sharing
 - id: circa-2024
   group: talks
   title: Linking human and artificial neural representations underlying face recognition
@@ -22,6 +53,9 @@
   date_label: October 2024
   organization: From Neuroscience to Artificially Intelligent Systems (NAISys)
   location: Cold Spring Harbor, USA
+  links:
+  - label: Poster
+    url: https://drive.google.com/file/d/1BHCX2JCqgcHCP9fnDpdW77P5WsolgBVx/view?usp=share_link
 - id: ccn-2024
   group: posters
   title: 'Temporal dynamics of face recognition: Insights from combining MEG and artificial neural networks'

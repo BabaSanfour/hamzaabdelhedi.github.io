@@ -16,20 +16,40 @@
 - id: against-military-ai
   group: scientific
   title: Against Military AI Reading Group
-  role: Organizer
+  role: Co-organizer
   date_label: March 2024–December 2025
   organization: Mila
   location: Montréal, Canada
-  summary: Organized biweekly discussions on the harms, risks, and misuse of artificial intelligence in military
-    applications.
+  summary: Co-organized biweekly discussions at Mila and online about the military uses and misuse of AI,
+    bringing readings and invited perspectives into a space for collective learning, respectful disagreement,
+    and mutual support.
+  details:
+  - 'Topics included autonomous weapons, surveillance, human rights, deepfakes, and the political responsibilities of researchers.'
+  - 'Presented reading recaps on deepfakes in warfare and The myth of apolitical science, followed by group discussion.'
+  links:
+  - label: Reading group & session archive
+    url: https://sun-curtain-9a1.notion.site/Against-Military-AI-RG-e25479293a6041c7aabe399842bdf324
 - id: military-ai-workshop
   group: scientific
   title: Harms and Risks of AI in the Military Workshop
-  role: Organizer
-  date_label: December 2024
+  role: Co-organizer
+  date_label: December 2–3, 2024
+  organization: Mila
   location: Montréal, Canada
-  summary: Co-organized a two-day workshop bringing people across disciplines together to discuss the harms and
-    risks of military uses of AI.
+  summary: Co-organized a two-day workshop at Mila connecting AI researchers with experts in governance,
+    humanitarian disarmament, and military affairs to discuss human rights, global security, and collective
+    responses to the militarization of AI.
+  details:
+  - 'Talks and panels covered autonomous weapons, arms races, regulation, and the responsibilities of AI researchers.'
+  links:
+  - label: Workshop website & program
+    url: https://www.harms-risks-ai-military.org/
+  - label: Day 1 recordings
+    url: https://www.youtube.com/playlist?list=PLXJ0UJfeO6DP20gVqpRho_qooTkxnTIP-
+  - label: Day 2 recordings
+    url: https://www.youtube.com/playlist?list=PLXJ0UJfeO6DME5iPXWirP-Z8f7jLjfM25
+  - label: Website source on GitHub
+    url: https://github.com/BabaSanfour/harms-risks-military-ai.github.io
 - id: unique-committee
   group: scientific
   title: UNIQUE Scientific Committee
