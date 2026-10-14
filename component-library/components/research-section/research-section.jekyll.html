@@ -1,34 +1,20 @@
-{% assign selection = include.selection | default: "featured_ids" %}
-{% if selection == "ordered_ids" %}
-  {% assign project_ids = site.data.research.ordered_ids %}
-{% else %}
-  {% assign project_ids = site.data.research.featured_ids %}
-{% endif %}
-
 <section class="section home-section research-section" aria-labelledby="research-section-title">
   <div class="container">
     <div class="section__info">
       <div class="section__head">
-        <h2 class="section__title section-title--marked" id="research-section-title"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='research' %}</span><span>{{ include.title | default: "Selected research" }}</span></h2>
-        <a class="section__link" href="{{ '/research/' | relative_url }}">View all research <span aria-hidden="true">→</span></a>
+        <h2 class="section__title section-title--marked" id="research-section-title"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='research' %}</span><span>{{ include.title | default: "Research directions" }}</span></h2>
+        <a class="section__link" href="{{ '/research/' | relative_url }}">Explore my research <span aria-hidden="true">→</span></a>
       </div>
-      {% if include.description_html %}
+      {% if include.description_html and include.description_html != empty %}
       <div class="section__description">{{ include.description_html }}</div>
+      {% else %}
+      <p class="section__description">{{ site.data.research.home_introduction }}</p>
       {% endif %}
     </div>
 
     <div class="research-section__grid">
-      {% assign max_items = include.max_items | default: 3 %}
-      {% assign rendered_items = 0 %}
-      {% for project_id in project_ids %}
-        {% if rendered_items < max_items %}
-          {% assign project = site.projects | where: "slug", project_id | first %}
-          {% if project and project.category == "research" %}
-            {% assign home_preview = site.data.research.home_previews[project_id] %}
-            {% bookshop research-card project=project compact=include.compact preview=home_preview %}
-            {% assign rendered_items = rendered_items | plus: 1 %}
-          {% endif %}
-        {% endif %}
+      {% for direction in site.data.research.directions %}
+        {% bookshop research-direction direction=direction %}
       {% endfor %}
     </div>
   </div>

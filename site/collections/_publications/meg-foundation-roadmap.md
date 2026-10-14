@@ -9,6 +9,7 @@ venue: "arXiv"
 type: "preprint"
 status: "preprint"
 featured: true
+home_summary: Routes to reusable MEG models, from pretraining and EEG transfer to evaluation across people and tasks.
 figure:
   preview_src: /images/publications/meg-foundation-pathways-preview.webp
   title: "Pathways to MEG foundation models"

@@ -6,7 +6,12 @@
     <div>
       <p>{{ teaching_visual.caption | escape }}</p>
       {% if teaching_visual.credit %}<p class="teaching-feature__credit">Photo: {% if teaching_visual.credit_url %}<a href="{{ teaching_visual.credit_url }}">{{ teaching_visual.credit | escape }}</a>{% else %}{{ teaching_visual.credit | escape }}{% endif %}</p>{% endif %}
-      <a href="{{ '/teaching/' | relative_url }}#{{ include.record.id }}">Explore this workshop <span aria-hidden="true">→</span></a>
+      {% assign tutorial_materials = include.record.links | where: 'label', 'Tutorial materials' | first %}
+      {% if tutorial_materials %}
+      <a href="{{ tutorial_materials.url | escape }}">Tutorial materials <span aria-hidden="true">→</span></a>
+      {% else %}
+      <a href="{{ '/teaching/' | relative_url }}#{{ include.record.id }}">Workshop details <span aria-hidden="true">→</span></a>
+      {% endif %}
     </div>
   </figcaption>
 </figure>

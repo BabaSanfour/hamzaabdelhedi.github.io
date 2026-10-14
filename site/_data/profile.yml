@@ -2,6 +2,7 @@
 # experience.yml; public contact links live in links.yml.
 name: Hamza Abdelhedi
 pronouns: he/him
+pronouns_url: https://pronouns.org/he-him
 field: Biomedical Engineering
 current_position_id: phd-graduate-research-assistant
 home_clinical_position_id: saint-justine-research-collaborator
@@ -12,14 +13,28 @@ affiliation_ids:
   - mila
   - saint-justine
   - abundant-intelligences
+# Home-only presentation; canonical organization records remain shared.
+home_degree_affiliations:
+  - label: Faculty of Medicine
+    url: https://medecine.umontreal.ca/
+  - organization_id: udem
+home_affiliations:
+  - organization_id: cocolab
+    label: Computational & Cognitive Neuroscience Lab (CoCoLab)
+  - organization_id: mila
+    label: Mila - Quebec AI Institute
 location: Tiohtià:ke / Montréal, Québec, Canada
 origin: Sfax, Tunisia
 home_greeting: "Hi 👋, I'm Hamza"
 hero_eyebrow: Computational Neuroscience · MEG/EEG · Open Science
 research_statement: I study how the human brain transforms changing sensory evidence into decisions and actions.
-short_bio: I use MEG/EEG, computational modeling, and neural dynamics to study decision-making.
+# Home introduces the whole research portfolio; research_statement stays the
+# precise doctoral question for existing contexts.
+home_research_statement: I use M/EEG and computational models to study brain dynamics, cognition, and representations in brains and AI.
+short_bio: I study neural dynamics, cognition, and representations in brains and AI, and develop computational methods for M/EEG.
 tagline: Building things at the intersection of bits 🤖, brains 🧠, and Open-Source 💻.
-home_values: "A fan of open & accessible science, and building shareable tools to lower research barriers. Working to foster fairness and equity within the scientific community."
+home_ai_work: "I support AI development for low-resource and Indigenous-language applications and deliver technical workshops."
+home_values: "I share practical methods through teaching, mentoring, and community work, with a focus on open, accessible science."
 hero_affiliation_labels:
   cocolab: CoCo Lab
   mila: Mila

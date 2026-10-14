@@ -13,10 +13,8 @@
   <p class="research-card__question">{{ project.question }}</p>
   {% endif %}
 
-  {% assign card_summary = project.summary %}
-  {% if include.compact and include.preview %}{% assign card_summary = include.preview %}{% endif %}
-  {% if card_summary %}
-  <p class="research-card__summary">{{ card_summary }}</p>
+  {% if project.summary %}
+  <p class="research-card__summary">{{ project.summary }}</p>
   {% endif %}
 
   {% if project.status or project.role %}
@@ -27,6 +25,13 @@
   {% endif %}
 
   {% if include.connected %}
+  <ul class="research-direction-links" aria-label="Research directions">
+    {% for direction in site.data.research.directions %}
+      {% if direction.project_ids contains project.slug %}
+      <li><a href="{{ '/research/#' | append: direction.id | relative_url }}">{{ direction.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
   <ul class="research-methods" aria-label="Shared methods">
     {% for method in site.data.research.methods %}
       {% if project.method_ids contains method.id %}<li>{{ method.name }}</li>{% endif %}
@@ -34,8 +39,8 @@
   </ul>
   {% endif %}
 
-  <a class="research-card__link" href="{{ project_url | relative_url }}" aria-label="Read research overview: {{ project.title }}">
-    Read the research overview
+  <a class="research-card__link" href="{{ project_url | relative_url }}" aria-label="Read project overview: {{ project.title }}">
+    Read the project overview
     <span aria-hidden="true">→</span>
   </a>
 </article>

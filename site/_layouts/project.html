@@ -32,6 +32,14 @@ layout: default
       </div>
       <aside class="research-project__context" aria-labelledby="research-context-title">
         <h2 id="research-context-title">In this work</h2>
+        <p class="research-project__context-label">Research directions</p>
+        <ul class="research-direction-links">
+          {% for direction in site.data.research.directions %}
+            {% if direction.project_ids contains page.slug %}
+            <li><a href="{{ '/research/#' | append: direction.id | relative_url }}">{{ direction.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
         <dl class="research-project__facts">
           {% if page.role %}<div><dt>My role</dt><dd>{{ page.role }}</dd></div>{% endif %}
           {% if page.collaborators.size > 0 %}<div><dt>Collaborators</dt><dd>{{ page.collaborators | join: ', ' }}</dd></div>{% endif %}

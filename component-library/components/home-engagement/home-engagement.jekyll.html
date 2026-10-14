@@ -1,0 +1,73 @@
+<div class="section home-engagement">
+  <div class="container">
+    <div class="home-engagement__grid">
+      <section class="home-engagement__panel home-engagement__talks" aria-labelledby="home-talks">
+        <header class="home-engagement__header">
+          <h2 class="section-title--marked" id="home-talks"><span class="section-marker section-marker--navy" aria-hidden="true">{% bookshop_include visual-icon name='presentation' %}</span><span>Talks &amp; posters</span></h2>
+        </header>
+        <ul class="home-engagement__program">
+          {% for presentation_id in include.presentation_ids %}
+          {% assign presentation = site.data.presentations | where: 'id', presentation_id | first %}
+          {% if presentation %}
+          <li>
+            <div class="home-engagement__talk-meta">
+              <div class="home-engagement__talk-details">
+                <span class="home-engagement__format">{% if presentation.group == 'posters' %}Poster{% elsif presentation.role == 'Reading recap presenter' %}Reading recap{% else %}Talk{% endif %}</span>
+                <span>{{ presentation.home_organization | default: presentation.organization | escape }}</span>
+                <span>{{ presentation.date_label | escape }}</span>
+              </div>
+              {% for resource in presentation.links %}
+                {% if resource.label == 'Slides (PDF)' or resource.label == 'Poster' %}
+                {% assign resource_url = resource.url %}{% unless resource_url contains '://' %}{% assign resource_url = resource_url | relative_url %}{% endunless %}
+                <a class="home-engagement__resource" href="{{ resource_url | escape }}">{% if resource.label == 'Poster' %}View poster{% else %}Slides (PDF){% endif %} <span aria-hidden="true">↗</span></a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <h3><a href="{{ '/presentations/#' | append: presentation.id | relative_url }}" title="{{ presentation.title | escape }}">{{ presentation.title | escape }}</a></h3>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <p class="home-engagement__footer"><a href="{{ '/presentations/' | relative_url }}">View all presentations <span aria-hidden="true">→</span></a></p>
+      </section>
+
+      <section class="home-engagement__panel home-engagement__community" aria-labelledby="home-community">
+        <header class="home-engagement__header">
+          <h2 class="section-title--marked" id="home-community"><span class="section-marker section-marker--warm" aria-hidden="true">{% bookshop_include visual-icon name='community' %}</span><span>Community &amp; service</span></h2>
+        </header>
+        <div class="home-engagement__community-body">
+          {% assign community_feature = site.data.community | where: 'id', include.community_feature_id | first %}
+          {% if community_feature %}
+          <article class="home-engagement__community-feature">
+            <div class="home-engagement__community-meta">
+              <span class="home-engagement__role">{{ community_feature.role | escape }}</span>
+              <span>{{ community_feature.date_label | escape }}</span>
+              {% if community_feature.location %}<span>{{ community_feature.location | escape }}</span>{% endif %}
+              {% if community_feature.links.first.url %}<a class="home-engagement__resource" href="{{ community_feature.links.first.url | escape }}">Visit website <span aria-hidden="true">↗</span></a>{% endif %}
+            </div>
+            <h3><a href="{{ '/community/#' | append: community_feature.id | relative_url }}">{{ community_feature.title | escape }}</a></h3>
+            <p class="home-engagement__summary">{{ community_feature.home_summary | default: community_feature.summary | escape }}</p>
+          </article>
+          {% endif %}
+          <div class="home-engagement__service-grid">
+            {% for community_id in include.community_ids %}
+            {% assign service = site.data.community | where: 'id', community_id | first %}
+            {% if service %}
+            <article class="home-engagement__service">
+              <div class="home-engagement__community-meta">
+                <span class="home-engagement__role">{{ service.role | escape }}</span>
+                <span>{{ service.date_label | escape }}</span>
+                {% if service.location %}<span>{{ service.location | escape }}</span>{% endif %}
+              </div>
+              <h3><a href="{{ '/community/#' | append: service.id | relative_url }}">{{ service.title | escape }}</a></h3>
+              {% if service.home_summary %}<p class="home-engagement__summary">{{ service.home_summary | escape }}</p>{% endif %}
+            </article>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <p class="home-engagement__footer"><a href="{{ '/community/' | relative_url }}">View community activities <span aria-hidden="true">→</span></a></p>
+      </section>
+    </div>
+  </div>
+</div>

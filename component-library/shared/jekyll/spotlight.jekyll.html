@@ -5,7 +5,9 @@
     {% assign spotlight_title = item.title %}
     {% assign spotlight_url = item.url %}
     {% assign spotlight_meta = item.meta %}
-    {% assign spotlight_image = item.image %}
+    {% assign spotlight_summary = item.summary %}
+    {% assign spotlight_links = nil %}
+    {% assign spotlight_authors = nil %}
     {% if item.type == 'publication' %}
       {% assign spotlight_publication = site.publications | where: "slug", item.publication_id | first %}
       {% assign spotlight_title = spotlight_publication.title | default: item.title %}
@@ -14,16 +16,39 @@
         {% assign spotlight_url_ending = spotlight_url | slice: -5, 5 %}
         {% unless spotlight_url_ending == '.html' %}{% assign spotlight_url = spotlight_url | append: '.html' %}{% endunless %}
         {% assign spotlight_meta = spotlight_publication.venue | append: ' · ' | append: spotlight_publication.year %}
-        {% assign spotlight_image = spotlight_publication.thumbnail | default: item.image %}
+        {% assign spotlight_authors = spotlight_publication.authors %}
+      {% endif %}
+    {% elsif item.type == 'teaching' %}
+      {% assign spotlight_teaching = site.data.teaching | where: "id", item.teaching_id | first %}
+      {% if spotlight_teaching %}
+        {% assign spotlight_title = spotlight_teaching.short_title | default: spotlight_teaching.title %}
+        {% assign spotlight_url = '/teaching/#' | append: spotlight_teaching.id %}
+        {% assign spotlight_summary = spotlight_teaching.spotlight_summary | default: spotlight_teaching.summary %}
+        {% assign spotlight_links = spotlight_teaching.links %}
+      {% endif %}
+    {% elsif item.type == 'software' %}
+      {% assign spotlight_software = site.data.software | where: "id", item.software_id | first %}
+      {% if spotlight_software %}
+        {% assign spotlight_title = spotlight_software.name %}
+        {% assign spotlight_url = '/software/#' | append: spotlight_software.id %}
+        {% assign spotlight_meta = spotlight_software.role %}
+        {% assign spotlight_summary = spotlight_software.one_liner %}
+        {% assign spotlight_links = item.links %}
       {% endif %}
     {% endif %}
     <div class="c-spotlight__item" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
       <div class="c-spotlight__header">
-        {% if spotlight_image %}<img class="c-spotlight__thumb" src="{{ spotlight_image | relative_url }}" alt="" width="40" height="40" decoding="async">{% endif %}
         <span class="c-spotlight__label">{{ item.icon }} {{ item.label | escape }}</span>
       </div>
       <h2 class="c-spotlight__title">{% if spotlight_url %}<a href="{{ spotlight_url | relative_url }}">{% endif %}{{ spotlight_title | escape }}{% if spotlight_url %}</a>{% endif %}</h2>
+      {% if spotlight_authors %}<p class="c-spotlight__authors">{{ spotlight_authors | escape }}</p>{% endif %}
       {% if spotlight_meta %}<p class="c-spotlight__meta">{{ spotlight_meta | escape }}</p>{% endif %}
+      {% if spotlight_summary %}<p class="c-spotlight__summary">{{ spotlight_summary | escape }}</p>{% endif %}
+      {% if spotlight_links.size > 0 %}
+      <ul class="c-spotlight__resources" aria-label="Workshop resources">
+        {% for link in spotlight_links %}<li><a href="{{ link.url | relative_url }}">{{ link.short_label | default: link.label | escape }}</a></li>{% endfor %}
+      </ul>
+      {% endif %}
     </div>
     {% endfor %}
   </div>

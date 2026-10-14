@@ -1,0 +1,16 @@
+spec:
+  structures:
+    - content_blocks
+  label: Home talks and community
+  description: Selected presentations beside community building and service highlights.
+  icon: groups
+blueprint:
+  presentation_ids:
+    - mne-denoise-talk
+    - naisys-2024
+    - amai-apolitical-science
+  community_feature_id: tuna
+  community_ids:
+    - unique-committee
+    - mila-student-outreach
+preview: {}

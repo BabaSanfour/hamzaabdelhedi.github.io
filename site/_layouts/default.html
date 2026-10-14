@@ -3,7 +3,7 @@
 
 {% include head.html %}
 
-<body>
+<body{% if page.url == '/' %} class="page-home"{% endif %}>
 
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
@@ -17,10 +17,11 @@
             using the same syntax as the standard Jekyll include tag.
         -->
         {% bookshop_include page content_blocks=page.content_blocks page_theme=page.page_theme %}
+        {% if page.url == '/' %}{% include home-contact.html %}{% endif %}
     </main>
 
-    <button class="top" type="button" title="Back to top" aria-label="Back to top" hidden>
-        <i class="ion ion-ios-arrow-up" aria-hidden="true"></i>
+    <button class="top" data-back-to-top type="button" title="Back to top" aria-label="Back to top" hidden>
+        <span aria-hidden="true">↑</span>
     </button>
 
     {% include footer.html %}

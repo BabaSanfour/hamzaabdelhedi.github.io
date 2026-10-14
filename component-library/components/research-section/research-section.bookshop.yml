@@ -2,31 +2,15 @@ spec:
   structures:
     - content_blocks
   label: Research Section
-  description: Selects research cards by IDs from site.data.research.yml.
+  description: Presents the three enduring directions from site.data.research.yml.
   icon: view_module
   tags:
     - Research
 
 blueprint:
-  title: Selected research
+  title: Research directions
   description_html: ""
-  selection: featured_ids
-  max_items: 3
-  compact: false
 
 preview:
-  title: Selected research
-  description_html: Research records selected by the shared research data.
-  selection: featured_ids
-  max_items: 3
-  compact: true
-
-_inputs:
-  selection:
-    type: select
-    options:
-      values:
-        - featured_ids
-        - ordered_ids
-  max_items:
-    type: number
+  title: Research directions
+  description_html: ""

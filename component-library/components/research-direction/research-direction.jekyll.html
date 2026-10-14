@@ -1,0 +1,8 @@
+{% assign direction = include.direction %}
+{% assign direction_url = '/research/#' | append: direction.id %}
+<article class="research-card research-direction research-direction--{{ direction.id | escape }}">
+  <div class="research-direction__visual" aria-hidden="true">{% bookshop_include visual-icon name=direction.id %}</div>
+  <h3 class="research-card__title"><a href="{{ direction_url | relative_url }}">{{ direction.title }}</a></h3>
+  <p class="research-card__summary">{{ direction.home_summary | newline_to_br }}</p>
+  <a class="research-card__link" href="{{ direction_url | relative_url }}" aria-label="Explore {{ direction.title | escape }}">Explore this direction <span aria-hidden="true">→</span></a>
+</article>

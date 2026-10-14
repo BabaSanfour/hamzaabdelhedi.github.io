@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: Hero
-  description: Page hero with name, position, tagline, social icons, and image
+  description: Introduction with research statement, early actions, and portrait
   icon: wysiwyg
   tags:
     - Structure
@@ -16,6 +16,7 @@ blueprint:
   title: ""
   phonetic: ""
   pronouns: ""
+  pronouns_url: ""
   eyebrow: ""
   statement: ""
   position: ""
@@ -39,22 +40,24 @@ preview:
   title: Hi 👋, I'm Hamza
   phonetic: HAM-za ab-del-HE-di
   pronouns: he/him
+  pronouns_url: https://pronouns.org/he-him
   position: PhD student in Biomedical Engineering
-  statement: Building things at the intersection of bits 🤖, brains 🧠, and Open-Source 💻.
+  statement: I study brain dynamics and representations with M/EEG and computational models, investigate connections between brains and AI, and develop methods for understanding neural activity.
   description_html: >-
-    <p>I study how the human brain transforms changing sensory evidence into decisions and actions. With Prof. Karim Jerbi, I use MEG/EEG and computational modeling to follow neural dynamics. I'm also interested in how we can represent brain signals—from low-dimensional trajectories to artificial neural networks and foundation models. At CHU Sainte-Justine, I collaborate on pediatric clinical EEG research, including questions about ADHD and epilepsy.</p>
-    <p>A fan of <strong>open &amp; accessible science</strong>, and building shareable tools to lower research barriers. Working to foster fairness and equity within the scientific community.</p>
+    <p>I combine recordings of brain activity (MEG/EEG) with computational models, including neural networks. In my PhD with <a href="https://psy.umontreal.ca/en/repertoire-departement/professeurs/professeur/in/in18916/sg/Karim%20Jerbi/">Prof. Karim Jerbi</a>, I study how changing evidence shapes decisions. I also collaborate on pediatric EEG research at <a href="https://recherche.chusj.org/en/Home">CHU Sainte-Justine</a>.</p>
+    <p>I build and maintain open-source tools for analyzing brain signals, including <a href="/software/#coco-pipe">CoCo-PiPe</a> and <a href="/software/#mne-denoise">MNE-Denoise</a>, and contribute to packages across the <a href="/software/">MNE ecosystem</a>. I share practical methods through teaching, mentoring, and community work, with a focus on open, accessible science.</p>
+    <p>At <a href="https://abundant-intelligences.net/">Abundant Intelligences</a>, I support AI development for low-resource and Indigenous-language applications and deliver technical workshops.</p>
     <p>Originally from Sfax 🇹🇳, now based in <strong>Tiohtià:ke / Montréal</strong> 🇨🇦.</p>
   image: /images/main/01.jpg
   image_alt: Hamza Abdelhedi
   circular_image: true
   show_social_icons: true
   email: hamza.abdelhedi@umontreal.ca
-  cta_button: Get in touch
-  cta_button_link: /contact/
-  works_button: What I'm working on
-  works_button_link: /research/
-  cv_button: Download CV
+  cta_button: Explore my research
+  cta_button_link: /research/
+  works_button: Get in touch
+  works_button_link: /contact/
+  cv_button: CV (PDF)
   cv_button_link: /assets/files/Hamza_Abdelhedi_CV.pdf
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
@@ -71,6 +74,9 @@ _inputs:
   pronouns:
     type: text
     comment: Pronouns shown beside the pronunciation
+  pronouns_url:
+    type: url
+    comment: Optional explanation link for the displayed pronouns
   eyebrow:
     type: text
     comment: Short field and methods line above the name

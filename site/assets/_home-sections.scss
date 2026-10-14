@@ -1,4 +1,119 @@
-/* One heading and card treatment for the four main Home sections. */
+/* Reduce Home's section spacing by 25%, including the introductory gap. */
+.page-home .c-page {
+  > .section { padding-block: calc(var(--space-7) * .75); }
+  > .c-hero { padding-bottom: calc(var(--space-7) * .75); }
+
+  @media (max-width: $tablet) {
+    > .c-hero { padding-bottom: calc(var(--space-6) * .75); }
+  }
+}
+
+/* Home's introduction uses the same type, link, and surface hierarchy as its sections. */
+.page-home .c-hero.c-hero--profile {
+  .c-hero__header-card {
+    border: 1px solid rgba($secondary-color, .16);
+    background: linear-gradient(120deg, var(--color-surface) 72%, var(--color-accent-surface));
+  }
+  .c-hero__name { font-size: clamp(2rem, 3.5vw, 2.625rem); font-weight: 700; line-height: 1.15; letter-spacing: -.025em; }
+  .c-hero__supporting,
+  .c-hero__phonetic,
+  .c-hero__pronouns { color: var(--color-muted); font-size: .8125rem; font-weight: 400; line-height: 1.5; }
+  .c-hero__statement { margin: 16px 0; font-size: 1.25rem; font-weight: 500; line-height: 1.5; text-wrap: pretty; }
+  .c-hero__byline { font-size: .9375rem; font-weight: 400; line-height: 1.6; color: var(--color-muted); }
+  .c-hero__byline a,
+  .c-hero__affiliations a,
+  a.c-hero__pronouns { color: var(--color-primary); }
+  .c-hero__description,
+  .c-hero__description p { font-size: 1rem; line-height: 1.65; }
+  .c-hero__description .c-hero__context { color: var(--color-muted); font-size: .875rem; }
+  .c-hero__context strong { color: inherit; font-weight: 500; }
+
+  .c-hero__image--portrait {
+    isolation: isolate;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      transform: translate(6px, 8px);
+      border: 1px solid rgba($primary-color, .14);
+      border-radius: var(--radius-md);
+      background: var(--color-accent-surface);
+      pointer-events: none;
+    }
+
+    img {
+      display: block;
+      border: 3px solid var(--color-surface);
+      box-shadow: 0 8px 24px rgba($secondary-color, .08);
+    }
+  }
+
+  .c-hero__affiliations {
+    align-items: baseline;
+    gap: 4px 12px;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.6;
+
+    li { gap: 12px; }
+  }
+  .c-hero__affiliation-separator { color: var(--color-muted); }
+
+  .c-hero__btn { justify-content: flex-start; column-gap: 24px; margin-block: 20px; }
+  .cta-button {
+    gap: 12px;
+    box-shadow: 0 3px 10px rgba($primary-color, .12);
+  }
+  .c-hero__secondary-actions { justify-content: flex-start; gap: 20px; }
+  .c-hero__utility-link {
+    color: var(--color-muted);
+    font-size: .875rem;
+    font-weight: 500;
+
+    &:hover,
+    &:focus-visible { color: var(--color-primary); }
+  }
+  .c-hero__visual { align-self: start; gap: 16px; }
+  .c-hero__image { max-width: 260px; }
+  .c-spotlight {
+    flex: 0 0 auto;
+    padding: 12px;
+    border: 1px solid var(--color-rule);
+    border-top-color: var(--color-secondary);
+    border-radius: var(--radius-md);
+    background: linear-gradient(145deg, var(--color-surface) 55%, var(--color-secondary-surface));
+  }
+  .c-spotlight__header { margin-bottom: 8px; }
+  .c-spotlight__label { color: var(--color-secondary); font-size: .8125rem; font-weight: 600; line-height: 1.5; }
+  .c-spotlight__title { margin-bottom: 8px; font-size: 1.0625rem; font-weight: 700; line-height: 1.4; }
+  .c-spotlight__title a {
+    color: var(--color-text);
+    &:hover, &:focus-visible { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
+  }
+  .c-spotlight__meta,
+  .c-spotlight__authors { font-size: .8125rem; line-height: 1.5; }
+  .c-spotlight__summary { font-size: .875rem; line-height: 1.6; }
+  .c-spotlight__slides { margin-bottom: 0; }
+  .c-spotlight__controls { margin-top: 12px; padding-top: 8px; }
+  .c-spotlight__step { border-color: var(--color-rule); background: var(--color-surface); }
+  .c-spotlight__step:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-accent-surface); }
+  .c-spotlight__dot { background: transparent; }
+  .c-spotlight__resources a { font-size: .875rem; }
+
+  @media (min-width: 769px) {
+    .c-hero__visual { align-self: end; }
+  }
+
+  @media (max-width: $tablet) {
+    .c-hero__image { width: min(208px, 100%); }
+    .c-hero__statement { font-size: 1.125rem; }
+    .c-hero__secondary-actions { justify-content: center; }
+  }
+}
+
+/* Shared typography and spacing, with a distinct treatment for each section. */
 .home-section {
   .section__info {
     max-width: none;
@@ -24,6 +139,7 @@
         gap: var(--space-2);
         min-height: 44px;
         font-size: .875rem;
+        font-weight: 600;
         line-height: 1.5;
         text-decoration: underline;
         text-underline-offset: 3px;
@@ -31,7 +147,7 @@
     }
 
     .section__description {
-      max-width: var(--content-reading);
+      max-width: none;
       margin: var(--space-4) 0 0;
     }
   }
@@ -78,7 +194,7 @@
 
     a { color: inherit; }
     a:hover,
-    a:focus-visible { color: var(--color-primary); }
+    a:focus-visible { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
   }
 
   .learning-preview h3 a,
@@ -91,7 +207,7 @@
 
   .software-card__heading .software-card__title { margin: 0; }
 
-  .learning-preview > p:last-child,
+  .learning-preview__summary,
   .research-card__summary,
   .software-card__purpose {
     color: var(--color-muted);
@@ -117,7 +233,7 @@
     min-height: 44px;
     margin-top: auto;
     color: var(--color-primary);
-    font-size: .9rem;
+    font-size: .875rem;
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -129,6 +245,91 @@
   }
 }
 
+/* Match interaction cues without flattening the different section layouts. */
+.page-home {
+  :is(.c-spotlight__title, .home-engagement h3, .news-brief__title) a:hover,
+  :is(.c-spotlight__title, .home-engagement h3, .news-brief__title) a:focus-visible {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  :is(a, button, summary):focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+}
+
+@media (max-width: $desktop) {
+  .home-section .section__info .section__head .section__title { font-size: 24px; }
+}
+
+.home-section.research-section {
+  .research-direction {
+    --direction-ink: var(--color-primary);
+    --direction-wash: var(--color-accent-surface);
+    padding: 20px;
+    border-top-width: 1px;
+    border-top-color: var(--direction-ink);
+    background: linear-gradient(155deg, var(--direction-wash), var(--color-surface) 100px);
+  }
+  .research-direction--brains-and-ai {
+    --direction-ink: var(--color-secondary);
+    --direction-wash: var(--color-secondary-surface);
+  }
+  .research-direction--meeg-methods {
+    --direction-ink: var(--color-ochre-accent);
+    --direction-wash: var(--color-cream-surface);
+  }
+  .research-direction__visual { margin-bottom: 12px; color: var(--direction-ink); }
+  .visual-icon--direction { width: 120px; height: 40px; }
+  .research-card__title { margin-bottom: 10px; }
+  .research-card__summary { margin-bottom: 10px; }
+  .section__info { margin-bottom: var(--space-5); }
+}
+
+.home-section.teaching-section {
+  .section__info { margin-bottom: var(--space-5); }
+  .section__description a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
+  .teaching-section__grid { gap: var(--space-4); }
+  .learning-preview {
+    padding: var(--space-4);
+    border-top-width: 1px;
+    border-top-color: var(--color-rule);
+    border-left: 3px solid var(--color-warm-accent);
+    background: linear-gradient(120deg, var(--color-surface) 65%, var(--color-warm-surface));
+  }
+  .learning-preview:hover,
+  .learning-preview:focus-within { border-left-color: var(--color-warm-accent); }
+  .learning-preview__meta { margin-bottom: 4px; }
+  .learning-preview h3 { margin-bottom: 4px; }
+  .learning-preview__summary { margin: 4px 0 0; }
+}
+
+.home-section.software-section {
+  .section__info { margin-bottom: var(--space-5); }
+  .software-section__grid { gap: var(--space-4); }
+  .software-card { padding: var(--space-4); border-top: 1px solid var(--color-rule); }
+  .software-card__heading { flex-wrap: wrap; margin-bottom: 4px; }
+  .software-card__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 88px;
+    width: 88px;
+    min-height: 52px;
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent-surface);
+  }
+  .software-card__title a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+  }
+  .software-card__role { margin: 0 0 8px; font-size: .82rem; line-height: 1.5; }
+  .software-card__purpose { margin: 0; }
+}
+
+.teaching-section__feature { min-width: 0; }
+
 .featured-publications--figures {
   .featured-publications__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -137,10 +338,12 @@
 
   .c-publication-preview { padding: var(--space-4); }
 
+  &.home-section .c-publication-preview { border-top: 1px solid var(--color-rule); }
+
   .c-publication-preview--with-figure .c-publication-preview__row {
     display: grid;
     flex: 1;
-    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-columns: 112px minmax(0, 1fr);
     align-items: start;
     gap: var(--space-4);
   }
@@ -153,7 +356,20 @@
     font-size: 18px;
     margin-bottom: var(--space-1);
 
-    a { min-height: 0; }
+    a {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      min-height: 0;
+    }
+  }
+
+  .c-publication-preview__takeaway {
+    margin: 8px 0 0;
+    color: var(--color-text);
+    font-size: .9rem;
+    line-height: 1.6;
   }
 
   .c-publication-preview__authors {
@@ -166,26 +382,57 @@
     strong { color: var(--color-text); }
   }
 
+  .c-publication-preview__keywords {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    gap: 4px 6px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+
+    &:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+
+    li {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      background: var(--color-bg);
+      color: var(--color-muted);
+      font-size: .75rem;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    abbr { text-decoration: none; }
+  }
+
   .c-publication-preview__figure {
     margin: 0;
-    align-self: center;
+    align-self: start;
   }
 
   .c-publication-preview__image-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 80px;
-    padding: 2px;
-    border: 1px solid var(--color-rule);
+    min-height: 96px;
+    padding: 6px;
+    border: 1px solid transparent;
     border-radius: var(--radius-sm);
-    background: white;
+    background: var(--color-bg);
   }
 
   .c-publication-preview__figure img {
     display: block;
     width: 100%;
-    height: 80px;
+    height: 96px;
     object-fit: contain;
     margin: 0;
   }
@@ -197,7 +444,21 @@
   @media (max-width: $mobile) {
     .c-publication-preview--with-figure .c-publication-preview__row {
       grid-template-columns: 80px minmax(0, 1fr);
-      gap: var(--space-3);
+      gap: 6px var(--space-3);
+    }
+
+    .c-publication-preview--with-figure {
+      .c-publication-preview__body { display: contents; }
+      .c-publication-preview__figure {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: start;
+      }
+      .c-publication-preview__meta { grid-column: 2; grid-row: 1; }
+      .c-publication-preview__title { grid-column: 2; grid-row: 2; }
+      .c-publication-preview__takeaway { grid-column: 1 / -1; grid-row: 3; }
+      .c-publication-preview__keywords { grid-column: 1 / -1; grid-row: 4; }
+      .c-publication-preview__authors { grid-column: 1 / -1; grid-row: 5; }
     }
 
     .c-publication-preview__image-link { min-height: 64px; }

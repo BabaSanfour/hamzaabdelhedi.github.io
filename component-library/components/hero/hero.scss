@@ -18,12 +18,7 @@
 	&__inner {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
-		grid-template-areas:
-			"header portrait"
-			"social portrait"
-			"statement portrait"
-			"description portrait"
-			"actions portrait";
+		grid-template-areas: "intro portrait";
 		align-items: start;
 		gap: 0 $space-7;
 
@@ -31,20 +26,24 @@
 
 		&--text-only {
 			grid-template-columns: minmax(0, 1fr);
-			grid-template-areas: "header" "social" "statement" "description" "actions";
+			grid-template-areas: "intro";
 		}
 
 		@media only screen and (max-width: $tablet) {
 			grid-template-columns: minmax(0, 1fr);
-			grid-template-areas: "header" "portrait" "social" "statement" "description" "actions";
+			grid-template-rows: auto;
+			grid-template-areas: "intro" "portrait";
 			gap: 0;
+
+			&--text-only { grid-template-areas: "intro"; }
 		}
 	}
 
-	&__social { grid-area: social; }
+	&__intro { grid-area: intro; }
+
+	&__social { margin-top: $space-4; }
 
 	&__header-card {
-		grid-area: header;
 		padding: $space-5 $space-6;
 		margin-bottom: $space-6;
 		border: 1px solid $border-color;
@@ -151,7 +150,6 @@
 	}
 
 	&__statement {
-		grid-area: statement;
 		max-width: 760px;
 		text-wrap: balance;
 		margin: 0 0 14px;
@@ -170,7 +168,6 @@
 	}
 
 	&__description {
-		grid-area: description;
 		font-size: 16px;
 		line-height: 1.6;
 		color: $text-color;
@@ -202,7 +199,6 @@
 	}
 
 	&__btn {
-		grid-area: actions;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: flex-start;
@@ -262,6 +258,23 @@
 		@media only screen and (max-width: $tablet) {
 			justify-content: center;
 		}
+	}
+
+	&__secondary-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: $space-4;
+	}
+
+	&__utility-link {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		font-size: 16px;
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 4px;
 	}
 
 	&__visual {

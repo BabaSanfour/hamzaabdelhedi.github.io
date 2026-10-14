@@ -1,8 +1,20 @@
 {% assign brief = include.item %}
+{% assign news_icon = 'news' %}
+{% case brief.category %}
+  {% when 'Teaching' %}{% assign news_icon = 'teaching' %}
+  {% when 'Software' %}{% assign news_icon = 'software' %}
+  {% when 'Research' %}{% assign news_icon = 'research' %}
+  {% when 'Community' %}{% assign news_icon = 'community' %}
+  {% when 'Awards' %}{% assign news_icon = 'award' %}
+  {% when 'Milestones' %}{% assign news_icon = 'path' %}
+  {% when 'Talks' %}{% assign news_icon = 'presentation' %}
+  {% when 'Publications' %}{% assign news_icon = 'publication' %}
+{% endcase %}
 <article class="news-brief">
-  <a class="news-brief__date" href="{{ '/updates/#' | append: brief.id | relative_url }}" aria-label="Link to update: {{ brief.title | escape }}"><time datetime="{% if brief.date_precision == 'month' %}{{ brief.date | date: '%Y-%m' }}{% else %}{{ brief.date | date: '%Y-%m-%d' }}{% endif %}">{% if brief.date_precision == 'month' %}{{ brief.date | date: '%b %Y' }}{% else %}{{ brief.date | date: '%d %b %Y' }}{% endif %}</time></a>
-  <div class="news-brief__body">
-    <h3><a href="{{ '/updates/#' | append: brief.id | relative_url }}">{{ brief.title | escape }}</a></h3>
-    <a class="news-brief__category" href="{{ '/updates/' | relative_url }}?category={{ brief.category | url_encode }}">{{ brief.category | escape }}</a>
+  <div class="news-brief__meta">
+    <time class="news-brief__date" datetime="{% if brief.date_precision == 'month' %}{{ brief.date | date: '%Y-%m' }}{% else %}{{ brief.date | date: '%Y-%m-%d' }}{% endif %}">{% if brief.date_precision == 'month' %}{{ brief.date | date: '%b %Y' }}{% else %}{{ brief.date | date: '%d %b %Y' }}{% endif %}</time>
+    <span aria-hidden="true">·</span>
+    <a class="news-brief__category" href="{{ '/updates/' | relative_url }}?category={{ brief.category | url_encode }}">{% if include.show_icon %}{% bookshop_include visual-icon name=news_icon %}{% endif %}{{ brief.category | escape }}</a>
   </div>
+  <h3><a href="{{ '/updates/#' | append: brief.id | relative_url }}">{{ brief.home_title | default: brief.title | escape }}</a></h3>
 </article>

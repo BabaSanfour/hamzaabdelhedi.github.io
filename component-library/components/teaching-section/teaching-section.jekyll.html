@@ -3,28 +3,32 @@
     <div class="section__info">
       <div class="section__head">
         <h2 class="section__title section-title--marked" id="home-teaching-title"><span class="section-marker section-marker--warm" aria-hidden="true">{% bookshop_include visual-icon name='teaching' %}</span><span>{{ include.title | default: 'Teaching & mentoring' }}</span></h2>
-        <a class="section__link" href="{{ '/teaching/' | relative_url }}">Explore my teaching <span aria-hidden="true">→</span></a>
+        <a class="section__link" href="{{ '/teaching/' | relative_url }}">View courses & workshops <span aria-hidden="true">→</span></a>
       </div>
       {% if include.description_html %}<div class="section__description">{{ include.description_html }}</div>{% endif %}
     </div>
     {% assign feature_record = site.data.teaching | where: 'id', include.feature_record_id | first %}
     <div class="teaching-section__body{% if feature_record.visual.src %} teaching-section__body--with-photo{% endif %}">
-      {% bookshop_include teaching-feature record=feature_record %}
+      <div class="teaching-section__feature">
+        {% bookshop_include teaching-feature record=feature_record %}
+      </div>
       <div class="teaching-section__grid">
       {% assign resources = site.data.teaching | where: 'group', 'resources' %}
+      {% if include.selected_ids.size > 0 %}
+        {% assign resources = '' | split: '' %}
+        {% for teaching_id in include.selected_ids %}
+          {% assign selected_record = site.data.teaching | where: 'id', teaching_id %}
+          {% assign resources = resources | concat: selected_record %}
+        {% endfor %}
+      {% endif %}
       {% for resource in resources %}
       <article class="learning-preview">
-        <p class="learning-preview__meta">{{ resource.organization | escape }}{% if resource.date_label %} · {{ resource.date_label | escape }}{% endif %}</p>
+        <p class="learning-preview__meta">{{ resource.home_organization | default: resource.organization | escape }}{% if resource.date_label %} · {{ resource.date_label | escape }}{% endif %}{% if resource.role %} · {{ resource.role | escape }}{% endif %}</p>
         <h3><a href="{{ '/teaching/' | relative_url }}#{{ resource.id }}">{{ resource.short_title | default: resource.title | escape }} <span aria-hidden="true">→</span></a></h3>
-        <p>{{ resource.summary | escape }}</p>
+        <p class="learning-preview__summary">{{ resource.home_summary | default: resource.summary | escape }}</p>
       </article>
       {% endfor %}
       </div>
     </div>
-    <nav class="teaching-section__more" aria-label="More about my work">
-      <a href="{{ '/presentations/' | relative_url }}">Talks &amp; posters <span aria-hidden="true">→</span></a>
-      <a href="{{ '/community/' | relative_url }}">Community &amp; service <span aria-hidden="true">→</span></a>
-      <a href="{{ '/awards/' | relative_url }}">Awards &amp; scholarships <span aria-hidden="true">→</span></a>
-    </nav>
   </div>
 </section>

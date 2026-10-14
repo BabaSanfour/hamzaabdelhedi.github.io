@@ -1,0 +1,83 @@
+/* Program notes and community portraits share a rhythm, not a card template. */
+.home-engagement {
+  &__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+  &__panel { display: flex; flex-direction: column; min-width: 0; }
+  &__header { padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--color-rule); }
+  &__header h2 { margin: 0; font-size: 28px; line-height: 1.25; scroll-margin-top: 24px; }
+  h3 { margin: 0; font-size: 1.05rem; line-height: 1.45; }
+  h3 a { color: var(--color-text); }
+  h3 a:hover { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+
+  &__program {
+    display: flex; flex-direction: column; flex: 1;
+    list-style: none; margin: 0; padding: 0;
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-secondary);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+  &__program li {
+    display: flex; flex-direction: column; justify-content: center; flex: 1;
+    margin: 0; padding: 16px;
+    background: linear-gradient(125deg, var(--color-secondary-surface), var(--color-surface) 80%);
+  }
+  &__program li + li { border-top: 1px solid var(--color-rule); }
+  &__program li:first-child {
+    border-radius: 0 var(--radius-md) 0 0;
+  }
+  &__program li:last-child { border-radius: 0 0 var(--radius-md) 0; }
+  &__talk-meta { display: flex; align-items: baseline; gap: 8px 12px; margin-bottom: 6px; color: var(--color-muted); font-size: .78rem; line-height: 1.5; }
+  &__talk-details,
+  &__community-meta {
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 8px;
+    margin-bottom: 6px; color: var(--color-muted); font-size: .78rem; line-height: 1.5;
+    > span + span::before { content: '·'; margin-right: 8px; color: var(--color-muted); }
+  }
+  &__talk-details { flex: 1; min-width: 0; margin-bottom: 0; }
+  &__format { color: var(--color-secondary); font-weight: 600; }
+  &__program h3 a {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  }
+  &__resource { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 6px; min-height: 28px; color: var(--color-primary); font-size: .78rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+  &__community-body { display: grid; flex: 1; gap: 16px; }
+  &__community-feature {
+    padding: 16px;
+    border: 1px solid rgba($warm-accent, .25);
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-warm-surface), var(--color-surface) 85%);
+  }
+  &__community-feature h3 { font-size: 1.125rem; }
+  &__role { color: var(--color-secondary); font-weight: 600; }
+  &__summary { margin: 8px 0 0; font-size: .9rem; line-height: 1.6; color: var(--color-text); }
+  &__service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  &__service {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--color-rule);
+    border-top: 2px solid var(--color-warm-accent);
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--color-surface) 65%, var(--color-warm-surface));
+  }
+  &__service h3 { font-size: .95rem; }
+  &__footer { margin: auto 0 0; padding-top: 12px; }
+  &__footer a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--color-primary); font-size: .875rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 1024px) {
+    &__grid { gap: 24px; }
+    &__header h2 { font-size: 24px; }
+  }
+  @media (max-width: 900px) {
+    &__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    &__program, &__community-body { flex: initial; }
+    &__program li { flex: initial; }
+  }
+  @media (max-width: 480px) {
+    &__service-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  }
+  @media (max-width: 360px) {
+    &__talk-meta { flex-wrap: wrap; }
+    &__talk-details { flex-basis: 100%; }
+  }
+}

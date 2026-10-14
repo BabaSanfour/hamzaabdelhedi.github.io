@@ -1,0 +1,8 @@
+spec:
+  structures:
+    - content_blocks
+  label: Home path, news, and awards
+  description: A compact career path, a wider scrollable news timeline, and featured recognition.
+  icon: view_column
+blueprint: {}
+preview: {}

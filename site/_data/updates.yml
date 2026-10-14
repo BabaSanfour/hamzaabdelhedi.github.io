@@ -3,6 +3,7 @@
 - id: brainhack-2026
   date: 2026-10-02
   title: Teaching foundation models for M/EEG at Brainhack Montréal
+  home_title: Teaching M/EEG foundation models at Brainhack Montréal
   description: A hands-on workshop comparing classical EEG decoding with frozen and fine-tuned pretrained representations.
   category: Teaching
   tags:
@@ -13,6 +14,7 @@
   date: 2026-08-01
   date_precision: month
   title: MNE-Denoise at the MNE-Python sprint
+  home_title: Presenting MNE-Denoise at the MNE-Python sprint
   description: Presented MNE-Denoise and joined maintainer discussions and a development sprint in Paris.
   category: Software
   tags:
@@ -21,6 +23,7 @@
   - Community
 - date: 2026-01-15
   title: Simons Computational Neuroscience Imbizo 2026
+  home_title: Attending the Simons Computational Neuroscience Imbizo
   description: Participated in the Imbizo summer school with full scholarship support.
   tags:
   - Research
@@ -32,6 +35,7 @@
     url: https://imbizo.africa/
 - date: 2025-12-13
   title: MAIN 2025 — organizing support
+  home_title: Helping organize MAIN 2025
   description: Helped with organizing MAIN 2025 (logistics / on-site support).
   tags:
   - Community
@@ -43,6 +47,7 @@
     url: https://www.main2025.org/
 - date: 2025-10-09
   title: Abundant Intelligences — AGM3
+  home_title: Joining Abundant Intelligences’ annual meeting
   description: Participated in Abundant Intelligences’ AGM3 / Annual General Meeting.
   tags:
   - Community

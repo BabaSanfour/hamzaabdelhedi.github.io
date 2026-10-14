@@ -4,7 +4,7 @@ slug: face-familiarity
 title: Visual perception in brains and models
 short_title: Perception in brains & models
 category: research
-status: MSc research and continuing collaborations
+status: MSc research and related collaborations
 role: Graduate Research Assistant during MSc research
 summary: I compare human EEG/MEG responses with artificial neural-network representations
   to study face familiarity and emotion perception, and how training shapes brain–model

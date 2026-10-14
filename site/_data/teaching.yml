@@ -8,10 +8,18 @@
   location: Thomson House, Montréal
   summary: A hands-on comparison of classical EEG decoding and pretrained foundation models on the same motor-imagery
     data, from frozen representations to fine-tuning.
+  spotlight_summary: I taught classical EEG decoding alongside frozen and fine-tuned foundation models.
+  home_organization: Brainhack Montréal
+  home_summary: A hands-on comparison of classical EEG decoding and foundation models, from pretrained representations to fine-tuning.
   links:
+  - label: Slides (PDF)
+    short_label: Slides (PDF)
+    url: /assets/files/presentations/brainhack-meeg-foundation-models-2026.pdf
   - label: Code & notebooks
+    short_label: Code
     url: https://github.com/BabaSanfour/meeg-fm-workshop
   - label: Workshop program
+    short_label: Program
     url: https://brainhackmtl.github.io/fall2026/#tutorials
 - id: cocolab-crash-course
   group: resources
@@ -30,8 +38,13 @@
   date_label: Summers 2024–2026
   organization: Mila — Quebec AI Institute
   location: Montréal, Canada
+  home_organization: Mila
+  home_summary: I teach programming and machine learning to First Nations, Inuit, and Métis participants through lectures and hands-on AI projects.
   summary: Designed and delivered sessions on programming in the age of AI, supervised learning, model evaluation,
     and building AI systems. Held office hours and supported exercises and participant projects.
+  links:
+  - label: About the program
+    url: https://mila.quebec/en/ai4humanity/ai-governance-policy-and-inclusion/indigenous-pathfinders-in-ai
 - id: future-imaginaries
   group: workshops
   title: Future Imaginaries Workshop Series
@@ -66,7 +79,7 @@
     width: 1280
     height: 749
     alt: Hamza teaching beside representational similarity analysis slides in a classroom.
-    caption: Teaching representational similarity analysis at MAIN, Montréal, October 2024.
+    caption: Teaching representational similarity analysis at MAIN Educational, Montréal, October 2024.
   links:
   - label: Tutorial materials
     url: https://github.com/BabaSanfour/main-edu-courses-rsa

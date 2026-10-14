@@ -7,6 +7,7 @@ year: 2025
 date: 2025-06-12
 type: "journal"
 featured: true
+home_summary: A review of 119 studies using neural networks for MEG decoding, brain–model comparisons, and signal analysis.
 thumbnail: /images/minimal_brain_network.png
 banner: /images/minimal_brain_network.png
 figure:

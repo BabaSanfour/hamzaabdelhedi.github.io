@@ -3,13 +3,17 @@
   title: 'MNE-Denoise: Denoising methods for the MNE ecosystem'
   date_label: August 2026
   organization: MNE-Python Maintainers Conference and Sprint
+  home_organization: MNE-Python sprint
   location: Meta Paris Office, Paris, France
   links:
+  - label: Slides (PDF)
+    url: /assets/files/presentations/mne-denoise-meta-paris-2026.pdf
   - label: Code
     url: https://github.com/mne-tools/mne-denoise
 - id: amai-apolitical-science
   group: talks
   title: The myth of apolitical science
+  home_organization: Against Military AI · Mila
   role: Reading recap presenter
   date_label: November 1, 2024
   organization: Against Military AI Reading Group, Mila
@@ -52,6 +56,7 @@
   title: 'Temporal dynamics of face recognition: Insights from combining MEG and artificial neural networks'
   date_label: October 2024
   organization: From Neuroscience to Artificially Intelligent Systems (NAISys)
+  home_organization: NAISys
   location: Cold Spring Harbor, USA
   links:
   - label: Poster

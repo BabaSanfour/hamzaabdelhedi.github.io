@@ -1,8 +1,8 @@
 ---
 id: eeg-meg-foundation-models
 slug: eeg-meg-foundation-models
-title: Learning from brain signals
-short_title: Brain-signal models & methods
+title: M/EEG representation learning and evaluation
+short_title: M/EEG representation learning
 category: research
 status: Current methods line
 role: Co-author of a MEG foundation-model roadmap

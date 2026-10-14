@@ -1,19 +1,24 @@
+work_menu:
+  - title: Research
+    url: /research/
+  - title: Publications
+    url: /publications/
+  - title: Software
+    url: /software/
+  - title: Teaching & mentoring
+    url: /teaching/
 footer_menu__settings:
   menu__items:
     - title: 'About'
       url: '/about/'
-    - title: 'Community'
+    - title: 'Community & service'
       url: '/community/'
-    - title: 'Teaching & mentoring'
-      url: '/teaching/'
     - title: 'Talks & posters'
       url: '/presentations/'
-    - title: 'Awards'
+    - title: 'Awards & scholarships'
       url: '/awards/'
-    - title: 'Updates'
+    - title: 'News'
       url: '/updates/'
-    - title: 'Contact'
-      url: '/contact/'
 
 copyright_text_html: >-
   Built with Jekyll and Bookshop.

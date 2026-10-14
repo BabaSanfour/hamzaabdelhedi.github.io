@@ -9,6 +9,7 @@ venue: "bioRxiv"
 type: "preprint"
 status: "preprint"
 featured: true
+home_summary: Networks trained on faces or broader visual tasks align with different stages of familiar-face processing.
 figure:
   preview_src: /images/publications/task-optimized-design-preview.webp
   title: "Comparing brain and task-optimized network representations"

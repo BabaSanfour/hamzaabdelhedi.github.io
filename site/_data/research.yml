@@ -5,16 +5,66 @@ ordered_ids:
   - pediatric-clinical-eeg
   - eeg-meg-foundation-models
 
-featured_ids:
-  - dynamic-decision-making
-  - eeg-meg-foundation-models
-  - pediatric-clinical-eeg
+# Enduring directions are shared by Home and Research. Projects can connect to
+# several directions; their dates and status stay in the project records.
+introduction: My research combines magnetoencephalography and electroencephalography (M/EEG), computational neuroscience, and AI to study brain dynamics and representations, and to develop methods for understanding them.
+home_introduction: My work connects questions about cognition and learning with methods for studying neural activity.
 
-# Home previews stay concise; the full index connects questions and shared methods.
-home_previews:
-  dynamic-decision-making: When evidence changes, how do we revise a choice—and when do we stop?
-  eeg-meg-foundation-models: From model representations to decoding benchmarks, I ask what brain-signal methods learn and what transfers.
-  pediatric-clinical-eeg: I bring EEG features and foundation-model representations together to study pediatric clinical questions.
+directions:
+  - id: neural-dynamics
+    title: Neural dynamics & cognition
+    short_title: Dynamics & cognition
+    home_summary: |-
+      I study the brain dynamics of decision-making and conscious experience.
+      I ask how they vary across brain states, disorders, and individuals.
+    summary: I study the brain dynamics of decision-making and conscious experience. I ask how they vary across brain states, disorders, and individuals.
+    questions:
+      - How do brain dynamics shape how we weigh evidence, update decisions, and commit to a choice?
+      - How do changes in ongoing brain activity relate to different states of consciousness?
+      - What do rhythms and complexity reveal about disorders and individual differences in cognition?
+    approach: I combine M/EEG and computational models to study rhythms, complexity, and neural trajectories. This work connects decisions under changing evidence, altered states of consciousness, and pediatric clinical questions involving ADHD, epilepsy, and medication.
+    publication_ids:
+      - intrinsic-neural-oscillations
+      - aict-brain-changes
+    project_ids:
+      - dynamic-decision-making
+      - brain-states-and-cognition
+      - pediatric-clinical-eeg
+  - id: brains-and-ai
+    title: Representations in brains & AI
+    short_title: Brains & AI
+    home_summary: |-
+      I investigate how learning shapes representations in brains and AI.
+      I compare what neural networks learn with patterns of human brain activity.
+    summary: I investigate how learning shapes representations in brains and artificial neural networks. By examining what models learn and comparing their representations with M/EEG activity, I ask how learning objectives and experience shape information processing, and what similarities and differences reveal about biological and artificial systems.
+    questions:
+      - How do learning objectives and experience shape what an artificial neural network represents?
+      - Where and when do model representations correspond to human brain activity, and what can their differences tell us?
+    approach: I compare neural networks trained for different tasks with the spatial and temporal structure of M/EEG responses. My work on visual learning and face familiarity motivates broader questions about brain–model correspondence and the representations learned by models of brain signals.
+    publication_ids:
+      - face-familiarity-preprint
+      - meg-ann-review
+    project_ids:
+      - face-familiarity
+      - eeg-meg-foundation-models
+  - id: meeg-methods
+    title: Computational methods for M/EEG
+    short_title: M/EEG methods
+    home_summary: |-
+      I develop methods to extract and interpret information from M/EEG.
+      I test how they generalize across people, tasks, and recordings.
+    summary: I develop and evaluate methods for extracting and interpreting information from M/EEG. My work spans signal processing, analyses of neural dynamics, and machine learning, including foundation models. I investigate how analytical choices shape our conclusions and how well methods and learned representations generalize across people, tasks, and recording settings.
+    questions:
+      - What information do signal features and learned representations capture, and how should we interpret it?
+      - How do preprocessing, training data, and evaluation choices affect what generalizes to new people and settings?
+    approach: I work on signal cleaning, feature extraction, representation learning, and decoding. I compare conventional descriptors with foundation-model representations, contribute to benchmarks, and study evaluation choices such as class imbalance. Reusable analysis pipelines let these methods inform both cognitive and clinical research.
+    publication_ids:
+      - meg-foundation-roadmap
+      - class-imbalance-brain-decoding
+    project_ids:
+      - eeg-meg-foundation-models
+      - dynamic-decision-making
+      - pediatric-clinical-eeg
 
 # Shared methods describe connections, not separate projects or exclusive categories.
 methods:

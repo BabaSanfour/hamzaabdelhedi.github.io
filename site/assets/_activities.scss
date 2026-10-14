@@ -1,16 +1,4 @@
 /* Career pages share the site's compact cards, teal accents, and motion tokens. */
-.c-header .main-nav { margin-left: 40px; }
-.c-header .main-nav__box { width: 100%; flex-direction: column; align-items: flex-end; }
-.c-header .nav__list--primary { display: flex; gap: clamp(16px, 2vw, 28px); margin: 0; }
-.c-header .nav__list--primary .nav__item { margin: 0; }
-.c-header .nav__list--primary .nav__link { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 0; white-space: nowrap; }
-.c-header .nav__list--primary .nav__link.active-link::after { bottom: 0; }
-.nav__utility { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0 0 2px; }
-.nav__utility li { margin: 0; }
-.nav__utility a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-muted); font-size: 13px; font-weight: 600; }
-.nav__utility a:hover, .nav__utility a[aria-current] { color: var(--color-primary); text-decoration: underline; text-decoration-color: var(--color-accent); text-decoration-thickness: 3px; text-underline-offset: 6px; }
-.nav__utility a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
-
 .activity-page {
   max-width: var(--content-wide);
   margin: 0 auto;
@@ -152,23 +140,13 @@
   p:last-child { margin: 0; line-height: 1.65; font-size: .95rem; }
   a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
 }
-.teaching-section__more { display: flex; flex-wrap: wrap; gap: 0 28px; margin-top: 12px; }
-.teaching-section__more a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--color-primary); font-size: .9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
 @media (prefers-reduced-motion: no-preference) {
   .activity-record, .learning-preview { animation: page-enter var(--motion-entry) var(--motion-ease) both; }
   .activity-record:nth-child(2n), .learning-preview:nth-child(2n) { animation-delay: 60ms; }
-  .activity-page__jump a span, .activity-record__links a span, .learning-preview h3 span, .teaching-section__more a span { transition: translate var(--motion-fast) var(--motion-ease); }
+  .activity-page__jump a span, .activity-record__links a span, .learning-preview h3 span { transition: translate var(--motion-fast) var(--motion-ease); }
   .activity-page__jump a:hover span { translate: 0 2px; }
-  .activity-record__links a:hover span, .learning-preview h3 a:hover span, .teaching-section__more a:hover span { translate: 3px 0; }
-}
-@media (max-width: 1024px) {
-  .c-header .main-nav { margin-left: 0; }
-  .c-header .main-nav__box { display: flex; align-items: stretch; }
-  .c-header .nav__list--primary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; }
-  .c-header .nav__list--primary .nav__link { display: flex; margin-bottom: 0; padding: 10px 0; white-space: normal; }
-  .c-header .nav__utility { gap: 0 24px; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--color-rule); }
-  .nav__utility a { min-height: 44px; font-size: 15px; }
+  .activity-record__links a:hover span, .learning-preview h3 a:hover span { translate: 3px 0; }
 }
 @media (max-width: 680px) {
   .teaching-section__body--with-photo .teaching-section__grid { grid-template-columns: minmax(0, 1fr); }

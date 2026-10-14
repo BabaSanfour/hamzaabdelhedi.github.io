@@ -1,0 +1,54 @@
+<section class="section home-activity updates-trajectory">
+  <div class="container">
+    <div class="home-activity__grid">
+      <section class="home-activity__panel home-activity__path" aria-labelledby="home-path">
+        <header class="home-activity__header">
+          <h2 id="home-path"><span class="home-activity__mark" aria-hidden="true">{% bookshop_include visual-icon name='path' %}</span>My path</h2>
+        </header>
+        {% bookshop_include grouped-trajectory %}
+        <p class="home-activity__footer"><a href="{{ '/about/#about-trajectory' | relative_url }}">View my journey <span aria-hidden="true">→</span></a></p>
+      </section>
+
+      <section class="home-activity__panel home-activity__news" aria-labelledby="latest-news">
+        <header class="home-activity__header">
+          <h2 id="latest-news"><span class="home-activity__mark" aria-hidden="true">{% bookshop_include visual-icon name='news' %}</span>Latest news</h2>
+        </header>
+        <div class="home-activity__scroll" role="region" aria-labelledby="latest-news" aria-describedby="home-news-hint" tabindex="0">
+          <div class="home-news">
+            {% assign recent_news = site.data.updates | sort: 'date' | reverse %}
+            {% for news in recent_news limit: 10 %}
+              {% include news-brief.html item=news show_icon=true %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="home-activity__footer home-activity__news-footer">
+          <a href="{{ '/updates/' | relative_url }}">Browse news archive <span aria-hidden="true">→</span></a>
+          <span id="home-news-hint">Scroll for earlier updates</span>
+        </div>
+      </section>
+
+      <section class="home-activity__panel home-activity__awards" aria-labelledby="home-awards">
+        <header class="home-activity__header">
+          <h2 id="home-awards"><span class="home-activity__mark" aria-hidden="true">{% bookshop_include visual-icon name='award' %}</span>Awards &amp; scholarships</h2>
+        </header>
+        <ul class="home-activity__recognition">
+          {% assign featured_awards = site.data.recognition | where: 'featured', true %}
+          {% for award in featured_awards %}
+          {% assign award_home_title = award.home_title | default: award.title %}
+          <li>
+            <a class="home-activity__award-link" href="{{ '/awards/#' | append: award.id | relative_url }}">
+              <div class="home-activity__award-meta">
+                <span class="home-activity__award-date">{{ award.date_label | escape }}</span>
+                <span class="home-activity__award-arrow" aria-hidden="true">→</span>
+              </div>
+              <h3>{{ award_home_title | escape }}</h3>
+              {% if award.home_support %}<p>{{ award.home_support | escape }}</p>{% else %}{% unless award_home_title contains award.organization %}<p>{{ award.organization | escape }}</p>{% endunless %}{% endif %}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="home-activity__footer"><a href="{{ '/awards/' | relative_url }}">View all awards <span aria-hidden="true">→</span></a></p>
+      </section>
+    </div>
+  </div>
+</section>

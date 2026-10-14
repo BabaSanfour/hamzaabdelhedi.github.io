@@ -58,7 +58,7 @@ document.querySelectorAll('[data-research-explorer]').forEach((explorer) => {
       card.hidden = !relatedProjects.some(button => button.dataset.project === card.dataset.researchProject);
     });
     const label = all ? 'All connections' : project ? project.textContent.trim().replace(/\s+/g, ' ') : method?.textContent.trim() || 'All connections';
-    count.textContent = `${label}: ${relatedProjects.length} of ${cards.length} research directions`;
+    count.textContent = `${label}: ${relatedProjects.length} of ${cards.length} projects`;
 
     connections = [];
     relatedProjects.forEach(button => {

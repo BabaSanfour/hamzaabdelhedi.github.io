@@ -1,111 +1,132 @@
-/* Footer */
+/* Closing invitation and shared footer */
+.home-contact {
+  padding: 24px 0 16px;
+
+  &__inner {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px;
+    border: 1px solid rgba($primary-color, .2);
+    border-left: 3px solid $primary-color;
+    border-radius: 12px;
+    background: linear-gradient(110deg, $white 15%, $accent-surface);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+      width: 200px;
+      height: 200px;
+      right: -40px;
+      top: -100px;
+      border: 1px solid rgba($primary-color, .12);
+      border-radius: 50%;
+    }
+    &::after { right: 56px; top: -60px; }
+    > div { min-width: 0; }
+  }
+
+  h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.25; }
+  p { margin: 0; color: $gray; line-height: 1.6; }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 44px;
+    padding: 12px 20px;
+    border: 1px solid $primary-color;
+    border-radius: 6px;
+    flex-shrink: 0;
+    font-weight: 600;
+    color: $white;
+    background: $primary-color;
+    &:hover { color: $white; background: $link-color-hover; border-color: $link-color-hover; }
+    &:focus-visible { outline: 3px solid $focus-color; outline-offset: 4px; }
+  }
+
+  @media (max-width: $tablet) {
+    &__inner { align-items: flex-start; flex-direction: column; gap: 20px; }
+  }
+
+  @media (max-width: $mobile) {
+    &__inner { padding: 24px 20px; gap: 16px; }
+    h2 { font-size: 22px; }
+  }
+}
+
 .footer {
-  position: relative;
   margin-top: $space-8;
-  padding: $space-8 0 $space-7;
-  overflow: hidden;
+  padding: 40px 0 24px;
   background: $blue-gray;
   border-top: 1px solid $border-color;
 
-  a:focus-visible {
-    outline-color: $focus-color;
-  }
-
-  .social {
-    margin-bottom: 40px;
-
-    .social__item {
-      margin: 0 2px;
-      font-size: 0;
-    }
-
-    .social__link {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      font-size: 16px;
-      border-radius: 50%;
-      color: $primary-color;
-      background: $background-color-alt;
-      border: 1px solid $control-border-color;
-      transition: all .25s;
-      will-change: transform;
-
-      &:hover,
-      &:focus-visible {
-        color: $white;
-        background: $primary-color;
-        border-color: $primary-color;
-
-        &::after {
-          content: none;
-        }
-      }
-
-      &::after {
-        content: none;
-      }
-    }
-  }
-
-  .footer_nav {
-    text-align: center;
-
-    .footer_nav__item {
-      display: inline;
-      margin: 0 24px;
-      font-size: 0;
-    }
-
-    .footer_nav__link {
-      font-size: 16px;
-      font-weight: 600;
-      color: $primary-color;
-
-      &:hover,
-      &:focus-visible {
-        color: $link-color-hover;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-    }
-  }
-
-  @media only screen and (max-width: $desktop) {
-    padding: $space-7 0 $space-6;
-  }
-
-  @media only screen and (max-width: $mobile) {
-    margin-top: $space-7;
-     padding: $space-7 0;
-
-     .footer_nav {
-      .footer_nav__item {
-        margin: 0 12px;
-      }
-     }
-  }
-}
-
-/* Copyright */
-.copyright {
-  margin-top: 20px;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: center;
-  color: $gray;
-
-  p {
-    margin: 0;
-  }
-
   a {
-    font-weight: 500;
     color: $primary-color;
+    &:hover, &:focus-visible {
+      color: $link-color-hover;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    &:focus-visible { outline-color: $focus-color; }
   }
 
-  @media only screen and (max-width: $mobile) {
-    font-size: 14px;
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 24px 48px;
+  }
+
+  &__name { display: inline-block; font-size: 20px; font-weight: 600; }
+  &__identity p { margin: 8px 0 12px; font-size: 14px; }
+  &__email { overflow-wrap: anywhere; font-size: 15px; }
+  &__contact-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; }
+  &__contact-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+  &__heading { font-size: 15px; margin: 0 0 8px; }
+  &__links { margin: 0; }
+  &__links a { display: inline-flex; align-items: center; min-height: 36px; font-size: 15px; }
+
+  &__return {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+    a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 600; }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin-top: 12px;
+    padding-top: 16px;
+    border-top: 1px solid $border-color;
+  }
+
+  &__social { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 0; }
+  &__social a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 14px; }
+  .copyright { font-size: 13px; line-height: 1.5; color: $gray; }
+  .copyright p { margin: 0; }
+
+  @media (max-width: $tablet) {
+    &__grid { column-gap: 24px; }
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: $space-7;
+    padding: 28px 0 20px;
+    &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    &__identity { grid-column: 1 / -1; }
+    &__links a { min-height: 44px; }
   }
 }
+
+.page-home .footer { margin-top: 12px; }

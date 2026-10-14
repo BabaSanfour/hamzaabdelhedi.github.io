@@ -1,11 +1,27 @@
 - id: tuna
   group: scientific
   title: TuNA — Tunisians in Neuroscience and AI
+  home_summary: Connecting Tunisians working in neuroscience, AI, and related fields.
   role: Founding member
   date_label: February 2025–present
   location: Montréal, Canada
   summary: Connecting Tunisians working across neuroscience, artificial intelligence, cognitive science, and related
     fields.
+  links:
+  - label: Community website
+    url: https://www.tuna-community.org/
+- id: mila-student-outreach
+  group: scientific
+  title: Mila student outreach & application review
+  home_summary: Reviewing applications and answering prospective students’ questions in Q&A sessions.
+  role: Volunteer
+  date_label: 2024–present
+  organization: Mila — Quebec AI Institute
+  # Role dates confirmed by Hamza: application reviewing since 2024; Q&A since 2026.
+  summary: Support prospective students and the application process at Mila through two volunteer roles.
+  details:
+  - 'Since 2024: review applications to Mila.'
+  - 'Since 2026: take part in Q&A sessions for students interested in joining Mila.'
 - id: mne-sprint
   group: scientific
   title: MNE-Python Maintainers Conference and Sprint
@@ -16,6 +32,7 @@
 - id: against-military-ai
   group: scientific
   title: Against Military AI Reading Group
+  home_summary: Co-organized biweekly discussions on the military uses of AI.
   role: Co-organizer
   date_label: March 2024–December 2025
   organization: Mila
@@ -53,6 +70,7 @@
 - id: unique-committee
   group: scientific
   title: UNIQUE Scientific Committee
+  home_summary: Represented students and helped organize conferences, symposia, and research gatherings.
   role: Student representative
   date_label: September 2022–August 2024
   location: Montréal, Canada
@@ -82,6 +100,7 @@
 - id: ieee-supcom
   group: leadership
   title: IEEE SUP’COM Student Branch
+  home_summary: Led student initiatives and mentored subsequent committees.
   role: Chair & mentor
   date_label: September 2018–December 2023
   location: Ariana, Tunisia

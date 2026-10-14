@@ -3,6 +3,9 @@
   group: scholarships
   featured: true
   title: Simons Computational Neuroscience Imbizo — Full Scholarship
+  home_title: Simons Computational Neuroscience Imbizo
+  # Principal sponsors: https://www.linkedin.com/company/isicnimbizo
+  home_support: School supported by Simons Foundation & IBRO
   date_label: '2026'
   organization: Simons Computational Neuroscience Imbizo
   amount: Full funding

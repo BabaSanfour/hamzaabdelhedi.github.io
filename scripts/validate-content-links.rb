@@ -27,6 +27,27 @@ end
   end
 end
 pairs = []
+research = load_yaml.call(root.join('_data/research.yml').read)
+direction_ids = []
+research.fetch('directions').each do |direction|
+  id = direction['id']
+  errors << "Missing or duplicate research direction: #{id}" if id.to_s.empty? || direction_ids.include?(id)
+  direction_ids << id
+  %w[title short_title home_summary summary approach].each { |field| errors << "Missing #{field} for research direction: #{id}" if direction[field].to_s.empty? }
+  errors << "Missing questions for research direction: #{id}" if Array(direction['questions']).empty?
+  direction.fetch('publication_ids').each do |slug|
+    errors << "Unknown publication in direction #{id}: #{slug}" unless records.key?("publication:#{slug}")
+  end
+  direction.fetch('project_ids').each do |slug|
+    errors << "Unknown project in direction #{id}: #{slug}" unless records.key?("research:#{slug}")
+  end
+end
+research.fetch('ordered_ids').each do |slug|
+  errors << "Unknown research project: #{slug}" unless records.key?("research:#{slug}")
+  unless research['directions'].any? { |direction| direction['project_ids'].include?(slug) }
+    errors << "Project has no research direction: #{slug}"
+  end
+end
 edges = load_yaml.call(root.join('_data/connections.yml').read)
 edges.each do |edge|
   %w[from to].each { |key| errors << "Unknown reference: #{edge[key]}" unless records.key?(edge[key]) }

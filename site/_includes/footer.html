@@ -1,24 +1,47 @@
 <!-- begin footer -->
 <footer class="footer">
   <div class="container">
-    <div class="row">
-      <div class="col col-12">
-
-        {% bookshop_include social-link %}
-
-        <ul class="footer_nav list-reset">
+    <div class="footer__grid">
+      <div class="footer__identity">
+        <a class="footer__name" href="{{ '/' | relative_url }}">{{ site.data.profile.name | escape }}</a>
+        <p>{{ site.data.profile.location | escape }}</p>
+        <a class="footer__email" href="mailto:{{ site.data.links.email | escape }}">{{ site.data.links.email | escape }}</a>
+        <div class="footer__contact-links">
+          <a href="{{ '/contact/' | relative_url }}">Contact</a>
+          <a href="{{ site.data.links.cv_pdf | relative_url }}">CV (PDF) <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <nav aria-labelledby="footer-work">
+        <h2 class="footer__heading" id="footer-work">Work</h2>
+        <ul class="footer__links list-reset">
+          {% for item in site.data.footer.work_menu %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <nav aria-labelledby="footer-more">
+        <h2 class="footer__heading" id="footer-more">More</h2>
+        <ul class="footer__links list-reset">
           {% for item in site.data.footer.footer_menu__settings.menu__items %}
-          <li class="footer_nav__item">
-            <a href="{{ item.url | relative_url }}" class="footer_nav__link">{{ item.title }}</a>
-          </li>
+          <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></li>
           {% endfor %}
         </ul>
 
+      </nav>
+    </div>
+    <div class="footer__return"><a href="#page-top" data-back-to-top>Back to top <span aria-hidden="true">↑</span></a></div>
+    <div class="footer__bottom">
+        <ul class="footer__social list-reset" aria-label="Social profiles">
+          {% for social in site.data.links.social %}
+          {% assign social_url = site.data.links[social.key] %}
+          {% if social_url %}<li><a href="{{ social_url | escape }}" target="_blank" rel="noopener noreferrer">{{ social.label | escape }} <span aria-hidden="true">↗</span></a></li>{% endif %}
+          {% endfor %}
+          {% if site.data.links.orcid %}<li><a href="{{ site.data.links.orcid | escape }}" target="_blank" rel="noopener noreferrer">ORCID <span aria-hidden="true">↗</span></a></li>{% endif %}
+        </ul>
         <div class="copyright">
           <p>{{ site.time | date: '%Y' }} &copy; <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>. {{ site.data.footer.copyright_text_html }}</p>
         </div>
 
-      </div>
     </div>
   </div>
 </footer>

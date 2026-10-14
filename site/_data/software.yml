@@ -18,7 +18,7 @@
 - id: coco-pipe
   motif: pipeline
   name: CoCo-PiPe
-  one_liner: Modular pipelines for brain-signal descriptors, decoding, and experiment reporting.
+  one_liner: Turns brain signals into interpretable results through reproducible analyses, model comparisons, and automated reports.
   audience: For researchers combining signal processing and machine learning, with reusable steps for feature extraction, model evaluation, and reporting.
   role: Creator & Maintainer
   repo: https://github.com/BabaSanfour/coco-pipe

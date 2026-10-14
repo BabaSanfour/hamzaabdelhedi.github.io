@@ -13,17 +13,18 @@
 
 <article class="software-card{% if include.compact %} software-card--compact{% endif %}"{% unless include.compact %} id="{{ software.id }}"{% endunless %}>
   <div class="software-card__heading">
-    <h{{ include.heading_level | default: 3 }} class="software-card__title">{{ software.name }}</h{{ include.heading_level | default: 3 }}>
+    <h{{ include.heading_level | default: 3 }} class="software-card__title">{% if include.compact %}<a href="{{ '/software/' | relative_url }}#{{ software.id }}">{{ software.name }} <span aria-hidden="true">→</span></a>{% else %}{{ software.name }}{% endif %}</h{{ include.heading_level | default: 3 }}>
     {% assign supported_motifs = 'denoise,pipeline,atlas' | split: ',' %}
     {% if supported_motifs contains software.motif %}
     <div class="software-card__visual" aria-hidden="true">{% bookshop_include visual-icon name=software.motif %}</div>
     {% endif %}
   </div>
+  {% if include.compact %}<p class="software-card__role">{{ software.role }}</p>{% endif %}
   <p class="software-card__purpose">{{ software.one_liner }}</p>
   {% if software.audience and include.compact != true %}
   <p class="software-card__purpose">{{ software.audience }}</p>
   {% endif %}
-  <p class="software-card__role"><strong>Role:</strong> {{ software.role }}</p>
+  {% unless include.compact %}<p class="software-card__role"><strong>Role:</strong> {{ software.role }}</p>{% endunless %}
   {% if software.status and include.compact != true %}
   <p class="software-card__status"><strong>Status:</strong> {{ software.status }}</p>
   {% endif %}
@@ -61,7 +62,5 @@
   </ul>
   {% assign software_ref = 'software:' | append: software.id %}
   {% include connected-content.html ref=software_ref compact=true %}
-  {% else %}
-  <a class="software-card__detail" href="{{ '/software/' | relative_url }}#{{ software.id }}">See {{ software.name }} on Software <span aria-hidden="true">→</span></a>
   {% endunless %}
 </article>

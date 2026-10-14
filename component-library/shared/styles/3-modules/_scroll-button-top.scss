@@ -1,31 +1,26 @@
+/* The floating control is restricted to the empty desktop gutter.
+   A normal footer link supplies the same action at all viewport sizes. */
 .top {
+  display: none;
   position: fixed;
-  bottom: 40px;
-  right: -100px;
-  z-index: 1;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  line-height: 36px;
-  text-align: center;
-  border-radius: 50%;
-  background-color: $background-color-alt;
-  color: $text-color;
+  bottom: 24px;
+  right: 24px;
+  z-index: 30;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  border-radius: $radius-sm;
+  background: $white;
+  color: $primary-color;
+  font-size: 22px;
+  line-height: 1;
   cursor: pointer;
-  transition: all .25s ease;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05);
 
-  &.is-active {
-    right: 40px;
-  }
-}
-
-@media only screen and (max-width: $tablet) {
-  .top {
-    bottom: 25px;
-
-    &.is-active {
-      right: 30px;
-    }
+  &:focus-visible { outline: 3px solid $focus-color; outline-offset: 3px; }
+  @media (min-width: 1400px) {
+    &.is-active:not([hidden]) { display: inline-flex; }
   }
 }

@@ -2,17 +2,8 @@
 <noscript>
   <style>
     @media (max-width: 1024px) {
-      .c-header__inner { flex-wrap: wrap; }
-      .c-header .main-nav {
-        position: static;
-        z-index: auto;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        padding: 16px 0;
-      }
-      .c-header .nav-button,
-      .c-header .nav__icon-close { display: none; }
+      .c-header .main-nav { position: static; grid-column: 1 / -1; z-index: auto; opacity: 1; visibility: visible; pointer-events: auto; padding: 16px 0; }
+      .c-header .nav-button, .c-header .nav__icon-close { display: none; }
     }
   </style>
 </noscript>
@@ -20,66 +11,54 @@
   <div class="container">
     <div class="row">
       <div class="c-header__inner">
-
         <div class="logo">
-          <a class="logo__link" href="{{ '/' | relative_url }}">
-          {%if site.data.navigation.logo_image %}
-            <img class="logo__image" src="{{ site.data.navigation.logo_image | relative_url }}" alt="{{ site.data.profile.name | escape }}" width="512" height="512">
-          {% else %}
-            {{ site.data.profile.name }}
-          {% endif %}
+          <a class="logo__link" id="page-top" href="{{ '/' | relative_url }}" aria-label="{{ site.data.profile.name | escape }} — Home">
+            {% if site.data.navigation.logo_image %}<img class="logo__image" src="{{ site.data.navigation.logo_image | relative_url }}" alt="" width="48" height="48">{% endif %}
+            <span class="logo__name">{{ site.data.profile.name | escape }}</span>
           </a>
         </div>
 
+        <nav class="header-utility" aria-label="Profiles and contact">
+          <ul class="nav__utility list-reset">
+            {% for item in site.data.navigation.menu__settings.utility_items %}
+            {% assign utility_url = item.url %}
+            {% if item.link_key %}{% assign utility_url = site.data.links[item.link_key] %}{% endif %}
+            {% unless item.external %}{% assign utility_url = utility_url | relative_url %}{% endunless %}
+            <li><a href="{{ utility_url | escape }}"{% if item.emphasis %} class="nav__contact"{% endif %}{% if item.url and page.url == item.url %} aria-current="page"{% endif %}>{{ item.title | escape }}{% if item.external %}<span aria-hidden="true">↗</span>{% endif %}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+
         <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
           <div class="main-nav__box">
-
-            <button class="nav__icon-close" type="button" aria-label="Close navigation menu">
-              <i class="ion ion-md-close" aria-hidden="true"></i>
-            </button>
-
+            <button class="nav__icon-close" type="button" aria-label="Close navigation menu"><span aria-hidden="true">×</span></button>
             <div class="nav__title">Menu</div>
-
-            <ul class="nav__utility list-reset" aria-label="Profile and updates">
-              {% for item in site.data.navigation.menu__settings.utility_items %}
-                {% assign utility_url = item.url %}
-                {% if item.link_key %}{% assign utility_url = site.data.links[item.link_key] %}{% endif %}
-                <li><a href="{{ utility_url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
-              {% endfor %}
-            </ul>
-              <ul class="nav__list nav__list--primary list-reset">
-
+            <ul class="nav__list nav__list--primary list-reset">
               {% for item in site.data.navigation.menu__settings.menu__items %}
-                {% if item.submenu %}
-                <li class="nav__item dropdown">
-                  <span class="nav__link dropdown-toggle">{{ item.title }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
-                  <div class="dropdown-menu">
-                    {% for submenu-item in item.submenu %}
-                  <a href="{{ submenu-item.url | relative_url }}" class="nav__link{% if page.url == submenu-item.url %} active-link{% endif %}"{% if page.url == submenu-item.url %} aria-current="page"{% endif %}>{{submenu-item.title}}</a>
-                    {% endfor %}
-                  </div>
-                </li>
-
-                {% else %}
-                <li class="nav__item">
-                  {% assign nav_url = item.url %}
-                  {% if item.link_key %}
-                  {% assign nav_url = site.data.links[item.link_key] %}
-                  {% endif %}
-                  <a href="{{ nav_url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
-                </li>
-                {% endif %}
+              {% assign is_current = false %}
+              {% if page.url == item.url %}{% assign is_current = true %}{% endif %}
+              {% assign is_parent = false %}
+              {% if page.collection == 'projects' and item.url == '/research/' %}{% assign is_parent = true %}{% endif %}
+              {% if page.collection == 'publications' and item.url == '/publications/' %}{% assign is_parent = true %}{% endif %}
+              <li class="nav__item"><a href="{{ item.url | relative_url }}" class="nav__link{% if is_current or is_parent %} active-link{% endif %}"{% if is_current %} aria-current="page"{% elsif is_parent %} aria-current="location"{% endif %}>{{ item.title | escape }}</a></li>
               {% endfor %}
-
+              <li class="nav__item">
+                {% assign more_current = false %}
+                {% for item in site.data.navigation.menu__settings.more_items %}{% if page.url == item.url %}{% assign more_current = true %}{% endif %}{% endfor %}
+                <details class="nav-more">
+                  <summary class="nav__link{% if more_current %} active-link{% endif %}">More <span class="nav-more__chevron" aria-hidden="true">⌄</span></summary>
+                  <ul class="nav-more__links list-reset">
+                    {% for item in site.data.navigation.menu__settings.more_items %}
+                    <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </li>
             </ul>
-
           </div>
         </nav>
 
-        <button class="nav-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation menu">
-          <i class="nav__icon nav__icon-menu ion ion-md-menu" aria-hidden="true"></i>
-        </button>
-
+        <button class="nav-button" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation menu"><span aria-hidden="true">☰</span></button>
       </div>
     </div>
   </div>

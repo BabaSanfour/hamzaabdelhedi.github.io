@@ -1,27 +1,35 @@
-logo_image: '/images/main/android-chrome-512x512.png'
+logo_image: '/images/main/neural-trajectory.svg'
 
 menu__settings:
   menu__items:
-    - title: 'Research'
-      url: '/research/'
-    - title: 'Teaching'
-      url: '/teaching/'
-    - title: 'Software'
-      url: '/software/'
-    - title: 'Publications'
-      url: '/publications/'
-    - title: 'Talks & posters'
-      url: '/presentations/'
-    - title: 'Community'
-      url: '/community/'
-    - title: 'Awards'
-      url: '/awards/'
+    - title: Research
+      url: /research/
+    - title: Publications
+      url: /publications/
+    - title: Software
+      url: /software/
+    - title: Teaching
+      url: /teaching/
+    - title: About
+      url: /about/
+  more_items:
+    - title: Talks & posters
+      url: /presentations/
+    - title: Community & service
+      url: /community/
+    - title: Awards & scholarships
+      url: /awards/
+    - title: News
+      url: /updates/
   utility_items:
-    - title: 'Home'
-      url: '/'
-    - title: 'About'
-      url: '/about/'
-    - title: 'Updates'
-      url: '/updates/'
-    - title: 'CV'
+    - title: GitHub
+      link_key: github
+      external: true
+    - title: Google Scholar
+      link_key: scholar
+      external: true
+    - title: CV (PDF)
       link_key: cv_pdf
+    - title: Contact
+      url: /contact/
+      emphasis: true

@@ -1,0 +1,19 @@
+spec:
+  structures: []
+  label: Research Direction
+  description: A short introduction linking to an enduring research direction.
+  icon: hub
+  tags:
+    - Research
+
+blueprint:
+  direction:
+    id: ""
+    title: ""
+    home_summary: ""
+
+preview:
+  direction:
+    id: meeg-methods
+    title: Computational methods for M/EEG
+    home_summary: I develop and evaluate methods for extracting and interpreting information from M/EEG.

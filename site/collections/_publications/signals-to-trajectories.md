@@ -10,6 +10,7 @@ venue: "arXiv"
 type: "preprint"
 status: "preprint"
 featured: true
+home_summary: A practical guide to tracing M/EEG activity through low-dimensional trajectories, with an EEG tutorial.
 figure:
   preview_src: /images/publications/signals-to-trajectories-workflow-preview.webp
   title: "From neural signals to trajectories"

@@ -1,8 +1,7 @@
 - type: publication
-  label: "Selected publication"
-  icon: "👉"
+  label: "Publication"
+  icon: "📄"
   publication_id: "face-familiarity-preprint"
-  image: "/images/main/logo.png"
   color_class: "is-publication"
 
 - type: media
@@ -10,6 +9,28 @@
   icon: "🎥"
   title: "Five Minutes With Hamza Abdelhedi: Bringing New AI Tools to Neuroscience"
   meta: "Abundant Intelligences, Jan 2026"
+  summary: "I discuss my path into Neuro-AI, clinical EEG research, and my work with Abundant Intelligences."
   url: "https://abundant-intelligences.net/blogs/five-minutes-with-abundant-intelligences-tech-pod-member-hamza-abdelhedi/"
   image: "/images/main/abint.jpeg"
   color_class: "is-media"
+
+- type: teaching
+  label: "Teaching"
+  icon: "🎓"
+  teaching_id: "brainhack-2026"
+  meta: "Brainhack Montréal · Oct 2026"
+
+- type: software
+  label: "Software"
+  icon: "💻"
+  software_id: "mne-denoise"
+  links:
+  - label: "Project page"
+    short_label: "Project page"
+    url: "/software/#mne-denoise"
+  - label: "Code"
+    short_label: "Code"
+    url: "https://github.com/mne-tools/mne-denoise"
+  - label: "Documentation"
+    short_label: "Docs"
+    url: "https://mne.tools/mne-denoise/stable/"

@@ -10,7 +10,6 @@ blueprint:
   connected: false
   heading_level: 3
   compact: false
-  preview: ""
   project:
     title: ""
     short_title: ""
@@ -25,7 +24,6 @@ preview:
   connected: false
   heading_level: 3
   compact: false
-  preview: ""
   project:
     title: Research theme
     short_title: Research theme

@@ -31,9 +31,44 @@
   &__title a:hover { color: $link-color-hover; text-decoration: underline; }
   &__meta { margin: 0; color: $gray; font-size: 13px; line-height: 1.5; }
 
+  &__summary { margin: $space-2 0 0; font-size: 14px; line-height: 1.5; }
+  &__authors { margin: 0; color: $gray; font-size: 13px; line-height: 1.5; }
+  &__resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 $space-3;
+    margin: $space-2 0 0;
+    padding: 0;
+    list-style: none;
+
+    li { margin: 0; }
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      &:focus-visible { outline: 3px solid $focus-color; outline-offset: 2px; }
+    }
+  }
+
   &__controls { margin-top: $space-4; padding-top: $space-3; border-top: 1px solid $border-color; }
   &__controls[hidden] { display: none; }
-  &__navigation, &__dots { display: flex; align-items: center; justify-content: space-between; gap: $space-1; }
+  &__navigation {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: $space-2;
+  }
+  &__dots {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    align-items: center;
+    min-width: 0;
+  }
   &__step, &__dot {
     min-width: 44px;
     min-height: 44px;
@@ -52,8 +87,11 @@
   &__dot {
     display: grid;
     place-items: center;
+    min-width: 0;
+    width: 100%;
     border-color: transparent;
     span { width: 8px; height: 8px; border-radius: 50%; background: $gray; }
     &[aria-pressed="true"] span { background: $primary-color; transform: scale(1.25); }
   }
+
 }
